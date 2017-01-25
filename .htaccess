@@ -1,0 +1,77 @@
+php_value display_errors off
+
+AddDefaultCharset UTF-8
+
+ErrorDocument 400 /
+ErrorDocument 401 /
+ErrorDocument 403 /
+ErrorDocument 404 /index.php?page=message&code=404
+ErrorDocument 500 /
+
+
+
+<IfModule mod_dir.c>
+DirectoryIndex index.html$ index.php
+</IfModule>
+
+#<Files cron.php>
+#  deny from all
+
+RewriteEngine on
+RewriteRule ^$ index.php
+RewriteRule ^add(/?)$ index.php?page=add
+RewriteRule ^pay(/?)$ index.php?page=pay
+RewriteRule ^mserv(/?)$ index.php?page=mserv
+RewriteRule ^feedback(/?)$ index.php?page=feedback
+RewriteRule ^links(/?)$ index.php?page=links
+RewriteRule ^paytop(/?)$ index.php?page=paytop
+RewriteRule ^edit(/?)$ index.php?page=edit_server
+RewriteRule ^chat(/?)$ index.php?page=chat
+RewriteRule ^payserver(/?)$ payserver=payserver.php
+
+
+RewriteRule ^cs16(/?)$ index.php?page=cs16
+RewriteRule ^csgo(/?)$ index.php?page=csgo
+RewriteRule ^cssource(/?)$ index.php?page=css
+RewriteRule ^cszero(/?)$ index.php?page=cz
+RewriteRule ^hl(/?)$ index.php?page=hl
+RewriteRule ^hl2(/?)$ index.php?page=hl2
+RewriteRule ^left4dead(/?)$ index.php?page=l4d
+RewriteRule ^l4d(/?)$ index.php?page=l4d2
+RewriteRule ^left4dead2(/?)$ index.php?page=l4d2
+RewriteRule ^l4d2(/?)$ index.php?page=l4d2
+RewriteRule ^teamfortess(/?)$ index.php?page=tf2
+RewriteRule ^garrysmod(/?)$ index.php?page=gm
+
+RewriteRule ^classic(/?)$ index.php?page=classic
+RewriteRule ^csdm(/?)$ index.php?page=csdm
+RewriteRule ^deathrun(/?)$ index.php?page=deathrun
+RewriteRule ^diablomod(/?)$ index.php?page=diablomod
+RewriteRule ^gungame(/?)$ index.php?page=gungame
+RewriteRule ^hns(/?)$ index.php?page=hns
+RewriteRule ^jailbreak(/?)$ index.php?page=jailbreak
+RewriteRule ^jump(/?)$ index.php?page=jump
+RewriteRule ^knife(/?)$ index.php?page=knife
+RewriteRule ^soccerjam(/?)$ index.php?page=soccerjam
+RewriteRule ^superhero(/?)$ index.php?page=superhero
+RewriteRule ^warcraft(/?)$ index.php?page=warcraft
+RewriteRule ^surf(/?)$ index.php?page=surf
+RewriteRule ^zombiemod(/?)$ index.php?page=zombiemod
+
+RewriteRule ^edit/key/([a-zA-Z0-9]+)(/?)$ index.php?page=edit_server&secret_key=$1 [L]
+RewriteRule ^search(/?)$ index.php?page=search
+RewriteRule ^server/([0-9]+)(/?)$ index.php?page=info&id=$1&info=$1 [L]
+RewriteRule ^all(/?)$ index.php?page=all_servers
+RewriteRule ^([a-zA-Z0-9]+)/([0-9]+)(/?)$ index.php?page=$1&page_num=$2 [L]
+
+RewriteRule ^images/maps/([^/]*)/([^/]*)\.jpg$ /images/maps/manager.php?game=$1&map=$2 [L]
+RewriteRule ^images/monitor/([^/]*)/([^/]*)\.jpg$ /images/maps/monitor.php?game=$1&map=$2 [L]
+
+# admin
+RewriteRule ^admin/server/([0-9]+)(/?)$ admin/index.php?page=server_info&id=$1 [L]
+RewriteRule ^admin/server/([0-9]+)/edit(/?)$ admin/index.php?page=server_edit&id=$1 [L]
+RewriteRule ^admin/replies(/?)$ admin/index.php?page=replies
+RewriteRule ^admin/settings(/?)$ admin/index.php?page=site_settings
+RewriteRule ^admin/rowstyles(/?)$ admin/index.php?page=rowstyles
+RewriteRule ^admin/add_server(/?)$ admin/index.php?page=add_server
+

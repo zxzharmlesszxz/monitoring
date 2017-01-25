@@ -1,0 +1,7 @@
+.idea/
+include/config.php
+load/*
+data/*.*
+**/.nomedia
+google*.html
+yandex*.html
