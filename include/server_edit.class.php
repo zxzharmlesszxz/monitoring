@@ -1,0 +1,132 @@
+<?php
+class ServerEdit {
+	var $subject;
+	var $server_id;
+	var $server_email;
+	var $server_data;
+	var $secret_key;
+	var $errors = Array();
+	var $message;
+	var $save_errors = Array();
+	var $edit_data = Array();
+	
+	
+	
+	public function CheckData() {
+		if(!is_numeric($this->server_id) or !isValidEmail($this->server_email)) {
+			if(!is_numeric($this->server_id)) $this->errors[] = "Некорректный id сервера.";
+			if(!isValidEmail($this->server_email)) $this->errors[] = "Некорректный E-mail.";
+
+			return false;
+		}
+		$get_server = dbquery("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '{$this->server_id}' AND `server_email` = '{$this->server_email}'");
+		if(mysql_num_rows($get_server) == 0) {
+			$this->errors[] = "Ошибка: Введен неправильный адрес электропочты или адрес сервера.";
+
+			return false;
+		} else {
+			$this->server_data = dbarray_fetch($get_server);
+			return true;
+		}
+	}
+	
+	public function SetServerId($id) {
+		if(is_numeric($id)) {
+			$this->server_id = $id;
+			return true;
+		}
+		return false;
+	}
+	
+	public function SetServerEmail($email) {
+		if(isValidEmail($email)) {
+			$this->server_email = $email;
+			return true;
+		}
+		return false;
+	}
+	
+	public function SetupKey() {
+		if(!is_numeric($this->server_id)) return false;
+		$length = 100;
+		$key = '';
+		list($usec, $sec) = explode(' ', microtime());
+		mt_srand((float) $sec + ((float) $usec * 100000));
+		$inputs = array_merge(range('z','a'),range(0,9),range('A','Z'));
+		for($i=0; $i<$length; $i++) {
+			$key .= $inputs{mt_rand(0,61)};
+		}
+		$this->secret_key = $key;
+		$lifetime = time() + 1800;
+		$add_link = dbquery("INSERT INTO `".DB_SERVERS_EDITS."` (`edit_server_id`, `edit_secret_key`, `edit_lifetime`) VALUES ('{$this->server_id}','{$this->secret_key}', '{$lifetime}')");
+		if($add_link) return true;
+		return false;
+	}
+	
+	public function SendMail() {
+		if(!is_array($this->server_data)) return false;
+		global $settings;
+		$this->headers = "Content-Type: text/html; charset = utf-8";
+		$this->subject = "Редактирование сервера :: monitoring.contra.net.ua";
+		$this->message = "
+Доброго времени суток. Вы отправили запрос на редактирование сервера в мониторинге http://monitoring.contra.net.ua.
+Для редактирования воспользуйтесь этой ссылкой : {$settings['site_url']}edit/key/{$this->secret_key}/
+Ссылка будет доступна 30 минут с начала подачи заявки.
+
+			Если Вы не подавали заявки на редактирование, то просто проигнорируйте данное письмо.
+			С уважением команда мониторинга  http://monitoring.contra.net.ua
+";
+		$send_mail = mail($this->server_data['server_email'], $this->subject, $this->message);
+		$send_mail = true;
+		if($send_mail) return true;
+		return false;
+	}
+	
+	public function CheckKey($key) {
+		if(strlen($key) != 100) return false;
+		$key = mysql_real_escape_string($key);
+		$check_key = dbquery("SELECT * FROM `".DB_SERVERS_EDITS."` WHERE BINARY `edit_secret_key` = '{$key}' AND `edit_lifetime` > '".time()."' AND `edit_date` = '0' LIMIT 1");
+		$this->edit_data = dbarray_fetch($check_key);
+		if(mysql_num_rows($check_key) == 0) return false;
+		$check_server = dbquery("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '{$this->edit_data['edit_server_id']}'");
+		if(mysql_num_rows($check_server) == 0) return false;
+		$this->server_data = dbarray_fetch($check_server);
+		$this->server_id = $this->server_data['server_id'];
+		$this->secret_key = $this->edit_data['edit_secret_key'];
+		return true;
+	}
+	
+	public function SaveChanges($address, $icq = '', $site = '', $about = '', $game = '', $mode = '') {
+		if(!is_array($this->server_data) or !is_array($this->edit_data)) return false;
+		$regex_ipport = "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\:[0-9]{1,5}";
+		$regex_hostport = "[a-zA-Z0-9](-*[a-zA-Z0-9]+)*(\.[a-zA-Z0-9](-*[a-zA-Z0-9]+)*)+\:[0-9]{1,5}";
+		if(!preg_match("/$regex_ipport/", $address) and !preg_match("/$regex_hostport/i", $address)) {
+			$this->save_errors[] = "Неправильный формат адреса сервера.";
+			return false;
+		}
+		if(!is_numeric($icq) or (is_numeric($icq) and strlen($icq) > 9) or (is_numeric($icq) and strlen($icq) < 4)) {
+			$this->save_errors[] = "Некорректный ICQ.";
+			return false;
+		}
+		if(!isValidURL($site)) {
+			$this->save_errors[] = "Некорректный адрес сайта.";
+			return false;
+		}
+		$address = mysql_real_escape_string($address);
+		$game = mysql_real_escape_string($game);
+		$mode = mysql_real_escape_string($mode);
+		$site = mysql_real_escape_string($site);
+		$about = mysql_real_escape_string($about);
+		$update_server_data = dbquery("UPDATE `".DB_SERVERS."` SET `server_ip` = '{$address}', `server_site` = '{$site}', `server_icq` = '{$icq}', `server_game` = '{$game}', `server_mode` = '{$mode}', `about` = '{$about}' WHERE `server_id` = '{$this->server_data['server_id']}'");
+		if(!$update_server_data) {
+			$this->save_errors[] = "Ошибка сохранения данных о сервере.";
+			return false;
+		}
+		$edit_data = $this->server_data['server_ip'];
+		$edit_data_new = $address;
+		$update_edit_data = dbquery("UPDATE `".DB_SERVERS_EDITS."` SET `edit_date` = '".time()."', `edit_ip` = '".$_SERVER['REMOTE_ADDR']."', `edit_data` = '{$edit_data}', `edit_data_new` = '{$edit_data_new}' WHERE `edit_id` = '{$this->edit_data['edit_id']}'");
+		if(!$update_edit_data) $this->save_errors[] = "Ошибка сохранения данных.";
+		return true;
+	}
+}
+?>
