@@ -161,5 +161,3 @@ if (count($pg_info['pages']) > 1) {
  echo "</div>";
 }
 /* PAGINATION END */
-
-?>
