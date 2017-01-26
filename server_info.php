@@ -265,9 +265,5 @@ echo "<div class='box_rounded'>";
       <br><div class='box_rounded'>
       <div style='font-size: 10px;'><div style='padding-bottom:3px;'><div class='box_title'>Пару слов о сервере:</div></div></div></div>
       <span style='color:#999999;'>{$server_data['about']}</span>
-      " : "")."
- ";
-        
- echo "</div>";
- echo "</table>";
+      " : "")."</div></td></table>";
 }
