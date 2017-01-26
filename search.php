@@ -168,19 +168,19 @@ if ($page == 'advanced_search') {
 ////////////////////////////////////////////////////
 
 if ($page == 'adv_search_results' or $page == 'quick_search') {
- echo "<table class='servers' cellpadding='0' cellspacing='0' border='0'>";
+ echo "<table class='servers1' cellpadding='0' cellspacing='0' border='0'>";
 
  /* TABLE HEAD */
  echo <<<EOT
  <thead>
   <tr>
-   <th style='padding-left:45px;'>Название сервера <a href='#'><img src='/images/block_on.gif'></a><a href='#'><img src='/images/block_off.gif'></a></th>
-   <th width=160><font color='#FFF' size='2'>Адрес сервера <a href='#'><img src='/images/block_on.gif'></a><a href='#'><img src='/images/block_off.gif'></a></font></th>
-   <th width=240><center><font color='#FFF' size='2'>Мод <a href='#'><img src='/images/block_on.gif'></a><a href='#'><img src='/images/block_off.gif'></a></font></center></th>
-   <th width=140><font color='#FFF' size='2'>Карта <a href='#'><img src='/images/block_on.gif'></a><a href='#'><img src='/images/block_off.gif'></a></font></th>
-   <th width=100><center><font color='#FFF' size='2'>Игроки <a href='#'><img src='/images/block_on.gif'></a><a href='#'><img src='/images/block_off.gif'></a></font></center></th>
-   <th width=60><center><font color='#FFF' size='2'>Рейтинг</a></font></center></th>
-   <th style='padding-right:20px;'><center>Статус <a href='#'><img src='/images/block_on.gif'></a><a href='#'><img src='/images/block_off.gif'></a></center></th>
+   <th style='padding-left:45px;'>Название сервера</th>
+   <th width=160>Адрес сервера</th>
+   <th width=240>Мод</th>
+   <th width=140>Карта</th>
+   <th width=100>Игроки</th>
+   <th width=60>Рейтинг</th>
+   <th style='padding-right:20px;'>Статус</th>
   </tr>
  </thead>
 EOT;
