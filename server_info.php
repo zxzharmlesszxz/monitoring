@@ -24,7 +24,7 @@ if (mysql_num_rows($take_server) == 0) {
  include("banned.php");
 } else {
  $site = ($server_data['server_site'] !="") ? "<a href='//$server_data['server_site']' target='_blank'>$server_data['server_site']</a>" : "";
- $icq = ($server_data['server_icq'] !="") ? ""$server_data['server_icq'] <img src='//status.icq.com/online.gif?icq=$server_data['server_icq']&img=26'>" : "";
+ $icq = ($server_data['server_icq'] !="") ? "$server_data['server_icq'] <img src='//status.icq.com/online.gif?icq=$server_data['server_icq']&img=26'>" : "";
  $status = ($server_data['server_status'] == 1) ? "<font color='#6e8d4c'><b>Online</b></font>" : "<font color='#B53333'><b>Offline</b></font>";
  $last_update = $settings['last_update'];
  $time_diff = time() - $last_update;
