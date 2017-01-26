@@ -23,30 +23,12 @@ if (mysql_num_rows($take_server) == 0) {
 } else if ($server_data['server_off'] == 1) {
  include("banned.php");
 } else {
- $site = "";  
-
- if ($server_data['server_site'] !="") {
-  $site = "<a href='//".$server_data['server_site']."' target='_blank'>".$server_data['server_site']." </a>";
- }
-
- $icq = "";
-
- if ($server_data['server_icq'] !="") {
-  $icq = $server_data['server_icq']." <img src='//status.icq.com/online.gif?icq=".$server_data['server_icq']."&img=26'>";
- }
-
- $status="<font color='#B53333'><b>Offline</b></font>";
-
- if ($server_data['server_status'] == 1) $status = "<font color='#6e8d4c'><b>Online</b></font>";
-
+ $site = ($server_data['server_site'] !="") ? "<a href='//$server_data['server_site']' target='_blank'>$server_data['server_site']</a>" : "";
+ $icq = ($server_data['server_icq'] !="") ? ""$server_data['server_icq'] <img src='//status.icq.com/online.gif?icq=$server_data['server_icq']&img=26'>" : "";
+ $status = ($server_data['server_status'] == 1) ? "<font color='#6e8d4c'><b>Online</b></font>" : "<font color='#B53333'><b>Offline</b></font>";
  $last_update = $settings['last_update'];
  $time_diff = time() - $last_update;
-  
- if($time_diff >= 60) {
-  $time_lasted = floor($time_diff / 60)." минут";
- } else {
-  $time_lasted = $time_diff." секунд";
- }
+ $time_lasted = ($time_diff >= 60) ? floor($time_diff / 60)." минут" : $time_diff." секунд";
 
  echo "<div class='horizontal_line'>Сервер: <b>{$server_data['server_name']}</b></div><div class='cont'>";
 
