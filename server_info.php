@@ -33,7 +33,7 @@ if (mysql_num_rows($take_server) == 0) {
  echo "<div class='horizontal_line'>Сервер: <b>{$server_data['server_name']}</b></div><div class='cont'>";
 
  // Start of server page
- echo "<table cellspacing='0' cellpadding='0' width='100%' class='info_tbl'>";
+ echo "<table cellspacing='0' cellpadding='0' width='100%' class='info_tbl'><tr>";
 
  // Left col (info)
  echo "<td valign='top' width='250' style='padding-bottom:20px;'>";
@@ -66,9 +66,9 @@ if (mysql_num_rows($take_server) == 0) {
             <td class='load_bar load_$load_color' width='".(($percent_loaded == 0) ? "1" : "$percent_loaded")."%' valign='middle'>
               <div style='position:absolute;'>
                 <nobr>Загруженность сервера $percent_loaded%</nobr>
-              </div>&nbsp;
+              </div>
             </td>
-            <td>&nbsp;</td>
+            <td></td>
           </tr>
         </table>
       </div>
@@ -247,5 +247,5 @@ echo "<div class='box_rounded'>";
       <br><div class='box_rounded'>
       <div style='font-size: 10px;'><div style='padding-bottom:3px;'><div class='box_title'>Пару слов о сервере:</div></div></div></div>
       <span style='color:#999999;'>{$server_data['about']}</span>
-      " : "")."</div></td></table>";
+      " : "")."</div></td></tr></table>";
 }
