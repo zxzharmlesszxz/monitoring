@@ -80,6 +80,7 @@ function serverInfo($server) {
   }
   return $array;
   if ($array['status']== 'off') continue;
+ }
 }
 
 function playersInfo($server) {
@@ -149,8 +150,8 @@ function mb_str_replace($needle, $replacement, $haystack) {
  return $haystack;
 }
 
-function send_mail($email, $message){
- if (empty($email) or empty($message)){
+function send_mail($email, $message) {
+ if (empty($email) or empty($message)) {
   return true;
  }
  mail($email, "From: Monitoring System http://www.monitoring.contra.net.ua\n", $message);
