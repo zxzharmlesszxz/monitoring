@@ -34,7 +34,7 @@ if(!defined("MONENGINE")) {
    $(document).ready(function(){
     // DataTable jquery plugin
     //var table = $('#table').DataTable({"stateSave": true});
-    var table = $('table.servers').DataTable({"bPaginate": false, "order": [], language: {search: "_INPUT_", searchPlaceholder: "Быстрый поиск"}});
+    var table = $('table.servers').DataTable({"bPaginate": false, "order": [], language: {search: "_INPUT_", searchPlaceholder: "Фильтр"}});
     //$('table.servers thead th').each(function(){var title = $('table.servers thead th').eq($(this).index()).text();$(this).html('<input type="text" placeholder="'+title+'" />');});
 
     // Apply the search
@@ -64,11 +64,11 @@ echo "
      Всего игровых серверов в мониторинге: <span class="servers_online"><?php echo $servers_total;?></span> серверов, из них <span class="servers_online"><?php echo $servers_online; ?></span> серверов онлайн.<br />
       Самая популярная карта: <span class="servers_online">de_dust2_2x2</span>. Последние обновление было: <span class="servers_online"><?php echo time() - $settings['last_update']; ?></span> секунд(ы) назад.
      </div>
-     <!--<div id="header_stat_search">
+     <div id="header_stat_search">
       <form action="/search/" method="POST">
        <input type="text" placeholder="Быстрый поиск" name="search">
       </form>
-     </div>-->
+     </div>
     </div>
    </div>
    <div id="horizontal_menu">
