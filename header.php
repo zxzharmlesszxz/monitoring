@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
  * Site header template
  * Made by starky
