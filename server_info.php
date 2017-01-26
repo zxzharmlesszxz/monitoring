@@ -125,20 +125,24 @@ if (mysql_num_rows($take_server) == 0) {
       </div>
       ";
   }
- echo "</td>";
- echo "<td valign='top' style='padding-top: 5px;'><div style='padding:10px;background-color: #1E1E1E;border:1px solid #444444'>";
-
-  echo "
+ echo <<<EOT
+ </td>
+ <td valign='top' style='padding-top: 5px;'>
+ <div style='padding:10px;background-color: #1E1E1E;border:1px solid #444444'>
   <b>Горизонтальный банер-мониторинг:</b>
     <div style='padding-top:4px;'></div>
   <img src='/banner/userbar.png?serv={$server_data['server_ip']}'>
   <div style='padding-top:8px;'></div>
-  HTML-код:<br>
+  HTML-код:
+  <br>
   <textarea rows='3' cols='76'><a href='/server/{$server_data['server_id']}'><img src='/banner/userbar.png?serv={$server_data['server_ip']}'></a></textarea>
-  BB-код:<br>
+  <br>
+  BB-код:
+  <br>
   <textarea rows='3' cols='76'>[url=/server/{$server_data['server_id']}][img]/banner/userbar.png?serv={$server_data['server_ip']}[/img][/url]</textarea>
-  </div>
-  <div style='margin-bottom:5px;'></div>";
+ </div>
+ <div style='margin-bottom:5px;'></div>
+EOT;
   
   // Center col /*(banners)*/ comments
 echo "<div class='box_rounded'>";
