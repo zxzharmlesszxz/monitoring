@@ -134,12 +134,11 @@ if (mysql_num_rows($take_server) == 0) {
   <img src='/banner/userbar.png?serv={$server_data['server_ip']}'>
   <div style='padding-top:8px;'></div>
   HTML-код:<br>
-  <textarea rows='3' cols='76'><a href='/server/{$server_data['server_id']}'><img src='/banner/userbar.png?serv={$server_data['server_ip']}'></a></textarea></p>
+  <textarea rows='3' cols='76'><a href='/server/{$server_data['server_id']}'><img src='/banner/userbar.png?serv={$server_data['server_ip']}'></a></textarea>
   BB-код:<br>
-  <textarea rows='3' cols='76'>[url=/server/{$server_data['server_id']}][img]/banner/userbar.png?serv={$server_data['server_ip']}[/img][/url]</textarea></p>";
-          echo "</div>";
-  
-  echo "<div style='margin-bottom:5px;'></div>";
+  <textarea rows='3' cols='76'>[url=/server/{$server_data['server_id']}][img]/banner/userbar.png?serv={$server_data['server_ip']}[/img][/url]</textarea>
+  </div>
+  <div style='margin-bottom:5px;'></div>";
   
   // Center col /*(banners)*/ comments
 echo "<div class='box_rounded'>";
@@ -185,28 +184,28 @@ echo "<div class='box_rounded'>";
 
 
   echo "
-  <div style='font-size: 15px;color:#EEEEEE;padding-bottom:5px;'>Оставить комментарий к серверу:</div>
-  <form method='POST' class='comments'>"
+<div style='font-size: 15px;color:#EEEEEE;padding-bottom:5px;'>Оставить комментарий к серверу:</div>
+<form method='POST' class='comments'>"
 .((!empty($message)) ? "$message" : "").((!empty($com_error)) ? "$com_error" : '')."
-  <div style='padding-bottom:5px;'>Ваш ник: <input type='text' name='com_name'".((!empty($com_name)) ? " value='$com_name'" : '')."></div>
-  <div style='padding-bottom:3px;'><textarea name='com_text' style='width:98%;height: 75px;'>".((!empty($com_text)) ? "$com_text" : '')."</textarea></div>
+ <div style='padding-bottom:5px;'>Ваш ник: <input type='text' name='com_name'".((!empty($com_name)) ? " value='$com_name'" : '')."></div>
+ <div style='padding-bottom:3px;'>
+  <textarea name='com_text' style='width:98%;height: 75px;'>".((!empty($com_text)) ? "$com_text" : '')."</textarea>
+ </div>
+ <div class='clearfix'></div>
+ <div style='padding-top:4px;'></div>
+ <div style='padding-bottom:5px;opacity:0.7;'><img src='cap/index.php?".session_name()."=".session_id()."'></div>
+ <div style='float:right;padding-bottom:10px;'><input type='submit' class='button' value='Добавить комментарий'></div>
+ <div><input type='text' name='com_captcha' style='width:148px;'></div>
+</form>
+<div style='margin-bottom:5px;'></div>
+<div class='box_rounded'>
+ <div style='font-size: 15px;'>Комментарии к серверу ".$server_data['server_name']."</div>";
 
-  <div class='clearfix'></div>
-
-  <div style='padding-top:4px;'></div>
-  <div style='padding-bottom:5px;opacity:0.7;'><img src='cap/index.php?".session_name()."=".session_id()."'></div>
-          <div style='float:right;padding-bottom:10px;'><input type='submit' class='button' value='Добавить комментарий'></div>
-  <div><input type='text' name='com_captcha' style='width:148px;'></div>
-  </form>
-
-  ";
   unset($_SESSION['captcha_keystring']);
-
-  echo "</div>  <div style='margin-bottom:5px;'></div>";
-  echo "<div class='box_rounded'>";
-  echo "<div style='font-size: 15px;'>Комментарии к серверу ".$server_data['server_name']."</div>";
   $get_comments = mysql_query("SELECT * FROM ".DB_COMMENTS." WHERE server_id='$server_id' and type!='0'");
+
   echo "<div class='server_comments'>";
+
   if(mysql_num_rows($get_comments) != 0) {
     while($comments = mysql_fetch_assoc($get_comments)) {
       echo "
