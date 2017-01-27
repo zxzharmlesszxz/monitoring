@@ -53,3 +53,5 @@ if (!$bl->check('http://www.you_site.ru')) {
  $headers .= "Content-Type: text/plain; charset=utf-8\r\n"."Content-Transfer-Encoding: 8bit\r\n";
  mail($to, "=?utf-8?B?".base64_encode($subject)."?=", $message, $headers, "-f ".$from);
 }
+
+echo "<a href='http://contra.net.ua/' target='_blank'>Игровые сервера cs 1.6 Украина</a>";
