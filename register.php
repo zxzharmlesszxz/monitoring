@@ -107,7 +107,7 @@ if ($settings['enable_registration'] == 0) {
     <tr>
      <td colspan='2'>
       <center>
-       <textarea style='height:40px;width:585px;' onclick='this.select()' readonly=''><a href='http://contra.net.ua/' target='_blank'&gt;Игровые сервера cs 1.6 Украина</a></textarea>
+       <input size='65' onclick='this.select()' readonly='' value='<a href=\'http://contra.net.ua/\' target=\'_blank\'&gt;Игровые сервера cs 1.6 Украина</a>' />
       </center>
      </td>
     </tr>
