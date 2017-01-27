@@ -54,6 +54,8 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
 } else {
  echo "Сервер не найден в базе";
 }
+
+echo "
     </td>
    </tr>
    <tr>
