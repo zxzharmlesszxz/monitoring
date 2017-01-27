@@ -11,6 +11,8 @@ if (!defined("MONENGINE")) {
 }
 /* Other code */
 
+var_dump($_POST);
+
 /* Search form */
 if (count($_POST) == 0) {
  $page = 'advanced_search';
