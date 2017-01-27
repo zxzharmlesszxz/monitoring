@@ -24,6 +24,8 @@ if (count($_POST) == 0) {
  $page = 'advanced_search';
 }
 
+var_dump($page);
+
 if ($page == 'advanced_search') {
  include(INCLUDES."countries.class.php");
  $countries = new countries;
