@@ -1,6 +1,6 @@
 ﻿<?php
 
-ini_set(default_socket_timeout, "15");
+ini_set('default_socket_timeout', "15");
 
 $db=mysql_connect("localhost","user","pass");
 mysql_select_db("db_name",$db);

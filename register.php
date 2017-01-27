@@ -96,8 +96,16 @@ if ($settings['enable_registration'] == 0) {
   }
  }
 
- echo "
-  $message
+ $countr = '';
+ foreach($countries->countries as $country_code => $country_name) {
+  $countr .= "<option value='{$country_code}'".(($country_code == $location) ? " selected='selected'" : "").">{$country_name}</option>";
+ }
+
+ $checked = ($steam == 1) ? " checked='checked'" : "";
+ $captch = session_name()."=".session_id();
+
+ echo <<<EOT
+  {$message}
   <div style='padding-top:7px'></div>
   <div class='horizontal_line'>
    <font color='#789ABF'>Перед тем как добавить сервер разместите нашу ссылку на своём сайте (скопировать и вставить):</font>
@@ -180,26 +188,25 @@ if ($settings['enable_registration'] == 0) {
      </td>
     </tr>
     <tr>
-     <td align='right'><b><font size='2' color='red'>*</font>Описание сервера:</b></td>
-     <td><textarea name='server_about' rows='2' cols='30'>{$about}</textarea></td>
+     <td align='right'>
+      <b><font size='2' color='red'>*</font>Описание сервера:</b>
+     </td>
+     <td>
+      <textarea name='server_about' rows='2' cols='30'>{$about}</textarea>
+     </td>
     </tr>
     <tr>
      <td align='right'>Локация сервера:</td>
      <td>
       <select style='width:200px;' name='server_location'>
-    ";
-    foreach($countries->countries as $country_code => $country_name) {
-     echo "<option value='{$country_code}'".(($country_code == $location) ? " selected='selected'" : "").">{$country_name}</option>";
-    }
-
-echo "
+       {$countr}
       </select>
      </td>
     </tr>
     <tr>
      <td align='right' style='height:30px;'>Сервер STEAM?</td>
      <td style='height:30px;'>
-      <input type='checkbox' style='background:#FFF;' name='server_steam' value='1' class='checkbox'".(($steam == 1) ? " checked='checked'" : "").">
+      <input type='checkbox' style='background:#FFF;' name='server_steam' value='1' class='checkbox' {$checked}>
      </td>
     </tr>
     <tr>
@@ -207,11 +214,11 @@ echo "
       <b><font size='2' color='red'>*</font>Код безопасности:</b>
      </td>
      <td>
-      <img src='cap/index.php?".session_name()."=".session_id()."'>
+      <img src='cap/index.php?{$catch}'>
      </td>
     </tr>
     <tr>
-     <td align='right'>&nbsp;</td>
+     <td align='right'></td>
      <td>
       <input type='text' style='width:160px;' name='keystring' />
      </td>
@@ -228,7 +235,8 @@ echo "
      </td>
     </tr>
    </table>
-  </form>";
+  </form>
+EOT;
   unset($_SESSION['captcha_keystring']);
  }
 
