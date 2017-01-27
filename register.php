@@ -224,6 +224,7 @@ echo "
        <div align='center' style='font-size:12px;color:#CCC;font-weight:bold;padding:10px;'>
         Посетите сайт игровых серверов <a href='http://contra.net.ua' target='_blank'>contra.net.ua</a>
        </div>
+      </div>
      </td>
     </tr>
    </table>
