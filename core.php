@@ -194,19 +194,11 @@ function redirect($location) {
 }
 
 function stripslash($text) {
- if (QUOTES_GPC) {
-  $text = stripslashes($text);
- }
- return $text;
+ return (QUOTES_GPC) ? stripslashes($text) : $text;
 }
 
 function addslash($text) {
- if (!QUOTES_GPC) {
-  $text = addslashes(addslashes($text));
- } else {
-  $text = addslashes($text);
- }
- return $text;
+ return (!QUOTES_GPC) ? addslashes(addslashes($text)) : addslashes($text);
 }
 
 define("ASR",$settings['AMX']);
@@ -271,14 +263,12 @@ function makefileopts($files, $selected = "") {
 }
 
 function servers($server_num_data) {
- $sql = "SELECT * FROM ".DB_SERVERS." WHERE server_new != 1 AND server_status != 0 AND server_off != 1 ORDER BY server_vip desc, votes DESC".(($server_num_data != 'all') ? " LIMIT $server_num_data" : "");
- $result = dbquery($sql);
- return $result;
+ //$sql = "SELECT * FROM ".DB_SERVERS." WHERE server_new != 1 AND server_status != 0 AND server_off != 1 ORDER BY server_vip desc, votes DESC".(($server_num_data != 'all') ? " LIMIT $server_num_data" : "");
+ return dbquery("SELECT * FROM ".DB_SERVERS." WHERE server_new != 1 AND server_status != 0 AND server_off != 1 ORDER BY server_vip desc, votes DESC".(($server_num_data != 'all') ? " LIMIT $server_num_data" : ""));
 }
 
 function dbrows($query) {
- $result = @mysql_num_rows($query);
- return $result;
+ return @mysql_num_rows($query);
 }
 
 function dbconnect($db_host, $db_user, $db_pass, $db_name) {
@@ -304,22 +294,19 @@ function isValidEmail($email) {
 }
 
 function isOnOff($int) {
- if ($int == 1) return true;
- if ($int == 0) return true;
- return false;
+ return ($int == 1 or $int == 0) ? true : false;
 }
 
 function myempty($var) {
- if ($var != "") return false;
- return true;
+ return ($var != "") ? false : true;
 }
 
 function getdomain($url) { 
  preg_match("/^(http:\/\/|https:\/\/)?([^\/]+)/i", $url, $matches);
 
- $host = $matches[2];
+ //$host = $matches[2];
 
- preg_match("/[^\.\/]+\.[^\.\/]+$/", $host, $matches);
+ preg_match("/[^\.\/]+\.[^\.\/]+$/", $matches[2], $matches);
 
- return strtolower("{$matches[0]}");
+ return strtolower($matches[0]);
 }
