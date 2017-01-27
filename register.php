@@ -115,7 +115,7 @@ if ($settings['enable_registration'] == 0) {
     <tr>
      <td colspan='2'>
       <center>
-       <input size='65' onclick='this.select()' readonly='' value=\"<a href='http://contra.net.ua/' target='_blank'>Игровые сервера cs 1.6 Украина</a>\" />
+       <input size='65' onclick='this.select()' readonly='' value="<a href='http://contra.net.ua/' target='_blank'>Игровые сервера cs 1.6 Украина</a>" />
       </center>
      </td>
     </tr>
@@ -214,7 +214,7 @@ if ($settings['enable_registration'] == 0) {
       <b><font size='2' color='red'>*</font>Код безопасности:</b>
      </td>
      <td>
-      <img src='cap/index.php?{$catch}'>
+      <img src='cap/index.php?{$captch}'>
      </td>
     </tr>
     <tr>
