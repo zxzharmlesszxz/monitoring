@@ -100,7 +100,7 @@ if ($settings['enable_registration'] == 0) {
   $message
   <div style='padding-top:7px'></div>
   <div class='horizontal_line'>
-   <font color='#789ABF'>Перед тем как добавить сервер разместите нашу ссылку на своём сайте<br>(скопировать и вставить):</font>
+   <font color='#789ABF'>Перед тем как добавить сервер разместите нашу ссылку на своём сайте (скопировать и вставить):</font>
   </div>
   <form action='' method='POST'>
    <table width='100%' class='regform'>
