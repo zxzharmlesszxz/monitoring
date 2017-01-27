@@ -4,14 +4,14 @@ mysql_connect($db_host,$db_user,$db_pass);
 mysql_select_db($db_name);
 mysql_query("SET NAMES UTF8");
  
-echo "<html>
+echo '<html>
  <head>
   <link rel="stylesheet" type="text/css" href="/templates/css/style.css">
  </head>
  <body>
   <table>
    <tr>
-    <td>";
+    <td>';
 if (isset($_GET["id"]) and $_GET["id"] >= 1) {
  if (mysql_num_rows(mysql_query("SELECT * FROM mon_servers WHERE server_id=" . $_GET["id"])) == 1) {
   $q = mysql_fetch_array(mysql_query("SELECT * FROM mon_servers WHERE server_id=" . $_GET["id"]));
