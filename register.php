@@ -104,9 +104,11 @@ if ($settings['enable_registration'] == 0) {
    <table width='100%' class='regform'>
     <tr>
      <td colspan='2'>
-      <textarea style='height:40px;width:585px;' onclick='this.select()' readonly=''>
-       <a href='http://contra.net.ua/' target='_blank'&gt;Игровые сервера cs 1.6 Украина</a>
-      </textarea>
+      <center>
+       <textarea style='height:40px;width:585px;' onclick='this.select()' readonly=''>
+        <a href='http://contra.net.ua/' target='_blank'&gt;Игровые сервера cs 1.6 Украина</a>
+       </textarea>
+      </center>
      </td>
     </tr>
     <tr>
