@@ -5,26 +5,26 @@
 */
 
 /* Script security */
-if(!defined("MONENGINE")) {
+if (!defined("MONENGINE")) {
 	header("Location: index.php");
 	exit();
 }
 /* Other code */
 $errors = Array();
 $message = '';
-if(isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
-	if(
-	!isset($_POST['site_name']) or 
-	!isset($_POST['site_url']) or 
-	!isset($_POST['site_email']) or 
-	!isset($_POST['enable_registration']) or 
-	!isset($_POST['site_open']) or 
-	!isset($_POST['servers_per_page']) or 
-	!isset($_POST['top_rows'])) {
+if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
+	if (
+	 !isset($_POST['site_name']) or 
+	 !isset($_POST['site_url']) or 
+	 !isset($_POST['site_email']) or 
+	 !isset($_POST['enable_registration']) or 
+	 !isset($_POST['site_open']) or 
+	 !isset($_POST['servers_per_page']) or 
+	 !isset($_POST['top_rows'])) {
 		$errors[] = 'Не все данные были переданы в запросе.';
 	}
 	
-	if(
+	if (
 	myempty($_POST['site_name']) or 
 	myempty($_POST['site_url']) or 
 	myempty($_POST['site_email']) or 
@@ -43,15 +43,32 @@ if(isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
 	$site_spp = mysql_real_escape_string($_POST['servers_per_page']);
 	$site_top_rows = mysql_real_escape_string($_POST['top_rows']);
 	
-	if(!isValidUrl($site_url)) $errors[] = 'Введён неправильный URL сайта.';
-	if($site_url{mb_strlen($site_url, 'UTF-8') - 1} != "/") $site_url = $site_url."/";
-	if(!isValidEmail($site_email)) $errors[] = 'Введён неправильный E-mail адрес.';
-	if($site_spp < 1) $errors[] = 'Минимальное количество серверов на одной странице - 1.';
-	if($site_top_rows < 0) $errors[] = 'Кол-во строк топ-серверов не может быть ниже чем 0.';
-	if(count($errors) == 0 and isOnOff($site_registration) and isOnOff($site_open)) {
+ if (!isValidUrl($site_url)) {
+  $errors[] = 'Введён неправильный URL сайта.';
+ }
+
+	if ($site_url{mb_strlen($site_url, 'UTF-8') - 1} != "/") {
+  $site_url = $site_url."/";
+ }
+
+	if (!isValidEmail($site_email)) {
+  $errors[] = 'Введён неправильный E-mail адрес.';
+ }
+
+	if ($site_spp < 1) {
+  $errors[] = 'Минимальное количество серверов на одной странице - 1.';
+ }
+
+	if ($site_top_rows < 0) {
+  $errors[] = 'Кол-во строк топ-серверов не может быть ниже чем 0.';
+ }
+
+	if (count($errors) == 0 and isOnOff($site_registration) and isOnOff($site_open)) {
 		$site_close = 0;
-		if($site_open == 0) $site_close = 1;
-		if(isset($_POST['site_close_reason'])) {
+		if ($site_open == 0) {
+    $site_close = 1;
+   }
+		if (isset($_POST['site_close_reason'])) {
 			$site_close_reason = mysql_real_escape_string($_POST['site_close_reason']);
 		} else {
 			$site_close_reason = '';
@@ -67,7 +84,7 @@ if(isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
 		`servers_per_page` = '{$site_spp}',
 		`top_rows` = '{$site_top_rows}'";
 		$update = dbquery($update_query);
-		if($update) {
+		if ($update) {
 			$message = '<div class=\'message green\'><span><b>Успех</b>: изменения успешно сохранены.</span></div>';
 			$settings = dbarray(dbquery("SELECT * FROM ".DB_SETTINGS)); // Refreshing info 
 		} else {
@@ -90,9 +107,8 @@ $(document).ready(function() {
 	}).change();
 });
 </script>
-";
-echo "<div id='right'>";
-echo "<div class='section'>
+<div id='right'>
+<div class='section'>
 <div class='box'>
 	<div class='title'>Редактирование настроек сайта<span class='hide'></span></div>
 	<div class='content'>
@@ -164,6 +180,5 @@ echo "<div class='section'>
 		</form>
 	</div>
 </div>
+</div>
 </div>";
-echo "</div>";
-?>

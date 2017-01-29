@@ -5,19 +5,21 @@
 */
 
 /* Script security */
-if(!defined("MONENGINE")) {
+if (!defined("MONENGINE")) {
 	header("Location: index.php");
 	exit();
 }
+
 /* CLASS CODE */
 
 class Menu {
-	var $pages = Array();
-	var $curpage;
+	public $pages = Array();
+	public $curpage;
 	
 	public function show() {
-		foreach($this->pages as $page) {
-			echo "<li".(($page['name'] == $this->curpage) ? " class='current'" : "")."><a href='{$page['url']}' title='{$page['descr']}'>{$page['title']}</a></li>\n";
+		foreach ($this->pages as $page) {
+    $class = ($page['name'] == $this->curpage) ? "class='current'" : "";
+			echo "<li {$class}><a href='{$page['url']}' title='{$page['descr']}'>{$page['title']}</a></li>";
 		}
 	}
 	
@@ -30,6 +32,5 @@ class Menu {
 		$this->pages[$name]['title'] = $title;
 		$this->pages[$name]['descr'] = $descr;
 		$this->pages[$name]['name'] = $name;
-	}
+ }
 }
-?>
