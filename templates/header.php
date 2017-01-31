@@ -56,8 +56,11 @@ echo "
 ?>
 </head>
 <body>
+ <!-- Wrapper -->
  <div class="wrapper">
+  <!-- Header -->
   <div id="header">
+   <!-- Header_start -->
    <div id="header_stat">
     <a id="header_stat_logo" href="/"></a>
     <div id="header_stat_main">
@@ -72,6 +75,8 @@ echo "
      </div>
     </div>
    </div>
+   <!-- /Header_start -->
+   <!-- Navigation -->
    <div id="horizontal_menu">
     <ul>
      <li><a title="Главная страница" href="/" rel="follow">Главная</a></li>
@@ -86,6 +91,8 @@ echo "
      <li><a title="Скачать игру cs 1.6" href="/load/CS 1.6.exe" rel="follow">Скачать cs 1.6</a></li>
     </ul>
    </div>
+   <!-- /Navigation -->
+   <!-- Game navigation -->
    <div id="sort">
     <ul>
      <li><a title="Все сервера мониторинга" href="/" rel="nofollow">Все сервера</a></li>
@@ -101,32 +108,41 @@ echo "
      <li><a title="Игровые сервера garrys mod" href="/garrysmod" rel="nofollow">Garry's Mod</a></li>
     </ul>
    </div>
+   <!-- /Game navigation -->
    <div class="clearfix"></div>
+   <!-- Top -->
    <div id="top_servers">
-    <?php include(INCLUDES.'top_servers.php');?>
-    <div class="info1">
-     — Внимание! Функция топ и вип доступна на бесплатной основе! 
-     — Чтобы приобрести VIP/TOP/Выделение или задать какой либо вопрос, пожалуйста, обратитесь в Skype: vengeanson
-    </div>
-    <div class="sort">
-     <ul class="sort_nav">
-      <li><a title="Сервера с модом classic" href="/classic" rel="nofollow">Classic</a></li>
-      <li><a title="Сервера с модом warcraft" href="/warcraft" rel="nofollow">War3raft</a></li>
-      <li><a title="Сервера с модом csdm" href="/csdm" rel="nofollow">CSDM</a></li>
-      <li><a title="Сервера с модом gungame" href="/gungame" rel="nofollow">GunGame</a></li>
-      <li><a title="Сервера с модом hns" href="/hns" rel="nofollow">HNS</a></li>
-      <li><a title="Сервера с модом surf" href="/surf" rel="nofollow">Surf</a></li>
-      <li><a title="Сервера с модом jump" href="/jump" rel="nofollow">Jump</a></li>
-      <li><a title="Сервера с модом deathrun" href="/deathrun" rel="nofollow">Deathrun</a></li>
-      <li><a title="Сервера с модом diablomod" href="/diablomod" rel="nofollow">Diablomod</a></li>
-      <li><a title="Сервера с модом superhero" href="/superhero" rel="nofollow">SuperHero</a></li>
-      <li><a title="Сервера с модом jailbreak" href="/jailbreak" rel="nofollow">JailBreak</a></li>
-      <li><a title="Сервера с модом soccerjam" href="/soccerjam" rel="nofollow">Soccer Jam</a></li>
-      <li><a title="Сервера с модом knife" href="/knife" rel="nofollow">Knife</a></li>
-      <li><a title="Сервера с модом zombie" href="/zombiemod" rel="nofollow">Zombie</a></li>
-     </ul>
-    </div>
+    <?php include(INCLUDES.'top_servers.php'); ?>
    </div>
+   <!-- /Top -->
+   <div class="clearfix"></div>
+   <!-- Alert -->
+   <div class="info1">
+    — Внимание! Функция топ и вип доступна на бесплатной основе!
+    — Чтобы приобрести VIP/TOP/Выделение или задать какой либо вопрос, пожалуйста, обратитесь в Skype: vengeanson
+   </div>
+   <!-- /Alert -->
+   <!-- Mode navigation -->
+   <div class="sort">
+    <ul class="sort_nav">
+     <li><a title="Сервера с модом classic" href="/classic" rel="nofollow">Classic</a></li>
+     <li><a title="Сервера с модом warcraft" href="/warcraft" rel="nofollow">War3raft</a></li>
+     <li><a title="Сервера с модом csdm" href="/csdm" rel="nofollow">CSDM</a></li>
+     <li><a title="Сервера с модом gungame" href="/gungame" rel="nofollow">GunGame</a></li>
+     <li><a title="Сервера с модом hns" href="/hns" rel="nofollow">HNS</a></li>
+     <li><a title="Сервера с модом surf" href="/surf" rel="nofollow">Surf</a></li>
+     <li><a title="Сервера с модом jump" href="/jump" rel="nofollow">Jump</a></li>
+     <li><a title="Сервера с модом deathrun" href="/deathrun" rel="nofollow">Deathrun</a></li>
+     <li><a title="Сервера с модом diablomod" href="/diablomod" rel="nofollow">Diablomod</a></li>
+     <li><a title="Сервера с модом superhero" href="/superhero" rel="nofollow">SuperHero</a></li>
+     <li><a title="Сервера с модом jailbreak" href="/jailbreak" rel="nofollow">JailBreak</a></li>
+     <li><a title="Сервера с модом soccerjam" href="/soccerjam" rel="nofollow">Soccer Jam</a></li>
+     <li><a title="Сервера с модом knife" href="/knife" rel="nofollow">Knife</a></li>
+     <li><a title="Сервера с модом zombie" href="/zombiemod" rel="nofollow">Zombie</a></li>
+    </ul>
+   </div>
+   <!-- /Mode navigation -->
   </div>
+  <!-- /Header -->
   <!-- CONTENT -->
   <div id="main">
