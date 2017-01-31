@@ -30,6 +30,7 @@ if(!defined("MONENGINE")) {
   <script type='text/javascript' src='/include/js/jquery.dataTables.min.js'></script>
   <link rel="stylesheet" type="text/css" href="/templates/css/jquery.dataTables.min.css" />
   <link href='/templates/css/mainstyle.css' rel='stylesheet' type='text/css' media='all'>
+  <link href='/templates/style.css' rel='stylesheet' type='text/css'>
   <script type="text/javascript">
    $(document).ready(function(){
     // DataTable jquery plugin

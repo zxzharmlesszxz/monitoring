@@ -1,12 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
-<head>
-	<base href="<?php echo $settings['site_url']."admin/";?>">
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> 
-	<title><?php echo $page_title;?></title>
-	
-<style type="text/css">
+<!DOCTYPE html>
+<html>
+ <head>
+  <base href="<?php echo $settings['site_url']."admin/";?>">
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> 
+  <title><?php echo $page_title;?></title>
+  <style type="text/css">
 		@import url("template/css/style.css");
 		@import url("template/css/forms.css");
 		@import url("template/css/forms-btn.css");
@@ -24,12 +22,10 @@
 		@import url("template/css/wysiwyg.css");
 		@import url("template/css/wysiwyg.modal.css");
 		@import url("template/css/wysiwyg-editor.css");
-</style>
-	
-	<!--[if lte IE 8]>
-		<script type="text/javascript" src="template/js/excanvas.min.js"></script>
-	<![endif]-->
-	
+  </style>
+  <!--[if lte IE 8]>
+   <script type="text/javascript" src="template/js/excanvas.min.js"></script>
+  <![endif]-->
 	<script type="text/javascript" src="template/js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="template/js/jquery.backgroundPosition.js"></script>
 	<script type="text/javascript" src="template/js/jquery.placeholder.min.js"></script>
@@ -61,12 +57,9 @@
 	<script type="text/javascript" src="template/js/costum.js"></script>
 	<script type="text/javascript" src="template/js/admin.functions.js"></script>
 </head>
-
 <body>
-
-<div id="wrapper">
+ <div id="wrapper">
 	<div id="container">
-	
 		<div class="hide-btn top"></div>
 		<div class="hide-btn center"></div>
 		<div class="hide-btn bottom"></div>
