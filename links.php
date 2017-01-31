@@ -21,11 +21,7 @@ if (!defined("MONENGINE")) {
    </div>
    <div>Код нашей кнопки:</div>
    <div style="padding-bottom:10px;">
-    <textarea>
-    <a href="https://contra.net.ua">
-     <img border="0" src="https://www.contra.net.ua/Foto/1.gif" width="130" height="30" alt="Игровой сайт для всех">
-    </a>
-    </textarea>
+    <input value='<a href="https://contra.net.ua"><img border="0" src="https://www.contra.net.ua/Foto/1.gif" width="130" height="30" alt="Игровой сайт для всех"></a>' >
    </div>
    <div>Пример кнопки:</div>
    <div style="padding-top:5px;">
