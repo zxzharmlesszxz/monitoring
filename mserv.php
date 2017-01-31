@@ -36,9 +36,7 @@ if (!defined("MONENGINE")) {
        <li>свойста изменить очень просто: наведите курсор на файл MasterServers.vdf и нажмите правую кнопку мыши,</li>
        <li>в появишемся списке выберите <font color="#999999">"Свойства"</font>, в открывшемся окне снизу Вы найдете <font color="#999999">"Атрибуты"</font>, отметьте <font color="#999999">"Только для чтения"</font>.</li>
       </ul>
-      <center>
-       <img src="http://monitoring.contra.net.ua/img/screen.jpg">
-      </center>
+      <img src="http://monitoring.contra.net.ua/img/screen.jpg">
      </li>
     </ol>
    </div>
