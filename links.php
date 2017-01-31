@@ -21,7 +21,7 @@ if (!defined("MONENGINE")) {
    </div>
    <div>Код нашей кнопки:</div>
    <div style="padding-bottom:10px;">
-    <textarea cols="35" rows="6">
+    <textarea>
     <a href="https://contra.net.ua">
      <img border="0" src="https://www.contra.net.ua/Foto/1.gif" width="130" height="30" alt="Игровой сайт для всех">
     </a>
@@ -32,20 +32,6 @@ if (!defined("MONENGINE")) {
     <a href="https://contra.net.ua">
      <img border="0" src="https://www.contra.net.ua/Foto/1.gif" width="130" height="30" alt="Игровой сайт для всех">
     </a>
-   </div>
-   <br>
-   <div>
-    <b>1.</b> Инвестиции в <a href="http://prvigroup.ua/vino.html">виноградники во Франции</a>.
-   </div>
-   <div>
-    <b>2.</b> <a href="http://israelmedicin.ru/">Израиль: лучшая медицина по доступной цене.</a>
-   </div>
-   <div>
-    <b>3.</b> Ремонт дисков <a href="http://www.raznyesamodelki.ru/">своими руками</a>
-   </div>
-   <div>
-    <b>4.</b> Читайте также : <a href="http://studio-didier.com/" title="studio-didier.com">studio-didier.com</a><br>
-    <b>5.</b> Источник: <a href="http://ramamama.ru/kak-pravilno-nosit-stringi/">как правильно носить стринги</a>.
    </div>
   </div>
  </div>
