@@ -24,14 +24,14 @@ if (!defined("MONENGINE")) {
     <div style="padding-bottom:10px;">
      <textarea cols="35" rows="6">
      <a href="http://contra.net.ua">
-      <img border="0" src="http://www.contra.net.ua/Foto/1.gif" width="130" height="30" alt="Игровой сайт для всех">
+      <img border="0" src="https://www.contra.net.ua/Foto/1.gif" width="130" height="30" alt="Игровой сайт для всех">
      </a>
      </textarea>
     </div>
     <div>Пример кнопки:</div>
     <div style="padding-top:5px;">
      <a href="http://contra.net.ua">
-      <img border="0"src="http://www.contra.net.ua/Foto/1.gif" width="130" height="30" alt="Игровой сайт для всех">
+      <img border="0" src="https://www.contra.net.ua/Foto/1.gif" width="130" height="30" alt="Игровой сайт для всех">
      </a>
     </div>
     <br>
