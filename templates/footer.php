@@ -1,6 +1,6 @@
-﻿   </div>
+﻿   </div class="Cont">
    <!-- /CONTENT -->
-  </div>
+  </div class="wrapper">
   <!-- /WRAP -->
   <!-- FOOTER -->
   <div id="footer">
