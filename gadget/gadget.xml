@@ -1,22 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-
 <gadget>
-    <name>Мониторинг сервера</name>
-    <namespace>Servera-CS.NET gadget</namespace>
-    <version>1.0</version>
-    <author name="millior">
-        <info url="google.com" />
-    </author>
-    <copyright>&#169; 2012</copyright>
-    <description>servera-cs.net Server Gadget</description>
-	<icons>
-		<icon height="110" width="90" src="logo.gif"/>
-	</icons>
-    <hosts>
-        <host name="sidebar">
-            <base type="HTML" apiVersion="1.0.0" src="monitor.html" />
-            <permissions>Full</permissions>
-            <platform minPlatformVersion="1.0" />
-        </host>
-    </hosts>
+ <name>Мониторинг сервера</name>
+ <namespace>Servera-CS.NET gadget</namespace>
+ <version>1.0</version>
+ <author name="millior">
+  <info url="google.com" />
+ </author>
+ <copyright>&#169; 2012</copyright>
+ <description>servera-cs.net Server Gadget</description>
+ <icons>
+  <icon height="110" width="90" src="logo.gif"/>
+ </icons>
+ <hosts>
+  <host name="sidebar">
+   <base type="HTML" apiVersion="1.0.0" src="monitor.html" />
+   <permissions>Full</permissions>
+   <platform minPlatformVersion="1.0" />
+  </host>
+ </hosts>
 </gadget>

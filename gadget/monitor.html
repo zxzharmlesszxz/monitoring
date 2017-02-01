@@ -1,171 +1,189 @@
 <html>
-<head>
-<title>Мониторинг Игровых Серверов</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<style>
-	body {
-		margin: 0;
-		width: 250px;
-		height: 200px;
-	}
-	
-	td, body {
-		font-family: Verdana, Tahoma;
-		font-size: 12px;
-	}
-	
-	img{
-		border: 0;
-	}
+ <head>
+  <title>Мониторинг Игровых Серверов</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style>
+   body {
+    margin: 0;
+    width: 250px;
+    height: 200px;
+   }
+ 
+   td, body {
+    font-family: Verdana, Tahoma;
+    font-size: 12px;
+   }
+ 
+   img{
+    border: 0;
+   }
 
-	#gadgetContent {
-		width: 250px;
-		top: 7px;
-		position: absolute;
-	}
-	
-	div.e_title {
-		color: #b1b1b1;
-		font-size: 11px;
-		padding-top: 5px;
-	}
-	
-	div.e_contents {
-		font-size: 10px;
-		color: #dadada;
-	}
-	
-	div.e_servername {
-		font-size: 11px;
-		color: #73cfea;
-	}
-	
-	.e_servername a {
-		color: #d3edf4;
-		text-decoration: none;
-	}
-	
-	.e_servername a:hover {
-		color: #d3edf4;
-		text-decoration: underline;
-	}
-	
-	#load_bg {
-		margin-top: 4px;
-		display: block;
-		height: 16px;
-		border: 1px solid #000;
-		background: #333;
-		width: 100px;
-	}
-	
-	#load_bar {
-		position: relative;
-		display: block;
-		height: 16px;
-		line-height: 16px;
-		background: #4A0406;
-		text-align: center;
-		width: 1px;
-	}
-	
-	#load {
-		left: 0;
-		width: 100px;
-		display: block;
-		position: absolute;
-		height: 16px;
-		line-height: 16px;
-		text-align: center;
-		color: #f8f8f8;
-	}
-</style>
+   #gadgetContent {
+    width: 250px;
+    top: 7px;
+    position: absolute;
+   }
+ 
+   div.e_title {
+    color: #b1b1b1;
+    font-size: 11px;
+    padding-top: 5px;
+   }
+ 
+   div.e_contents {
+    font-size: 10px;
+    color: #dadada;
+   }
+ 
+   div.e_servername {
+    font-size: 11px;
+    color: #73cfea;
+   }
+ 
+   .e_servername a {
+    color: #d3edf4;
+    text-decoration: none;
+   }
+ 
+   .e_servername a:hover {
+    color: #d3edf4;
+    text-decoration: underline;
+   }
+ 
+   #load_bg {
+    margin-top: 4px;
+    display: block;
+    height: 16px;
+    border: 1px solid #000;
+    background: #333;
+    width: 100px;
+   }
+ 
+   #load_bar {
+    position: relative;
+    display: block;
+    height: 16px;
+    line-height: 16px;
+    background: #4A0406;
+    text-align: center;
+    width: 1px;
+   }
+ 
+   #load {
+    left: 0;
+    width: 100px;
+    display: block;
+    position: absolute;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #f8f8f8;
+   }
+  </style>
 
-<script type="text/javascript">
-	var serverid = 1373;
-	
-	function GetData() {
-		try {
-			var req = new ActiveXObject("Microsoft.XMLHTTP");
-			if ( req ) {
-				req.open( "GET", "http://servera-cs.net/api/gadget_" + serverid + ".txt?" + Math.round((Math.random() * (10000000 - 1))), false );
-				req.send();
-				if (req.status == 200) {
-					document.getElementById('loader').style.display = 'none';
-					document.getElementById('error').style.display = 'none';
-					parseData(req.responseText);
-					document.getElementById('serverData').style.display = '';
-				}
-				else {
-					document.getElementById('serverData').style.display = 'none';
-					document.getElementById('loader').style.display = 'none';
-					document.getElementById('error').style.display = '';
-				}
-			}
-			else {
-				document.getElementById('serverData').style.display = 'none';
-				document.getElementById('loader').style.display = 'none';
-				document.getElementById('error').style.display = '';
-			}
-		}
-		catch( e ) {
-			document.getElementById('serverData').style.display = 'none';
-			document.getElementById('loader').style.display = 'none';
-			document.getElementById('error').style.display = '';
-		}
-		self.setTimeout( "GetData()", 1000 * 60 * 2 );
-	}
+  <script type="text/javascript">
+   var serverid = 1373;
+ 
+   function GetData() {
+    try {
+     var req = new ActiveXObject("Microsoft.XMLHTTP");
+     if ( req ) {
+      req.open( "GET", "http://servera-cs.net/api/gadget_" + serverid + ".txt?" + Math.round((Math.random() * (10000000 - 1))), false );
+      req.send();
+      if (req.status == 200) {
+       document.getElementById('loader').style.display = 'none';
+       document.getElementById('error').style.display = 'none';
+       parseData(req.responseText);
+       document.getElementById('serverData').style.display = '';
+      } else {
+       document.getElementById('serverData').style.display = 'none';
+       document.getElementById('loader').style.display = 'none';
+       document.getElementById('error').style.display = '';
+      }
+     } else {
+      document.getElementById('serverData').style.display = 'none';
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('error').style.display = '';
+     }
+    }
+    catch ( e ) {
+     document.getElementById('serverData').style.display = 'none';
+     document.getElementById('loader').style.display = 'none';
+     document.getElementById('error').style.display = '';
+    }
+    self.setTimeout( "GetData()", 1000 * 60 * 2 );
+   }
 
-	function parseData(element) {
-		FileDatas = element.split( "\n" );
-		error_code = parseInt( FileDatas[0] );
-		if( error_code == 0 ) {
-			document.getElementById('ipport').innerHTML   = FileDatas[3];
-			document.getElementById('name').innerHTML     = '<a href="http://servera-cs.net/serv-' + serverid + '/" target="_blank">' + FileDatas[2] + "</a>";
-			document.getElementById('map').innerHTML      = FileDatas[5];
-			document.getElementById('players').innerHTML  = FileDatas[6] + "/" + FileDatas[7];
-			document.getElementById('mapimg').src  = FileDatas[9];
-			document.getElementById('load').innerHTML  = FileDatas[12] + "%";
-			document.getElementById('load_bar').style.width  = FileDatas[12] + "px";
-		}
-	}
+   function parseData(element) {
+    FileDatas = element.split( "\n" );
+    error_code = parseInt( FileDatas[0] );
+    if ( error_code == 0 ) {
+     document.getElementById('ipport').innerHTML   = FileDatas[3];
+     document.getElementById('name').innerHTML     = '<a href="http://servera-cs.net/serv-' + serverid + '/" target="_blank">' + FileDatas[2] + "</a>";
+     document.getElementById('map').innerHTML      = FileDatas[5];
+     document.getElementById('players').innerHTML  = FileDatas[6] + "/" + FileDatas[7];
+     document.getElementById('mapimg').src  = FileDatas[9];
+     document.getElementById('load').innerHTML  = FileDatas[12] + "%";
+     document.getElementById('load_bar').style.width  = FileDatas[12] + "px";
+    }
+   }
 
-	function settingsClosed(event) {
-		if (event.closeAction == event.Action.commit) {
-			variableName = System.Gadget.Settings.read("server_id");
-			GetData();
-		}
-	}
-</script>
-</head>
-<body><g:background src="bg.png" id="Bg" style="position: absolute; width: 250px; height: 200px; z-index: -1"/>
-<span id="gadgetContent">
-	<table width="100%" height="140" cellpadding="0" cellspacing="0"><tr><td valign="middle" align="left" style="padding-left:10px;padding-right:10px;padding-top:10px;">
-		<table cellpadding="0" cellspacing="0" width="100%" style="display:none;" id="serverData">
-			<tr>
-				<td valign="top" style="padding:2px;"><img src="http://cs-servera.net/maps/nomap.gif" id="mapimg" style="width:110px;height:95px;"/></td>
-				<td valign="top" align="left" width="70">
-					<div class="e_title" style="padding-top:0;">Карта:</div>
-					<div class="e_contents" id="map">Unknown_map</div>
-					
-					<div class="e_title">Игроки:</div>
-					<div class="e_contents" id="players">0/0</div>
-					
-					<div class="e_title">Загруженность:</div>
-					<div class="e_contents"><div id="load_bg"><div id="load_bar"><span id="load">0%</span></div></div></div>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center" style="padding-top: 20px;">
-					<div class="e_servername"><span id="name">Unknown name</span></div>
-					<div class="e_contents"><span id="ipport" style="overflow:hidden;width:160px;">127.0.0.1:27015</span></div>
-				</td>
-			</tr>
-		</table>
-		<div align="center" id="error" style="display:none;"> <br /><img src="error.jpg" height="100" /></div>
-		<div align="center" id="loader"><img src="load.gif" width="100" height="100" /></div>
-		<script type="text/javascript">GetData();</script>
-	</td></tr></table>
-</span>
-</body>
+   function settingsClosed(event) {
+    if (event.closeAction == event.Action.commit) {
+     variableName = System.Gadget.Settings.read("server_id");
+     GetData();
+    }
+   }
+  </script>
+ </head>
+ <body>
+  <g:background src="bg.png" id="Bg" style="position: absolute; width: 250px; height: 200px; z-index: -1"/>
+  <span id="gadgetContent">
+  <table width="100%" height="140" cellpadding="0" cellspacing="0">
+   <tr>
+    <td valign="middle" align="left" style="padding-left:10px;padding-right:10px;padding-top:10px;">
+     <table cellpadding="0" cellspacing="0" width="100%" style="display:none;" id="serverData">
+      <tr>
+       <td valign="top" style="padding:2px;">
+        <img src="http://cs-servera.net/maps/nomap.gif" id="mapimg" style="width:110px;height:95px;"/>
+	   </td>
+       <td valign="top" align="left" width="70">
+        <div class="e_title" style="padding-top:0;">Карта:</div>
+        <div class="e_contents" id="map">Unknown_map</div>
+        <div class="e_title">Игроки:</div>
+        <div class="e_contents" id="players">0/0</div>
+        <div class="e_title">Загруженность:</div>
+        <div class="e_contents">
+         <div id="load_bg">
+          <div id="load_bar">
+           <span id="load">0%</span>
+		  </div>
+		 </div>
+		</div>
+       </td>
+      </tr>
+      <tr>
+       <td colspan="2" align="center" style="padding-top: 20px;">
+        <div class="e_servername">
+		 <span id="name">Unknown name</span>
+	    </div>
+        <div class="e_contents">
+         <span id="ipport" style="overflow:hidden;width:160px;">127.0.0.1:27015</span>
+		</div>
+       </td>
+      </tr>
+     </table>
+      <div align="center" id="error" style="display:none;">
+       <br />
+       <img src="error.jpg" height="100" />
+	  </div>
+      <div align="center" id="loader">
+       <img src="load.gif" width="100" height="100" />
+	  </div>
+      <script type="text/javascript">GetData();</script>
+     </td>
+    </tr>
+   </table>
+  </span>
+ </body>
 </html>
