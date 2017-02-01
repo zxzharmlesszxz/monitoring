@@ -8,7 +8,7 @@ $alphabet = "0123456789abcdefghijklmnopqrstuvwxyz"; # do not change without chan
 $allowed_symbols = "1234567890"; #alphabet without similar symbols (o=0, 1=l, i=j, t=f)
 
 # folder with fonts
-$fontsdir = 'fonts';	
+$fontsdir = 'fonts'; 
 
 # CAPTCHA string length
 $length = mt_rand(5,8); # random 5 or 6
@@ -36,4 +36,3 @@ $background_color = array(50, 50, 50);
 
 # JPEG quality of CAPTCHA image (bigger is better quality, but larger file size)
 $jpeg_quality = 90;
-?>
