@@ -24,6 +24,7 @@ if (mysql_num_rows($comments) != 0) {
 $servers_list_l = dbquery("SELECT * FROM `".DB_SERVERS."` ORDER BY `server_id` DESC LIMIT 5");
 $servers_new = '';
 
+$i = 0;
 while ($server_l = dbarray_fetch($servers_list_l)) {
  if ($server_l['server_off'] == 1) {
   $status = "<font color='gray'>Забанен</font>";
