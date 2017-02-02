@@ -29,8 +29,8 @@ $start_time = $start_array[1] + $start_array[0];
 //$current_time = file_get_contents("http://starky.axmservers.ru/current_time.txt");
 //if($current_time == 'none') exit();
 
-require_once __DIR__."/include/config.php";
-require_once __DIR__."/include/function.php";
+require_once __DIR__."/config.php";
+require_once __DIR__."/function.php";
 
 // Если бд нет, то переадресует на install.php
 if (!isset($db_name)) exit("Нет базы данных.");
@@ -38,8 +38,8 @@ if (!isset($db_name)) exit("Нет базы данных.");
 // Конект к БД
 $link = dbconnect($db_host, $db_user, $db_pass, $db_name);
 
-require_once __DIR__."/include/constants.php";
-require_once __DIR__."/include/rus_name_fix.php";
+require_once __DIR__."/constants.php";
+require_once __DIR__."/rus_name_fix.php";
 require_once(LOCALE.LOCALESET.'global.php');
 require_once(LOCALE.LOCALESET.'serv.php');
 
