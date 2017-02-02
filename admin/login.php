@@ -82,7 +82,7 @@ $forma = (!$logged_in) ? "
        </div>
       </div>
      </form>
- " : "Вы будете перенаправлены через 3 секунды.<br>Нажмите <a href='/'>сюда</a> для немедленного перехода.";
+ " : "Вы будете перенаправлены через 3 секунды.<br>Нажмите <a href='/admin/'>сюда</a> для немедленного перехода.";
 
 echo <<<EOT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
