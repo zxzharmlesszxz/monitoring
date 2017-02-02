@@ -75,44 +75,44 @@ switch ($load) {
  case 'css':
  case 'cssource':
   $page_title = "Сервера CS: Source";
-  $load_file = 'gamesort/css.php';
+  $load_file = 'gamesort.php';
   break;
  case 'csgo':
   $page_title = "Сервера CS: Global Offensive";
-  $load_file = 'gamesort/csgo.php';
+  $load_file = 'gamesort.php';
   break;
  case 'cz':
  case 'cszero':
   $page_title = "Сервера CS: Condition Zero";
-  $load_file = 'gamesort/cz.php';
+  $load_file = 'gamesort.php';
   break;
  case 'hl':
   $page_title = "Сервера Half-Life";
-  $load_file = 'gamesort/hl.php';
+  $load_file = 'gamesort.php';
   break;
  case 'hl2':
   $page_title = "Сервера Half-Life 2";
-  $load_file = 'gamesort/hl2.php';
+  $load_file = 'gamesort.php';
   break;
  case 'l4d':
  case 'left4dead':
   $page_title = "Сервера Left 4 Dead";
-  $load_file = 'gamesort/l4d.php';
+  $load_file = 'gamesort.php';
   break;
  case 'l4d2':
  case 'left4dead2':
   $page_title = "Сервера Left 4 Dead 2";
-  $load_file = 'gamesort/l4d2.php';
+  $load_file = 'gamesort.php';
   break;
  case 'teamfortess':
  case 'tf2':
   $page_title = "Сервера Team Fortess 2";
-  $load_file = 'gamesort/tf2.php';
+  $load_file = 'gamesort.php';
   break;
  case 'garrysmod':
  case 'gm':
   $page_title = "Сервера Garry's Mod";
-  $load_file = 'gamesort/gm.php';
+  $load_file = 'gamesort.php';
   break;
  case 'classic':
   $page_title = "Сервера с Classic модом";
