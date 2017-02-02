@@ -26,7 +26,7 @@ define("JS", BASEDIR."include/js/");
 define("LOCALE", BASEDIR."locale/");
 define("THEME", BASEDIR."templates/");
 define("LOCALESET", $settings['locale']."/");
-define("USER_IP", $_SERVER['REMOTE_ADDR']);
+define("USER_IP", (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : ''));
 define("ASR",$settings['AMX']);
 
 
