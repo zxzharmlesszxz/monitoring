@@ -106,7 +106,10 @@ if ($servers_total !=0 ) {
   $row .= "</td>";
   $row .= "<td><img src='/images/icons/$r[server_game].gif' style='width:16px;height:16px;vertical-align:middle;margin-bottom:2px;opacity:0.7;' title='$r[server_game] сервер' alt='$r[server_game] сервер' />";
   $row .= "{$r['server_ip']}</td>";
-  $row .= "<td class='mode'>$r[server_mode]</td><td class='map'><a class='map'>{$r['server_map']}</a></td><td><center>$players</center></td><td><center>";
+  $row .= "<td class='mode'>$r[server_mode]</td>";
+  $row .= "<td class='map'><a class='map'>{$r['server_map']}</a></td>";
+  $row .= "<td><center>$players</center></td>";
+  $row .= "<td><center>";
 
   if ($r['server_vip'] == 1) {
    $row .= '<img src="/images/vip.png" align="texttop" style="opacity:0.6;">';
