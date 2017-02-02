@@ -1,5 +1,5 @@
 ﻿<?php
-require_once('config.php');
+require_once('include/core.php');
 mysql_connect($db_host,$db_user,$db_pass);
 mysql_select_db($db_name);
 mysql_query("SET NAMES UTF8");
