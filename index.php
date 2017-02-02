@@ -35,8 +35,8 @@ $page_title_games = array('cs16' => 'Сервера CS 1.6',
  'left4dead2' => 'Сервера Left 4 Dead 2',
  'tf2' => 'Сервера Team Fortess 2',
  'teamfortess' => 'Сервера Team Fortess 2',
- 'gm' => 'Сервера Garry's Mod',
- 'garrysmod' => 'Сервера Garry's Mod',
+ 'gm' => 'Сервера Garry\'s Mod',
+ 'garrysmod' => 'Сервера Garry\'s Mod',
 );
 $page_title_modes = array();
 
