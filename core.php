@@ -30,9 +30,9 @@ $start_time = $start_array[1] + $start_array[0];
 //if($current_time == 'none') exit();
 
 require_once __DIR__."/include/config.php";
+require_once __DIR__."/include/function.php";
 
 require_once __DIR__."/include/constants.php";
-require_once __DIR__."/include/function.php";
 require_once __DIR__."/include/rus_name_fix.php";
 
 // Если бд нет, то переадресует на install.php
