@@ -26,8 +26,8 @@ if (mysql_num_rows($get_server) == 0) {
 
 $server = dbarray_fetch($get_server);
 
-if (file_exists(IMAGES."/maps/{$server['server_game']}/{$server['server_map']}.jpg")) {
- $server_map_img = IMAGES."/maps/{$server['server_game']}/{$server['server_map']}.jpg";
+if (file_exists(MAPS."{$server['server_game']}/{$server['server_map']}.jpg")) {
+ $server_map_img = MAPS."{$server['server_game']}/{$server['server_map']}.jpg";
 } else {
  $server_map_img = "template/gfx/nomap.jpg";
 }
