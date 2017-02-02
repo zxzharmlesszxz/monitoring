@@ -11,4 +11,3 @@ $locale_view['009'] = "<font color='red'>OFF</font>";
 $locale_view['010'] = "<font color='#00ff00'><b>ON</b></font>";
 $locale_view['011'] = "Игроки";
 $locale_view['012'] = "Карта";
-?>
