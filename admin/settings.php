@@ -85,10 +85,10 @@ if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
   `top_rows` = '{$site_top_rows}'";
   $update = dbquery($update_query);
   if ($update) {
-   $message = '<div class=\'message green\'><span><b>Успех</b>: изменения успешно сохранены.</span></div>';
+   $message = "<div class='message green'><span><b>Успех</b>: изменения успешно сохранены.</span></div>";
    $settings = dbarray(dbquery("SELECT * FROM ".DB_SETTINGS)); // Refreshing info 
   } else {
-   $message = '<div class=\'message red\'><span><b>Ошибка</b>: не удалось записать данные в БД.</span></div>';
+   $message = "<div class='message red'><span><b>Ошибка</b>: не удалось записать данные в БД.</span></div>";
   }
  } else {
   $message = "<div class='message orange'><span><b>Внимание</b>: {$errors[0]}</span></div>";
