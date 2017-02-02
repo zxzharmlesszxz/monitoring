@@ -1,6 +1,6 @@
 <?php
 // Константы
-define("BASEDIR", dirname(__FILE__));
+define("BASEDIR", dirname(__FILE__).'/');
 define("ENGINE_SELF", basename($_SERVER['PHP_SELF']));
 // Константы таблиц БД
 define("QUOTES_GPC", (ini_get('magic_quotes_gpc') ? TRUE : FALSE));
