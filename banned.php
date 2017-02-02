@@ -11,7 +11,7 @@ $server_data = dbarray_fetch($take_server);
 echo <<<EOT
 <div class='horizontal_line'>Cервер заблокирован</div>
 <div class='cont'>
- <div class='msg redbg'>Сервер <b>{$server_data['server_name']}</b> заблокирован. Для выяснения причины Skype: monservers или Icq: 162-622</div>
+ <div class='msg redbg'>Сервер <b>{$server_data['server_name']}</b> заблокирован. Для выяснения причины Skype: vengeanson</div>
  <table width='100%' height='150'>
   <tr>
    <td valign='middle'>
