@@ -28,22 +28,12 @@ $start_array = explode(" ",$start_time);
 $start_time = $start_array[1] + $start_array[0];
 //$current_time = file_get_contents("http://starky.axmservers.ru/current_time.txt");
 //if($current_time == 'none') exit();
-// Проверка существует ли файл конфигурации
-$folder_level = "";
-$i = 0;
 
-//define("ZNUS_PO", $db_pass);
-while (!file_exists($folder_level."config.php")) {
- $folder_level .= "../";
- $i++;
- if ($i == 5) die("Config file not found");
-}
-
-require_once $folder_level."config.php";
+require_once __DIR__."config.php";
 
 // Multisite definitions
 //define("USER_Hs", $db_host);
-require_once $folder_level."include/constants.php";
+require_once __DIR__."/include/constants.php";
 require_once INCLUDES."function.php";
 require_once INCLUDES."rus_name_fix.php";
 

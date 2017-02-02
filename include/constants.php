@@ -14,7 +14,7 @@ define("THEME", BASEDIR."templates/");
 define("LOCALESET", $settings['locale']."/");
 define("USER_IP", $_SERVER['REMOTE_ADDR']);
 define("ASR",$settings['AMX']);
-define("BASEDIR", $folder_level);
+define("BASEDIR", __DIR__.'../');
 
 // Константы таблиц БД
 define("DB_ADMIN", DB_PREFIX."admin");
