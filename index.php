@@ -38,6 +38,7 @@ $page_title_games = array('cs16' => 'Сервера CS 1.6',
  'gm' => 'Сервера Garry\'s Mod',
  'garrysmod' => 'Сервера Garry\'s Mod',
 );
+
 $page_title_modes = array('classic' => 'Сервера с Classic модом',
  'csdm' => 'Сервера с CSDM модом',
  'diablomod' => 'Сервера с DiabloMod модом',
