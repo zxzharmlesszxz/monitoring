@@ -18,4 +18,3 @@ $locale_conact['014'] = "Тема: ";
 $locale_conact['015'] = "Сообщение: ";
 $locale_conact['016'] = "Защитный код";
 $locale_conact['017'] = "Отправить";
-?>

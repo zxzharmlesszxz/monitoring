@@ -61,4 +61,4 @@ $locale['060'] = "<br>\n Установка успешно завершена.<b
 <strong>Примечание</strong> <font color='red'>Вы должны удалить файл install.php на сервере</font><br />
 и установить CHMOD  config.php обратно в 644 в целях безопасности.<br /><br />
 Спасибо за выбор AMX Monitoring.<br><br>\n";
-?>
+
