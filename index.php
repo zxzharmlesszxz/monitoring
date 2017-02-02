@@ -70,7 +70,7 @@ switch ($load) {
   break;
  case 'cs16':
   $page_title = "Сервера CS 1.6";
-  $load_file = 'gamesort/cs16.php';
+  $load_file = 'gamesort.php';
   break;
  case 'css':
  case 'cssource':
