@@ -19,7 +19,7 @@ define("SITE_URL", $settings['site_url']);
 
 // Pathes
 define("ADMIN", BASEDIR."admin/");
-define("IMAGES", BASEDIR."images/");
+define("IMAGES", "/images/");
 define("MAPS", IMAGES."maps/");
 define("INCLUDES", BASEDIR."include/");
 define("JS", BASEDIR."include/js/");
