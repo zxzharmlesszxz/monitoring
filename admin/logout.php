@@ -3,7 +3,7 @@ define("MONENGINE", true);
 error_reporting(E_ALL);
 // вся процедура работает на сессиях. Именно в ней хранятся данные пользователя, пока он находится на сайте. Очень важно запустить их в самом начале странички!!!
 // подключаемся к базе
-include("../core.php");
+include("../include/core.php");
 session_start();
 session_destroy();
 $msg_color = 'blue';

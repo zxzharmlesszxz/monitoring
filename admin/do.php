@@ -1,7 +1,7 @@
 <?php
 if($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
 	define("MONENGINE", true);
-	require_once("../core.php");
+	require_once("../include/core.php");
 
 	$task = $_REQUEST['task'];
 

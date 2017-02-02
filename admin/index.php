@@ -3,7 +3,7 @@ define('MONENGINE', 'Remake by starky');
 
 Error_Reporting(E_ALL & ~E_NOTICE);
 
-require("../core.php");
+require("../include/core.php");
 require_once("includes/inc.php");
 // If user is not logged in
 if(!$logged_in) {

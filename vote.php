@@ -3,7 +3,7 @@
 if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
  define("MONENGINE", true);
  
- require_once("core.php");
+ require_once("/include/core.php");
  
  $hash = $_POST['hash'];
  $id = mysql_real_escape_string($_POST['id']);

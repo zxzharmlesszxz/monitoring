@@ -1,7 +1,7 @@
 <?php
 
 // Баннеры для by-isp
-include "core.php";
+include "/include/core.php";
 
 $id=$_GET["id"];
 $q = dbquery("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".$id."");

@@ -6,11 +6,7 @@ Error_Reporting(E_ALL);
 
 session_start();
 
-require_once(__DIR__.'/core.php');
-
-
-require_once(LOCALE.LOCALESET.'global.php');
-require_once(LOCALE.LOCALESET.'serv.php');
+require_once(__DIR__.'/include/core.php');
 
 if ($settings['site_closed'] == '1') {
  header('Location: closed.php'); // Site is closed
