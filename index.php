@@ -116,59 +116,59 @@ switch ($load) {
   break;
  case 'classic':
   $page_title = "Сервера с Classic модом";
-  $load_file = 'modesort/classic.php';
+  $load_file = 'modesort.php';
   break;
  case 'csdm':
   $page_title = "Сервера с CSDM модом";
-  $load_file = 'modesort/csdm.php';
+  $load_file = 'modesort.php';
   break;
  case 'diablomod':
   $page_title = "Сервера с DiabloMod модом";
-  $load_file = 'modesort/diablomod.php';
+  $load_file = 'modesort.php';
   break;
  case 'gungame':
   $page_title = "Сервера с GunGame модом";
-  $load_file = 'modesort/gungame.php';
+  $load_file = 'modesort.php';
   break;
  case 'hns':
   $page_title = "Сервера с Hide n seek модом";
-  $load_file = 'modesort/hns.php';
+  $load_file = 'modesort.php';
   break;
  case 'jailbreak':
   $page_title = "Сервера с JailBreak модом";
-  $load_file = 'modesort/jailbreak.php';
+  $load_file = 'modesort.php';
   break;
  case 'jump':
   $page_title = "Сервера с Jump модом";
-  $load_file = 'modesort/jump.php';
+  $load_file = 'modesort.php';
   break;
  case 'knife':
   $page_title = "Сервера с Knife модом";
-  $load_file = 'modesort/knife.php';
+  $load_file = 'modesort.php';
   break;
  case 'soccerjam':
   $page_title = "Сервера с SoccerJam модом";
-  $load_file = 'modesort/soccerjam.php';
+  $load_file = 'modesort.php';
   break;
  case 'deathrun':
   $page_title = "Сервера с DeathRun модом";
-  $load_file = 'modesort/deathrun.php';
+  $load_file = 'modesort.php';
   break;
  case 'superhero':
   $page_title = "Сервера с SuperHero модом";
-  $load_file = 'modesort/superhero.php';
+  $load_file = 'modesort.php';
   break;
  case 'warcraft':
   $page_title = "Сервера с War3raft модом";
-  $load_file = 'modesort/warcraft.php';
+  $load_file = 'modesort.php';
   break;
  case 'surf':
   $page_title = "Сервера с Surf модом";
-  $load_file = 'modesort/surf.php';
+  $load_file = 'modesort.php';
   break;
  case 'zombiemod':
   $page_title = "Сервера с Zombie модом";
-  $load_file = 'modesort/zombiemod.php';
+  $load_file = 'modesort.php';
   break;
  case 'search':
   $page_title = "Поиск серверов CS 1.6, CS:S, CS:GO";
