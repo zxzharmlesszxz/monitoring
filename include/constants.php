@@ -5,6 +5,8 @@ define("ENGINE_SELF", basename($_SERVER['PHP_SELF']));
 define("QUOTES_GPC", (ini_get('magic_quotes_gpc') ? TRUE : FALSE));
 define("SITE_URL", $settings['site_url']);
 //define("JAC_OPNMA", $db_name);
+
+// Pathes
 define("ADMIN", BASEDIR."admin/");
 define("IMAGES", BASEDIR."images/");
 define("MAPS", IMAGES."maps/");

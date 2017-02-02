@@ -29,13 +29,11 @@ $start_time = $start_array[1] + $start_array[0];
 //$current_time = file_get_contents("http://starky.axmservers.ru/current_time.txt");
 //if($current_time == 'none') exit();
 
-require_once __DIR__."/config.php";
+require_once __DIR__."/include/config.php";
 
-// Multisite definitions
-//define("USER_Hs", $db_host);
 require_once __DIR__."/include/constants.php";
-require_once INCLUDES."function.php";
-require_once INCLUDES."rus_name_fix.php";
+require_once __DIR__."/include/function.php";
+require_once __DIR__."/include/rus_name_fix.php";
 
 // Если бд нет, то переадресует на install.php
 if (!isset($db_name)) exit("Нет базы данных.");

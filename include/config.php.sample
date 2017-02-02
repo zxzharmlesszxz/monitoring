@@ -4,5 +4,5 @@ $db_user = "monitoring";
 $db_pass = "monitoring";
 $db_name = "monitoring";
 $db_prefix = "mon_";
-define("DB_PREFIX", "mon_");
+define("DB_PREFIX", $db_prefix);
 ?>
