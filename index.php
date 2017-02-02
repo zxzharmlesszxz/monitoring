@@ -38,7 +38,21 @@ $page_title_games = array('cs16' => 'Сервера CS 1.6',
  'gm' => 'Сервера Garry\'s Mod',
  'garrysmod' => 'Сервера Garry\'s Mod',
 );
-$page_title_modes = array();
+$page_title_modes = array('classic' => 'Сервера с Classic модом',
+ 'csdm' => 'Сервера с CSDM модом',
+ 'diablomod' => 'Сервера с DiabloMod модом',
+ 'gungame' => 'Сервера с GunGame модом',
+ 'hns' => 'Сервера с Hide n seek модом',
+ 'jailbreak' => 'Сервера с JailBreak модом',
+ 'jump' => 'Сервера с Jump модом',
+ 'knife' => 'Сервера с Knife модом',
+ 'soccerjam' => 'Сервера с SoccerJam модом',
+ 'deathrun' => 'Сервера с DeathRun модом',
+ 'superhero' => 'Сервера с SuperHero модом',
+ 'warcraft' => 'Сервера с War3raft модом',
+ 'surf' => 'Сервера с Surf модом',
+ 'zombiemod' => 'Сервера с Zombie модом',
+);
 
 if (isset($_GET['page'])) $load = $_GET['page'];
  
@@ -107,59 +121,20 @@ switch ($load) {
   $load_file = 'gamesort.php';
   break;
  case 'classic':
-  $page_title = "Сервера с Classic модом";
-  $load_file = 'modesort.php';
-  break;
  case 'csdm':
-  $page_title = "Сервера с CSDM модом";
-  $load_file = 'modesort.php';
-  break;
  case 'diablomod':
-  $page_title = "Сервера с DiabloMod модом";
-  $load_file = 'modesort.php';
-  break;
  case 'gungame':
-  $page_title = "Сервера с GunGame модом";
-  $load_file = 'modesort.php';
-  break;
  case 'hns':
-  $page_title = "Сервера с Hide n seek модом";
-  $load_file = 'modesort.php';
-  break;
  case 'jailbreak':
-  $page_title = "Сервера с JailBreak модом";
-  $load_file = 'modesort.php';
-  break;
  case 'jump':
-  $page_title = "Сервера с Jump модом";
-  $load_file = 'modesort.php';
-  break;
  case 'knife':
-  $page_title = "Сервера с Knife модом";
-  $load_file = 'modesort.php';
-  break;
  case 'soccerjam':
-  $page_title = "Сервера с SoccerJam модом";
-  $load_file = 'modesort.php';
-  break;
  case 'deathrun':
-  $page_title = "Сервера с DeathRun модом";
-  $load_file = 'modesort.php';
-  break;
  case 'superhero':
-  $page_title = "Сервера с SuperHero модом";
-  $load_file = 'modesort.php';
-  break;
  case 'warcraft':
-  $page_title = "Сервера с War3raft модом";
-  $load_file = 'modesort.php';
-  break;
  case 'surf':
-  $page_title = "Сервера с Surf модом";
-  $load_file = 'modesort.php';
-  break;
  case 'zombiemod':
-  $page_title = "Сервера с Zombie модом";
+  $page_title = $page_title_modes[$load];
   $load_file = 'modesort.php';
   break;
  case 'search':
