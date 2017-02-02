@@ -1,5 +1,6 @@
 <?php
 // Константы
+define("BASEDIR", __DIR__.'../');
 define("ENGINE_SELF", basename($_SERVER['PHP_SELF']));
 define("QUOTES_GPC", (ini_get('magic_quotes_gpc') ? TRUE : FALSE));
 define("SITE_URL", $settings['site_url']);
@@ -14,7 +15,6 @@ define("THEME", BASEDIR."templates/");
 define("LOCALESET", $settings['locale']."/");
 define("USER_IP", $_SERVER['REMOTE_ADDR']);
 define("ASR",$settings['AMX']);
-define("BASEDIR", __DIR__.'../');
 
 // Константы таблиц БД
 define("DB_ADMIN", DB_PREFIX."admin");
