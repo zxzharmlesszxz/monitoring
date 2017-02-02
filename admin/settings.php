@@ -124,9 +124,9 @@ echo <<<EOT
  $(document).ready(function() {
   $('#site_open').change(function() {
    if ($('#site_open option:selected').val() == 0) {
-    $('#site_close_reason').attr('disabled',false);
-   } else {
     $('#site_close_reason').attr('disabled',true);
+   } else {
+    $('#site_close_reason').attr('disabled',false);
    }
   }).change();
  });
