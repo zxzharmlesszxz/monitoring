@@ -21,6 +21,25 @@ if ($settings['site_closed'] == '1') {
  
 $load = "";
 
+$page_title_games = array('cs16' => 'Сервера CS 1.6',
+ 'css' => 'Сервера CS: Source',
+ 'cssource' => 'Сервера CS: Source',
+ 'csgo' => 'Сервера CS: Global Offensive',
+ 'cz' => 'Сервера CS: Condition Zero',
+ 'cszero' => 'Сервера CS: Condition Zero',
+ 'hl' => 'Сервера Half-Life',
+ 'hl2' => 'Сервера Half-Life 2',
+ 'l4d' => 'Сервера Left 4 Dead',
+ 'left4dead' => 'Сервера Left 4 Dead',
+ 'l4d2' => 'Сервера Left 4 Dead 2',
+ 'left4dead2' => 'Сервера Left 4 Dead 2',
+ 'tf2' => 'Сервера Team Fortess 2',
+ 'teamfortess' => 'Сервера Team Fortess 2',
+ 'gm' => 'Сервера Garry's Mod',
+ 'garrysmod' => 'Сервера Garry's Mod',
+);
+$page_title_modes = array();
+
 if (isset($_GET['page'])) $load = $_GET['page'];
  
 switch ($load) {
@@ -69,49 +88,22 @@ switch ($load) {
   $load_file = 'mserv.php';
   break;
  case 'cs16':
-  $page_title = "Сервера CS 1.6";
-  $load_file = 'gamesort.php';
-  break;
  case 'css':
  case 'cssource':
-  $page_title = "Сервера CS: Source";
-  $load_file = 'gamesort.php';
-  break;
  case 'csgo':
-  $page_title = "Сервера CS: Global Offensive";
-  $load_file = 'gamesort.php';
-  break;
  case 'cz':
  case 'cszero':
-  $page_title = "Сервера CS: Condition Zero";
-  $load_file = 'gamesort.php';
-  break;
  case 'hl':
-  $page_title = "Сервера Half-Life";
-  $load_file = 'gamesort.php';
-  break;
  case 'hl2':
-  $page_title = "Сервера Half-Life 2";
-  $load_file = 'gamesort.php';
-  break;
  case 'l4d':
  case 'left4dead':
-  $page_title = "Сервера Left 4 Dead";
-  $load_file = 'gamesort.php';
-  break;
  case 'l4d2':
  case 'left4dead2':
-  $page_title = "Сервера Left 4 Dead 2";
-  $load_file = 'gamesort.php';
-  break;
  case 'teamfortess':
  case 'tf2':
-  $page_title = "Сервера Team Fortess 2";
-  $load_file = 'gamesort.php';
-  break;
  case 'garrysmod':
  case 'gm':
-  $page_title = "Сервера Garry's Mod";
+  $page_title = $page_title_games[$load];
   $load_file = 'gamesort.php';
   break;
  case 'classic':
