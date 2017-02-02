@@ -149,7 +149,7 @@ switch ($load) {
   break;
  case 'message':
   $msg_code = $_GET['code'];
-  $load_file = 'messages.php'; // File not found
+  $load_file = 'include/messages.php'; // File not found
   break;
  default:
   $load_file = 'servers.php';
@@ -164,7 +164,7 @@ if (file_exists($load_file)) {
  require($load_file); // Loading main area
 } else {
  $msg_code = 404;
- require('messages.php'); // File not found
+ require('include/messages.php'); // File not found
 }
  
 // Footer block
