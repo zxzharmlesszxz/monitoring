@@ -29,7 +29,7 @@ $start_time = $start_array[1] + $start_array[0];
 //$current_time = file_get_contents("http://starky.axmservers.ru/current_time.txt");
 //if($current_time == 'none') exit();
 
-require_once __DIR__."config.php";
+require_once __DIR__."/config.php";
 
 // Multisite definitions
 //define("USER_Hs", $db_host);
