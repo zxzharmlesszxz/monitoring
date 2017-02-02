@@ -33,23 +33,23 @@ $servers = dbquery($select_query);
 echo "<table class='servers' cellpadding='0' cellspacing='0' border='0'>";
 
 /*
-$locale['010']	Имя сервера
-$locale['011']	Адрес
-$locale['013']	Игроки
+$locale['010'] Имя сервера
+$locale['011'] Адрес
+$locale['013'] Игроки
 */
 
 /* TABLE HEAD */
 echo <<<EOT
-	<thead>
-		<tr>
-			<th width='35%' style='padding-left:45px;'>Название сервера</th>
-			<th width=200>Адрес сервера</th>
-			<th width=80>Мод</th>
-			<th width=130>Карта</th>
-			<th width=100>Игроки</th>
-			<th width=60>Голоса</th>
-		</tr>
-	</thead>
+ <thead>
+  <tr>
+   <th width='35%' style='padding-left:45px;'>Название сервера</th>
+   <th width=200>Адрес сервера</th>
+   <th width=80>Мод</th>
+   <th width=130>Карта</th>
+   <th width=100>Игроки</th>
+   <th width=60>Голоса</th>
+  </tr>
+ </thead>
 
 EOT;
 
@@ -63,7 +63,7 @@ if ($servers_total !=0 ) {
 
   if (empty($server_location))
    $server_location = 'undefined';
-		
+  
   if (array_key_exists($r['server_row_style'], $styles)) {
    $row = "<tr style='{$styles[$r['server_row_style']]['style']}'>";
   } else {
@@ -100,7 +100,7 @@ if ($servers_total !=0 ) {
   
   $row .= "<td align='left' style='padding-left:20px;'>";
   $row .= "<a title='Перейти на страницу сервера {$r['server_name']}' href='".$settings['site_url']."server/{$r['server_id']}' rel='follow'></a>";
-  $row .= "<img src='images/flags/$server_location.png' style='width:16;height:11;opacity:0.7;' title='$r[server_location]' alt='$r[server_location]'>";
+  $row .= "<img src='/images/flags/$server_location.png' style='width:16;height:11;opacity:0.7;' title='$r[server_location]' alt='$r[server_location]'>";
   $row .= "<a class='name' title='Перейти на страницу сервера {$r['server_name']}' href='".$settings['site_url']."server/{$r['server_id']}' rel='follow'>".htmlspecialchars($r['server_name'])."</a> ";
   $row .= (($r['server_steam'] == '1') ? '<img src=\'images/icon_steam.png\'>' : '');
   $row .= "</td>";
@@ -118,7 +118,7 @@ if ($servers_total !=0 ) {
    $row .= "</span>";
   }
   $row .= "</center></td></tr>";
-		
+  
   echo $row;
  }
 } else {

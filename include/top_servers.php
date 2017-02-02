@@ -26,7 +26,7 @@ if($settings['top_rows'] > 0) {
   <div class="unit">
    <div class="map_section">
     <div style="position:absolute;padding:0;margin:2px;z-index:1;opacity:0.8;display:block;width:16px;"><img src="/images/icons/{game}.gif" ></div>
-    <a title="Сервер {name}" href="server/{id}" rel="nofollow"><img width="100" height="75" src="/'.MAPS.'{game}/{map}.jpg" style="align:texttop;" ></a>
+    <a title="Сервер {name}" href="server/{id}" rel="nofollow"><img width="100" height="75" src="'.MAPS.'{game}/{map}.jpg" style="align:texttop;" ></a>
    </div>
    <div class="info_section">
     <span class="title">Игроки:</span><br>
