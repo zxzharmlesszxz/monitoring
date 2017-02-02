@@ -52,7 +52,6 @@ while($style = dbarray_fetch($get_styles)) {
 }
 
 // Переменные выбора таблиц
-$settings = dbarray(dbquery("SELECT * FROM ".DB_SETTINGS));
 
 // Определяем сколько серверов находится в БД
 $servers_total = $settings['servers_total'];

@@ -3,8 +3,8 @@
 define("BASEDIR", __DIR__.'/../');
 define("ENGINE_SELF", basename($_SERVER['PHP_SELF']));
 define("QUOTES_GPC", (ini_get('magic_quotes_gpc') ? TRUE : FALSE));
+$settings = dbarray(dbquery("SELECT * FROM ".DB_SETTINGS));
 define("SITE_URL", $settings['site_url']);
-//define("JAC_OPNMA", $db_name);
 
 // Pathes
 define("ADMIN", BASEDIR."admin/");
