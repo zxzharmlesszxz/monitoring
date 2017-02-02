@@ -60,7 +60,7 @@ if (count($_POST) != 0 and !$logged_in) {
  }
 }
 
-$meta_logged = ($logged_in) ? "<meta http-equiv='Refresh' content='3; URL={$settings['site_url']}backend/index.php'>" : '';
+$meta_logged = ($logged_in) ? "<meta http-equiv='Refresh' content='3; URL={$settings['site_url']}admin/'>" : '';
 
 $forma = (!$logged_in) ? "
      <form method='POST'>
@@ -82,7 +82,7 @@ $forma = (!$logged_in) ? "
        </div>
       </div>
      </form>
- " : "Вы будете перенаправлены через 3 секунды.<br>Нажмите <a href='index.php'>сюда</a> для немедленного перехода.";
+ " : "Вы будете перенаправлены через 3 секунды.<br>Нажмите <a href='/'>сюда</a> для немедленного перехода.";
 
 echo <<<EOT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

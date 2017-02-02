@@ -17,7 +17,7 @@ echo <<<EOT
  <head>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   <title>Вход в систему</title>
-  <meta http-equiv='Refresh' content='3; URL={$settings['site_url']}backend/login.php'>
+  <meta http-equiv='Refresh' content='3; URL={$settings['site_url']}admin/login.php'>
   <style type="text/css">
    @import url("template/css/style.css");
    @import url("template/css/forms.css");
