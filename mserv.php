@@ -9,7 +9,8 @@ if (!defined("MONENGINE")) {
  header("Location: index.php");
  exit();
 }
-?>
+
+echo <<<EOT
 <div class='horizontal_line'>Скачать наш мастер-сервер</div>
 <div class='cont'>
  </br>
@@ -18,7 +19,6 @@ if (!defined("MONENGINE")) {
    <b><font color="#ffffff">Мастерсервер</font> - это сервер, который передает список IP адресов и полную статистику по игровым серверам в Ваш клиент игры. Подключившись, Вы всегда сможете искать сервера CS 1.6 из нашего мониторинга у себя в игре. Для подключения необходимо заменить 1 файл, в нем прописан IP нашего мастерсервера. Также немаловажной деталью является то, что мастерсервер доступен всегда и работает 24/7.</b>
   </div>
  </div>
- </br>
  <div style="padding:10px;line-height:19px;">
   <div style="padding:15px;background:#333333;">
    <div style="padding-bottom: 10px;" align="">
@@ -47,3 +47,4 @@ if (!defined("MONENGINE")) {
    </u>
   </div>
  </div>
+EOT;
