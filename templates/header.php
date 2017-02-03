@@ -43,6 +43,7 @@ if(!defined("MONENGINE")) {
       "emptyTable": "<?php echo $locale['017']; ?>",
       "info": "<?php echo $locale['023']; ?>",
       "infoFiltered": "<?php echo $locale['025']; ?>",
+      "lengthMenu": "<?php echo $locale['026']; ?>",
      }
     });
     //$('table.servers thead th').each(function(){var title = $('table.servers thead th').eq($(this).index()).text();$(this).html('<input type="text" placeholder="'+title+'" />');});
