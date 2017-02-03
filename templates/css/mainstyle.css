@@ -849,3 +849,17 @@ font-size:9px;
 td.mode, td.map {
  text-align: center;
 }
+
+img.game {
+ width:16px;
+ height:16px;
+ vertical-align:middle;
+ margin-bottom:2px;
+ opacity:0.8;
+}
+
+img.location {
+ width:16;
+ height:11;
+ opacity:0.8;
+}
