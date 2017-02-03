@@ -51,24 +51,34 @@ if ($stage == 1) {
     <td colspan='2'></td>
    </tr>
    <tr>
-    <td align='right'><br><br><br>ID вашего сервера:<br><br><br></td>
-    <td><input type='text' name='id' value='' size='30' /></td>
+    <td align='right'>ID вашего сервера:</td>
+    <td>
+     <input type='text' name='id' value='' size='30' />
+    </td>
    </tr>
    <tr>
-    <td align='right'><br><br><br>Ваш E-mail адрес:<br><br><br></td>
-    <td><input type='text' name='email' value='' size='30' /></td>
+    <td align='right'>Ваш E-mail адрес:</td>
+    <td>
+     <input type='text' name='email' value='' size='30' />
+    </td>
    </tr>
     <tr>
-    <td align='right'><br><br><br>Код с картинки:<br><br><br></td>
-    <td><img src='cap/index.php?".session_name()."=".session_id()."'></td>
+    <td align='right'>Код с картинки:</td>
+    <td>
+     <img src='/include/cap/index.php?".session_name()."=".session_id()."'>
+    </td>
    </tr>
    <tr>
-    <td align='right'>&nbsp;</td>
-    <td><input type='text' style='width:160px;' name='keystring' /></td>
+    <td align='right'></td>
+    <td>
+     <input type='text' style='width:160px;' name='keystring' />
+    </td>
    </tr>
    <tr>
-    <input type='hidden' name='submit_edit_form' value='1'>
-    <td colspan='2' align='center'><input type='submit' value='Отправить запрос' /></td>
+    <td colspan='2' align='center'>
+     <input type='hidden' name='submit_edit_form' value='1'>
+     <input type='submit' value='Отправить запрос' />
+    </td>
    </tr>
   </table>
   </form>
