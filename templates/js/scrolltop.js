@@ -1,6 +1,4 @@
-
-
-(function() {  
+(function() {
   
 function $(id){  
     return document.getElementById(id);  
@@ -56,12 +54,12 @@ function scrollTop(){
     return false;  
 }  
   
-// Плавная смена прозрачности  
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  
 function smoothopaque(el, startop, endop, inc){  
     op = startop;  
-    // Устанавливаем прозрачность  
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  
     setopacity(el, op);  
-    // Начинаем изменение прозрачности  
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  
     setTimeout(slowopacity, 1);  
     function slowopacity(){  
         if(startop < endop){  
@@ -78,7 +76,7 @@ function smoothopaque(el, startop, endop, inc){
         setopacity(el, op);  
     };  
 };  
-// установка opacity  
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ opacity  
 function setopacity(el, opacity){  
     el.style.opacity = (opacity/100);  
     el.style.filter = 'alpha(+ opacity +)';  
