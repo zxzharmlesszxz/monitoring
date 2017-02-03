@@ -44,12 +44,12 @@ if (mysql_num_rows(mysql_query($select_query)) >0) {
  echo "
  <thead>
   <tr>
-  <th width='35%' style='padding-left:45px;'><font color='#FFF' size='2'>Название сервера <a href='#'><img src='/images/block_on.gif'></a><a href='#'><img src='/images/block_off.gif'></a></font></font></th>
-   <th width=200><font color='#FFF' size='2'>Адрес сервера <a href='#'><img src='/images/block_on.gif'></a><a href='#'><img src='/images/block_off.gif'></a></font></th>
-   <th width=80><font color='#FFF' size='2'>Мод <a href='#'><img src='/images/block_on.gif'></a><a href='#'><img src='/images/block_off.gif'></a></font></font></th>
-   <th width=130><center><font color='#FFF' size='2'>Карта <a href='#'><img src='/images/block_on.gif'></a><a href='#'><img src='/images/block_off.gif'></a></font></font></center></th>
-   <th width=100><center><font color='#FFF' size='2'>Игроки <a href='#'><img src='/images/block_on.gif'></a><a href='#'><img src='/images/block_off.gif'></a></font></font></center></th>
-   <th width=60><center><font color='#FFF' size='2'>Голоса <a href='#'><img src='/images/block_on.gif'></a><a href='#'><img src='/images/block_off.gif'></a></font></font></center></th>
+  <th width='35%' style='padding-left:45px;'>Название сервера</th>
+   <th width=200>Адрес сервера</th>
+   <th width=80>Мод</th>
+   <th width=130>Карта</th>
+   <th width=100>Игроки</th>
+   <th width=60>Голоса</th>
   </tr>
  </thead>";
 
