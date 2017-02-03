@@ -255,6 +255,8 @@ function formatDate($forma,$time) {
 }
 
 function time2string($sal,$day=true,$has=true,$min=true,$sek=true) {
+ $days = '';
+ $return = '';
  if ($sal > 10) {
   $days = preg_replace('/(.*?)\.(.*)/',"\\1",$sal/86400);
   $sal -= $days*86400;
@@ -270,7 +272,6 @@ function time2string($sal,$day=true,$has=true,$min=true,$sek=true) {
   'm'=>(substr($m,strlen($m)-1,1)==1) ?"минуту" : ((substr($m,strlen($m)-1,1)>1 AND (substr($m,strlen($m)-1,1)<5)) ?"минуты" : "минут"),
   's'=>(substr($sal,strlen($sal)-1,1)==1) ?"секунду" : ((substr($sal,strlen($sal)-1,1)>1 AND (substr($sal,strlen($sal)-1,1)<5)) ?"секунды" : "секунд"));
 
- $return = '';
  $return .= ($day && $days >0) ?"{$days} {$txt['day']}": "";
  $return .= ($has && $h >0) ?" {$h} {$txt['h']}": "";
  $return .= ($min && $m >0) ?" {$m} {$txt['m']}": "";
