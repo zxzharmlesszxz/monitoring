@@ -60,6 +60,7 @@ if ($servers_total !=0 ) {
  while ($r=dbarray_fetch($servers)) {
   $players = $r['server_players']."/".$r['server_maxplayers'];
   $server_location = $r['server_location'];
+
   if (empty($server_location)) $server_location = 'undefined';
   
   if (array_key_exists($r['server_row_style'], $styles)) {
@@ -94,13 +95,13 @@ if ($servers_total !=0 ) {
     <a href='".$settings['site_url']."server/{$r['server_id']}'></a>
     <img src='/images/flags/$server_location.png' class='location' title='$r[server_location]' alt='$r[server_game]'>
     <a href='".$settings['site_url']."server/{$r['server_id']}'>{$r['server_name']}</a>";
-   $row .= ($r['server_steam'] == '1') ? '<img src=\'images/icon_steam.png\'>' : '';
+   $row .= ($r['server_steam'] == '1') ? '<img src=\'/images/icon_steam.png\'>' : '';
    $row .= "</td>";
    $row .= "<td>
     <img src='/images/icons/$r[server_game].gif' class='game' title='$r[server_game] сервер'  alt='$r[server_game] сервер'  />{$r['server_ip']}
     </td>";
    $row .= "<td>$r[server_mode]</td>";
-   $row .= "<td><a href='/search' class='map'>{$r['server_map']}</a></td>";
+   $row .= "<td>{$r['server_map']}</td>";
    $row .= "<td><center>$players</center></td>";
     <td><center>
    ";
