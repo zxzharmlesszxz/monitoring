@@ -15,9 +15,7 @@ include(INCLUDES."pagination.class.php");
 $pagination = new pagination;
 $page_num = 1;
 
-if (isset($_GET['page_num']))
- $page_num = $_GET['page_num'];
-
+$page_num = (isset($_GET['page_num'])) ? $_GET['page_num'] : 0;
 $needed_servers = dbquery("SELECT count(*) FROM ".DB_SERVERS." WHERE server_new != 1 AND server_status != 0 AND server_off != 1 {$filter}");
 $needed_servers = dbarray_fetch($needed_servers);
 $needed_servers = $needed_servers[0];
