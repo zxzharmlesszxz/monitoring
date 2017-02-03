@@ -153,6 +153,9 @@ switch ($load) {
  case 'banner':
   $load_file = __DIR__.'/include/banner/index.php';
   break;
+ case 'byweb':
+  $load_file = __DIR__.'/templates/byweb.php';
+  break;
  default:
   $filter = '';
   $load_file = __DIR__.'/templates/servers.php';
