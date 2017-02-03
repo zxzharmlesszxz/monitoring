@@ -150,9 +150,6 @@ switch ($load) {
   $msg_code = $_GET['code'];
   $load_file = __DIR__.'/templates/messages.php'; // File not found
   break;
- case 'banner':
-  $load_file = __DIR__.'/include/banner/index.php';
-  break;
  case 'byweb':
   $load_file = __DIR__.'/templates/byweb.php';
   require($load_file);
