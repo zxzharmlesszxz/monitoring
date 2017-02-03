@@ -144,7 +144,7 @@ switch ($load) {
   $take_server = dbquery("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".$_GET['id']."");
   $server_data = dbarray_fetch($take_server);
   $page_title = "Сервер: $server_data[server_name]";
-  $load_file = (!empty($_GET['id']) and is_numeric($_GET['id'])) ? 'server_info.php' : 'all_servers.php';
+  $load_file = (!empty($_GET['id']) and is_numeric($_GET['id'])) ? __DIR__.'/templates/server_info.php' : __DIR__.'/templates/servers.php';
   break;
  case 'message':
   $msg_code = $_GET['code'];
