@@ -30,7 +30,7 @@ if(!defined("MONENGINE")) {
   <link rel="stylesheet" type="text/css" href="/templates/css/jquery.dataTables.min.css">
   <link href='/templates/css/mainstyle.css' rel='stylesheet' type='text/css' media='all'>
   <link href='/templates/style.css' rel='stylesheet' type='text/css'>
-  <script type="text/javascript">
+  <script type="text/javascript" src="">
    $(document).ready(function(){
     // DataTable jquery plugin
     //var table = $('#table').DataTable({"stateSave": true});
