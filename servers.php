@@ -11,21 +11,21 @@ if(!defined("MONENGINE")) {
 }
 
 /* Other code */
-include(INCLUDES."pagination.class.php");
-$pagination = new pagination;
-$page_num = 1;
+//include(INCLUDES."pagination.class.php");
+//$pagination = new pagination;
+//$page_num = 1;
 
-$page_num = (isset($_GET['page_num'])) ? $_GET['page_num'] : 0;
-$needed_servers = dbquery("SELECT count(*) FROM ".DB_SERVERS." WHERE server_new != 1 AND server_status != 0 AND server_off != 1 {$filter}");
-$needed_servers = dbarray_fetch($needed_servers);
-$needed_servers = $needed_servers[0];
-$pg_info = $pagination->calculate_pages($needed_servers, $settings['servers_per_page'], $page_num);
-$query_limit = $pg_info['limit'];
+//$page_num = (isset($_GET['page_num'])) ? $_GET['page_num'] : 0;
+//$needed_servers = dbquery("SELECT count(*) FROM ".DB_SERVERS." WHERE server_new != 1 AND server_status != 0 AND server_off != 1 {$filter}");
+//$needed_servers = dbarray_fetch($needed_servers);
+//$needed_servers = $needed_servers[0];
+//$pg_info = $pagination->calculate_pages($needed_servers, $settings['servers_per_page'], $page_num);
+//$query_limit = $pg_info['limit'];
 
 // Uncomment the next line for pagination debug
 //print_r($pg_info);
 
-$select_query = "SELECT * FROM ".DB_SERVERS." WHERE server_new != 1 AND server_status != 0 AND server_off != 1 {$filter} ORDER BY server_vip DESC, votes DESC ".$query_limit;
+$select_query = "SELECT * FROM ".DB_SERVERS." WHERE server_new != 1 AND server_status != 0 AND server_off != 1 {$filter} ORDER BY server_vip DESC, votes DESC ";//.$query_limit;
 $servers = dbquery($select_query);
 
 echo "<table class='servers' cellpadding='0' cellspacing='0' border='0'>";
@@ -128,6 +128,7 @@ echo "</tbody></table>";
 /* TABLE END */
 
 /* PAGINATION */
+/*
 if (count($pg_info['pages']) > 1) {
  echo "<div class='pagination' align='center' style='margin-bottom:10px; margin-top:10px;'>";
  
@@ -159,4 +160,5 @@ if (count($pg_info['pages']) > 1) {
        
  echo "</div>";
 }
+*/
 /* PAGINATION END */
