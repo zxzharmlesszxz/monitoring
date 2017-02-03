@@ -35,7 +35,7 @@ if(!defined("MONENGINE")) {
     // DataTable jquery plugin
     //var table = $('#table').DataTable({"stateSave": true});
     var table = $('table.servers').DataTable({
-     "bPaginate": false,
+     "bPaginate": true,
      "order": [],
      language: {
       search: "_INPUT_",
