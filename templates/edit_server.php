@@ -163,7 +163,7 @@ if ($stage == 1) {
   <tr>
    <td align='right'>Введите код с картинки:</td>
    <td>
-    <img src='cap/index.php?".session_name()."=".session_id()."'>
+    <img src='/include/cap/index.php?".session_name()."=".session_id()."'>
    </td>
   </tr>
   <tr>

@@ -307,7 +307,7 @@ if (!isset($_POST['send']) || $error != '') {
          <tr>
           <td align='right'>Код безопасности:</td>
           <td>
-           <img src='cap/index.php?".session_name()."=".session_id()."'>
+           <img src='/include/cap/index.php?".session_name()."=".session_id()."'>
           </td>
          </tr>
          <tr>

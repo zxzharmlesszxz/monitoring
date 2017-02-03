@@ -230,7 +230,7 @@ $message
  <div class='clearfix'></div>
 
  <div style='padding-top:4px;'></div>
- <div style='padding-bottom:5px;opacity:0.7;'><img src='cap/index.php?".session_name()."=".session_id()."'></div>
+ <div style='padding-bottom:5px;opacity:0.7;'><img src='/include/cap/index.php?".session_name()."=".session_id()."'></div>
      <div style='float:right;padding-bottom:10px;'><input type='submit' class='button' value='Добавить комментарий'></div>
  <div><input type='text' name='com_captcha' style='width:148px;'></div>
  </form>

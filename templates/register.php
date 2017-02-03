@@ -214,7 +214,7 @@ if ($settings['enable_registration'] == 0) {
       <b><font size='2' color='red'>*</font>Код безопасности:</b>
      </td>
      <td>
-      <img src='cap/index.php?{$captch}'>
+      <img src='/include/cap/index.php?{$captch}'>
      </td>
     </tr>
     <tr>
