@@ -34,7 +34,17 @@ if(!defined("MONENGINE")) {
    $(document).ready(function(){
     // DataTable jquery plugin
     //var table = $('#table').DataTable({"stateSave": true});
-    var table = $('table.servers').DataTable({"bPaginate": false, "order": [], language: {search: "_INPUT_", searchPlaceholder: "Фильтр", "emptyTable": "<?php echo $locale['017']; ?>"}});
+    var table = $('table.servers').DataTable({
+     "bPaginate": false,
+     "order": [],
+     language: {
+      search: "_INPUT_",
+      searchPlaceholder: "<?php echo $locale['024']; ?>",
+      "emptyTable": "<?php echo $locale['017']; ?>",
+      "info": "<?php echo $locale['023']; ?>",
+      "infoFiltered": "<?php echo $locale['025']; ?>",
+     }
+    });
     //$('table.servers thead th').each(function(){var title = $('table.servers thead th').eq($(this).index()).text();$(this).html('<input type="text" placeholder="'+title+'" />');});
 
     // Apply the search
