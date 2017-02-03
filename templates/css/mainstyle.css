@@ -863,3 +863,8 @@ img.location {
  height:11;
  opacity:0.8;
 }
+
+.dataTables_wrapper .dataTables_paginate .fg-button {
+   color: #333333 !important;
+}
+
