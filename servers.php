@@ -112,7 +112,7 @@ if ($servers_total !=0 ) {
   if ($r['server_vip'] == 1) {
    $row .= '<img src="/images/vip.png" align="texttop" style="opacity:0.6;">';
   } else {
-   $row .= "<span class='votes_count' id='votes_count_{$r['server_id']}' >".int($r['votes'])."</span>";
+   $row .= "<span class='votes_count' id='votes_count_{$r['server_id']}' >".intval($r['votes'])."</span>";
    $row .= "<span class='vote_buttons' id='vote_buttons_{$r['server_id']}'>";
    $row .= "<a href='javascript://' onClick=\"rating({$r['server_id']}, 'up', '".md5("m0n3ng1ne.s4lt:P{]we{$r['server_id']}@._)%;")."');\" class='voteup' id='{$r['server_id']}'></a>";
    $row .= "<a href='javascript://' onClick=\"rating({$r['server_id']}, 'down', '".md5("m0n3ng1ne.s4lt:P{]we{$r['server_id']}@._)%;")."');\" class='votedown' id='{$r['server_id']}'></a>";
