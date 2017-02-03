@@ -7,7 +7,6 @@ if(!defined("MONENGINE")) {
 }
 
 ?>
-<!DOCTYPE HTML>
 <html>
  <head>
   <META NAME="Author" CONTENT="cook">
