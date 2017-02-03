@@ -153,8 +153,8 @@ if (count($pg_info['pages']) > 1) {
  if ($pg_info['current'] == $pg_info['last']) {
   echo "<span>{$pg_info['last']}</span><span>Вперёд</span>";
  } else {
-  echo "<a href='/all/{$pg_info['last']}' rel='follow'>{$pg_info['last']}</a>";
-  echo "<a href='/all/{$pg_info['next']}' rel='follow'>Вперёд</a>";
+  echo "<a href='/{$load}/{$pg_info['last']}' rel='follow'>{$pg_info['last']}</a>";
+  echo "<a href='/{$load}/{$pg_info['next']}' rel='follow'>Вперёд</a>";
   echo "<div style='float:left;'><a title='Прокрутить сайт ввверх' href='/#top' rel='follow'>Вверх сайта</a></div>";
   echo "<div style='float:right;'><a title='Прокрутить сайт ввверх' href='/#top' rel='follow'>Вверх сайта</a></div>";
  }
