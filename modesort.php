@@ -103,8 +103,7 @@ if ($servers_total !=0 ) {
    $row .= "<td>$r[server_mode]</td>";
    $row .= "<td>{$r['server_map']}</td>";
    $row .= "<td><center>$players</center></td>";
-    <td><center>
-   ";
+   $row .= "<td><center>";
    
    if($r['server_vip'] == 1) {
    $row .= '<img src="/images/vip.png" align="texttop" style="opacity:0.8;">';
