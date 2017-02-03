@@ -115,7 +115,8 @@ switch ($load) {
  case 'garrysmod':
  case 'gm':
   $page_title = $page_title_games[$load];
-  $load_file = 'gamesort.php';
+  $filter = "AND server_game = '${load}'";
+  $load_file = 'servers.php';
   break;
  case 'classic':
  case 'csdm':
@@ -132,14 +133,12 @@ switch ($load) {
  case 'surf':
  case 'zombiemod':
   $page_title = $page_title_modes[$load];
-  $load_file = 'modesort.php';
+  $filter = "AND server_mode = '${load}'";
+  $load_file = 'servers.php';
   break;
  case 'search':
   $page_title = "Поиск серверов CS 1.6, CS:S, CS:GO";
   $load_file = 'search.php';
-  break;
- case 'all_servers':
-  $load_file = 'all_servers.php';
   break;
  case 'info':
   $take_server = dbquery("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".$_GET['id']."");
@@ -152,6 +151,7 @@ switch ($load) {
   $load_file = 'include/messages.php'; // File not found
   break;
  default:
+  $filter = '';
   $load_file = 'servers.php';
   break;
 }
