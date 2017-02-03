@@ -23,7 +23,7 @@ echo <<<EOT
   <div style="padding:15px;background:#333333;">
    <div style="padding-bottom: 10px;" align="">
     <ol>
-     <li>Скачайте <a href="http://monitoring.contra.net.ua/load/MasterServers.rar"><span>MASTERSERVER.vdf</span></a> (1 КБ) и разархивируйте!</li>
+     <li>Скачайте <a href="https://monitoring.contra.net.ua/load/MasterServers.rar"><span>MASTERSERVER.vdf</span></a> (1 КБ) и разархивируйте!</li>
      <li>Скопируйте <font color="#999999">MasterServers.vdf</font> в папку <font color="#999999">config</font> с заменой старого на новый
       <ul>
        <li>в игре No-Steam: <font color="#999999">D:\Games\Counter-strike\platform\config\MasterServers.vdf</font></li>
@@ -36,7 +36,7 @@ echo <<<EOT
        <li>свойста изменить очень просто: наведите курсор на файл MasterServers.vdf и нажмите правую кнопку мыши,</li>
        <li>в появишемся списке выберите <font color="#999999">"Свойства"</font>, в открывшемся окне снизу Вы найдете <font color="#999999">"Атрибуты"</font>, отметьте <font color="#999999">"Только для чтения"</font>.</li>
       </ul>
-      <img src="http://monitoring.contra.net.ua/img/screen.jpg">
+      <img src="http://monitoring.contra.net.ua/imeges/img/screen.jpg">
      </li>
     </ol>
    </div>
