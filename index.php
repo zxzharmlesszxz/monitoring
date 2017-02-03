@@ -155,6 +155,7 @@ switch ($load) {
   break;
  case 'byweb':
   $load_file = __DIR__.'/templates/byweb.php';
+  exit;
   break;
  default:
   $filter = '';
