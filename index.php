@@ -56,47 +56,47 @@ if (isset($_GET['page'])) $load = $_GET['page'];
 switch ($load) {
  case 'add':
   $page_title = "Добавить сервер CS 1.6, CS:S, CS:GO";
-  $load_file = 'register.php';
+  $load_file = __DIR__.'/templates/register.php';
   break;
  case 'pay':
   $page_title = "VIP услуги для серверов CS 1.6, CS:S, CS:GO";
-  $load_file = 'pay.php';
+  $load_file = __DIR__.'/templates/pay.php';
   break;
  case 'edit_server':
   $page_title = "Редактирование сервера CS 1.6, CS:S, CS:GO";
-  $load_file = 'edit_server.php';
+  $load_file = __DIR__.'/templates/edit_server.php';
   break;
  case 'paytop':
   $page_title = "Редактирование сервера CS 1.6, CS:S, CS:GO";
-  $load_file = 'paytop.php';
+  $load_file = __DIR__.'/templates/paytop.php';
   break;
  case 'payserver':
   $page_title = "Редактирование сервера CS 1.6, CS:S, CS:GO";
-  $load_file = 'payserver.php';
+  $load_file = __DIR__.'/templates/payserver.php';
   break;
  case 'links':
   $page_title = "Каталог ссылок : ";
-  $load_file = 'links.php';
+  $load_file = __DIR__.'/templates/links.php';
   break;
  case 'chat':
   $page_title = "Чат мониторинга : ";
-  $load_file = 'chat.php';
+  $load_file = __DIR__.'/templates/chat.php';
   break;
  case 'monengine':
   $page_title = "Купить скрипт мониторинга CS 1.6, CS:S, CS:GO";
-  $load_file = 'monengine.php';
+  $load_file = __DIR__.'/templates/monengine.php';
   break;
  case 'banned':
   $page_title = "Ваш сервер заблокирован!";
-  $load_file = 'banned.php';
+  $load_file = __DIR__.'/templates/banned.php';
   break;
  case 'feedback':
   $page_title = "Обратная связь";
-  $load_file = 'feedback.php';
+  $load_file = __DIR__.'/templates/feedback.php';
   break;
  case 'mserv':
   $page_title = "Скачать мастер сервер для CS 1.6, CS:S, CS:GO";
-  $load_file = 'mserv.php';
+  $load_file = __DIR__.'/templates/mserv.php';
   break;
  case 'cs16':
  case 'css':
@@ -116,7 +116,7 @@ switch ($load) {
  case 'gm':
   $page_title = $page_title_games[$load];
   $filter = "AND server_game = '${load}'";
-  $load_file = 'servers.php';
+  $load_file = __DIR__.'/templates/servers.php';
   break;
  case 'classic':
  case 'csdm':
@@ -134,11 +134,11 @@ switch ($load) {
  case 'zombiemod':
   $page_title = $page_title_modes[$load];
   $filter = "AND server_mode = '${load}'";
-  $load_file = 'servers.php';
+  $load_file = __DIR__.'/templates/servers.php';
   break;
  case 'search':
   $page_title = "Поиск серверов CS 1.6, CS:S, CS:GO";
-  $load_file = 'search.php';
+  $load_file = __DIR__.'/templates/search.php';
   break;
  case 'info':
   $take_server = dbquery("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".$_GET['id']."");
@@ -148,11 +148,11 @@ switch ($load) {
   break;
  case 'message':
   $msg_code = $_GET['code'];
-  $load_file = 'include/messages.php'; // File not found
+  $load_file = __DIR__.'/templates/messages.php'; // File not found
   break;
  default:
   $filter = '';
-  $load_file = 'servers.php';
+  $load_file = __DIR__.'/templates/servers.php';
   break;
 }
  
