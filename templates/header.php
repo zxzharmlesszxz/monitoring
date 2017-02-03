@@ -23,14 +23,14 @@ if(!defined("MONENGINE")) {
   <meta name="copyright" content="Copyright © 2014">
   <meta name="cypr-verification" content="df9b877027745edce833e2dba8399189">
   <meta name="google-site-verification" content="Au5rwzYBo9sBRTDfWnc0JeMEc99hD-nQXasfWNTVA2w">
-  <script type='text/javascript' src='/include/js/jquery-1.7.2.min.js'></script>
-  <script type='text/javascript' src='/include/js/cookies.js'></script>
-  <script type='text/javascript' src='/include/js/jquery.cookies.js'></script>
-  <script type='text/javascript' src='/include/js/jquery.dataTables.min.js'></script>
+  <script type='text/javascript' src='/templates/js/jquery-1.7.2.min.js'></script>
+  <script type='text/javascript' src='/templates/js/cookies.js'></script>
+  <script type='text/javascript' src='/templates/js/jquery.cookies.js'></script>
+  <script type='text/javascript' src='/templates/js/jquery.dataTables.min.js'></script>
   <link rel="stylesheet" type="text/css" href="/templates/css/jquery.dataTables.min.css">
   <link href='/templates/css/mainstyle.css' rel='stylesheet' type='text/css' media='all'>
-  <link href='/templates/style.css' rel='stylesheet' type='text/css'>
-  <script type="text/javascript" src="">
+  <link href='/templates/css/style.css' rel='stylesheet' type='text/css'>
+  <script type="text/javascript">
    $(document).ready(function(){
     // DataTable jquery plugin
     //var table = $('#table').DataTable({"stateSave": true});
