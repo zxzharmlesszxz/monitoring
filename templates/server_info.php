@@ -242,7 +242,7 @@ echo "<div class='box_rounded'>";
         </div><div style='margin-bottom:4px;'></div></div>
       <div class='box_rounded'>
       <div style='padding-bottom:3px;'><div class='box_title'>Большой HTML-мониторинг:</div></div>
-      <center><iframe style='border: 1px solid #7D7D7D;' src='https://monitoring.contra.net.ua/byweb.php?id={$server_data['server_id']}' frameborder='1' width='190' height='250' scrolling='no'></iframe><br><textarea rows='6' cols='24'><iframe src='https://monitoring.contra.net.ua/byweb.php?id={$server_data['server_id']}' frameborder='1' width='190' height='250' scrolling='no'></iframe></textarea></center>
+      <center><iframe style='border: 1px solid #7D7D7D;' src='https://monitoring.contra.net.ua/byweb?id={$server_data['server_id']}' frameborder='1' width='190' height='250' scrolling='no'></iframe><br><textarea rows='6' cols='24'><iframe src='https://monitoring.contra.net.ua/byweb.php?id={$server_data['server_id']}' frameborder='1' width='190' height='250' scrolling='no'></iframe></textarea></center>
       </div>
       </div><div style='margin-bottom:-11px;'></div>
       
