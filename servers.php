@@ -136,7 +136,7 @@ if (count($pg_info['pages']) > 1) {
  if ($pg_info['current'] == 1) {
   echo "<span>Назад</span><span>1</span>";
  } else {
-  echo "<a href='/all/{$pg_info['previous']}' rel='follow'>Назад</a><a href='/all/1'>1</a>";
+  echo "<a href='/{$load}/{$pg_info['previous']}' rel='follow'>Назад</a><a href='/{$load}/1'>1</a>";
  }
 
  foreach($pg_info['pages'] as $k => $v) {
@@ -146,7 +146,7 @@ if (count($pg_info['pages']) > 1) {
   if ($v == $pg_info['current'] or $v == '...') {
    echo "<span>$v</span>";
   } else {
-   echo "<a href='/all/$v' rel='follow'>$v</a>";
+   echo "<a href='/{$load}/$v' rel='follow'>$v</a>";
   }
  }
 
