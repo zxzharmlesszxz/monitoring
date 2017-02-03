@@ -122,8 +122,6 @@ if ($servers_total !=0 ) {
   
   echo $row;
  }
-} else {
-  echo "<th><center> ".$locale['017']."</center></th>";
 }
 /* TBODY END */
 echo "</tbody></table>";
