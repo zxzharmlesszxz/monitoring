@@ -1,85 +1,90 @@
 <?php
-class pagination
-{
-	public function __construct() {
-	}
-	public function calculate_pages($total_rows, $rows_per_page, $page_num) {
-		$arr = array();
-		// calculate last page
-		$last_page = ceil($total_rows / $rows_per_page);
-		// make sure we are within limits
-		$page_num = (int) $page_num;
-		if ($page_num < 1) {
-		   $page_num = 1;
-		} 
-		elseif ($page_num > $last_page) {
-		   $page_num = $last_page;
-		}
-		$upto = ($page_num - 1) * $rows_per_page;
-		$arr['limit'] = 'LIMIT '.$upto.',' .$rows_per_page;
-		$arr['current'] = $page_num;
-		if($page_num == 1) {
-			$arr['previous'] = $page_num;
-		} else {
-			$arr['previous'] = $page_num - 1;
-		}
-		if($page_num == $last_page) {
-			$arr['next'] = $last_page;
-		} else {
-			$arr['next'] = $page_num + 1;
-		}
-		$arr['last'] = $last_page;
-		$arr['info'] = 'Page ('.$page_num.' of '.$last_page.')';
-		$arr['pages'] = $this->get_surrounding_pages($page_num, $last_page, $arr['next']);
-		return $arr;
-	}
-	function get_surrounding_pages($page_num, $last_page, $next) {
-		$arr = array();
-		if($page_num <= 4) {
-			$show = 4;
-			$pg_pos = 'l';
-		} elseif($page_num > $last_page - 4) {
-			$show = 4;
-			$pg_pos = 'r';
-		} else {
-			$show = 3; // how many boxes
-			$pg_pos = 'c';
-		}
-		//echo $pg_pos;
-		// at first
-		if ($pg_pos == 'l') {
-			// case of 1 page only
-			if($last_page == 1) return array(1);
-			for ($i = 0; $i < $show + 1; $i++) {
-				if ($i == $last_page) break;
-				array_push($arr, $i + 1);
-			}
-			if($last_page > 6) array_push($arr, '...');
-			return $arr;
-		}
-		// at last
-		if ($pg_pos == 'r') {
-			$start = $last_page - $show - 1;
-			if ($start < 1) $start = 0;
-			if($last_page > 6) array_push($arr, '...');
-			for ($i = $start; $i < $last_page; $i++) {
-				array_push($arr, $i + 1);
-			}
-			return $arr;
-		}
-		// at middle
-		$start = $page_num - $show;
-		if ($start < 1) $start = 0;
-		array_push($arr, '...');
-		for ($i = $start; $i < $page_num; $i++) {
-			array_push($arr, $i + 1);
-		}
-		for ($i = ($page_num + 1); $i < ($page_num + $show); $i++) {
-			if ($i == ($last_page + 1)) break;
-			array_push($arr, $i);
-		}
-		array_push($arr, '...');
-		return $arr;
-	}
+class pagination {
+ public function __construct() {}
+
+ public function calculate_pages($total_rows, $rows_per_page, $page_num) {
+  $arr = array();
+  // calculate last page
+  $last_page = ceil($total_rows / $rows_per_page);
+  // make sure we are within limits
+  $page_num = (int) $page_num;
+  if ($page_num < 1) {
+   $page_num = 1;
+  } elseif ($page_num > $last_page) {
+   $page_num = $last_page;
+  }
+
+  $upto = ($page_num - 1) * $rows_per_page;
+  $arr['limit'] = 'LIMIT '.$upto.',' .$rows_per_page;
+  $arr['current'] = $page_num;
+
+  if ($page_num == 1) {
+   $arr['previous'] = $page_num;
+  } else {
+   $arr['previous'] = $page_num - 1;
+  }
+
+  if ($page_num == $last_page) {
+   $arr['next'] = $last_page;
+  } else {
+   $arr['next'] = $page_num + 1;
+  }
+
+  $arr['last'] = $last_page;
+  $arr['info'] = 'Page ('.$page_num.' of '.$last_page.')';
+  $arr['pages'] = $this->get_surrounding_pages($page_num, $last_page, $arr['next']);
+  return $arr;
+ }
+
+ public function get_surrounding_pages($page_num, $last_page, $next) {
+  $arr = array();
+  if ($page_num <= 4) {
+   $show = 4;
+   $pg_pos = 'l';
+  } elseif ($page_num > $last_page - 4) {
+   $show = 4;
+   $pg_pos = 'r';
+  } else {
+   $show = 3; // how many boxes
+   $pg_pos = 'c';
+  }
+  //echo $pg_pos;
+  // at first
+  if ($pg_pos == 'l') {
+   // case of 1 page only
+   if ($last_page == 1) return array(1);
+
+   for ($i = 0; $i < $show + 1; $i++) {
+    if ($i == $last_page) break;
+    array_push($arr, $i + 1);
+   }
+
+   if ($last_page > 6) array_push($arr, '...');
+   return $arr;
+  }
+  // at last
+  if ($pg_pos == 'r') {
+   $start = $last_page - $show - 1;
+   if ($start < 1) $start = 0;
+   if ($last_page > 6) array_push($arr, '...');
+   for ($i = $start; $i < $last_page; $i++) {
+    array_push($arr, $i + 1);
+   }
+   return $arr;
+  }
+  // at middle
+  $start = $page_num - $show;
+  if ($start < 1) $start = 0;
+  array_push($arr, '...');
+  for ($i = $start; $i < $page_num; $i++) {
+   array_push($arr, $i + 1);
+  }
+
+  for ($i = ($page_num + 1); $i < ($page_num + $show); $i++) {
+   if ($i == ($last_page + 1)) break;
+   array_push($arr, $i);
+  }
+  array_push($arr, '...');
+  return $arr;
+ }
 }
-?>
