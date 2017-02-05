@@ -28,32 +28,6 @@ if(!defined("MONENGINE")) {
 $select_query = "SELECT * FROM ".DB_SERVERS." WHERE server_new != 1 AND server_status != 0 AND server_off != 1 {$filter} ORDER BY server_vip DESC, votes DESC ";//.$query_limit;
 $servers = dbquery($select_query);
 
-echo "<table class='servers' cellpadding='0' cellspacing='0' border='0'>";
-
-/*
-$locale['010'] Имя сервера
-$locale['011'] Адрес
-$locale['013'] Игроки
-*/
-
-/* TABLE HEAD */
-echo <<<EOT
- <thead>
-  <tr>
-   <th width='35%' style='padding-left:45px;'>Название сервера</th>
-   <th width=200>Адрес сервера</th>
-   <th width=80>Мод</th>
-   <th width=130>Карта</th>
-   <th width=100>Игроки</th>
-   <th width=60>Голоса</th>
-  </tr>
- </thead>
-
-EOT;
-
-/* TABLE BODY */
-echo "<tbody>";
-
 if ($servers_total !=0 ) {
  while ($r=dbarray_fetch($servers)) {
   $players = $r['server_players']."/".$r['server_maxplayers'];
@@ -92,10 +66,9 @@ if ($servers_total !=0 ) {
    
    if ($server_full<='100' and $server_full>'80')
     $la = "la5";
-
-   $row = "<tr>";
   }
-  
+
+  $row = "<tr>";
   $row .= "<td align='left' style='padding-left:20px;'>";
   $row .= "<img src='/images/flags/$server_location.png' class='location' title='$r[server_location]' alt='$r[server_location]'>";
   $row .= "<a class='name' title='Перейти на страницу сервера {$r['server_name']}' href='".$settings['site_url']."server/{$r['server_id']}' rel='follow'>".htmlspecialchars($r['server_name'])."</a> ";
@@ -118,12 +91,26 @@ if ($servers_total !=0 ) {
    $row .= "</span>";
   }
   $row .= "</td></tr>";
-  
-  echo $row;
  }
 }
-/* TBODY END */
-echo "</tbody></table>";
+
+echo <<<EOT
+<table class='servers' cellpadding='0' cellspacing='0' border='0'>
+ <thead>
+  <tr>
+   <th width='35%' style='padding-left:45px;'>Название сервера</th>
+   <th width=200>Адрес сервера</th>
+   <th width=80>Мод</th>
+   <th width=130>Карта</th>
+   <th width=100>Игроки</th>
+   <th width=60>Голоса</th>
+  </tr>
+ </thead>
+ <tbody>
+ {$row}
+ </tbody>
+</table>
+EOT;
 /* TABLE END */
 
 /* PAGINATION */
