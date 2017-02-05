@@ -72,7 +72,7 @@ if ($servers_total !=0 ) {
   }
 
   $row .= "<td align='left' style='padding-left:20px;'>";
-  $row .= "<img src='/images/flags/$server_location.png' class='location' title='$r['server_location']' alt='$r['server_location']'>";
+  $row .= "<img src='/images/flags/$server_location.png' class='location' title='{$r['server_location']}' alt='{$r['server_location']}'>";
   $row .= "<a class='name' title='Перейти на страницу сервера {$r['server_name']}' href='".$settings['site_url']."server/{$r['server_id']}' rel='follow'>".htmlspecialchars($r['server_name'])."</a> ";
   $row .= (($r['server_steam'] == '1') ? '<img src=\'images/icon_steam.png\'>' : '');
   $row .= "</td>";
