@@ -1,3 +1,4 @@
 .idea/
 include/config.php
 load/
+*/*.nomedia
