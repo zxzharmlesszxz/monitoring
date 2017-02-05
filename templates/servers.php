@@ -76,7 +76,7 @@ if ($servers_total !=0 ) {
   $row .= "<a class='name' title='Перейти на страницу сервера {$r['server_name']}' href='".$settings['site_url']."server/{$r['server_id']}' rel='follow'>".htmlspecialchars($r['server_name'])."</a> ";
   $row .= (($r['server_steam'] == '1') ? '<img src=\'images/icon_steam.png\'>' : '');
   $row .= "</td>";
-  $row .= "<td><img src='/images/icons/$r['server_game'].gif' class='game' title='$r['server_game'] сервер' alt='$r['server_game'] сервер' />";
+  $row .= "<td><img src='/images/icons/{$r['server_game']}.gif' class='game' title='{$r['server_game']} сервер' alt='{$r['server_game']} сервер' />";
   $row .= "{$r['server_ip']}</td>";
   $row .= "<td class='mode'>{$r['server_mode']}</td>";
   $row .= "<td class='map'>{$r['server_map']}</td>";
