@@ -38,7 +38,7 @@ if ($servers_total !=0 ) {
    $server_location = 'undefined';
   
   if (array_key_exists($r['server_row_style'], $styles)) {
-   $row = "<tr style='{$styles[$r['server_row_style']]['style']}'>";
+   $row .= "<tr style='{$styles[$r['server_row_style']]['style']}'>";
   } else {
    if ($r['server_players'] == $r['server_maxplayers']) {
     $players = "<font color='#00FF00'>".$r['server_players']."/".$r['server_maxplayers']."</font>";
@@ -67,19 +67,20 @@ if ($servers_total !=0 ) {
    
    if ($server_full<='100' and $server_full>'80')
     $la = "la5";
+
+   $row .= "<tr>";
   }
 
-  $row .= "<tr>";
   $row .= "<td align='left' style='padding-left:20px;'>";
-  $row .= "<img src='/images/flags/$server_location.png' class='location' title='$r[server_location]' alt='$r[server_location]'>";
+  $row .= "<img src='/images/flags/$server_location.png' class='location' title='$r['server_location']' alt='$r['server_location']'>";
   $row .= "<a class='name' title='Перейти на страницу сервера {$r['server_name']}' href='".$settings['site_url']."server/{$r['server_id']}' rel='follow'>".htmlspecialchars($r['server_name'])."</a> ";
   $row .= (($r['server_steam'] == '1') ? '<img src=\'images/icon_steam.png\'>' : '');
   $row .= "</td>";
-  $row .= "<td><img src='/images/icons/$r[server_game].gif' class='game' title='$r[server_game] сервер' alt='$r[server_game] сервер' />";
+  $row .= "<td><img src='/images/icons/$r['server_game'].gif' class='game' title='$r['server_game'] сервер' alt='$r['server_game'] сервер' />";
   $row .= "{$r['server_ip']}</td>";
-  $row .= "<td class='mode'>$r[server_mode]</td>";
+  $row .= "<td class='mode'>{$r['server_mode']}</td>";
   $row .= "<td class='map'>{$r['server_map']}</td>";
-  $row .= "<td class='players'>$players</td>";
+  $row .= "<td class='players'>{$players}</td>";
   $row .= "<td>";
 
   if ($r['server_vip'] == 1) {
@@ -91,7 +92,8 @@ if ($servers_total !=0 ) {
    $row .= "<a href='javascript://' onClick=\"rating({$r['server_id']}, 'down', '".md5("m0n3ng1ne.s4lt:P{]we{$r['server_id']}@._)%;")."');\" class='votedown' id='{$r['server_id']}'></a>";
    $row .= "</span>";
   }
-  $row .= "</td></tr>";
+  $row .= "</td>";
+  $row .= "</tr>";
  }
 }
 
