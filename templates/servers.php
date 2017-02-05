@@ -29,6 +29,7 @@ $select_query = "SELECT * FROM ".DB_SERVERS." WHERE server_new != 1 AND server_s
 $servers = dbquery($select_query);
 
 if ($servers_total !=0 ) {
+ $row = '';
  while ($r=dbarray_fetch($servers)) {
   $players = $r['server_players']."/".$r['server_maxplayers'];
   $server_location = $r['server_location'];
@@ -68,7 +69,7 @@ if ($servers_total !=0 ) {
     $la = "la5";
   }
 
-  $row = "<tr>";
+  $row .= "<tr>";
   $row .= "<td align='left' style='padding-left:20px;'>";
   $row .= "<img src='/images/flags/$server_location.png' class='location' title='$r[server_location]' alt='$r[server_location]'>";
   $row .= "<a class='name' title='Перейти на страницу сервера {$r['server_name']}' href='".$settings['site_url']."server/{$r['server_id']}' rel='follow'>".htmlspecialchars($r['server_name'])."</a> ";
