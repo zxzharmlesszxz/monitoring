@@ -9,10 +9,8 @@ if(!defined("MONENGINE")) {
 $title = (isset($page_title)) ? $page_title : $settings['site_name'];
 $icon = (file_exists(IMAGES.'favicon.ico')) ? "<link rel='shortcut icon' href='".IMAGES."favicon.ico' type='image/x-icon' />" : '';
 
-$games_menu = games_menu();
-$modes_menu = modes_menu();
 
-echo <<<EOT
+?>
 <!DOCTYPE html>
 <html>
  <head>
@@ -45,17 +43,17 @@ echo <<<EOT
      "order": [],
      language: {
       search: "_INPUT_",
-      searchPlaceholder: "{$locale['024']}",
-      "emptyTable": "{$locale['017']}",
-      "info": "{$locale['023']}",
-      "infoFiltered": "{$locale['025']}",
-      "lengthMenu": "{$locale['026']}",
+      searchPlaceholder: "<?php echo $locale['024']; ?>",
+      "emptyTable": "<?php echo $locale['017']; ?>",
+      "info": "<?php echo $locale['023']; ?>",
+      "infoFiltered": "<?php echo $locale['025']; ?>",
+      "lengthMenu": "<?php echo $locale['026']; ?>",
      }
     });
-    //$('table.servers thead tr th').each(function(){var title = $('table.servers thead tr th').eq($(this).index()).text();$(this).html('<input type="text" placeholder="'+title+'" />');});
+    $('table.servers thead tr th').each(function(){var title = $('table.servers thead tr th').eq($(this).index()).text();$(this).html('<input type="text" placeholder="'+title+'" />');});
 
     // Apply the search
-    //if(table.columns().eq(0)){table.columns().each(function(colIdx){$('input', table.column(colIdx).footer()).on('keyup change', function(){table.column(colIdx).search(this.value).draw();});});}
+    if(table.columns().eq(0)){table.columns().each(function(colIdx){$('input', table.column(colIdx).head()).on('keyup change', function(){table.column(colIdx).search(this.value).draw();});});}
   });
   </script>
   <!-- Put this script tag to the <head> of your page -->
@@ -63,9 +61,9 @@ echo <<<EOT
   <script type="text/javascript">
    VK.init({apiId: 4747746, onlyWidgets: true});
   </script>
-  <base href='{$settings['site_url']}'>
-  <title>{$title}</title>
-  {$icon}
+  <base href='<?php echo $settings['site_url']; ?>'>
+  <title><?php echo $title; ?></title>
+  <?php echo $icon; ?>
  </head>
  <body>
   <!-- Wrapper -->
@@ -77,8 +75,8 @@ echo <<<EOT
      <a id="header_stat_logo" href="/"></a>
      <div id="header_stat_main">
       <div id="stats">
-       Всего игровых серверов в мониторинге: <span class="servers_online">{$servers_total}</span> серверов, из них <span class="servers_online">{$servers_online}</span> серверов онлайн.<br />
-       Самая популярная карта: <span class="servers_online">de_dust2_2x2</span>. Последние обновление было: <span class="servers_online">{time() - $settings['last_update']}</span> секунд(ы) назад.
+       Всего игровых серверов в мониторинге: <span class="servers_online"><?php echo $servers_total;?></span> серверов, из них <span class="servers_online"><?php echo $servers_online; ?></span> серверов онлайн.<br />
+       Самая популярная карта: <span class="servers_online">de_dust2_2x2</span>. Последние обновление было: <span class="servers_online"><?php echo time() - $settings['last_update']; ?></span> секунд(ы) назад.
       </div>
       <div id="header_stat_search">
        <form action="/search/" method="POST">
@@ -105,7 +103,7 @@ echo <<<EOT
     </div>
     <!-- /Navigation -->
     <!-- Game navigation -->
-    {$games_menu}
+<?php echo games_menu(); ?>
     <!-- /Game navigation -->
     <div class="clearfix"></div>
     <!-- Top -->
@@ -121,10 +119,9 @@ echo <<<EOT
     </div>
     <!-- /Alert -->
     <!-- Mode navigation -->
-    {$modes_menu}
+<?php echo modes_menu(); ?>
     <!-- /Mode navigation -->
    </div>
    <!-- /Header -->
    <!-- CONTENT -->
    <div id="main">
-EOT;
