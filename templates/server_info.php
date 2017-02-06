@@ -124,113 +124,113 @@ if (mysql_num_rows($take_server) == 0) {
  }
 
  echo <<<EOT
-<div class='horizontal_line'>Сервер: <b>{$server_data['server_name']}</b></div>
- <div class='cont'>
-  <table cellspacing='0' cellpadding='0' width='100%' class='info_tbl'>
-   <tr>
-    <td valign='top' width='250' style='padding-bottom:20px;'>
-     <div style='padding: 5px;margin: 4px;line-height: 12px;background: #1E1E1E;border: 1px solid #444;'>
-      <div style='padding-top:10px;'></div>
-      <center>
-       <img src='/images/maps/cs16/{$server_data['server_map']}.jpg' style='width:231px;height:174px;border:1px solid #7F7F7F;opacity:0.8;'>
-      </center>
-     </div>
-     <div style='text-align:center;padding-right:50px;'>
-      <table align='center' cellpadding='0' cellspacing='0' width='236' height='30'>
-       <tr>
-        <td class='load_bar load_$load_color' width='{$percent_loaded}%' valign='middle'>
-         <div style='position:absolute;'>
-          <nobr>Загруженность сервера {$percent_loaded}%</nobr>
+   <div class='horizontal_line'>Сервер: <b>{$server_data['server_name']}</b></div>
+    <div class='cont'>
+     <table cellspacing='0' cellpadding='0' width='100%' class='info_tbl'>
+      <tr>
+       <td valign='top' width='250' style='padding-bottom:20px;'>
+        <div style='padding: 5px;margin: 4px;line-height: 12px;background: #1E1E1E;border: 1px solid #444;'>
+         <div style='padding-top:10px;'></div>
+         <center>
+          <img src='/images/maps/cs16/{$server_data['server_map']}.jpg' style='width:231px;height:174px;border:1px solid #7F7F7F;opacity:0.8;'>
+         </center>
+        </div>
+        <div style='text-align:center;padding-right:50px;'>
+         <table align='center' cellpadding='0' cellspacing='0' width='236' height='30'>
+          <tr>
+           <td class='load_bar load_$load_color' width='{$percent_loaded}%' valign='middle'>
+            <div style='position:absolute;'>
+             <nobr>Загруженность сервера {$percent_loaded}%</nobr>
+            </div>
+           </td>
+           <td>
+           </td>
+          </tr>
+         </table>
+        </div>
+       </div>
+       <div class='block_line'>
+        <div class='block address'>
+         <div class='t'>Адрес сервера:</div>
+         <div class='block_line_small'>{$server_data['server_ip']}</div>
+        </div>
+       </div>
+       <div class='block_line'>
+        <div class='block mode'>
+         <div class='t'>Мод сервера:</div>
+         <div class='block_line_small'>{$server_data['server_mode']}</div>
+        </div>
+       </div>
+       <div class='block_line'>
+        <div class='block map'>
+         <div class='t'>Текущая карта:</div>
+         <div class='block_line_small'>{$server_data['server_map']}</div>
+        </div>
+       </div>
+       <div class='block_line'>
+        <div class='block players'>
+         <div class='t'>Игроки:</div>
+         <div class='block_line_small'>{$server_data['server_players']}/{$server_data['server_maxplayers']}</div>
+        </div>
+       </div>
+       <div class='block_line'>
+        <div class='block votes'>
+         <div class='t'>Голосов за сервер:</div>
+         <div class='block_line_small'>
+          <span class='votes_count' id='votes_count_{$server_data['server_id']}' >{$server_data['votes']}</span>
+          <span class='vote_buttons' id='vote_buttons_{$server_data['server_id']}'>
+           <a href='javascript://' onClick="rating({$server_data['server_id']}, 'up', '{$vote_hash}');" class='voteup' id='{$server_data['server_id']}'></a>
+           <a href='javascript://' onClick="rating({$server_data['server_id']}, 'down', '{$vote_hash}');" class='votedown' id='{$server_data['server_id']}'></a>
+          </span>
          </div>
-        </td>
-        <td>
-        </td>
-       </tr>
-      </table>
-     </div>
-    </div>
-    <div class='block_line'>
-     <div class='block address'>
-      <div class='t'>Адрес сервера:</div>
-      <div class='block_line_small'>{$server_data['server_ip']}</div>
-     </div>
-    </div>
-    <div class='block_line'>
-     <div class='block mode'>
-      <div class='t'>Мод сервера:</div>
-      <div class='block_line_small'>{$server_data['server_mode']}</div>
-     </div>
-    </div>
-    <div class='block_line'>
-     <div class='block map'>
-      <div class='t'>Текущая карта:</div>
-      <div class='block_line_small'>{$server_data['server_map']}</div>
-     </div>
-    </div>
-    <div class='block_line'>
-     <div class='block players'>
-      <div class='t'>Игроки:</div>
-      <div class='block_line_small'>{$server_data['server_players']}/{$server_data['server_maxplayers']}</div>
-     </div>
-    </div>
-    <div class='block_line'>
-     <div class='block votes'>
-      <div class='t'>Голосов за сервер:</div>
-      <div class='block_line_small'>
-       <span class='votes_count' id='votes_count_{$server_data['server_id']}' >{$server_data['votes']}</span>
-       <span class='vote_buttons' id='vote_buttons_{$server_data['server_id']}'>
-        <a href='javascript://' onClick="rating({$server_data['server_id']}, 'up', '{$vote_hash}');" class='voteup' id='{$server_data['server_id']}'></a>
-        <a href='javascript://' onClick="rating({$server_data['server_id']}, 'down', '{$vote_hash}');" class='votedown' id='{$server_data['server_id']}'></a>
-       </span>
-      </div>
-     </div>
-    </div>
-    {$site}
-   </td>
-   <td valign='top' style='padding-top: 5px;'>
-    <div style='padding:10px;background-color: #1E1E1E;border:1px solid #444444'>
-     <b>Горизонтальный банер-мониторинг:</b>
-     <div style='padding-top:4px;'></div>
-     <img src='/banner/userbar.png?serv={$server_data['server_ip']}'>
-     <div style='padding-top:8px;'></div>
-     HTML-код:
-     <br>
-     <textarea rows='3' cols='76'><a href='/server/{$server_data['server_id']}'><img src='/banner/userbar.png?serv={$server_data['server_ip']}'></a></textarea>
-     <br>
-     BB-код:
-     <br>
-     <textarea rows='3' cols='76'>[url=/server/{$server_data['server_id']}][img]/banner/userbar.png?serv={$server_data['server_ip']}[/img][/url]</textarea>
-    </div>
-    <div style='margin-bottom:5px;'></div>
-    <div class='box_rounded'>
-     <div style='font-size: 15px;color:#EEEEEE;padding-bottom:5px;'>Оставить комментарий к серверу:</div>
-     <form method='POST' class='comments'>"
-      .((!empty($message)) ? "$message" : "").((!empty($com_error)) ? "$com_error" : '')."
-      <div style='padding-bottom:5px;'>Ваш ник: <input type='text' name='com_name'".((!empty($com_name)) ? " value='$com_name'" : '')."></div>
-      <div style='padding-bottom:3px;'>
-       <textarea name='com_text' style='width:98%;height: 75px;'>".((!empty($com_text)) ? "$com_text" : '')."</textarea>
-      </div>
-      <div class='clearfix'></div>
-      <div style='padding-top:4px;'></div>
-      <div style='padding-bottom:5px;opacity:0.7;'>
-       <img src='/include/cap/index.php?".session_name()."=".session_id()."'>
-      </div>
-      <div style='float:right;padding-bottom:10px;'>
-       <input type='submit' class='button' value='Добавить комментарий'>
-      </div>
-      <div>
-       <input type='text' name='com_captcha' style='width:148px;'>
-      </div>
-     </form>
-     <div style='margin-bottom:5px;'></div>
-     <div class='box_rounded'>
-      <div style='font-size: 15px;'>Комментарии к серверу {$server_data['server_name']}</div>
-      <div class='server_comments'>
-       {$comms}
-      </div>
-     </div>
-    </div>
-   </td>
+        </div>
+       </div>
+       {$site}
+      </td>
+      <td valign='top' style='padding-top: 5px;'>
+       <div style='padding:10px;background-color: #1E1E1E;border:1px solid #444444'>
+        <b>Горизонтальный банер-мониторинг:</b>
+        <div style='padding-top:4px;'></div>
+        <img src='/banner/userbar.png?serv={$server_data['server_ip']}'>
+        <div style='padding-top:8px;'></div>
+        HTML-код:
+        <br>
+        <textarea rows='3' cols='76'><a href='/server/{$server_data['server_id']}'><img src='/banner/userbar.png?serv={$server_data['server_ip']}'></a></textarea>
+        <br>
+        BB-код:
+        <br>
+        <textarea rows='3' cols='76'>[url=/server/{$server_data['server_id']}][img]/banner/userbar.png?serv={$server_data['server_ip']}[/img][/url]</textarea>
+       </div>
+       <div style='margin-bottom:5px;'></div>
+       <div class='box_rounded'>
+        <div style='font-size: 15px;color:#EEEEEE;padding-bottom:5px;'>Оставить комментарий к серверу:</div>
+        <form method='POST' class='comments'>"
+.((!empty($message)) ? "$message" : "").((!empty($com_error)) ? "$com_error" : '')."
+         <div style='padding-bottom:5px;'>Ваш ник: <input type='text' name='com_name'".((!empty($com_name)) ? " value='$com_name'" : '')."></div>
+         <div style='padding-bottom:3px;'>
+          <textarea name='com_text' style='width:98%;height: 75px;'>".((!empty($com_text)) ? "$com_text" : '')."</textarea>
+         </div>
+         <div class='clearfix'></div>
+         <div style='padding-top:4px;'></div>
+         <div style='padding-bottom:5px;opacity:0.7;'>
+          <img src='/include/cap/index.php?".session_name()."=".session_id()."'>
+         </div>
+         <div style='float:right;padding-bottom:10px;'>
+          <input type='submit' class='button' value='Добавить комментарий'>
+         </div>
+         <div>
+          <input type='text' name='com_captcha' style='width:148px;'>
+         </div>
+        </form>
+        <div style='margin-bottom:5px;'></div>
+        <div class='box_rounded'>
+         <div style='font-size: 15px;'>Комментарии к серверу {$server_data['server_name']}</div>
+         <div class='server_comments'>
+          {$comms}
+         </div>
+        </div>
+       </div>
+      </td>
       <td valign='top' width='300' style='padding:4px;padding-top:5px;'>
        <div class='box_rounded'>
         <div class='box_title'>Доп. информация:</div>
