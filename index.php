@@ -84,7 +84,6 @@ switch ($load) {
   exit;
   break;
  case 'cs16':
- case 'css':
  case 'cssource':
  case 'csgo':
  case 'cz':
@@ -92,13 +91,9 @@ switch ($load) {
  case 'hl':
  case 'hl2':
  case 'l4d':
- case 'left4dead':
  case 'l4d2':
- case 'left4dead2':
  case 'teamfortess':
- case 'tf2':
  case 'garrysmod':
- case 'gm':
   $page_title = "Сервера {$games[$load]}";
   $filter = "AND server_game = '${load}'";
   $load_file = __DIR__.'/templates/servers.php';
