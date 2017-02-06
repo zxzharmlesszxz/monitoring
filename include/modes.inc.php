@@ -33,3 +33,11 @@ function modes_menu() {
      </ul>
     </div>";
 }
+
+function select_modes() {
+ global $modes;
+ foreach ($modes as $mode){
+  $modes[$mode] = "<option value='{$mode}'>{$mode}</option>";
+ }
+ return implode('\n', $modes);
+}

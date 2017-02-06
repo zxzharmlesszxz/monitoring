@@ -104,6 +104,9 @@ if ($settings['enable_registration'] == 0) {
  $checked = ($steam == 1) ? " checked='checked'" : "";
  $captch = session_name()."=".session_id();
 
+ $games = select_games();
+ $modes = select_modes();
+
  echo <<<EOT
   {$message}
   <div style='padding-top:7px'></div>
@@ -127,16 +130,7 @@ if ($settings['enable_registration'] == 0) {
      <td align='right'>Игра сервера:</td>
      <td>
       <select style='width:200px;' name='server_game' value='{$game}'>
-       <option value='cs16'>Counter-Strike</option>
-       <option value='css'>Counter-Strike: Source</option>
-       <option value='cz'>Counter Strike: Condition Zero</option>
-       <option value='csgo'>Counter-Strike: Global Offensive</option>
-       <option value='hl'>Half-Life</option>
-       <option value='hl2'>Half-Life 2</option>
-       <option value='l4d'>Left 4 Dead</option>
-       <option value='l4d2'>Left 4 Dead 2</option>
-       <option value='tf2'>Team Fortress 2</option>
-       <option value='gm'>Garry's Mod</option>
+       {$games}
       </select>
      </td>
     </tr>
@@ -144,20 +138,7 @@ if ($settings['enable_registration'] == 0) {
      <td align='right'>Мод сервера:</td>
      <td>
       <select style='width:200px;' name='server_mode' value='{$mode}'>
-       <option value='classic'>Classic</option>
-       <option value='warcraft'>Warcraft</option>
-       <option value='csdm'>CSDM</option>
-       <option value='gungame'>GunGame</option>
-       <option value='hns'>HNS</option>
-       <option value='surf'>Surf</option>
-       <option value='jump'>Jump</option>
-       <option value='deathrun'>Deathrun</option>
-       <option value='diablomod'>DiabloMod</option>
-       <option value='superhero'>SuperHero</option>
-       <option value='soccerjam'>Soccer Jam</option>
-       <option value='jailbreak'>JailBreak</option>
-       <option value='knife'>Knife</option>
-       <option value='zombiemod'>Zombie Mod</option>
+       {$modes}
       </select>
      </td>
     </tr>

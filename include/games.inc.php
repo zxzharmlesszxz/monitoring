@@ -30,3 +30,11 @@ function games_menu() {
      </ul>
     </div>";
 }
+
+function select_games() {
+ global $games;
+ foreach ($games as $game => $title){
+  $games[$game] = "<option value='{$game}'>{$title}</option>";
+ }
+ return implode('\n', $games);
+}
