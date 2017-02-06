@@ -103,26 +103,12 @@ echo "
     </div>
     <!-- /Navigation -->
     <!-- Game navigation -->
-    <div id="sort">
-     <ul>
-      <li><a title="Все сервера мониторинга" href="/" rel="nofollow">Все сервера</a></li>
-      <li><a title="Игровые сервера cs 1.6" href="/cs16" rel="nofollow">CS 1.6</a></li>
-      <li><a title="Игровые сервера cs:go" href="/csgo" rel="nofollow">CS: GO</a></li>
-      <li><a title="Игровые сервера cs:s" href="/cssource" rel="nofollow">CS: Source</a></li>
-      <li><a title="Игровые сервера cs:cz" href="/cszero" rel="nofollow">CS: Zero</a></li>
-      <li><a title="Игровые сервера half-life" href="/hl" rel="nofollow">Half-Life</a></li>
-      <li><a title="Игровые сервера half-life 2" href="/hl2" rel="nofollow">Half-Life 2</a></li>
-      <li><a title="Игровые сервера left 4 dead" href="/l4d" rel="nofollow">Left 4 dead</a></li>
-      <li><a title="Игровые сервера left 4 dead 2" href="/l4d2" rel="nofollow">Left 4 dead 2</a></li>
-      <li><a title="Игровые сервера team fortess" href="/teamfortess" rel="nofollow">Team Fortess</a></li>
-      <li><a title="Игровые сервера garrys mod" href="/garrysmod" rel="nofollow">Garry's Mod</a></li>
-     </ul>
-    </div>
+<?php echo games_menu(); ?>
     <!-- /Game navigation -->
     <div class="clearfix"></div>
     <!-- Top -->
     <div id="top_servers">
-     <?php include(INCLUDES.'top_servers.php'); ?>
+<?php include(INCLUDES.'top_servers.php'); ?>
     </div>
     <!-- /Top -->
     <div class="clearfix"></div>
@@ -133,24 +119,7 @@ echo "
     </div>
     <!-- /Alert -->
     <!-- Mode navigation -->
-    <div class="sort">
-     <ul class="sort_nav">
-      <li><a title="Сервера с модом classic" href="/classic" rel="nofollow">Classic</a></li>
-      <li><a title="Сервера с модом warcraft" href="/warcraft" rel="nofollow">War3raft</a></li>
-      <li><a title="Сервера с модом csdm" href="/csdm" rel="nofollow">CSDM</a></li>
-      <li><a title="Сервера с модом gungame" href="/gungame" rel="nofollow">GunGame</a></li>
-      <li><a title="Сервера с модом hns" href="/hns" rel="nofollow">HNS</a></li>
-      <li><a title="Сервера с модом surf" href="/surf" rel="nofollow">Surf</a></li>
-      <li><a title="Сервера с модом jump" href="/jump" rel="nofollow">Jump</a></li>
-      <li><a title="Сервера с модом deathrun" href="/deathrun" rel="nofollow">Deathrun</a></li>
-      <li><a title="Сервера с модом diablomod" href="/diablomod" rel="nofollow">Diablomod</a></li>
-      <li><a title="Сервера с модом superhero" href="/superhero" rel="nofollow">SuperHero</a></li>
-      <li><a title="Сервера с модом jailbreak" href="/jailbreak" rel="nofollow">JailBreak</a></li>
-      <li><a title="Сервера с модом soccerjam" href="/soccerjam" rel="nofollow">Soccer Jam</a></li>
-      <li><a title="Сервера с модом knife" href="/knife" rel="nofollow">Knife</a></li>
-      <li><a title="Сервера с модом zombie" href="/zombiemod" rel="nofollow">Zombie</a></li>
-     </ul>
-    </div>
+<?php echo modes_menu(); ?>
     <!-- /Mode navigation -->
    </div>
    <!-- /Header -->

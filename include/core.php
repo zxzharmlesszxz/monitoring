@@ -40,6 +40,8 @@ $link = dbconnect($db_host, $db_user, $db_pass, $db_name);
 
 require_once __DIR__."/constants.php";
 require_once __DIR__."/rus_name_fix.php";
+require_once __DIR__."/games.inc.php";
+require_once __DIR__."/modes.inc.php";
 require_once(LOCALE.LOCALESET.'global.php');
 require_once(LOCALE.LOCALESET.'serv.php');
 
