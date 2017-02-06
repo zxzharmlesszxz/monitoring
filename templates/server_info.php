@@ -14,6 +14,8 @@ if (!defined("MONENGINE")) {
 /* Other code */
 require_once LOCALE.LOCALESET."serv.php";
 
+
+$site_link = SITE_URL;
 $server_id = $_GET['id'];
 $take_server = dbquery("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".mysql_real_escape_string($server_id)."");
 $server_data = dbarray_fetch($take_server);
@@ -196,11 +198,11 @@ if (mysql_num_rows($take_server) == 0) {
         <div style='padding-top:8px;'></div>
         HTML-код:
         <br>
-        <textarea rows='3' cols='76'><a href='{SITE_URL}/server/{$server_data['server_id']}'><img src='{SITE_URL}/banner/userbar.png?serv={$server_data['server_ip']}'></a></textarea>
+        <textarea rows='3' cols='76'><a href='{$site_link}/server/{$server_data['server_id']}'><img src='{$site_link}/banner/userbar.png?serv={$server_data['server_ip']}'></a></textarea>
         <br>
         BB-код:
         <br>
-        <textarea rows='3' cols='76'>[url=/server/{$server_data['server_id']}][img]/banner/userbar.png?serv={$server_data['server_ip']}[/img][/url]</textarea>
+        <textarea rows='3' cols='76'>[url={$site_link}/server/{$server_data['server_id']}][img]{$site_link}/banner/userbar.png?serv={$server_data['server_ip']}[/img][/url]</textarea>
        </div>
        <div style='margin-bottom:5px;'></div>
        <div class='box_rounded'>
