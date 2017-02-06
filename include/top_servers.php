@@ -5,17 +5,17 @@
 */
 
 /* Script security */
-if(!defined("MONENGINE")) {
+if (!defined("MONENGINE")) {
  header("Location: index.php");
  exit();
 }
 /* Other code */
 
-if($settings['top_rows'] > 0) {
+if ($settings['top_rows'] > 0) {
  $top_servers = dbquery("SELECT * FROM ".DB_SERVERS." WHERE server_new = '0' AND server_top != '0'");
- while($top_servers_array = dbarray($top_servers)) {
+ while ($top_servers_array = dbarray($top_servers)) {
   $i = $top_servers_array['server_top'];
-  foreach($top_servers_array as $k => $v) {
+  foreach ($top_servers_array as $k => $v) {
    $tops_array[$i][$k] = $v;
   }
  }
@@ -66,37 +66,14 @@ if($settings['top_rows'] > 0) {
  </div>
  ';
 
- function use_top_tpl($tpl) {
-  global $server_location;
-  global $server_game;
-  global $server_map;
-  global $server_players_num;
-  global $server_players_num_max;
-  global $server_id;
-  global $server_name;
-  global $server_address;
-  $vars = Array(
-   '{location}' => $server_location,
-   '{game}' => $server_game,
-   '{map}' => $server_map,
-   '{players}' => $server_players_num,
-   '{players_max}' => $server_players_num_max,
-   '{id}' => $server_id,
-   '{name}' => $server_name,
-   '{address}' => $server_address
-  );
-  $tpl = strtr($tpl, $vars);
-  return $tpl;
- }
-
  // Строим топовые места
  $line = 0;
- for($i = 1; $i <= 5 * LINES_NUM; $i++) {
-  if(@is_array($tops_array[$i])) {
+ for ($i = 1; $i <= 5 * LINES_NUM; $i++) {
+  if (@is_array($tops_array[$i])) {
    $server_id = $tops_array[$i]['server_id'];
    $server_name = $tops_array[$i]['server_name'];
 
-   if(mb_strlen($server_name, 'UTF-8') > 24) {
+   if (mb_strlen($server_name, 'UTF-8') > 24) {
     $server_name = mb_substr($server_name, 0, 24, 'UTF-8')."...";
    }
 
@@ -108,14 +85,14 @@ if($settings['top_rows'] > 0) {
    $server_map = $tops_array[$i]['server_map'];
    $server_game = $tops_array[$i]['server_game'];
 
-   if($tops_array[$i]['server_off'] == 1) $server_address = "<span style='color:#789ABF;cursor:help;' title='Данный сервер заблокирован в мониторинге'>[Сервер заблокирован]</a>";
+   if ($tops_array[$i]['server_off'] == 1) $server_address = "<span style='color:#789ABF;cursor:help;' title='Данный сервер заблокирован в мониторинге'>[Сервер заблокирован]</a>";
 
-   if($tops_array[$i]['server_ipport_style']) {
+   if ($tops_array[$i]['server_ipport_style']) {
     $grc = mysql_fetch_array(mysql_query("SELECT * FROM mon_rowstyles WHERE name='".$tops_array[$i]['server_ipport_style']."'"));
     $server_address = "<span style='".$grc['style']."'>$server_address</span>";
    }
 
-   if($tops_array[$i]['server_status'] == 0) {
+   if ($tops_array[$i]['server_status'] == 0) {
     $server_address .= " <span style='color:#789ABF;cursor:help;' title='Данный сервер выключен'>[<span style='color:#AAAAAA; cursor:help;'>OFF</span>]</span>";
     $server_players_num = "N";
     $server_players_num_max = "A";
@@ -126,7 +103,7 @@ if($settings['top_rows'] > 0) {
    $place_free = true;
   }
 
-  if(($i - 1) % 5 == 0 or $i == 1) {
+  if (($i - 1) % 5 == 0 or $i == 1) {
    $line++;
    $class = ($line % 2 == 0) ? '2' : '1';
    echo "\n<div class='top_zebra_".$class."'>";
@@ -134,9 +111,8 @@ if($settings['top_rows'] > 0) {
 
   echo ($place_free) ? $template_free : use_top_tpl($template_got);
 
-   if($i % 5 == 0) {
+   if ($i % 5 == 0) {
     echo "\n<div class='clearfix'></div>\n</div>\n";
    }
   }
  }
-?>
