@@ -29,14 +29,20 @@ if ($settings['top_rows'] > 0) {
     <a title="Сервер {name}" href="server/{id}" rel="nofollow"><img width="100" height="75" src="'.MAPS.'{game}/{map}.jpg" style="align:texttop;" ></a>
    </div>
    <div class="info_section">
-    <span class="title">Игроки:</span><br>
-    {players}/{players_max}<br><br>
-    <span class="title">Карта:</span><br>
-    {map}<br>
+    <span class="title">Игроки:</span>
+    <br>
+    {players}/{players_max}
+    <br>
+    <br>
+    <span class="title">Карта:</span>
+    <br>
+    {map}
+    <br>
    </div>
    <div class="clearfix"></div>
    <div class="adress_section">
-    <a title="Перейти на страницу сервера {name}" href="server/{id}" rel="nofollow">{name}</a><br>
+    <a title="Перейти на страницу сервера {name}" href="server/{id}" rel="nofollow">{name}</a>
+    <br>
     <div style="padding-top:3px;">
      {address}
     </div>
@@ -51,14 +57,18 @@ if ($settings['top_rows'] > 0) {
     <a title="Заказать место в шапке" href="/paytop" rel="nofollow"><img width="100" height="75" src="/images/top_free.png"></a>
    </div>
    <div class="info_section">
-    <span class="title">Игроки:</span><br>
+    <span class="title">Игроки:</span>
+    <br>
     Пока нет<br><br>
-    <span class="title">Карта:</span><br>
-    Пока нет<br>
+    <span class="title">Карта:</span>
+    <br>
+    Пока нет
+    <br>
    </div>
    <div class="clearfix"></div>
    <div class="adress_section">
-    <a title="Заказать место в шапке" href="/paytop" rel="nofollow">«Премиум место» свободно!</a><br>
+    <a title="Заказать место в шапке" href="/paytop" rel="nofollow">«Премиум место» свободно!</a>
+    <br>
     <div style="padding-top:3px;">
     127.0.0.1:27015
    </div>
@@ -106,13 +116,13 @@ if ($settings['top_rows'] > 0) {
   if (($i - 1) % 5 == 0 or $i == 1) {
    $line++;
    $class = ($line % 2 == 0) ? '2' : '1';
-   echo "\n<div class='top_zebra_".$class."'>";
+   echo "<div class='top_zebra_".$class."'>";
   }
 
   echo ($place_free) ? $template_free : use_top_tpl($template_got);
 
    if ($i % 5 == 0) {
-    echo "\n<div class='clearfix'></div>\n</div>\n";
+    echo "<div class='clearfix'></div></div>";
    }
   }
  }
