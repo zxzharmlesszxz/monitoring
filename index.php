@@ -64,6 +64,25 @@ switch ($load) {
   $page_title = "Скачать мастер сервер для CS 1.6, CS:S, CS:GO";
   $load_file = __DIR__.'/templates/mserv.php';
   break;
+ case 'search':
+  $page_title = "Поиск серверов CS 1.6, CS:S, CS:GO";
+  $load_file = __DIR__.'/templates/search.php';
+  break;
+ case 'info':
+  $take_server = dbquery("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".$_GET['id']."");
+  $server_data = dbarray_fetch($take_server);
+  $page_title = "Сервер: $server_data[server_name]";
+  $load_file = (!empty($_GET['id']) and is_numeric($_GET['id'])) ? __DIR__.'/templates/server_info.php' : __DIR__.'/templates/servers.php';
+  break;
+ case 'message':
+  $msg_code = $_GET['code'];
+  $load_file = __DIR__.'/templates/messages.php'; // File not found
+  break;
+ case 'byweb':
+  $load_file = __DIR__.'/templates/byweb.php';
+  require($load_file);
+  exit;
+  break;
  case 'cs16':
  case 'css':
  case 'cssource':
@@ -101,25 +120,6 @@ switch ($load) {
   $page_title = "Сервера с {$modes[$load]} модом";
   $filter = "AND server_mode = '${load}'";
   $load_file = __DIR__.'/templates/servers.php';
-  break;
- case 'search':
-  $page_title = "Поиск серверов CS 1.6, CS:S, CS:GO";
-  $load_file = __DIR__.'/templates/search.php';
-  break;
- case 'info':
-  $take_server = dbquery("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".$_GET['id']."");
-  $server_data = dbarray_fetch($take_server);
-  $page_title = "Сервер: $server_data[server_name]";
-  $load_file = (!empty($_GET['id']) and is_numeric($_GET['id'])) ? __DIR__.'/templates/server_info.php' : __DIR__.'/templates/servers.php';
-  break;
- case 'message':
-  $msg_code = $_GET['code'];
-  $load_file = __DIR__.'/templates/messages.php'; // File not found
-  break;
- case 'byweb':
-  $load_file = __DIR__.'/templates/byweb.php';
-  require($load_file);
-  exit;
   break;
  default:
   $filter = '';
