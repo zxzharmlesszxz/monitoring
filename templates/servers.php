@@ -40,36 +40,36 @@ if ($servers_total !=0 ) {
   if (array_key_exists($r['server_row_style'], $styles)) {
    $row .= "<tr style='{$styles[$r['server_row_style']]['style']}'>";
   } else {
-   if ($r['server_players'] == $r['server_maxplayers']) {
-    $players = "<font color='#00FF00'>".$r['server_players']."/".$r['server_maxplayers']."</font>";
-   }
-
-   if ($r['server_status'] ==1) {
-    $server_full=floor(($r['server_players'] / $r['server_maxplayers']) * 100);
-   } else {
-    $server_full="0";
-   }
-   
-   if ($server_full=='0')
-    $la = "la0";
-  
-   if ($server_full<='20' and $server_full>'0')
-    $la = "la1";
-   
-   if ($server_full<='40' and $server_full>'20')
-    $la = "la2";
-   
-   if ($server_full<='60' and $server_full>'40')
-    $la = "la3";
-   
-   if ($server_full<='80' and $server_full>'60')
-    $la = "la4";
-   
-   if ($server_full<='100' and $server_full>'80')
-    $la = "la5";
-
    $row .= "<tr>";
   }
+
+  if ($r['server_players'] == $r['server_maxplayers']) {
+   $players = "<font color='#00FF00'>".$r['server_players']."/".$r['server_maxplayers']."</font>";
+  }
+
+  if ($r['server_status'] ==1) {
+   $server_full=floor(($r['server_players'] / $r['server_maxplayers']) * 100);
+  } else {
+   $server_full="0";
+  }
+   
+  if ($server_full=='0')
+   $la = "la0";
+
+  if ($server_full<='20' and $server_full>'0')
+   $la = "la1";
+   
+  if ($server_full<='40' and $server_full>'20')
+   $la = "la2";
+   
+  if ($server_full<='60' and $server_full>'40')
+   $la = "la3";
+   
+  if ($server_full<='80' and $server_full>'60')
+   $la = "la4";
+   
+  if ($server_full<='100' and $server_full>'80')
+   $la = "la5";
 
   $row .= "<td align='left' style='padding-left:20px;'>";
   $row .= "<img src='/images/flags/$server_location.png' class='location' title='{$r['server_location']}' alt='{$r['server_location']}'>";
