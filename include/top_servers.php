@@ -54,7 +54,7 @@ if ($settings['top_rows'] > 0) {
  $template_free = '
   <div class="unit">
    <div class="map_section">
-    <a title="Заказать место в шапке" href="/paytop" rel="nofollow"><img width="100" height="75" src="/images/top_free.png"></a>
+    <a title="Заказать место в шапке" href="/paytop" rel="nofollow"><img width="100" height="75" src="/images/img/top_free.png"></a>
    </div>
    <div class="info_section">
     <span class="title">Игроки:</span>
