@@ -52,7 +52,7 @@ echo <<<EOT
       "lengthMenu": "{$locale['026']}",
      }
     });
-    $('table.servers thead tr th').each(function(){var title = $('table.servers thead tr th').eq($(this).index()).text();$(this).html('<input type="text" placeholder="'+title+'" />');});
+    //$('table.servers thead tr th').each(function(){var title = $('table.servers thead tr th').eq($(this).index()).text();$(this).html('<input type="text" placeholder="'+title+'" />');});
 
     // Apply the search
     //if(table.columns().eq(0)){table.columns().each(function(colIdx){$('input', table.column(colIdx).footer()).on('keyup change', function(){table.column(colIdx).search(this.value).draw();});});}
