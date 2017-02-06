@@ -196,7 +196,7 @@ if (mysql_num_rows($take_server) == 0) {
         <div style='padding-top:8px;'></div>
         HTML-код:
         <br>
-        <textarea rows='3' cols='76'><a href='/server/{$server_data['server_id']}'><img src='/banner/userbar.png?serv={$server_data['server_ip']}'></a></textarea>
+        <textarea rows='3' cols='76'><a href='{SITE_URL}/server/{$server_data['server_id']}'><img src='{SITE_URL}/banner/userbar.png?serv={$server_data['server_ip']}'></a></textarea>
         <br>
         BB-код:
         <br>
