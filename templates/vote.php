@@ -22,7 +22,7 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
   Returns an array whose first element is votes_up and the second one is votes_down
   **/
   $votes = array();
-  $select_server = "SELECT * FROM ".DB_SERVERS." WHERE server_id = $id";
+  $select_server = "SELECT * FROM ".DB_SERVERS." WHERE server_id = '$id'";
   $select_server = dbquery($select_server);
 
   if (mysql_num_rows($select_server) == 1) {
