@@ -80,7 +80,7 @@ switch ($load) {
  case 'tf2':
  case 'garrysmod':
  case 'gm':
-  $page_title = "Сервера {$games[$load]};
+  $page_title = "Сервера {$games[$load]}";
   $filter = "AND server_game = '${load}'";
   $load_file = __DIR__.'/templates/servers.php';
   break;
