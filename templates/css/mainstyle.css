@@ -22,7 +22,7 @@ position:fixed;
 z-index:9999;
 bottom:0;
 right:0;
-background:url(/images/arrows2.png) 0 0 no-repeat;
+background:url(/images/img/arrows2.png) 0 0 no-repeat;
 display:block;
 width:50px;
 height:50px;
@@ -395,13 +395,13 @@ text-align:center;
 padding-top:5px;
 margin-top:-1px;
 padding-bottom:4px;
-background:url(/img/footer.jpg);
+background:url(/images/img/footer.jpg);
 box-shadow:0 0 20px #191919;
 }
 
 .horizontal_line {
 text-align:center;
-background:url(/img/s_bg.jpg);
+background:url(/images/img/s_bg.jpg);
 font-weight:700;
 vertical-align:middle;
 border-bottom:1px solid #444;
