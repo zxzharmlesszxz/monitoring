@@ -7,7 +7,7 @@ if(!defined("MONENGINE")) {
 }
 
 $title = (isset($page_title)) ? $page_title : $settings['site_name'];
-$icon = (file_exists(IMAGES.'favicon.ico')) ? "<link rel='shortcut icon' href='".IMAGES."favicon.ico' type='image/x-icon' />" : '');
+$icon = (file_exists(IMAGES.'favicon.ico')) ? "<link rel='shortcut icon' href='".IMAGES."favicon.ico' type='image/x-icon' />" : '';
 
 $games_menu = games_menu();
 $modes_menu = modes_menu();
