@@ -1,20 +1,20 @@
 <?php
 
 $modes = array(
- 'classic',
- 'warcraft',
- 'csdm',
- 'gungame',
- 'hns',
- 'surf',
- 'jump',
- 'deathrun',
- 'diablomod',
- 'superhero',
- 'jailbreak',
- 'soccerjam',
- 'knife',
- 'zombiemod',
+ 'classic' => 'Classis',
+ 'warcraft' => 'WarCraft',
+ 'csdm' => 'DeathMatch',
+ 'gungame' => 'Gun Game',
+ 'hns' => 'HNS',
+ 'surf' => 'Surf',
+ 'jump' => 'Jump',
+ 'deathrun' => 'Deathrun',
+ 'diablomod' => 'Diablo',
+ 'superhero' => 'Super Hero',
+ 'jailbreak' => 'Jail Break',
+ 'soccerjam' => 'SoccerJam',
+ 'knife' => 'Knife',
+ 'zombiemod' => 'Zombie',
 );
 
 
@@ -25,8 +25,8 @@ function modes_menu() {
      <ul class='sort_nav'>
  ";
 
- foreach ($modes as $mode) {
-  echo "<li><a title='Сервера с модом {$mode}' href='/{$mode}' rel='nofollow'>{$mode}</a></li>";
+ foreach ($modes as $mode => $title) {
+  echo "<li><a title='Сервера с модом {$title}' href='/{$mode}' rel='nofollow'>{$title}</a></li>";
  }
 
  echo "
@@ -36,8 +36,8 @@ function modes_menu() {
 
 function select_modes() {
  global $modes;
- foreach ($modes as $mode){
-  $modess[$mode] = "<option value='{$mode}'>{$mode}</option>";
+ foreach ($modes as $mode => $title){
+  $modess[$mode] = "<option value='{$mode}'>{$title}</option>";
  }
  return implode('\n', $modess);
 }
