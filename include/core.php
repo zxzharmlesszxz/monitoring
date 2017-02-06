@@ -60,5 +60,5 @@ $servers_total = $settings['servers_total'];
 $servers_online = $settings['servers_online'];
 
 if (file_exists("./install.php")) {
- exit("<center><br><br><br><br><br><br>Для продолжения работы необходимо удалить файл <b>install.php</b>.</center>");
+ exit("<center>Для продолжения работы необходимо удалить файл <b>install.php</b>.</center>");
 }
