@@ -148,44 +148,43 @@ if (mysql_num_rows($take_server) == 0) {
           </tr>
          </table>
         </div>
-       </div>
-       <div class='block_line'>
-        <div class='block address'>
-         <div class='t'>Адрес сервера:</div>
-         <div class='block_line_small'>{$server_data['server_ip']}</div>
-        </div>
-       </div>
-       <div class='block_line'>
-        <div class='block mode'>
-         <div class='t'>Мод сервера:</div>
-         <div class='block_line_small'>{$server_data['server_mode']}</div>
-        </div>
-       </div>
-       <div class='block_line'>
-        <div class='block map'>
-         <div class='t'>Текущая карта:</div>
-         <div class='block_line_small'>{$server_data['server_map']}</div>
-        </div>
-       </div>
-       <div class='block_line'>
-        <div class='block players'>
-         <div class='t'>Игроки:</div>
-         <div class='block_line_small'>{$server_data['server_players']}/{$server_data['server_maxplayers']}</div>
-        </div>
-       </div>
-       <div class='block_line'>
-        <div class='block votes'>
-         <div class='t'>Голосов за сервер:</div>
-         <div class='block_line_small'>
-          <span class='votes_count' id='votes_count_{$server_data['server_id']}' >{$server_data['votes']}</span>
-          <span class='vote_buttons' id='vote_buttons_{$server_data['server_id']}'>
-           <a href='javascript://' onClick="rating({$server_data['server_id']}, 'up', '{$vote_hash}');" class='voteup' id='{$server_data['server_id']}'></a>
-           <a href='javascript://' onClick="rating({$server_data['server_id']}, 'down', '{$vote_hash}');" class='votedown' id='{$server_data['server_id']}'></a>
-          </span>
+        <div class='block_line'>
+         <div class='block address'>
+          <div class='t'>Адрес сервера:</div>
+          <div class='block_line_small'>{$server_data['server_ip']}</div>
          </div>
         </div>
-       </div>
-       {$site}
+        <div class='block_line'>
+         <div class='block mode'>
+          <div class='t'>Мод сервера:</div>
+          <div class='block_line_small'>{$server_data['server_mode']}</div>
+         </div>
+        </div>
+        <div class='block_line'>
+         <div class='block map'>
+          <div class='t'>Текущая карта:</div>
+          <div class='block_line_small'>{$server_data['server_map']}</div>
+         </div>
+        </div>
+        <div class='block_line'>
+         <div class='block players'>
+          <div class='t'>Игроки:</div>
+          <div class='block_line_small'>{$server_data['server_players']}/{$server_data['server_maxplayers']}</div>
+         </div>
+        </div>
+        <div class='block_line'>
+         <div class='block votes'>
+          <div class='t'>Голосов за сервер:</div>
+          <div class='block_line_small'>
+           <span class='votes_count' id='votes_count_{$server_data['server_id']}' >{$server_data['votes']}</span>
+           <span class='vote_buttons' id='vote_buttons_{$server_data['server_id']}'>
+            <a href='javascript://' onClick="rating({$server_data['server_id']}, 'up', '{$vote_hash}');" class='voteup' id='{$server_data['server_id']}'></a>
+            <a href='javascript://' onClick="rating({$server_data['server_id']}, 'down', '{$vote_hash}');" class='votedown' id='{$server_data['server_id']}'></a>
+           </span>
+          </div>
+         </div>
+        </div>
+        {$site}
       </td>
       <td valign='top' style='padding-top: 5px;'>
        <div style='padding:10px;background-color: #1E1E1E;border:1px solid #444444'>
