@@ -82,7 +82,7 @@ padding:1px;
 }
 
 .sort {
-background:#393939 url(/templates/img/sort_bg.gif) repeat-x 0 0;
+background:#393939 url(/images/img/sort_bg.gif) repeat-x 0 0;
 }
 
 b {
@@ -140,7 +140,7 @@ border-color:#4F4F4F;
 }
 
 #header #header_stat {
-	background:			black url('../img/header_stat_bg.png') repeat-x 0px 0px;
+	background:			black url('/images/img/header_stat_bg.png') repeat-x 0px 0px;
 	border-bottom:		1px solid #222;
 	height:				41px;
 	padding:			0;
@@ -151,7 +151,7 @@ display:block;
 float:left;
 height:41px;
 width:150px;
-background:url(../img/header_stat_logo.png) center center no-repeat;
+background:url(/images/img/header_stat_logo.png) center center no-repeat;
 margin:0 2px;
 }
 
@@ -188,7 +188,7 @@ padding:45px 40px;
 
 #header div#horizontal_menu {
 height:35px;
-background:#292929 url(/img/hmenu.jpg) top repeat-x;
+background:#292929 url(/images/img/hmenu.jpg) top repeat-x;
 float:left;
 width:100%;
 overflow:hidden;
@@ -241,7 +241,7 @@ color:#EBCACD;
 
 #header div#sort {
 height:17px;
-background:url(../img/sort_bg.png) top repeat-x;
+background:url(/images/img/sort_bg.png) top repeat-x;
 border-bottom:1px solid #000;
 float:left;
 width:100%;
@@ -330,7 +330,7 @@ border-collapse:collapse;
 }
 
 #main table.servers thead {
-background:url(/img/s_bg.jpg) top repeat-x;
+background:url(/images/img/s_bg.jpg) top repeat-x;
 height:30px;
 border-bottom:1px solid #4F4F4F;
 }
@@ -537,15 +537,15 @@ font-size:14px;
 }
 
 td.load_green {
-background:url(../img/server_page/load_green.gif) left 0 no-repeat;
+background:url(/images/img/server_page/load_green.gif) left 0 no-repeat;
 }
 
 td.load_yellow {
-background:url(../img/server_page/load_yellow.gif) left 0 no-repeat;
+background:url(/images/img/server_page/load_yellow.gif) left 0 no-repeat;
 }
 
 td.load_red {
-background:url(../img/server_page/load_red.gif) left 0 no-repeat;
+background:url(/images/img/server_page/load_red.gif) left 0 no-repeat;
 }
 
 div.block {
@@ -559,27 +559,27 @@ padding-bottom:5px;
 }
 
 div.players {
-background:url(../img/server_page/players.png) 10px 5px no-repeat;
+background:url(/images/img/server_page/players.png) 10px 5px no-repeat;
 }
 
 div.address {
-background:url(../img/server_page/address.png) 10px 5px no-repeat;
+background:url(/images/img/server_page/address.png) 10px 5px no-repeat;
 }
 
 div.mode {
-background:url(../img/server_page/game1.png) 10px 5px no-repeat;
+background:url(/images/img/server_page/game1.png) 10px 5px no-repeat;
 }
 
 div.site {
-background:url(../img/server_page/site.png) 10px 5px no-repeat;
+background:url(/images/img/server_page/site.png) 10px 5px no-repeat;
 }
 
 div.votes {
-background:url(../img/server_page/votes.png) 10px 5px no-repeat;
+background:url(/images/img/server_page/votes.png) 10px 5px no-repeat;
 }
 
 div.map {
-background:url(../img/server_page/map.png) 10px 5px no-repeat;
+background:url(/images/img/server_page/map.png) 10px 5px no-repeat;
 }
 
 div.block_line {
@@ -686,7 +686,7 @@ display:inline-block;
 background-position:center;
 height:19px;
 width:9px;
-background:url(../img/arrow_up.gif) top no-repeat;
+background:url(images/img/arrow_up.gif) top no-repeat;
 vertical-align:middle;
 opacity:0.8;
 }
@@ -696,7 +696,7 @@ display:inline-block;
 background-position:center;
 height:19px;
 width:9px;
-background:url(../img/arrow_down.gif) top no-repeat;
+background:url(/images/img/arrow_down.gif) top no-repeat;
 vertical-align:middle;
 opacity:0.7;
 }
