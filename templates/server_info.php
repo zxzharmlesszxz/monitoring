@@ -235,11 +235,16 @@ if (mysql_num_rows($take_server) == 0) {
        <div style='font-size: 12px;'>
         <div class='box_rounded'>
          <div class='box_title'>Доп. информация:</div>
-         id сервера: <b>{$server_data['server_id']}</b> (/server/{$server_data['server_id']})<br />
-         Статус сервера: {$status}<br />
-         {$icq}<br />
-         Дата регистрации: <b>{$regdate}</b><br />
-         {$work}<br />
+         id сервера: <b>{$server_data['server_id']}</b> (/server/{$server_data['server_id']})
+         <br />
+         Статус сервера: {$status}
+         <br />
+         {$icq}
+         <br />
+         Дата регистрации: <b>{$regdate}</b>
+         <br />
+         {$work}
+         <br />
          Информация о сервере загружена <b>$time_lasted</b> назад
         </div>
         <div style='margin-bottom:4px;'></div>
@@ -249,9 +254,12 @@ if (mysql_num_rows($take_server) == 0) {
          <div class='box_title'>Большой HTML-мониторинг:</div>
         </div>
         <center>
-         <iframe style='border: 1px solid #7D7D7D;' src='https://monitoring.contra.net.ua/byweb?id={$server_data['server_id']}' frameborder='1' width='190' height='250' scrolling='no'></iframe><br>
+         <iframe style='border: 1px solid #7D7D7D;' src='https://monitoring.contra.net.ua/byweb?id={$server_data['server_id']}' frameborder='1' width='190' height='250' scrolling='no'>
+         </iframe>
+         <br>
          <textarea rows='6' cols='24'>
-          <iframe src='https://monitoring.contra.net.ua/byweb?id={$server_data['server_id']}' frameborder='1' width='190' height='250' scrolling='no'></iframe>
+          <iframe src='https://monitoring.contra.net.ua/byweb?id={$server_data['server_id']}' frameborder='1' width='190' height='250' scrolling='no'>
+          </iframe>
          </textarea>
         </center>
        </div>
