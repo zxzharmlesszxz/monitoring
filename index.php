@@ -17,40 +17,6 @@ if ($settings['site_closed'] == '1') {
  
 $load = "";
 
-$page_title_games = array('cs16' => 'Сервера CS 1.6',
- 'css' => 'Сервера CS: Source',
- 'cssource' => 'Сервера CS: Source',
- 'csgo' => 'Сервера CS: Global Offensive',
- 'cz' => 'Сервера CS: Condition Zero',
- 'cszero' => 'Сервера CS: Condition Zero',
- 'hl' => 'Сервера Half-Life',
- 'hl2' => 'Сервера Half-Life 2',
- 'l4d' => 'Сервера Left 4 Dead',
- 'left4dead' => 'Сервера Left 4 Dead',
- 'l4d2' => 'Сервера Left 4 Dead 2',
- 'left4dead2' => 'Сервера Left 4 Dead 2',
- 'tf2' => 'Сервера Team Fortess 2',
- 'teamfortess' => 'Сервера Team Fortess 2',
- 'gm' => 'Сервера Garry\'s Mod',
- 'garrysmod' => 'Сервера Garry\'s Mod',
-);
-
-$page_title_modes = array('classic' => 'Сервера с Classic модом',
- 'csdm' => 'Сервера с CSDM модом',
- 'diablomod' => 'Сервера с DiabloMod модом',
- 'gungame' => 'Сервера с GunGame модом',
- 'hns' => 'Сервера с Hide n seek модом',
- 'jailbreak' => 'Сервера с JailBreak модом',
- 'jump' => 'Сервера с Jump модом',
- 'knife' => 'Сервера с Knife модом',
- 'soccerjam' => 'Сервера с SoccerJam модом',
- 'deathrun' => 'Сервера с DeathRun модом',
- 'superhero' => 'Сервера с SuperHero модом',
- 'warcraft' => 'Сервера с War3raft модом',
- 'surf' => 'Сервера с Surf модом',
- 'zombiemod' => 'Сервера с Zombie модом',
-);
-
 if (isset($_GET['page'])) $load = $_GET['page'];
  
 switch ($load) {
@@ -114,7 +80,7 @@ switch ($load) {
  case 'tf2':
  case 'garrysmod':
  case 'gm':
-  $page_title = $page_title_games[$load];
+  $page_title = "Сервера {$games[$load]};
   $filter = "AND server_game = '${load}'";
   $load_file = __DIR__.'/templates/servers.php';
   break;
@@ -132,7 +98,7 @@ switch ($load) {
  case 'warcraft':
  case 'surf':
  case 'zombiemod':
-  $page_title = $page_title_modes[$load];
+  $page_title = "Сервера с {$modes[$load]} модом";
   $filter = "AND server_mode = '${load}'";
   $load_file = __DIR__.'/templates/servers.php';
   break;
