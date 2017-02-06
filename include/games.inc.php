@@ -15,6 +15,7 @@ $games = array(
 
 
 function games_menu() {
+ global $games;
  echo "
     <div id='sort'>
      <ul>

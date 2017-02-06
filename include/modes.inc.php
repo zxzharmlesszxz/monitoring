@@ -19,6 +19,7 @@ $modes = array(
 
 
 function modes_menu() {
+ global $modes;
  echo "
     <div class='sort'>
      <ul class='sort_nav'>
