@@ -127,3 +127,4 @@ echo <<<EOT
    <!-- /Header -->
    <!-- CONTENT -->
    <div id="main">
+EOT;
