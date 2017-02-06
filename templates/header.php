@@ -6,7 +6,13 @@ if(!defined("MONENGINE")) {
  exit();
 }
 
-?>
+$title = <title>".((isset($page_title)) ? $page_title : $settings['site_name'])."</title>"
+$icon = (file_exists(IMAGES.'favicon.ico')) ? "<link rel='shortcut icon' href='".IMAGES."favicon.ico' type='image/x-icon' />" : '');
+
+$games_menu = games_menu();
+$modes_menu = modes_menu();
+
+echo <<<EOT
 <!DOCTYPE html>
 <html>
  <head>
@@ -39,14 +45,14 @@ if(!defined("MONENGINE")) {
      "order": [],
      language: {
       search: "_INPUT_",
-      searchPlaceholder: "<?php echo $locale['024']; ?>",
-      "emptyTable": "<?php echo $locale['017']; ?>",
-      "info": "<?php echo $locale['023']; ?>",
-      "infoFiltered": "<?php echo $locale['025']; ?>",
-      "lengthMenu": "<?php echo $locale['026']; ?>",
+      searchPlaceholder: "{$locale['024']}",
+      "emptyTable": "{$locale['017']}",
+      "info": "{$locale['023']}",
+      "infoFiltered": "{$locale['025']}",
+      "lengthMenu": "{$locale['026']}",
      }
     });
-    //$('table.servers thead th').each(function(){var title = $('table.servers thead th').eq($(this).index()).text();$(this).html('<input type="text" placeholder="'+title+'" />');});
+    $('table.servers thead tr th').each(function(){var title = $('table.servers thead tr th').eq($(this).index()).text();$(this).html('<input type="text" placeholder="'+title+'" />');});
 
     // Apply the search
     //if(table.columns().eq(0)){table.columns().each(function(colIdx){$('input', table.column(colIdx).footer()).on('keyup change', function(){table.column(colIdx).search(this.value).draw();});});}
@@ -57,13 +63,9 @@ if(!defined("MONENGINE")) {
   <script type="text/javascript">
    VK.init({apiId: 4747746, onlyWidgets: true});
   </script>
-<?php
-
-echo "
-  <base href='".SITE_URL."'>
-  <title>".((isset($page_title)) ? $page_title : $settings['site_name'])."</title>".((file_exists(IMAGES.'favicon.ico')) ? "<link rel='shortcut icon' href='".IMAGES."favicon.ico' type='image/x-icon' />\n" : '');
-
-?>
+  <base href='{$settings['site_url']}'>
+  <title>{$title}</title>
+  {$icon}
  </head>
  <body>
   <!-- Wrapper -->
@@ -75,8 +77,8 @@ echo "
      <a id="header_stat_logo" href="/"></a>
      <div id="header_stat_main">
       <div id="stats">
-       Всего игровых серверов в мониторинге: <span class="servers_online"><?php echo $servers_total;?></span> серверов, из них <span class="servers_online"><?php echo $servers_online; ?></span> серверов онлайн.<br />
-       Самая популярная карта: <span class="servers_online">de_dust2_2x2</span>. Последние обновление было: <span class="servers_online"><?php echo time() - $settings['last_update']; ?></span> секунд(ы) назад.
+       Всего игровых серверов в мониторинге: <span class="servers_online">{$servers_total}</span> серверов, из них <span class="servers_online">{$servers_online}</span> серверов онлайн.<br />
+       Самая популярная карта: <span class="servers_online">de_dust2_2x2</span>. Последние обновление было: <span class="servers_online">{time() - $settings['last_update']}</span> секунд(ы) назад.
       </div>
       <div id="header_stat_search">
        <form action="/search/" method="POST">
@@ -103,7 +105,7 @@ echo "
     </div>
     <!-- /Navigation -->
     <!-- Game navigation -->
-<?php echo games_menu(); ?>
+    {$games_menu}
     <!-- /Game navigation -->
     <div class="clearfix"></div>
     <!-- Top -->
@@ -119,7 +121,7 @@ echo "
     </div>
     <!-- /Alert -->
     <!-- Mode navigation -->
-<?php echo modes_menu(); ?>
+    {$modes_menu}
     <!-- /Mode navigation -->
    </div>
    <!-- /Header -->
