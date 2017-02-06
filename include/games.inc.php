@@ -34,7 +34,7 @@ function games_menu() {
 function select_games() {
  global $games;
  foreach ($games as $game => $title){
-  $games[$game] = "<option value='{$game}'>{$title}</option>";
+  $gamess[$game] = "<option value='{$game}'>{$title}</option>";
  }
- return implode('\n', $games);
+ return implode('\n', $gamess);
 }

@@ -37,7 +37,7 @@ function modes_menu() {
 function select_modes() {
  global $modes;
  foreach ($modes as $mode){
-  $modes[$mode] = "<option value='{$mode}'>{$mode}</option>";
+  $modess[$mode] = "<option value='{$mode}'>{$mode}</option>";
  }
- return implode('\n', $modes);
+ return implode('\n', $modess);
 }
