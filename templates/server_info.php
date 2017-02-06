@@ -35,7 +35,7 @@ if (mysql_num_rows($take_server) == 0) {
 
  $icq = (!empty($server_data['server_icq'])) ? "ICQ Администратора <b>ICQ#{$server_data['server_icq']} <img src='//status.icq.com/online.gif?icq={$server_data['server_icq']}&img=26'>" : "";
  $status = ($server_data['server_status'] == 1) ? "<font color='#6e8d4c'><b>Online</b></font>" : "<font color='#B53333'><b>Offline</b></font>";
- $work = (($server_data['server_status'] == 1) ? "Работает" : "Не работает")." с <b>".@date("d.m.Y H:i", $server_data['status_change']);
+ $work = (($server_data['server_status'] == 1) ? "Работает" : "Не работает")." с <b>".@date("d.m.Y H:i", $server_data['status_change'])."</b>";
  $regdate = @date("d.m.Y H:i", $server_data['server_regdata']);
  $last_update = $settings['last_update'];
  $time_diff = time() - $last_update;
