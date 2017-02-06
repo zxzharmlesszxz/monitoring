@@ -112,12 +112,12 @@ if (mysql_num_rows($take_server) == 0) {
  if (mysql_num_rows($get_comments) != 0) {
   $comms = '';
   while ($comments = mysql_fetch_assoc($get_comments)) {
-   $comms .= "<div class='comment'>";
-   $comms .= "<div class='comment_text'>Комментарий от:<span class='name'>{$comments['username']}</span><br />{$comments['text']}</div>";
-   $comms .= "<p class='posttime'>Дата добавления: ".@date("d.m.Y H:i", $comments['date'])."</p>";
-   $comms .= "<p class='".(($comments['type'] == 1) ? "positive" : "negative")."_post'>".(($comments['type'] == 1) ? "Позитивный" : "Негативный")." отзыв</p>";
-   $comms .= "<div class='clearfix'></div>";
-   $comms .= "</div>";
+   $comms .= "<div class='comment'>
+           <div class='comment_text'>Комментарий от:<span class='name'>{$comments['username']}</span><br />{$comments['text']}</div>
+           <p class='posttime'>Дата добавления: ".@date("d.m.Y H:i", $comments['date'])."</p>
+           <p class='".(($comments['type'] == 1) ? "positive" : "negative")."_post'>".(($comments['type'] == 1) ? "Позитивный" : "Негативный")." отзыв</p>
+           <div class='clearfix'></div>
+          </div>";
   }
  } else {
   $comms = "<div class='comment'>
