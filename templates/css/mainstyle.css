@@ -686,7 +686,7 @@ display:inline-block;
 background-position:center;
 height:19px;
 width:9px;
-background:url(images/img/arrow_up.gif) top no-repeat;
+background:url(/images/img/arrow_up.gif) top no-repeat;
 vertical-align:middle;
 opacity:0.8;
 }
