@@ -50,11 +50,7 @@ $icon = (file_exists(IMAGES.'favicon.ico')) ? "<link rel='shortcut icon' href='"
       "lengthMenu": "<?php echo $locale['026']; ?>",
      }
     });
-    $('table.servers thead tr th').each(function(){var title = $('table.servers thead tr th').eq($(this).index()).text();$(this).html('<input type="text" placeholder="'+title+'" />');});
-
-    // Apply the search
-    if(table.columns().eq(0)){table.columns().each(function(colIdx){$('input', table.column(colIdx).head()).on('keyup change', function(){table.column(colIdx).search(this.value).draw();});});}
-  });
+   });
   </script>
   <!-- Put this script tag to the <head> of your page -->
   <script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
