@@ -80,7 +80,7 @@ if ($servers_total !=0 ) {
   $row .= "{$r['server_ip']}</td>";
   $row .= "<td class='mode'>{$r['server_mode']}</td>";
   $row .= "<td class='map'>{$r['server_map']}</td>";
-  $row .= "<td class='players'><span><img src='/images/la_icons/{$la}.gif'></span>{$players}</td>";
+  $row .= "<td class='players'><span><img src='/images/la_icons/{$la}.gif'>{$server_full}</span>{$players}</td>";
   $row .= "<td class='votes'>";
 
   if ($r['server_vip'] == 1) {
