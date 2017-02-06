@@ -120,7 +120,9 @@ if (mysql_num_rows($take_server) == 0) {
    $comms .= "</div>";
   }
  } else {
-  $comms = "<div class='comment'><div class='comment_text'>Этот сервер пока что не имеет комментариев. Может вы хотели бы добавить свой?</div></div>";
+  $comms = "<div class='comment'>
+           <div class='comment_text'>Этот сервер пока что не имеет комментариев. Может вы хотели бы добавить свой?</div>
+          </div>";
  }
 
  echo <<<EOT
