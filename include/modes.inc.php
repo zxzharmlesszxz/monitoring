@@ -14,7 +14,7 @@ $modes = array(
  'jailbreak',
  'soccerjam',
  'knife',
- 'zombie',
+ 'zombiemod',
 );
 
 
