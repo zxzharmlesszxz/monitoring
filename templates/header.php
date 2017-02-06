@@ -48,6 +48,7 @@ $icon = (file_exists(IMAGES.'favicon.ico')) ? "<link rel='shortcut icon' href='"
       "info": "<?php echo $locale['023']; ?>",
       "infoFiltered": "<?php echo $locale['025']; ?>",
       "lengthMenu": "<?php echo $locale['026']; ?>",
+      "sInfoEmpty": "<?php echo $locale['027']; ?>",
      }
     });
    });
