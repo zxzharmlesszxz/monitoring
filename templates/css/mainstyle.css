@@ -841,7 +841,7 @@ div.block_line_small,.block_line_small a {
 font-size:9px;
 }
 
-td.mode, td.map {
+td.mode, td.map, td.players, td.votes {
  text-align: center;
 }
 
