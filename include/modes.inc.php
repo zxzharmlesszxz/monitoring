@@ -20,8 +20,8 @@ $modes = array(
 
 function modes_menu() {
  echo "
-    <div class="sort">
-     <ul class="sort_nav">
+    <div class='sort'>
+     <ul class='sort_nav'>
  ";
 
  foreach ($modes as $mode) {

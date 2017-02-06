@@ -16,13 +16,13 @@ $games = array(
 
 function games_menu() {
  echo "
-    <div id="sort">
+    <div id='sort'>
      <ul>
-      <li><a title="Все сервера мониторинга" href="/" rel="nofollow">Все сервера</a></li>
+      <li><a title='Все сервера мониторинга' href='/' rel='nofollow'>Все сервера</a></li>
  ";
 
  foreach ($games as $game => $name) {
-  echo "<li><a title="Игровые сервера {$name}" href="/{$game}" rel="nofollow">{$name}</a></li>";
+  echo "<li><a title='Игровые сервера {$name}' href='/{$game}' rel='nofollow'>{$name}</a></li>";
  }
 
  echo "
