@@ -74,7 +74,7 @@ if ($servers_total !=0 ) {
   $row .= "<td align='left' style='padding-left:20px;'>";
   $row .= "<img src='/images/flags/$server_location.png' class='location' title='{$r['server_location']}' alt='{$r['server_location']}'>";
   $row .= "<a class='name' title='Перейти на страницу сервера {$r['server_name']}' href='".$settings['site_url']."server/{$r['server_id']}' rel='follow'>".htmlspecialchars($r['server_name'])."</a> ";
-  $row .= (($r['server_steam'] == '1') ? '<img src=\'images/icon_steam.png\'>' : '');
+  $row .= (($r['server_steam'] == '1') ? '<img src=\'/images/icon_steam.gif\'>' : '');
   $row .= "</td>";
   $row .= "<td><img src='/images/icons/{$r['server_game']}.gif' class='game' title='{$r['server_game']} сервер' alt='{$r['server_game']} сервер' />";
   $row .= "{$r['server_ip']}</td>";
@@ -84,7 +84,7 @@ if ($servers_total !=0 ) {
   $row .= "<td class='votes'>";
 
   if ($r['server_vip'] == 1) {
-   $row .= '<img src="/images/vip.png" align="texttop" style="opacity:0.6;">';
+   $row .= '<img src="/images/img/vip.png" align="texttop" style="opacity:0.6;">';
   } else {
    $row .= "<span class='votes_count' id='votes_count_{$r['server_id']}' >".intval($r['votes'])."</span>";
    $row .= "<span class='vote_buttons' id='vote_buttons_{$r['server_id']}'>";
