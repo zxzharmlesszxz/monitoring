@@ -9,7 +9,7 @@ $games = array(
  'hl2' => 'Half-Life 2',
  'l4d' => 'Left 4 dead',
  'l4d2' => 'Left 4 dead 2',
- 'teamfortress' => 'Team Fortess',
+ 'teamfortess' => 'Team Fortess',
  'garrysmod' => 'Garry\'s Mod',
 );
 
