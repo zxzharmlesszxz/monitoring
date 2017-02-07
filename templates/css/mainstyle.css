@@ -872,7 +872,7 @@ span.icon {
  display: none;
 }
 
-td.map:hover::after {
+span.icon:hover::after {
  content: url(attr(data-icon));
  position: absolute;
 }
