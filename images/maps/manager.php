@@ -7,19 +7,9 @@ if (isset($_GET['game']) and isset($_GET['map'])) {
   readfile($game."/".$map.".jpg");
  } elseif (file_exists($game."/".$map.".png")) {
   header("Content-Type: image/png");
-  readfile("no_map.gif");
+  readfile($game."/".$map.".jpg");
  } else {
   header("Content-Type: image/gif");
   readfile("no_map.gif");
  }
-} else {
- $folder_level = "";
- $i = 0;
- while (!file_exists($folder_level."config.php")) {
-  $folder_level .= "../";
-  $i++;
- }
-	
- define("BASEDIR", $folder_level);
- header("Location: ".BASEDIR."index.php");
 }
