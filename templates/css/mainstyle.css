@@ -870,10 +870,11 @@ span.la {
 
 span.icon {
  display: none;
+ position: absolute;
+ width: 100px;
+ height: auto;
 }
 
 td.map:hover span.icon {
- position: absolute;
- width: 100px;
  display: block;
 }
