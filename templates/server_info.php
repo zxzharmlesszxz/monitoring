@@ -127,7 +127,7 @@ if (mysql_num_rows($take_server) == 0) {
           </div>";
  }
 
- $mess = (!empty($message)) ? "$message" : "").((!empty($com_error)) ? "$com_error" : '');
+ $mess = ((!empty($message)) ? "$message" : "").((!empty($com_error)) ? "$com_error" : '');
  $captch = session_name()."=".session_id();
 
  echo <<<EOT
