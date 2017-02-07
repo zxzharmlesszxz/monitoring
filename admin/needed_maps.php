@@ -14,7 +14,7 @@ $file = __DIR__.'/../data/needed_maps_icons.txt';
 
 if (file_exists($file)) {
     $maps = array_unique(file($file));
-    file_put_contents(__DIR__.'/../data/needed_maps_icons.txt', implode('\n',$maps), LOCK_EX);
+    file_put_contents(__DIR__.'/../data/needed_maps_icons.txt', implode("\n",$maps), LOCK_EX);
 }
 
 echo <<<EOT
