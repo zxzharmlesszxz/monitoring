@@ -11,6 +11,6 @@ if (isset($_GET['game']) and isset($_GET['map'])) {
  } else {
   header("Content-Type: image/gif");
   readfile("no_map.gif");
-  file_put_contents(__DIR__.'/needed_maps_icons.txt', $map);
+  file_put_contents(__DIR__.'../../data/needed_maps_icons.txt', $map);
  }
 }
