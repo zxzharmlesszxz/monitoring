@@ -862,3 +862,8 @@ img.location {
 span.la {
  margin-right: 1em;
 }
+
+.wrapper {
+ min-height: 100% !important;
+ height: auto;
+}
