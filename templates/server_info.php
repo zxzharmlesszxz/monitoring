@@ -73,24 +73,24 @@ if (mysql_num_rows($take_server) == 0) {
   $com_error = '';
   $errors = Array();
 
+ $com_name = '';
+ $com_text = '';
+
  if (count($_POST)>0) {
-  $com_name = $_POST['com_name'];
-  if (empty($com_name)) {
-   $com_name = '';
+  if (empty($_POST['com_name'])) {
    $errors[] = 'Вы не ввели своё имя.';
-  } elseif (strlen($com_name) < 2 or strlen($com_name) > 12) {
-   $com_name = '';
+  } elseif (strlen($_POST['com_name']) < 2 or strlen($_POST['com_name']) > 12) {
    $errors[] = 'Длина имени должна составлять от 2-х до 12-ти символов.';
+  } else {
+   $com_name = $_POST['com_name'];
   }
 
-  $com_text = $_POST['com_text'];
-
-  if (empty($com_text)) {
-   $com_text = '';
+  if (empty($_POST['com_text'])) {
    $errors[] = 'Вы не ввели текст комментария.';
-  } elseif (strlen($com_text > 300)) {
-   $com_text = '';
+  } elseif (strlen($_POST['com_text'] > 300)) {
    $errors[] = 'Максимальная длина комментария 300 символов.';
+  } else {
+   $com_text = $_POST['com_text'];
   }
 
   if (!isset($_SESSION['captcha_keystring']) or $_SESSION['captcha_keystring'] != $_POST['com_captcha']) {
