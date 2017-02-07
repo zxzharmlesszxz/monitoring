@@ -1,8 +1,4 @@
 <?php
-/*
- * Server info display script
- * Made by starky
-*/
 
 /* Script security */
 if (!defined("MONENGINE")) {
@@ -13,8 +9,16 @@ if (!defined("MONENGINE")) {
 $file = __DIR__.'/../data/needed_maps_icons.txt';
 
 if (file_exists($file)) {
-    $maps = array_unique(file($file));
-    file_put_contents(__DIR__.'/../data/needed_maps_icons.txt', implode("\n",$maps), LOCK_EX);
+ $maps = array_unique(file($file));
+ $files = scandir(__DIR__.'/../images/maps/cs16/');
+ foreach ($files ad $f) {
+  if ($f == '.' or $f == '..') continue;
+  $a = explode('.', $f);
+  if(array_key_exists($a[0], $maps)) {
+   unset($maps[$a[0]]);
+  }
+ }
+ file_put_contents(__DIR__.'/../data/needed_maps_icons.txt', implode("\n",$maps), LOCK_EX);
 }
 
 echo <<<EOT
