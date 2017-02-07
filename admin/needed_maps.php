@@ -25,5 +25,5 @@ echo <<<EOT
 EOT;
 
 foreach ($maps as $map) {
- echo "<div>{$map}</div>"
+ echo "<div>{$map}</div>";
 }
