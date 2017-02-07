@@ -874,4 +874,5 @@ span.icon {
 
 td.map:hover::after {
  content: attr(data-icon);
+ position: absolute;
 }
