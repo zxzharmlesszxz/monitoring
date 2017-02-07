@@ -869,7 +869,7 @@ span.la {
 }
 
 span.icon {
- display: none;
+ display: block;
 }
 
 span.icon:hover::after {
