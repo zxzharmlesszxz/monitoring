@@ -867,3 +867,11 @@ span.la {
  min-height: 100% !important;
  height: auto;
 }
+
+span.icon {
+ display: none;
+}
+
+td.map:hover::after {
+ content: attr(data-icon);
+}
