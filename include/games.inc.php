@@ -23,7 +23,7 @@ function games_menu() {
  ";
 
  foreach ($games as $game => $name) {
-  echo "<li><a title='Игровые сервера {$name}' href='/{$game}' rel='nofollow'>{$name}</a></li>";
+  echo "<li><a title=\"Игровые сервера {$name}\" href='/{$game}' rel='nofollow'>{$name}</a></li>";
  }
 
  echo "
