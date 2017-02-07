@@ -23,13 +23,15 @@ echo <<<EOT
   <div class="box">
    <b>Needed images</b>
   </div>
+  <ol>
 EOT;
 
 foreach ($maps as $map) {
- echo "<div>{$map}</div>";
+ echo "<li>{$map}</li>";
 }
 
 echo <<<EOT
+  </ol>
  </div>
 </div>
 EOT;
