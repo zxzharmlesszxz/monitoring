@@ -98,15 +98,15 @@ if ($servers_total !=0 ) {
 }
 
 echo <<<EOT
-<table class='servers' cellpadding='0' cellspacing='0' border='0'>
+<table class='servers' cellspacing='0' border='0'>
  <thead>
   <tr>
-   <th width='35%' style='padding-left:45px;'>Название сервера</th>
-   <th width=200>Адрес сервера</th>
-   <th width=80>Мод</th>
-   <th width=130>Карта</th>
-   <th width=100>Игроки</th>
-   <th width=60>Голоса</th>
+   <th style='padding-left:45px;'>Название сервера</th>
+   <th>Адрес сервера</th>
+   <th>Мод</th>
+   <th>Карта</th>
+   <th>Игроки</th>
+   <th>Голоса</th>
   </tr>
  </thead>
  <tbody>
