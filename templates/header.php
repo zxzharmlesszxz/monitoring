@@ -36,6 +36,11 @@ $icon = (file_exists(IMAGES.'favicon.ico')) ? "<link rel='shortcut icon' href='"
   <link href='/templates/css/style.css' rel='stylesheet' type='text/css'>
   <script type="text/javascript">
    $(document).ready(function(){
+    var list = document.querySelectorAll("span[data-icon]");
+    for (var i = 0; i < list.length; i++) {
+     var url = list[i].getAttribute('data-icon');
+     list[i].style.backgroundImage="url('" + url + "')";
+    }
     // DataTable jquery plugin
     //var table = $('#table').DataTable({"stateSave": true});
     var table = $('table.servers').DataTable({
