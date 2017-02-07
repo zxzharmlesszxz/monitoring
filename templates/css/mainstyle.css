@@ -871,8 +871,8 @@ span.la {
 span.icon {
  display: none;
  position: absolute;
- width: 100px;
- height: auto;
+ width: 160px;
+ height: 120px;
 }
 
 td.map:hover span.icon {
