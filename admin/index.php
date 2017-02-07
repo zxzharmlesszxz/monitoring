@@ -16,7 +16,7 @@ require_once("includes/menu.class.php");
 $menu = new Menu;
 $menu->add('main', 'index.php', 'Главная страница');
 $menu->add('replies', 'replies', 'Подтверждение отзывов');
-$menu->add('site_settings', 'settings', 'Настройки сайта');
+$menu->add('settings', 'settings', 'Настройки сайта');
 $menu->add('rowstyles', 'rowstyles', 'Управление стилями');
 $menu->add('add_server', 'add_server', 'Добавить сервер');
 $menu->add('needed_maps', 'needed_maps', 'Недостающие картинки карт');
@@ -40,8 +40,8 @@ switch ($page) {
   $page_title = "Панель управления | Редактирование отзывов";
   $load_file = "replies.php";
   break;
- case 'site_settings':
-  $menu->set('site_settings');
+ case 'settings':
+  $menu->set('settings');
   $page_title = "Панель управления | Редактирование настроек";
   $load_file = "settings.php";
   break;
