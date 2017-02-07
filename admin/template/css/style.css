@@ -22,7 +22,7 @@ img { border: 0; }
 	position : relative;
 	background : url(../gfx/main-left.png) repeat-y left top #FFFFFF;
 	margin : 0 auto;
-	width : 980px;
+	/*width : 980px;*/
 	height : auto !important;
 	height : 100%;
 	min-height : 100%;
@@ -228,6 +228,7 @@ img { border: 0; }
 }
 
 #wrapper #container #left {
+    clear: both;
 	float : left;
 	position : relative;
 	overflow : hidden;
