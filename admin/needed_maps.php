@@ -13,11 +13,17 @@ if (!defined("MONENGINE")) {
 $file = __DIR__.'/../data/needed_maps_icons.txt';
 
 if (file_exists($file)) {
-    readfile($file);
+    $maps = array_unique(file($file));
 }
 
 echo <<<EOT
+<div style="clear: both;"></div>
 <div>
-<b>Page was be here</b>
+<b>Needed images</b>
 </div>
+<div style="clear: both;"></div>
 EOT;
+
+foreach ($maps as $map) {
+ echo "<div>{$map}</div>"
+}
