@@ -17,13 +17,18 @@ if (file_exists($file)) {
 }
 
 echo <<<EOT
-<div style="clear: both;"></div>
-<div>
-<b>Needed images</b>
-</div>
-<div style="clear: both;"></div>
+<div id="right">
+ <div class="section">
+  <div class="box">
+   <b>Needed images</b>
+  </div>
 EOT;
 
 foreach ($maps as $map) {
  echo "<div>{$map}</div>";
 }
+
+echo <<<EOT
+ </div>
+</div>
+EOT;
