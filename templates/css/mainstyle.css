@@ -873,6 +873,6 @@ span.icon {
 }
 
 span.icon:hover::after {
- content: url(attr(data-icon));
+ content: attr(data-icon,url);
  position: absolute;
 }
