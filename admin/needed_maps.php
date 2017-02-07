@@ -27,7 +27,7 @@ echo <<<EOT
 EOT;
 
 foreach ($maps as $map) {
- echo "<li>https://www.google.com.ua/search?q={$map}&tbs=isz:m&tbm=isch</li>";
+ echo "<li><a href='https://www.google.com.ua/search?q={$map}&tbs=isz:m&tbm=isch'>{$map}/a></li>";
 }
 echo <<<EOT
   </ol>
