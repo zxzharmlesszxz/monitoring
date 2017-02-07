@@ -9,13 +9,17 @@ if (!defined("MONENGINE")) {
 $file = __DIR__.'/../data/needed_maps_icons.txt';
 
 if (file_exists($file)) {
- $maps = array_unique(file($file));
+ $maps = array_unique(explode("\n", file_get_contents($file)));
  $files = scandir(__DIR__.'/../images/maps/cs16/');
- foreach ($files ad $f) {
+
+ foreach ($files as $f) {
   if ($f == '.' or $f == '..') continue;
   $a = explode('.', $f);
-  if(array_key_exists($a[0], $maps)) {
-   unset($maps[$a[0]]);
+
+  $i = array_search($a[0], $maps);
+
+  if($i) {
+   unset($maps[$i]);
   }
  }
  file_put_contents(__DIR__.'/../data/needed_maps_icons.txt', implode("\n",$maps), LOCK_EX);
@@ -31,6 +35,7 @@ echo <<<EOT
 EOT;
 
 foreach ($maps as $map) {
+ if (empty($map)) continue;
  echo "<li><a target='_blank' href='https://www.google.com.ua/search?q={$map}&tbs=isz:m&tbm=isch'>{$map}</a></li>";
 }
 echo <<<EOT
