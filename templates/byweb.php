@@ -15,9 +15,9 @@ echo '<html>
 if (isset($_GET["id"]) and $_GET["id"] >= 1) {
  if (@mysql_num_rows(@mysql_query("SELECT * FROM mon_servers WHERE server_id=" . $_GET["id"])) == 1) {
   $q = @mysql_fetch_array(@mysql_query("SELECT * FROM mon_servers WHERE server_id=" . $_GET["id"]));
-  $img = '<img src="images/maps/no_map.gif" width="150" height="113" style="border:1px solid #898989;opacity:0.8;"/>';
+  $img = '<img src="/images/maps/no_map.gif" width="150" height="113" style="border:1px solid #898989;opacity:0.8;"/>';
   if (file_exists($_SERVER{'DOCUMENT_ROOT'}."/images/maps/".$q['server_game']."/".$q['server_map'].".jpg") && $q['server_status'] == 1) {
-   $img = '<img src="images/maps/'.$q['server_game'].'/'.$q['server_map'].'.jpg" width="150" height="113" style="border:1px solid #898989;"/>';
+   $img = '<img src="/images/maps/'.$q['server_game'].'/'.$q['server_map'].'.jpg" width="150" height="113" style="border:1px solid #898989;"/>';
   }
   echo '
   <div style="padding-top:0.1px;padding-left:6px;">
