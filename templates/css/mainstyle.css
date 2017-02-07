@@ -873,6 +873,8 @@ span.icon {
 }
 
 span.icon:hover::after {
- content: attr(data-icon,url);
+ content: attr(url(data-icon));
  position: absolute;
+ width: 100px;
+ height: 100px;
 }
