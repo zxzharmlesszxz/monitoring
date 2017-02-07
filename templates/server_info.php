@@ -127,6 +127,9 @@ if (mysql_num_rows($take_server) == 0) {
           </div>";
  }
 
+ $mess = (!empty($message)) ? "$message" : "").((!empty($com_error)) ? "$com_error" : '');
+ $captch = session_name()."=".session_id();
+
  echo <<<EOT
    <div class='horizontal_line'>Сервер: <b>{$server_data['server_name']}</b></div>
     <div class='cont'>
@@ -207,16 +210,16 @@ if (mysql_num_rows($take_server) == 0) {
        <div style='margin-bottom:5px;'></div>
        <div class='box_rounded'>
         <div style='font-size: 15px;color:#EEEEEE;padding-bottom:5px;'>Оставить комментарий к серверу:</div>
-        <form method='POST' class='comments'>"
-.((!empty($message)) ? "$message" : "").((!empty($com_error)) ? "$com_error" : '')."
-         <div style='padding-bottom:5px;'>Ваш ник: <input type='text' name='com_name'".((!empty($com_name)) ? " value='$com_name'" : '')."></div>
+        <form method='POST' class='comments'>
+         {$mess}
+         <div style='padding-bottom:5px;'>Ваш ник: <input type='text' name='com_name' value='{$com_name}'></div>
          <div style='padding-bottom:3px;'>
-          <textarea name='com_text' style='width:98%;height: 75px;'>".((!empty($com_text)) ? "$com_text" : '')."</textarea>
+          <textarea name='com_text' style='width:98%;height: 75px;'>{$com_text}</textarea>
          </div>
          <div class='clearfix'></div>
          <div style='padding-top:4px;'></div>
          <div style='padding-bottom:5px;opacity:0.7;'>
-          <img src='/include/cap/index.php?".session_name()."=".session_id()."'>
+          <img src='/include/cap/index.php?{$captch}'>
          </div>
          <div style='float:right;padding-bottom:10px;'>
           <input type='submit' class='button' value='Добавить комментарий'>
