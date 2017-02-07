@@ -2,3 +2,5 @@
 include/config.php
 load/
 */*.nomedia
+google*.html
+yandex*.html
