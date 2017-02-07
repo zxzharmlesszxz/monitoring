@@ -873,6 +873,6 @@ span.icon {
 }
 
 td.map:hover::after {
- content: attr(data-icon);
+ background: url(attr(data-icon));
  position: absolute;
 }
