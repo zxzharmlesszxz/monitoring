@@ -869,12 +869,12 @@ span.la {
 }
 
 span.icon {
- display: block;
+ display: none;
 }
 
 span.icon:hover::after {
- background-image: attr(data-icon url);
  position: absolute;
  width: 100px;
  height: 100px;
+ display: block;
 }
