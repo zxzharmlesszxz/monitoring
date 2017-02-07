@@ -19,6 +19,7 @@ $menu->add('replies', 'replies', 'Подтверждение отзывов');
 $menu->add('site_settings', 'settings', 'Настройки сайта');
 $menu->add('rowstyles', 'rowstyles', 'Управление стилями');
 $menu->add('add_server', 'add_server', 'Добавить сервер');
+$menu->add('needed_maps', 'needed_maps', 'Недостающие картинки карт');
 
 $load = "";
 $page = "";
@@ -53,6 +54,11 @@ switch ($page) {
   $menu->set('add_server');
   $page_title = "Панель управления | Добавление сервера";
   $load_file = "add_server.php";
+  break;
+ case 'needed_maps':
+  $menu->set('needed_maps');
+  $page_title = "Панель управления | Недостающие картинки карт";
+  $load_file = "needed_maps.php";
   break;
  default:
   $menu->set('main');
