@@ -467,12 +467,23 @@ function use_top_tpl($tpl) {
  return $tpl;
 }
 
-function create_map_image($image, $game = 'cs16') {
+function create_map_image($map, $game = 'cs16') {
   include(__DIR__.'/SimpleImage.class.php');
   $image = new SimpleImage();
-  $image->load(__DIR__."/../images/maps/$game/$image");
+  $file = __DIR__."/../images/maps/$game/$map"
+  if (file_exists("$file.png")) {
+   $ext = ".png";
+  } elseif (file_exists("$file.jpg")) {
+   $ext = ".jpg";
+  } elseif (file_exists("$file.jpeg")) {
+   $ext = ".jpeg";
+  } elseif (file_exists("$file.gif")) {
+   $ext = ".gif";
+  }
+  $image->load($file.$ext);
   $image->resizeToWidth(160);
-  $image->save(__DIR__."/../images/maps/$game/".explode('.', '$image)[0].'png', $image_type == IMAGETYPE_PNG);
+  $image->save(__DIR__."/../images/maps/$game/$map.png", $image_type == IMAGETYPE_PNG);
+  if ($ext != '.png') unlink($file.$ext);
 }
 
 function check_map_image($map, $game = 'cs16') {
