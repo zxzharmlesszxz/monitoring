@@ -501,7 +501,10 @@ function check_map_image($map, $game = 'cs16') {
 }
 
 function check_map_image_size($image) {
- return (imagesx($image) == 160) ? true : false;
+ $img = imagecreatefrompng($image);
+ $width = imagesx(imagecreatefrompng($img));
+ imagedestroy($img);
+ return ($width == 160) ? true : false;
 }
 
 function get_map_image($map, $game = 'cs16') {
