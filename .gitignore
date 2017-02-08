@@ -1,7 +1,7 @@
 .idea/
 include/config.php
-load/
-data/
-**.nomedia
+load/*
+data/*
+**/.nomedia
 google*.html
 yandex*.html
