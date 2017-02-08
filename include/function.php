@@ -489,12 +489,14 @@ function create_map_image($map, $game = 'cs16') {
    $image->resizeToWidth(160);
    $image->save(__DIR__."/../images/maps/$game/$map.png", IMAGETYPE_PNG);
    if ($ext != '.png') unlink($file.$ext);
+   return true;
   }
+  return false;
 }
 
 function check_map_image($map, $game = 'cs16') {
- if (file_exists(__DIR__."/../images/maps/".$game."/".$map.".png")) {
-  check_map_image_size(__DIR__."/../images/maps/".$game."/".$map.".png");
+ if (file_exists(__DIR__."/../images/maps/$game/$map.png")) {
+  check_map_image_size(__DIR__."/../images/maps/$game/$map.png");
  }
  return false;
 }
@@ -506,10 +508,14 @@ function check_map_image_size($image) {
 
 function get_map_image($map, $game = 'cs16') {
  header("Content-Type: image/png");
- if (file_exists($game."/".$map.".png")) {
-  readfile($game."/".$map.".png");
+ if (check_map_image($map, $game)) {
+  readfile(__DIR__."/../images/maps/$game/$map.png");
  } else {
-  readfile("no_map.png");
-  file_put_contents(__DIR__.'/../data/needed_maps_icons.txt', $map."\n", FILE_APPEND | LOCK_EX);
- }
+  if (create_map_image($map, $game)) {
+   get_map_image($map, $game);
+  } else {
+   create_map_image('no_image', '/');
+   readfile("no_image.png");
+   file_put_contents(__DIR__.'/../data/needed_maps_icons.txt', $map."\n", FILE_APPEND | LOCK_EX);
+  }
 }
