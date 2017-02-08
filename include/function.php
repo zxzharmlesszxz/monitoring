@@ -494,6 +494,7 @@ function create_map_image($map, $game = 'cs16') {
 }
 
 function check_map_image($map, $game = 'cs16') {
+ file_put_contents(__DIR__.'/../data/test.txt', __DIR__."/../images/maps/$game/$map.png\n", FILE_APPEND | LOCK_EX);
  if (file_exists(__DIR__."/../images/maps/$game/$map.png")) {
   return check_map_image_size(__DIR__."/../images/maps/$game/$map.png");
  }
