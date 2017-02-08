@@ -479,6 +479,8 @@ function create_map_image($map, $game = 'cs16') {
    $ext = ".jpeg";
   } elseif (file_exists("$file.gif")) {
    $ext = ".gif";
+  } else {
+
   }
   $image->load($file.$ext);
   $image->resizeToWidth(160);
