@@ -466,3 +466,11 @@ function use_top_tpl($tpl) {
  $tpl = strtr($tpl, $vars);
  return $tpl;
 }
+
+function create_map_image($image) {
+  include('./SimpleImage.class.php');
+  $image = new SimpleImage();
+  $image->load("../images/maps/cs16/$image");
+  $image->resize(160, 120);
+  $image->save(explode('.', '$image)[0].'png', $image_type == IMAGETYPE_PNG);
+}
