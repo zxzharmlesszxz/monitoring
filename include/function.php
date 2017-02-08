@@ -513,12 +513,12 @@ function get_map_image($map, $game = 'cs16') {
  if (check_map_image($map, $game)) {
   readfile(__DIR__."/../images/maps/$game/$map.png");
  } else {
- // if (create_map_image($map, $game)) {
- //  get_map_image($map, $game);
- // } else {
- //  create_map_image('no_image', '/');
+  if (create_map_image($map, $game)) {
+   get_map_image($map, $game);
+  } else {
+   create_map_image('no_image', '/');
    readfile("no_image.png");
    file_put_contents(__DIR__.'/../data/needed_maps_icons.txt', $map."\n", FILE_APPEND | LOCK_EX);
- // }
+  }
  }
 }
