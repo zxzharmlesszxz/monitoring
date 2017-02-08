@@ -468,7 +468,6 @@ function use_top_tpl($tpl) {
 }
 
 function create_map_image($map, $game = 'cs16') {
-  include(__DIR__.'/SimpleImage.class.php');
   $image = new SimpleImage();
   $file = __DIR__."/../images/maps/$game/$map";
 
