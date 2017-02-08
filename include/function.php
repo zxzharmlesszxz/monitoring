@@ -484,7 +484,7 @@ function create_map_image($map, $game = 'cs16') {
   }
   $image->load($file.$ext);
   $image->resizeToWidth(160);
-  $image->save(__DIR__."/../images/maps/$game/$map.png", $image_type == IMAGETYPE_PNG);
+  $image->save(__DIR__."/../images/maps/$game/$map.png", IMAGETYPE_PNG);
   if ($ext != '.png') unlink($file.$ext);
 }
 
