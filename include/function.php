@@ -501,7 +501,6 @@ function check_map_image($map, $game = 'cs16') {
 }
 
 function check_map_image_size($image) {
- file_put_contents(__DIR__.'/../data/image.txt', "$image\n", FILE_APPEND | LOCK_EX);
  $img = imagecreatefrompng($image);
  $width = imagesx($img);
  imagedestroy($img);
