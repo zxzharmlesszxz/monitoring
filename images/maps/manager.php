@@ -6,7 +6,7 @@ if (isset($_GET['game']) and isset($_GET['map'])) {
  $map = $_GET['map'];
 
  if (!check_map_image($map, $game)) {
-  create_map_image($map, $game = 'cs16');
+  create_map_image($map, 'cs16');
  }
  get_map_image($map, $game);
 }

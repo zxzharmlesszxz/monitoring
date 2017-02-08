@@ -471,6 +471,7 @@ function create_map_image($map, $game = 'cs16') {
   include(__DIR__.'/SimpleImage.class.php');
   $image = new SimpleImage();
   $file = __DIR__."/../images/maps/$game/$map";
+
   if (file_exists("$file.png")) {
    $ext = ".png";
   } elseif (file_exists("$file.jpg")) {
@@ -480,12 +481,15 @@ function create_map_image($map, $game = 'cs16') {
   } elseif (file_exists("$file.gif")) {
    $ext = ".gif";
   } else {
-
+   unset($file, $game);
   }
-  $image->load($file.$ext);
-  $image->resizeToWidth(160);
-  $image->save(__DIR__."/../images/maps/$game/$map.png", IMAGETYPE_PNG);
-  if ($ext != '.png') unlink($file.$ext);
+
+  if (isset($file)) {
+   $image->load($file.$ext);
+   $image->resizeToWidth(160);
+   $image->save(__DIR__."/../images/maps/$game/$map.png", IMAGETYPE_PNG);
+   if ($ext != '.png') unlink($file.$ext);
+  }
 }
 
 function check_map_image($map, $game = 'cs16') {
