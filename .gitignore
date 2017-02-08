@@ -1,6 +1,7 @@
 .idea/
 include/config.php
-load/
+load/*
+data/*
 */*.nomedia
 google*.html
 yandex*.html
