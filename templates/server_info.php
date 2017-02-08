@@ -42,7 +42,7 @@ if (mysql_num_rows($take_server) == 0) {
  $last_update = $settings['last_update'];
  $time_diff = time() - $last_update;
  $time_lasted = ($time_diff >= 60) ? floor($time_diff / 60)." минут" : $time_diff." секунд";
- $percent_loaded = floor(($server_data['server_players'] / $server_data['server_maxplayers']) * 100);
+ $percent_loaded = @floor(($server_data['server_players'] / $server_data['server_maxplayers']) * 100);
  $vote_hash = md5("m0n3ng1ne.s4lt:P{]we{$server_data['server_id']}@._)%;");
 
  switch($percent_loaded) {
