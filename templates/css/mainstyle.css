@@ -800,51 +800,51 @@ padding:6px;
 }
 
 .msg {
-background:#444;
-border-bottom:1px solid #717171;
-color:#FFF;
-font-size:17px;
-text-align:center;
-padding:20px;
+ background: #444;
+ border-bottom: 1px solid #717171;
+ color: #FFF;
+ font-size: 17px;
+ text-align: center;
+ padding: 20px;
 }
 
 .redbg {
-background:#6E2828;
+ background: #6E2828;
 }
 
 .greenbg {
-background:#3A4337;
-vertical-align:middle;
-opacity:0.8;
+ background: #3A4337;
+ vertical-align: middle;
+ opacity: 0.8;
 }
 
 .modmenu ul li a:hover,#header div#sort ul li a:hover {
-text-decoration:underline;
+ text-decoration: underline;
 }
 
 a:hover,a:active,#header div#horizontal_menu ul li a:hover {
-color:#1584C4;
+ color: #1584C4;
 }
 
 #main table.servers tbody tr td a.map:hover,#main table.servers tbody tr td a.name:hover {
-color:#fff;
-border-bottom:1px dashed #fff;
+ color: #fff;
+ border-bottom: 1px dashed #fff;
 }
 
 .li_stat *,.li_stat,span.blue {
-color:#00AEEF;
+ color: #00AEEF;
 }
 
 .li_stat a,span.blue a:link,span.blue a:visited {
-color:#68C2E3;
+ color: #68C2E3;
 }
 
 .li_stat a:hover,span.blue a:hover,span.blue a:active {
-color:#EEE;
+ color: #EEE;
 }
 
 div.block_line_small,.block_line_small a {
-font-size:9px;
+ font-size: 9px;
 }
 
 td.mode, td.map, td.players, td.votes {
@@ -852,17 +852,17 @@ td.mode, td.map, td.players, td.votes {
 }
 
 img.game {
- width:16px;
- height:16px;
- vertical-align:middle;
- margin-bottom:2px;
- opacity:0.8;
+ width: 16px;
+ height: 16px;
+ vertical-align: middle;
+ margin-bottom: 2px;
+ opacity: 0.8;
 }
 
 img.location {
- width:16;
- height:11;
- opacity:0.8;
+ width: 16;
+ height: 11;
+ opacity: 0.8;
 }
 
 span.la {
