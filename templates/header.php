@@ -14,13 +14,13 @@ $icon = (file_exists(IMAGES.'favicon.ico')) ? "<link rel='shortcut icon' href='"
 <!DOCTYPE html>
 <html>
  <head>
-  <META NAME="Author" CONTENT="cook">
-  <META NAME="Subject" CONTENT="Мониторинг игровых серверов CS 1.6 CS:S CS:GO :: WG">
-  <META NAME="Description" CONTENT="Мониторинг поддерживает самые популярные игры CS 1.6 CS:S CS:GO. У нас вы можете раскрутить сервер, Добавить сервер, найти сервер для игры, Скачать мастер сервер">
-  <META NAME="Keywords" CONTENT="Мониторинг серверов cs 1.6, css, csgo, сервера кс, counter-strike сервера, игровой мониторинг, сервера css, csgo сервера, классик сервера, зомби сервера, стим сервера, cs:cz сервера, скачать cs 1.6">
-  <META NAME="Copyright" CONTENT="Мониторинг игровых серверов: WG">
-  <META NAME="Language" CONTENT="Russian">
-  <META NAME="Robots" CONTENT="All">
+  <meta NAME="Author" CONTENT="cook">
+  <meta NAME="Subject" CONTENT="Мониторинг игровых серверов CS 1.6 CS:S CS:GO :: WG">
+  <meta NAME="Description" CONTENT="Мониторинг поддерживает самые популярные игры CS 1.6 CS:S CS:GO. У нас вы можете раскрутить сервер, Добавить сервер, найти сервер для игры, Скачать мастер сервер">
+  <meta NAME="Keywords" CONTENT="Мониторинг серверов cs 1.6, css, csgo, сервера кс, counter-strike сервера, игровой мониторинг, сервера css, csgo сервера, классик сервера, зомби сервера, стим сервера, cs:cz сервера, скачать cs 1.6">
+  <meta NAME="Copyright" CONTENT="Мониторинг игровых серверов: WG">
+  <meta NAME="Language" CONTENT="Russian">
+  <meta NAME="Robots" CONTENT="All">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="revisit-after" content="1 day">
   <meta name="distribution" content="Global">
