@@ -887,3 +887,7 @@ td.map:hover span.icon {
 #top_servers {
  width: inherit;
 }
+
+ol, ul {
+ margin: 1em 0;
+}
