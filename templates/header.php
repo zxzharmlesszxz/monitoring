@@ -21,6 +21,7 @@ $icon = (file_exists(IMAGES.'favicon.ico')) ? "<link rel='shortcut icon' href='"
   <META NAME="Copyright" CONTENT="Мониторинг игровых серверов: WG">
   <META NAME="Language" CONTENT="Russian">
   <META NAME="Robots" CONTENT="All">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="revisit-after" content="1 day">
   <meta name="distribution" content="Global">
   <meta name="rating" content="General">
