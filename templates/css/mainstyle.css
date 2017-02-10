@@ -1,9 +1,13 @@
+* {
+ margin: 0;
+ padding: 0;
+}
+
 html, body {
  background: #444;
  color: #d2d5d9;
  font-family: Verdana, Tahoma;
  font-size: 11px;
- width: 100%;
  border: 1px solid #4F4F4F;
  box-shadow: 0 0 23px #000;
  margin: 0 auto;
