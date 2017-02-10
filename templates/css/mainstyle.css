@@ -12,6 +12,7 @@ html, body {
  box-shadow: 0 0 23px #000;
  margin: 0 auto;
  padding: 0;
+ min-width: 99% !important;
 }
 
 h2 {
@@ -320,6 +321,7 @@ overflow:hidden;
 #header div#top_servers .top_zebra_1 {
 background-color:#242424;
 padding:10px 0;
+width: 100%;
 }
 
 #header div#top_servers .top_zebra_2 {
@@ -885,7 +887,7 @@ td.map:hover span.icon {
 }
 
 #top_servers {
- width: inherit;
+ width: 100%;
 }
 
 ol, ul {
