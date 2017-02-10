@@ -14,33 +14,33 @@ echo <<<EOT
 <div class='horizontal_line'>Беслатные услуги для серверов</div>
 <div class='cont-pay'>
  <div style="padding:10px;background:#232323;line-height:200%;">
-  <img src="/images/paid-services.png" style="float:left;width:237px;height:151px;padding-right:30px;padding-top:20px;opacity:0.7;" alt="<Бесплатные услуги" />
+  <img src="/images/img/paid-services.png" style="float:left;width:237px;height:151px;padding-right:30px;padding-top:20px;opacity:0.7;" alt="Бесплатные услуги" />
   <style>.para_vip td {padding-left: 10px; height: 30px;}</style>
   <table cellpadding="0" cellspacing="0" class="para_vip" >
    <tr>
-    <td valign="middle"><img src="/images/para-vip.gif" width="9" height="13" /></td>
+    <td valign="middle"><img src="/images/img/para-vip.gif" width="9" height="13" /></td>
     <td valign="middle">Верхние "VIP" места рейтинга серверов и "Премиум" сервера находящиеся в шапке мониторинга можно заказать.</td>
    </tr>
    <tr>
-    <td valign="middle"><img src="/images/para-vip.gif" width="9" height="13" /></td>
+    <td valign="middle"><img src="/images/img/para-vip.gif" width="9" height="13" /></td>
     <td valign="middle">VIP сервера выделяются знаком VIP, и сортируются по дате заказа.</td>
    </tr>
    <tr>
-    <td valign="middle"><img src="/images/para-vip.gif" width="9" height="13" /></td>
+    <td valign="middle"><img src="/images/img/para-vip.gif" width="9" height="13" /></td>
     <td valign="middle">VIP сервера видны в мониторинге и сверху нашего форума.</td>
    </tr>
    <tr>
-    <td valign="middle"><img src="/images/para-vip.gif" width="9" height="13" /></td>
+    <td valign="middle"><img src="/images/img/para-vip.gif" width="9" height="13" /></td>
     <td valign="middle">Заказ осуществляется через Skype: vengeanson</td>
    </tr>
    <tr>
     <tr>
-    <td valign="middle"><img src="/images/para-vip.gif" width="9" height="16" /></td>
+    <td valign="middle"><img src="/images/img/para-vip.gif" width="9" height="16" /></td>
     <td valign="middle">TOP видны сверху мониторинга и на нашем портале.
     </td>
    </tr>
    <tr>
-    <td valign="middle"><img src="/images/para-vip.gif" width="9" height="16" /></td>
+    <td valign="middle"><img src="/images/img/para-vip.gif" width="9" height="16" /></td>
     <td valign="middle">У серверов имеющих Выделение цветом будет подсвечено название.
     </td>
    </tr>
