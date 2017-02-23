@@ -95,7 +95,7 @@ class MySQL_Database extends Database{
 // Confirm database query function
     protected function confirm_query($result) {
         if (!$result) {
-            $output = "Database query failed: " . mysql_error() . "<br />";
+            $output = "Database query failed: " . mysqli_error($this->connection) . "<br />";
             $output .= "Last SQL query: ".$this->last_query ;
             return($output);
         }
