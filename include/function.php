@@ -79,7 +79,6 @@ function serverInfo($server) {
    $array['status'] = 'off';
   }
   return $array;
-  if ($array['status']== 'off') continue;
  }
 }
 
