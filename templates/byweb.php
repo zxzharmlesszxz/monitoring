@@ -1,8 +1,5 @@
 ﻿<?php
 require_once('include/core.php');
-@mysql_connect($db_host,$db_user,$db_pass);
-@mysql_select_db($db_name);
-@mysql_query("SET NAMES UTF8");
  
 echo '<html>
  <head>
@@ -13,8 +10,8 @@ echo '<html>
    <tr>
     <td>';
 if (isset($_GET["id"]) and $_GET["id"] >= 1) {
- if (@mysql_num_rows(@mysql_query("SELECT * FROM mon_servers WHERE server_id=" . $_GET["id"])) == 1) {
-  $q = @mysql_fetch_array(@mysql_query("SELECT * FROM mon_servers WHERE server_id=" . $_GET["id"]));
+ if (db()->num_rows(db()->query("SELECT * FROM mon_servers WHERE server_id=" . $_GET["id"])) == 1) {
+  $q = db()->fetch_array(db()->query("SELECT * FROM mon_servers WHERE server_id=" . $_GET["id"]));
   $img = '<img src="/images/maps/'.$q['server_game'].'/'.$q['server_map'].'.jpg" width="150" height="113" style="border:1px solid #898989;"/>';
 
   echo '
@@ -63,5 +60,3 @@ echo "
   </table>
  </body>
 </html>";
- 
-mysql_close();
