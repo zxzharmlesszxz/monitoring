@@ -5,4 +5,13 @@ $db_pass = "monitoring";
 $db_name = "monitoring";
 $db_prefix = "mon_";
 define("DB_PREFIX", $db_prefix);
-?>
+$config = array(
+ 'mysql' => array(
+  'host' => $db_host,
+  'database' => $db_name,
+  'user' => $db_user,
+  'password' => $db_pass,
+  'charset' => 'utf8',
+  'prefix' => $db_prefix,
+  ),
+);
