@@ -14,17 +14,17 @@ if (!defined("MONENGINE")) {
 $message = '';
 
 if (isset($_POST['submit'])) {
- $style_title = mysql_real_escape_string($_POST['style_title']);
- $style_name = mysql_real_escape_string($_POST['style_name']);
- $style_style = mysql_real_escape_string($_POST['style_style']);
- $check_style = dbquery("SELECT * FROM `".DB_ROWSTYLES."` WHERE `name` = '$style_name'");
- if (mysql_num_rows($check_style) == 0) {
-  $add_style = dbquery("INSERT INTO `".DB_ROWSTYLES."` (`name`,`style`,`title`) VALUES ('$style_name', '$style_style', '$style_title')");
+ $style_title = mysqli_real_escape_string($_POST['style_title']);
+ $style_name = mysqli_real_escape_string($_POST['style_name']);
+ $style_style = mysqli_real_escape_string($_POST['style_style']);
+ $check_style = db()->query("SELECT * FROM `".DB_ROWSTYLES."` WHERE `name` = '$style_name'");
+ if (db()->num_rows($check_style) == 0) {
+  $add_style = db()->query("INSERT INTO `".DB_ROWSTYLES."` (`name`,`style`,`title`) VALUES ('$style_name', '$style_style', '$style_title')");
   if ($add_style) {
    $message = '<div class="message green"><span>Стиль успешно добавлен.</span></div>';
    $styles = Array(); // Refreshing data..
-   $get_styles = dbquery("SELECT * FROM `".DB_ROWSTYLES."` ORDER BY `id` DESC");
-   while ($style = dbarray_fetch($get_styles)) {
+   $get_styles = db()->query("SELECT * FROM `".DB_ROWSTYLES."` ORDER BY `id` DESC");
+   while ($style = db()->fetch_array($get_styles)) {
     $styles[$style['name']]['id'] = $style['id'];
     $styles[$style['name']]['title'] = $style['title'];
     $styles[$style['name']]['style'] = $style['style'];

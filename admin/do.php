@@ -8,16 +8,16 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
 
  switch ($task) {
   case 'delreply':
-   $id = mysql_real_escape_string($_REQUEST['id']);
+   $id = mysqli_real_escape_string($_REQUEST['id']);
    $result = dbquery("DELETE FROM `".DB_COMMENTS."` WHERE `id` = '$id'");
 
    if ($result) exit('success');
    exit('fail');
    break;
   case 'changestatus':
-   $id = mysql_real_escape_string($_REQUEST['id']);
-   $get_server = dbquery("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '$id'") or exit(mysql_error());
-   $server = dbarray_fetch($get_server);
+   $id = mysqli_real_escape_string($_REQUEST['id']);
+   $get_server = db()->query("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '$id'") or exit();
+   $server = db()->fetch_array($get_server);
    
    if ($server['server_off'] == 1) {
     $new_status = 0;
@@ -25,7 +25,7 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
     $new_status = 1;
    }
    
-   $result = dbquery("UPDATE `".DB_SERVERS."` SET `server_off` = '$new_status' WHERE `server_id` = '$id'");
+   $result = db()->query("UPDATE `".DB_SERVERS."` SET `server_off` = '$new_status' WHERE `server_id` = '$id'");
    
    if ($result) {
     exit('success');
@@ -34,9 +34,9 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
    }
    break;
   case 'approvereply':
-   $id = mysql_real_escape_string($_REQUEST['id']);
-   $type = mysql_real_escape_string($_REQUEST['type']);
-   $result = dbquery("UPDATE `".DB_COMMENTS."` SET `type` = '$type' WHERE `id` = '$id'");
+   $id = mysqli_real_escape_string($_REQUEST['id']);
+   $type = mysqli_real_escape_string($_REQUEST['type']);
+   $result = db()->query("UPDATE `".DB_COMMENTS."` SET `type` = '$type' WHERE `id` = '$id'");
    if ($result) {
     exit('success');
    } else {

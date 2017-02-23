@@ -22,19 +22,19 @@ $location = '';
 $about = '';
 
 if (isset($_POST['submit_registration'])) {
- $address = mysql_real_escape_string($_POST['server_address']);
+ $address = mysqli_real_escape_string($_POST['server_address']);
  $steam = 0;
  $errors = Array();
 
  if (isset($_POST['server_steam'])) $steam = 1;
 
- $email = mysql_real_escape_string($_POST['server_email']);
- $site = mysql_real_escape_string($_POST['server_site']);
- $game = mysql_real_escape_string($_POST['server_game']);
- $mode = mysql_real_escape_string($_POST['server_mode']);
- $icq = mysql_real_escape_string($_POST['server_icq']);
- $location = mysql_real_escape_string($_POST['server_location']);
- $about = mysql_real_escape_string($_POST['server_about']);
+ $email = mysqli_real_escape_string($_POST['server_email']);
+ $site = mysqli_real_escape_string($_POST['server_site']);
+ $game = mysqli_real_escape_string($_POST['server_game']);
+ $mode = mysqli_real_escape_string($_POST['server_mode']);
+ $icq = mysqli_real_escape_string($_POST['server_icq']);
+ $location = mysqli_real_escape_string($_POST['server_location']);
+ $about = mysqli_real_escape_string($_POST['server_about']);
  $regex_ipport = "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\:[0-9]{1,5}";
  $regex_hostport = "[a-zA-Z0-9](-*[a-zA-Z0-9]+)*(\.[a-zA-Z0-9](-*[a-zA-Z0-9]+)*)+\:[0-9]{1,5}";
 
@@ -45,8 +45,8 @@ if (isset($_POST['submit_registration'])) {
  } elseif(!preg_match("/$regex_ipport/", $address) and !preg_match("/$regex_hostport/i", $address)) {
   $errors[] = "Неверный формат адреса сервера.";
  } else {
-  $check_server = mysql_query("SELECT * FROM `".DB_SERVERS."` WHERE `server_ip` = '{$address}'");
-  if (mysql_num_rows($check_server) != 0) $errors[] = "Данный сервер уже есть в базе.";
+  $check_server = db()->query("SELECT * FROM `".DB_SERVERS."` WHERE `server_ip` = '{$address}'");
+  if (db()->num_rows($check_server) != 0) $errors[] = "Данный сервер уже есть в базе.";
  }
 
  if (!array_key_exists($location, $countries->countries)) $errors[] = "Выбрана несуществующая локация $location.";
@@ -64,7 +64,7 @@ if (isset($_POST['submit_registration'])) {
   (`server_game`, `server_mode`, `server_ip`, `server_location`, `server_steam`, `server_regdata`, `server_email`, `server_icq`, `server_new`, `server_site`, `about`)
   VALUES ('{$game}', '{$mode}', '{$address}', '{$location}', '{$steam}', '".time()."', '{$email}', '{$icq}', '0', '{$site}', '{$about}')";
   
-  $add_server = dbquery($add_server_query);
+  $add_server = db()->query($add_server_query);
   if (!$add_server) $errors[] = "Ошибка записи в базу данных.";
  }
  

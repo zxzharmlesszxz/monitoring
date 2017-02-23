@@ -19,13 +19,13 @@ class ServerEdit {
 
 			return false;
 		}
-		$get_server = dbquery("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '{$this->server_id}' AND `server_email` = '{$this->server_email}'");
-		if(mysql_num_rows($get_server) == 0) {
+		$get_server = db()->query("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '{$this->server_id}' AND `server_email` = '{$this->server_email}'");
+		if(db()->num_rows($get_server) == 0) {
 			$this->errors[] = "Ошибка: Введен неправильный адрес электропочты или адрес сервера.";
 
 			return false;
 		} else {
-			$this->server_data = dbarray_fetch($get_server);
+			$this->server_data = db()->fetch_array($get_server);
 			return true;
 		}
 	}
@@ -58,7 +58,7 @@ class ServerEdit {
 		}
 		$this->secret_key = $key;
 		$lifetime = time() + 1800;
-		$add_link = dbquery("INSERT INTO `".DB_SERVERS_EDITS."` (`edit_server_id`, `edit_secret_key`, `edit_lifetime`) VALUES ('{$this->server_id}','{$this->secret_key}', '{$lifetime}')");
+		$add_link = db()->query("INSERT INTO `".DB_SERVERS_EDITS."` (`edit_server_id`, `edit_secret_key`, `edit_lifetime`) VALUES ('{$this->server_id}','{$this->secret_key}', '{$lifetime}')");
 		if($add_link) return true;
 		return false;
 	}
@@ -69,12 +69,12 @@ class ServerEdit {
 		$this->headers = "Content-Type: text/html; charset = utf-8";
 		$this->subject = "Редактирование сервера :: monitoring.contra.net.ua";
 		$this->message = "
-Доброго времени суток. Вы отправили запрос на редактирование сервера в мониторинге http://monitoring.contra.net.ua.
+Доброго времени суток. Вы отправили запрос на редактирование сервера в мониторинге https://monitoring.contra.net.ua.
 Для редактирования воспользуйтесь этой ссылкой : {$settings['site_url']}edit/key/{$this->secret_key}/
 Ссылка будет доступна 30 минут с начала подачи заявки.
 
 			Если Вы не подавали заявки на редактирование, то просто проигнорируйте данное письмо.
-			С уважением команда мониторинга  http://monitoring.contra.net.ua
+			С уважением команда мониторинга  https://monitoring.contra.net.ua
 ";
 		$send_mail = mail($this->server_data['server_email'], $this->subject, $this->message);
 		$send_mail = true;
@@ -84,13 +84,13 @@ class ServerEdit {
 	
 	public function CheckKey($key) {
 		if(strlen($key) != 100) return false;
-		$key = mysql_real_escape_string($key);
-		$check_key = dbquery("SELECT * FROM `".DB_SERVERS_EDITS."` WHERE BINARY `edit_secret_key` = '{$key}' AND `edit_lifetime` > '".time()."' AND `edit_date` = '0' LIMIT 1");
-		$this->edit_data = dbarray_fetch($check_key);
-		if(mysql_num_rows($check_key) == 0) return false;
-		$check_server = dbquery("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '{$this->edit_data['edit_server_id']}'");
-		if(mysql_num_rows($check_server) == 0) return false;
-		$this->server_data = dbarray_fetch($check_server);
+		$key = mysqli_real_escape_string($key);
+		$check_key = db()->query("SELECT * FROM `".DB_SERVERS_EDITS."` WHERE BINARY `edit_secret_key` = '{$key}' AND `edit_lifetime` > '".time()."' AND `edit_date` = '0' LIMIT 1");
+		$this->edit_data = db()->fetch_array($check_key);
+		if(db()->num_rows($check_key) == 0) return false;
+		$check_server = db()->query("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '{$this->edit_data['edit_server_id']}'");
+		if(db()->num_rows($check_server) == 0) return false;
+		$this->server_data = db()->fetch_array($check_server);
 		$this->server_id = $this->server_data['server_id'];
 		$this->secret_key = $this->edit_data['edit_secret_key'];
 		return true;
@@ -112,21 +112,20 @@ class ServerEdit {
 			$this->save_errors[] = "Некорректный адрес сайта.";
 			return false;
 		}
-		$address = mysql_real_escape_string($address);
-		$game = mysql_real_escape_string($game);
-		$mode = mysql_real_escape_string($mode);
-		$site = mysql_real_escape_string($site);
-		$about = mysql_real_escape_string($about);
-		$update_server_data = dbquery("UPDATE `".DB_SERVERS."` SET `server_ip` = '{$address}', `server_site` = '{$site}', `server_icq` = '{$icq}', `server_game` = '{$game}', `server_mode` = '{$mode}', `about` = '{$about}' WHERE `server_id` = '{$this->server_data['server_id']}'");
+		$address = mysqli_real_escape_string($address);
+		$game = mysqli_real_escape_string($game);
+		$mode = mysqli_real_escape_string($mode);
+		$site = mysqli_real_escape_string($site);
+		$about = mysqli_real_escape_string($about);
+		$update_server_data = db()->query("UPDATE `".DB_SERVERS."` SET `server_ip` = '{$address}', `server_site` = '{$site}', `server_icq` = '{$icq}', `server_game` = '{$game}', `server_mode` = '{$mode}', `about` = '{$about}' WHERE `server_id` = '{$this->server_data['server_id']}'");
 		if(!$update_server_data) {
 			$this->save_errors[] = "Ошибка сохранения данных о сервере.";
 			return false;
 		}
 		$edit_data = $this->server_data['server_ip'];
 		$edit_data_new = $address;
-		$update_edit_data = dbquery("UPDATE `".DB_SERVERS_EDITS."` SET `edit_date` = '".time()."', `edit_ip` = '".$_SERVER['REMOTE_ADDR']."', `edit_data` = '{$edit_data}', `edit_data_new` = '{$edit_data_new}' WHERE `edit_id` = '{$this->edit_data['edit_id']}'");
+		$update_edit_data = db()->query("UPDATE `".DB_SERVERS_EDITS."` SET `edit_date` = '".time()."', `edit_ip` = '".$_SERVER['REMOTE_ADDR']."', `edit_data` = '{$edit_data}', `edit_data_new` = '{$edit_data_new}' WHERE `edit_id` = '{$this->edit_data['edit_id']}'");
 		if(!$update_edit_data) $this->save_errors[] = "Ошибка сохранения данных.";
 		return true;
 	}
 }
-?>

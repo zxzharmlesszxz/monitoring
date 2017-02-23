@@ -11,8 +11,8 @@ if (!defined("MONENGINE")) {
 }
 
 /* Other code */
-$get_replies = dbquery("SELECT * FROM `".DB_COMMENTS."` WHERE `type` = '0' ORDER BY `id` ASC");
-$replies_num = mysql_num_rows($get_replies);
+$get_replies = db()->query("SELECT * FROM `".DB_COMMENTS."` WHERE `type` = '0' ORDER BY `id` ASC");
+$replies_num = db()->num_rows($get_replies);
 
 $replies = '';
 if ($replies_num == 0) {
@@ -33,7 +33,7 @@ if ($replies_num == 0) {
       <tbody>
  ";
 
- while($reply = dbarray_fetch($get_replies)) {
+ while($reply = db()->fetch_array($get_replies)) {
   $replies .= "
        <tr id='reply_{$reply['id']}'>
         <td>{$reply['text']}</td>

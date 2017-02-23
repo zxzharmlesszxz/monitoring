@@ -31,17 +31,17 @@ if ($settings['enable_registration'] == 0) {
  $about = '';
 
  if (isset($_POST['submit_registration'])) {
-  $address = mysql_real_escape_string($_POST['server_address']);
+  $address = mysqli_real_escape_string($_POST['server_address']);
   $steam = 0;
   $errors = Array();
   if (isset($_POST['server_steam'])) $steam = 1;
-  $game = mysql_real_escape_string($_POST['server_game']);
-  $mode = mysql_real_escape_string($_POST['server_mode']);
-  $email = mysql_real_escape_string($_POST['server_email']);
-  $site = mysql_real_escape_string($_POST['server_site']);
-  $icq = mysql_real_escape_string($_POST['server_icq']);
-  $location = mysql_real_escape_string($_POST['server_location']);
-  $about = mysql_real_escape_string($_POST['server_about']);
+  $game = mysqli_real_escape_string($_POST['server_game']);
+  $mode = mysqli_real_escape_string($_POST['server_mode']);
+  $email = mysqli_real_escape_string($_POST['server_email']);
+  $site = mysqli_real_escape_string($_POST['server_site']);
+  $icq = mysqli_real_escape_string($_POST['server_icq']);
+  $location = mysqli_real_escape_string($_POST['server_location']);
+  $about = mysqli_real_escape_string($_POST['server_about']);
   $regex_ipport = "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\:[0-9]{1,5}";
   $regex_hostport = "[a-zA-Z0-9](-*[a-zA-Z0-9]+)*(\.[a-zA-Z0-9](-*[a-zA-Z0-9]+)*)+\:[0-9]{1,5}";
 
@@ -54,8 +54,8 @@ if ($settings['enable_registration'] == 0) {
   } elseif (!preg_match("/$regex_ipport/", $address) and !preg_match("/$regex_hostport/i", $address)) {
    $errors[] = "Неверный формат адреса сервера.";
   } else {
-   $check_server = mysql_query("SELECT * FROM `".DB_SERVERS."` WHERE `server_ip` = '{$address}'");
-   if (mysql_num_rows($check_server) != 0) $errors[] = "Данный сервер уже есть в базе.";
+   $check_server = db()->query("SELECT * FROM `".DB_SERVERS."` WHERE `server_ip` = '{$address}'");
+   if (db()->num_rows($check_server) != 0) $errors[] = "Данный сервер уже есть в базе.";
   }
 
   if (!array_key_exists($location, $countries->countries)) $errors[] = "Выбрана несуществующая локация $location.";
@@ -79,19 +79,19 @@ if ($settings['enable_registration'] == 0) {
     (`server_game`, `server_mode`, `server_ip`, `server_location`, `server_steam`, `server_regdata`, `server_email`, `server_icq`, `server_new`, `server_site`, `about`)
     VALUES ('{$game}', '{$mode}', '{$address}', '{$location}', '{$steam}', '".time()."', '{$email}', '{$icq}', '0', '{$site}', '{$about}')";
    
-   $add_server = dbquery($add_server_query);
+   $add_server = db()->query($add_server_query);
   }
 
   if (count($errors) != 0) {
    $message = "<div class='msg redbg'>".implode('<br />',$errors)."</div>";
   } else {
    $message = "<div class='msg greenbg'>Спасибо. Сервер будет добавлен в течение 3 минут.</div>";
-   $mess = "Вы успешно добавили свой сервер в наш мониторинг  http://www.monitoring.contra.net.ua
-   \nID вашего сервера '".mysql_insert_id()."', a посмотреть его можно по адресу
-   \n http://www.monitoring.contra.net.ua/server/".mysql_insert_id()."
+   $mess = "Вы успешно добавили свой сервер в наш мониторинг  https://monitoring.contra.net.ua
+   \nID вашего сервера '".db()->insert_id()."', a посмотреть его можно по адресу
+   \n https://monitoring.contra.net.ua/server/".db()->insert_id()."
    \n Сервер будет доступен через 3 минуты.
    \n Это письмо автоматическое и отвечать на него не нужно.
-   \n Спасибо за пользование нашим сервисом! С уважением, администрация http://www.monitoring.contra.net.ua";
+   \n Спасибо за пользование нашим сервисом! С уважением, администрация https://monitoring.contra.net.ua";
    send_mail($email, $mess);
   }
  }
@@ -230,8 +230,8 @@ if (isset($_POST['step']) && $_POST['step'] == "2") {
  $icq=stripinput($_POST['icq']);
  $www=stripinput($_POST['www']);
  $result="SELECT * FROM ".DB_SERVERS." WHERE server_ip = '".$server_ip.":".$server_port."'";
- $dbresult=mysql_query($result);
- $n=mysql_num_rows($dbresult);
+ $dbresult=db()->query($result);
+ $n=db()->num_rows($dbresult);
 
  if ($n) {
   $error .=$locale['reg021']."<br><br>\n";

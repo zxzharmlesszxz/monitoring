@@ -6,16 +6,14 @@
 <?php
 require_once __DIR__."/include/core.php";
 
-$link = dbconnect($db_host, $db_user, $db_pass, $db_name);
-require_once "include/function.php";
-$servers = dbquery("SELECT * FROM ".DB_SERVERS);
+$servers = db()->query("SELECT * FROM ".DB_SERVERS);
 $servers_total = 0;
 $servers_online = 0;
-while($r=dbarray_fetch($servers)) {
+while($r=db()->fetch_array($servers)) {
  $servers_total++;
  $serv=serverInfo($r['server_ip']);
  if($serv['status']=='off' || empty($serv['name'])){
-  $result = dbquery("UPDATE ".DB_SERVERS."
+  $result = db()->query("UPDATE ".DB_SERVERS."
    SET
     server_status = '0',
     server_map = '-',
@@ -26,8 +24,8 @@ while($r=dbarray_fetch($servers)) {
   continue;
  }
  $servers_online++;
- $name=mysql_real_escape_string($serv['name']);
- $result = dbquery("
+ $name=mysqli_real_escape_string($serv['name']);
+ $result = db()->query("
   UPDATE ".DB_SERVERS."
    SET
     server_name = '".$name."',
@@ -41,13 +39,11 @@ while($r=dbarray_fetch($servers)) {
  if ($result) {
   echo "<font color='green'>Даные сервера с порядковым ".$r['server_id']." внесены в базу данных</font>";} else {echo "<font color='red'><b>Ошибка</b>, данные сервера с порядковым ".$r['server_id']." не были внесены в БД</font>";
  }
- echo "<br>";
+ echo "<br>
+ </body>
+ </html>
+ ";
 }
 
 $update_timestamp = time(); // запоминаем дату
-$result = dbquery("UPDATE ".DB_SETTINGS." SET last_update='$update_timestamp', servers_total='$servers_total', servers_online='$servers_online'");
-
-mysql_close();
-?>
-</body>
-</html>
+$result = db()->query("UPDATE ".DB_SETTINGS." SET last_update='$update_timestamp', servers_total='$servers_total', servers_online='$servers_online'");

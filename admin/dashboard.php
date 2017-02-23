@@ -1,9 +1,9 @@
 <?php
 $comms = '';
-$comments = dbquery("SELECT * FROM `".DB_COMMENTS."` ORDER BY `id` DESC LIMIT 5");
+$comments = db()->query("SELECT * FROM `".DB_COMMENTS."` ORDER BY `id` DESC LIMIT 5");
 
-if (mysql_num_rows($comments) != 0) {
- while ($comment = dbarray_fetch($comments)) {
+if (db()->num_rows($comments) != 0) {
+ while ($comment = db()->fetch_array($comments)) {
   $comms .= "
      <li class='comment' id='comment_{$comment['id']}'>
       <div class='hover'>
@@ -21,11 +21,11 @@ if (mysql_num_rows($comments) != 0) {
  $comms = '<li class="comment"><center>Список отзывов пуст.</center></li>';
 }
 
-$servers_list_l = dbquery("SELECT * FROM `".DB_SERVERS."` ORDER BY `server_id` DESC LIMIT 5");
+$servers_list_l = db()->query("SELECT * FROM `".DB_SERVERS."` ORDER BY `server_id` DESC LIMIT 5");
 $servers_new = '';
 
 $i = 0;
-while ($server_l = dbarray_fetch($servers_list_l)) {
+while ($server_l = db()->fetch_array($servers_list_l)) {
  if ($server_l['server_off'] == 1) {
   $status = "<font color='gray'>Забанен</font>";
  } elseif ($server_l['server_new'] == 1) {
@@ -46,11 +46,11 @@ while ($server_l = dbarray_fetch($servers_list_l)) {
  $i++;
 }
 
-$servers_list = dbquery("SELECT * FROM `".DB_SERVERS."`");
+$servers_list = db()->query("SELECT * FROM `".DB_SERVERS."`");
 
 $servers = '';
 
-while ($server = dbarray_fetch($servers_list)) {
+while ($server = db()->fetch_array($servers_list)) {
  if ($server['server_off'] == 1) {
   $status = "<font color='gray'>Забанен</font>";
  } elseif ($server['server_new'] == 1) {

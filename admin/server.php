@@ -11,10 +11,10 @@ if (!defined("MONENGINE")) {
 }
 
 /* Other code */
-$id = mysql_real_escape_string($_GET['id']);
-$get_server = dbquery("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '{$id}'");
+$id = mysqli_real_escape_string($_GET['id']);
+$get_server = db()->query("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '{$id}'");
 
-if (mysql_num_rows($get_server) == 0) {
+if (db()->num_rows($get_server) == 0) {
  exit("
   <div id='right'>
    <div class='section'>
@@ -24,7 +24,7 @@ if (mysql_num_rows($get_server) == 0) {
   ");
 }
 
-$server = dbarray_fetch($get_server);
+$server = db()->fetch_array($get_server);
 
 if (file_exists("..".MAPS."{$server['server_game']}/{$server['server_map']}.jpg")) {
  $server_map_img = MAPS."{$server['server_game']}/{$server['server_map']}.jpg";
@@ -85,12 +85,12 @@ if (!empty($server['server_ipport_style'])) {
  }
 }
 
-$get_comments = dbquery("SELECT * FROM `".DB_COMMENTS."` WHERE `server_id` = '$id' ORDER BY `id` DESC");
+$get_comments = db()->query("SELECT * FROM `".DB_COMMENTS."` WHERE `server_id` = '$id' ORDER BY `id` DESC");
 
 $comms = '';
 
-if (mysql_num_rows($get_comments) != 0) {
- while ($comment = dbarray_fetch($get_comments)) {
+if (db()->num_rows($get_comments) != 0) {
+ while ($comment = db()->fetch_array($get_comments)) {
   $comms .= "<div class='row'>
     <div><h6><b>{$comment['username']}</b> написал:</h6></div>
     <div>{$comment['text']}</div>

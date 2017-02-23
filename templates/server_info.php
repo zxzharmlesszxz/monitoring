@@ -17,10 +17,10 @@ require_once LOCALE.LOCALESET."serv.php";
 
 $site_link = SITE_URL;
 $server_id = $_GET['id'];
-$take_server = dbquery("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".mysql_real_escape_string($server_id)."");
-$server_data = dbarray_fetch($take_server);
+$take_server = db()->query("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".mysqli_real_escape_string($server_id)."");
+$server_data = db()->fetch_array($take_server);
 
-if (mysql_num_rows($take_server) == 0) {
+if (db()->num_rows($take_server) == 0) {
  displayMessage('Выбранный сервер не существует, либо был удалён.', 'error');
 } elseif ($server_data['server_off'] == 1) {
  include("banned.php");
@@ -100,20 +100,20 @@ if (mysql_num_rows($take_server) == 0) {
   if (count($errors) != 0) {
    $com_error = "<div style='font-size: 13px;color:white;padding: 5px;margin-bottom:7px;border: 1px solid#BC2E2E;background:#522828;text-align: left;'>".$errors[0]."</div>";
   } else {
-   $server_id = mysql_real_escape_string($server_id);
-   $com_name = mysql_real_escape_string(htmlspecialchars($com_name));
-   $com_text = mysql_real_escape_string(htmlspecialchars($com_text));
-   $result = mysql_query("INSERT INTO ".DB_COMMENTS." (server_id, username, text, date) VALUES ('$server_id', '$com_name', '$com_text', '".time()."')");
+   $server_id = mysqli_real_escape_string($server_id);
+   $com_name = mysqli_real_escape_string(htmlspecialchars($com_name));
+   $com_text = mysqli_real_escape_string(htmlspecialchars($com_text));
+   $result = db()->query("INSERT INTO ".DB_COMMENTS." (server_id, username, text, date) VALUES ('$server_id', '$com_name', '$com_text', '".time()."')");
    $message = "<div style='font-size: 13px;color:white;padding: 5px;margin-bottom:7px;border: 1px solid#108014;background:#3A4337;text-align: left;'>Спасибо! Ваш комментарий будет добавлен после модерации.</div>";
   }
  }
 
  unset($_SESSION['captcha_keystring']);
- $get_comments = mysql_query("SELECT * FROM ".DB_COMMENTS." WHERE server_id='$server_id' and type!='0'");
+ $get_comments = db()->query("SELECT * FROM ".DB_COMMENTS." WHERE server_id='$server_id' and type!='0'");
 
- if (mysql_num_rows($get_comments) != 0) {
+ if (db()->num_rows($get_comments) != 0) {
   $comms = '';
-  while ($comments = mysql_fetch_assoc($get_comments)) {
+  while ($comments = db()->fetch_array($get_comments)) {
    $comms .= "<div class='comment'>
            <div class='comment_text'>Комментарий от:<span class='name'>{$comments['username']}</span><br />{$comments['text']}</div>
            <p class='posttime'>Дата добавления: ".@date("d.m.Y H:i", $comments['date'])."</p>

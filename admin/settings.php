@@ -35,13 +35,13 @@ if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
   $errors[] = 'Вы заполнили не все поля.';
  }
  
- $site_name = mysql_real_escape_string($_POST['site_name']);
- $site_url = mysql_real_escape_string($_POST['site_url']);
- $site_email = mysql_real_escape_string($_POST['site_email']);
- $site_registration = mysql_real_escape_string($_POST['enable_registration']);
- $site_open = mysql_real_escape_string($_POST['site_open']);
- $site_spp = mysql_real_escape_string($_POST['servers_per_page']);
- $site_top_rows = mysql_real_escape_string($_POST['top_rows']);
+ $site_name = mysqli_real_escape_string($_POST['site_name']);
+ $site_url = mysqli_real_escape_string($_POST['site_url']);
+ $site_email = mysqli_real_escape_string($_POST['site_email']);
+ $site_registration = mysqli_real_escape_string($_POST['enable_registration']);
+ $site_open = mysqli_real_escape_string($_POST['site_open']);
+ $site_spp = mysqli_real_escape_string($_POST['servers_per_page']);
+ $site_top_rows = mysqli_real_escape_string($_POST['top_rows']);
  
  if (!isValidUrl($site_url)) {
   $errors[] = 'Введён неправильный URL сайта.';
@@ -69,7 +69,7 @@ if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
     $site_close = 1;
    }
   if (isset($_POST['site_close_reason'])) {
-   $site_close_reason = mysql_real_escape_string($_POST['site_close_reason']);
+   $site_close_reason = mysqli_real_escape_string($_POST['site_close_reason']);
   } else {
    $site_close_reason = '';
   }
@@ -83,10 +83,10 @@ if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
   `site_closed_message` = '{$site_close_reason}',
   `servers_per_page` = '{$site_spp}',
   `top_rows` = '{$site_top_rows}'";
-  $update = dbquery($update_query);
+  $update = db()->query($update_query);
   if ($update) {
    $message = "<div class='message green'><span><b>Успех</b>: изменения успешно сохранены.</span></div>";
-   $settings = dbarray(dbquery("SELECT * FROM ".DB_SETTINGS)); // Refreshing info 
+   $settings = db()->fetch_array(dbquery("SELECT * FROM ".DB_SETTINGS)); // Refreshing info
   } else {
    $message = "<div class='message red'><span><b>Ошибка</b>: не удалось записать данные в БД.</span></div>";
   }

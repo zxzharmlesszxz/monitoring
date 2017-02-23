@@ -38,8 +38,8 @@ if (count($_POST) != 0 and !$logged_in) {
   //удаляем лишние пробелы
   $login = trim($login);
 
-  $result = dbquery("SELECT * FROM ".DB_ADMIN." WHERE admin_name='".$login."'");
-  $myrow = dbarray_fetch($result);
+  $result = ddb()->query("SELECT * FROM ".DB_ADMIN." WHERE admin_name='".$login."'");
+  $myrow = db()->fetch_array($result);
 
   if (empty($myrow['admin_pass'])) {
    $msg_color = 'red';

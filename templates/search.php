@@ -11,8 +11,6 @@ if (!defined("MONENGINE")) {
 }
 /* Other code */
 
-var_dump($_POST);
-
 /* Search form */
 if (count($_POST) == 0) {
  $page = 'advanced_search';
@@ -29,7 +27,7 @@ var_dump($page);
 if ($page == 'advanced_search') {
  include(INCLUDES."countries.class.php");
  $countries = new countries;
- $servers = dbquery("SELECT `server_location` FROM `".DB_SERVERS."` WHERE `server_location` != ''");
+ $servers = db()->query("SELECT `server_location` FROM `".DB_SERVERS."` WHERE `server_location` != ''");
 
  echo "
  <div class='horizontal_line'>Поиск серверов</div>
@@ -61,11 +59,11 @@ if ($page == 'advanced_search') {
  ";
 
 } elseif ($page == 'adv_search_results') {
- $searchfield = mysql_real_escape_string(trim($_POST['searchfield']));
- $map = mysql_real_escape_string(trim($_POST['map']));
- $ip = mysql_real_escape_string(trim($_POST['ip']));
+ $searchfield = mysqli_real_escape_string(trim($_POST['searchfield']));
+ $map = mysqli_real_escape_string(trim($_POST['map']));
+ $ip = mysqli_real_escape_string(trim($_POST['ip']));
  $freeslots = trim($_POST['freeslots']);
- $country = mysql_real_escape_string(trim($_POST['country']));
+ $country = mysqli_real_escape_string(trim($_POST['country']));
  $query_params = Array();
  /* Search field */
  if (!empty($searchfield)) {
@@ -203,10 +201,10 @@ EOT;
   }
   $search_query .= " ORDER BY `server_vip` DESC, `votes` DESC LIMIT 100";
   //echo $search_query; // *Debug*
-  $servers = dbquery($search_query);
+  $servers = db()->query($search_query);
   
-  if (mysql_num_rows($servers) != 0) {
-   while ($r=dbarray_fetch($servers)) {
+  if (db()->num_rows($servers) != 0) {
+   while ($r=db()->fetch_array($servers)) {
     $players = $r['server_players']."/".$r['server_maxplayers'];
     $server_location = $r['server_location'];
     if (empty($server_location)) $server_location = 'undefined';

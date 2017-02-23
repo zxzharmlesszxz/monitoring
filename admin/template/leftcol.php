@@ -1,7 +1,7 @@
 <?php
   
-$comments_num = dbquery("SELECT id FROM `".DB_COMMENTS."`");
-$comments_num = mysql_num_rows($comments_num);
+$comments_num = db()->query("SELECT id FROM `".DB_COMMENTS."`");
+$comments_num = db()->num_rows($comments_num);
 $last_update = @date("d.m H:i", $settings['last_update']);
 
 echo <<<EOT

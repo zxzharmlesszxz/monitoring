@@ -6,7 +6,7 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
  require_once(__DIR__."/include/core.php");
  
  $hash = $_POST['hash'];
- $id = mysql_real_escape_string($_POST['id']);
+ $id = mysqli_real_escape_string($_POST['id']);
  $action = $_POST['action'];
  
  if ($hash != md5("m0n3ng1ne.s4lt:P{]we$id@._)%;")) {
@@ -15,7 +15,7 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
 
  @$day = date("Y-m-d H:i:s");
 
- dbquery("DELETE FROM ".DB_VOTES." WHERE date_resp < '$day'");
+ db()->query("DELETE FROM ".DB_VOTES." WHERE date_resp < '$day'");
 
  function getAllVotes($id) {
   /**
@@ -23,10 +23,10 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
   **/
   $votes = array();
   $select_server = "SELECT * FROM ".DB_SERVERS." WHERE server_id = '$id'";
-  $select_server = dbquery($select_server);
+  $select_server = db()->query($select_server);
 
-  if (mysql_num_rows($select_server) == 1) {
-   $row = dbarray($select_server);
+  if (db()->num_rows($select_server) == 1) {
+   $row = db()->fetch_array($select_server);
    $votes[0] = $row['votes'];
   }
 
@@ -45,9 +45,9 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
  //get the current votes
  $cur_votes = getAllVotes($id);
  $ip = $_SERVER['REMOTE_ADDR'];
- $check_voted = dbquery("SELECT * FROM ".DB_VOTES." WHERE id_resp='$id' AND ip='$ip'");
+ $check_voted = db()->query("SELECT * FROM ".DB_VOTES." WHERE id_resp='$id' AND ip='$ip'");
  
- if (mysql_num_rows($check_voted) == 1 ) {
+ if (db()->num_rows($check_voted) == 1 ) {
   echo getEffectiveVotes($id);
   exit();
  }
@@ -60,13 +60,13 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
  
  $votes_upd_query = "UPDATE ".DB_SERVERS." SET votes='$votes_new' WHERE server_id='$id'";
 
- mysql_query($votes_upd_query);
+ db()->query($votes_upd_query);
  
- if (mysql_affected_rows()) {
+ if (db()->affected_rows()) {
   $effectiveVote = getEffectiveVotes($id);
   echo $effectiveVote;
   @$date_resp = date("Y-m-d",time()+ 60*60*24);
-  dbquery("INSERT INTO ".DB_VOTES."(id_resp, ip, date_resp) VALUES ('".$id."','".$ip."','".$date_resp."')");
+  db()->query("INSERT INTO ".DB_VOTES."(id_resp, ip, date_resp) VALUES ('".$id."','".$ip."','".$date_resp."')");
  } elseif (!$check_voted) {
   echo "Произошла ошибка.";
  }
