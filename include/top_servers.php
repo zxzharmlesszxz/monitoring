@@ -12,8 +12,8 @@ if (!defined("MONENGINE")) {
 /* Other code */
 
 if ($settings['top_rows'] > 0) {
- $top_servers = dbquery("SELECT * FROM ".DB_SERVERS." WHERE server_new = '0' AND server_top != '0'");
- while ($top_servers_array = dbarray($top_servers)) {
+ $top_servers = db()->query("SELECT * FROM ".DB_SERVERS." WHERE server_new = '0' AND server_top != '0'");
+ while ($top_servers_array = db()->fetch_array($top_servers)) {
   $i = $top_servers_array['server_top'];
   foreach ($top_servers_array as $k => $v) {
    $tops_array[$i][$k] = $v;
@@ -98,7 +98,7 @@ if ($settings['top_rows'] > 0) {
    if ($tops_array[$i]['server_off'] == 1) $server_address = "<span style='color:#789ABF;cursor:help;' title='Данный сервер заблокирован в мониторинге'>[Сервер заблокирован]</a>";
 
    if ($tops_array[$i]['server_ipport_style']) {
-    $grc = mysql_fetch_array(mysql_query("SELECT * FROM mon_rowstyles WHERE name='".$tops_array[$i]['server_ipport_style']."'"));
+    $grc = db()->fetch_array(db()->query("SELECT * FROM mon_rowstyles WHERE name='".$tops_array[$i]['server_ipport_style']."'"));
     $server_address = "<span style='".$grc['style']."'>$server_address</span>";
    }
 
