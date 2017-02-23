@@ -1,13 +1,5 @@
 <?php
 
-function config(){
- return Registry::_get('config');
-}
-
-function db(){
- return Registry::_get('database');
-}
-
 if (!function_exists('getmicrotime')) {
  function getmicrotime() {
   list($usec, $sec) = explode(" ", microtime());
