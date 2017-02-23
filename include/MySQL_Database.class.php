@@ -26,13 +26,13 @@ class MySQL_Database extends Database{
 	$config = config()->mysql;
         $this->connection = mysqli_connect($config['host'], $config['user'], $config['password']);
         if (!$this->connection) {
-            die("Database connection failed: " . mysql_error());
+            die("Database connection failed: " . mysql_error($this->connection));
         } else {
             // 2. Select a database to use
             mysqli_set_charset($this->connection, $config['charset']);
             $db_select = mysqli_select_db( $this->connection, $config['database']);
             if (!$db_select) {
-                die("Database selection failed: " . mysqli_error());
+                die("Database selection failed: " . mysqli_error($this->connection));
             }
         }
     }
