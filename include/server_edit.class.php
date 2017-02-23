@@ -84,7 +84,7 @@ class ServerEdit {
 	
 	public function CheckKey($key) {
 		if(strlen($key) != 100) return false;
-		$key = mysqli_real_escape_string($key);
+		$key = db()->escape_value($key);
 		$check_key = db()->query("SELECT * FROM `".DB_SERVERS_EDITS."` WHERE BINARY `edit_secret_key` = '{$key}' AND `edit_lifetime` > '".time()."' AND `edit_date` = '0' LIMIT 1");
 		$this->edit_data = db()->fetch_array($check_key);
 		if(db()->num_rows($check_key) == 0) return false;
@@ -112,11 +112,11 @@ class ServerEdit {
 			$this->save_errors[] = "Некорректный адрес сайта.";
 			return false;
 		}
-		$address = mysqli_real_escape_string($address);
-		$game = mysqli_real_escape_string($game);
-		$mode = mysqli_real_escape_string($mode);
-		$site = mysqli_real_escape_string($site);
-		$about = mysqli_real_escape_string($about);
+		$address = db()->escape_value($address);
+		$game = db()->escape_value($game);
+		$mode = db()->escape_value($mode);
+		$site = db()->escape_value($site);
+		$about = db()->escape_value($about);
 		$update_server_data = db()->query("UPDATE `".DB_SERVERS."` SET `server_ip` = '{$address}', `server_site` = '{$site}', `server_icq` = '{$icq}', `server_game` = '{$game}', `server_mode` = '{$mode}', `about` = '{$about}' WHERE `server_id` = '{$this->server_data['server_id']}'");
 		if(!$update_server_data) {
 			$this->save_errors[] = "Ошибка сохранения данных о сервере.";

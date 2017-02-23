@@ -8,14 +8,14 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
 
  switch ($task) {
   case 'delreply':
-   $id = mysqli_real_escape_string($_REQUEST['id']);
+   $id = db()->escape_value($_REQUEST['id']);
    $result = dbquery("DELETE FROM `".DB_COMMENTS."` WHERE `id` = '$id'");
 
    if ($result) exit('success');
    exit('fail');
    break;
   case 'changestatus':
-   $id = mysqli_real_escape_string($_REQUEST['id']);
+   $id = db()->escape_value($_REQUEST['id']);
    $get_server = db()->query("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '$id'") or exit();
    $server = db()->fetch_array($get_server);
    
@@ -34,8 +34,8 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
    }
    break;
   case 'approvereply':
-   $id = mysqli_real_escape_string($_REQUEST['id']);
-   $type = mysqli_real_escape_string($_REQUEST['type']);
+   $id = db()->escape_value($_REQUEST['id']);
+   $type = db()->escape_value($_REQUEST['type']);
    $result = db()->query("UPDATE `".DB_COMMENTS."` SET `type` = '$type' WHERE `id` = '$id'");
    if ($result) {
     exit('success');

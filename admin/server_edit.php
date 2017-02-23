@@ -11,7 +11,7 @@ if (!defined("MONENGINE")) {
 }
 
 /* Other code */
-$id = mysqli_real_escape_string($_GET['id']);
+$id = db()->escape_value($_GET['id']);
 $get_server = db()->query("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '{$id}'");
 
 if (db()->num_rows($get_server) == 0) {
@@ -44,12 +44,12 @@ if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
  @$vip = $_POST['server_vip_status'];
  if (!isset($_POST['server_vip_status'])) $vip = 0;
  $votes = $_POST['server_votes'];
- $site = mysqli_real_escape_string($_POST['server_site']);
- $about = mysqli_real_escape_string($_POST['server_about']);
- $game = mysqli_real_escape_string($_POST['server_game']);
- $mode = mysqli_real_escape_string($_POST['server_mode']);
- $new_style = mysqli_real_escape_string($_POST['server_row_style']);
- $new_style_ip = mysqli_real_escape_string($_POST['server_ipport_style']);
+ $site = db()->escape_value($_POST['server_site']);
+ $about = db()->escape_value($_POST['server_about']);
+ $game = db()->escape_value($_POST['server_game']);
+ $mode = db()->escape_value($_POST['server_mode']);
+ $new_style = db()->escape_value($_POST['server_row_style']);
+ $new_style_ip = db()->escape_value($_POST['server_ipport_style']);
  $server_top_time = time() + (86400*$_POST['server_top_time']);
  $server_vip_time = time() + (86400*$_POST['server_vip_time']);
  $server_color_time = time() + (86400*$_POST['server_color_time']);

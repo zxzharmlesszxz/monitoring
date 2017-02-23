@@ -11,7 +11,7 @@ if (!defined("MONENGINE")) {
 }
 
 /* Other code */
-$id = mysqli_real_escape_string($_GET['id']);
+$id = db()->escape_value($_GET['id']);
 $get_server = db()->query("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '{$id}'");
 
 if (db()->num_rows($get_server) == 0) {

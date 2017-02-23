@@ -24,7 +24,7 @@ while($r=db()->fetch_array($servers)) {
   continue;
  }
  $servers_online++;
- $name=mysqli_real_escape_string($serv['name']);
+ $name=db()->escape_value($serv['name']);
  $result = db()->query("
   UPDATE ".DB_SERVERS."
    SET

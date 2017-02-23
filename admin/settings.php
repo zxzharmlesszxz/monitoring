@@ -35,13 +35,13 @@ if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
   $errors[] = 'Вы заполнили не все поля.';
  }
  
- $site_name = mysqli_real_escape_string($_POST['site_name']);
- $site_url = mysqli_real_escape_string($_POST['site_url']);
- $site_email = mysqli_real_escape_string($_POST['site_email']);
- $site_registration = mysqli_real_escape_string($_POST['enable_registration']);
- $site_open = mysqli_real_escape_string($_POST['site_open']);
- $site_spp = mysqli_real_escape_string($_POST['servers_per_page']);
- $site_top_rows = mysqli_real_escape_string($_POST['top_rows']);
+ $site_name = db()->escape_value($_POST['site_name']);
+ $site_url = db()->escape_value($_POST['site_url']);
+ $site_email = db()->escape_value($_POST['site_email']);
+ $site_registration = db()->escape_value($_POST['enable_registration']);
+ $site_open = db()->escape_value($_POST['site_open']);
+ $site_spp = db()->escape_value($_POST['servers_per_page']);
+ $site_top_rows = db()->escape_value($_POST['top_rows']);
  
  if (!isValidUrl($site_url)) {
   $errors[] = 'Введён неправильный URL сайта.';
@@ -69,7 +69,7 @@ if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
     $site_close = 1;
    }
   if (isset($_POST['site_close_reason'])) {
-   $site_close_reason = mysqli_real_escape_string($_POST['site_close_reason']);
+   $site_close_reason = db()->escape_value($_POST['site_close_reason']);
   } else {
    $site_close_reason = '';
   }

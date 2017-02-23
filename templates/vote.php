@@ -6,7 +6,7 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
  require_once(__DIR__."/include/core.php");
  
  $hash = $_POST['hash'];
- $id = mysqli_real_escape_string($_POST['id']);
+ $id = db()->escape_value($_POST['id']);
  $action = $_POST['action'];
  
  if ($hash != md5("m0n3ng1ne.s4lt:P{]we$id@._)%;")) {

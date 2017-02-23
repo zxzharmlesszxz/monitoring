@@ -14,9 +14,9 @@ if (!defined("MONENGINE")) {
 $message = '';
 
 if (isset($_POST['submit'])) {
- $style_title = mysqli_real_escape_string($_POST['style_title']);
- $style_name = mysqli_real_escape_string($_POST['style_name']);
- $style_style = mysqli_real_escape_string($_POST['style_style']);
+ $style_title = db()->escape_value($_POST['style_title']);
+ $style_name = db()->escape_value($_POST['style_name']);
+ $style_style = db()->escape_value($_POST['style_style']);
  $check_style = db()->query("SELECT * FROM `".DB_ROWSTYLES."` WHERE `name` = '$style_name'");
  if (db()->num_rows($check_style) == 0) {
   $add_style = db()->query("INSERT INTO `".DB_ROWSTYLES."` (`name`,`style`,`title`) VALUES ('$style_name', '$style_style', '$style_title')");

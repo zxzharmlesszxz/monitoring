@@ -59,11 +59,11 @@ if ($page == 'advanced_search') {
  ";
 
 } elseif ($page == 'adv_search_results') {
- $searchfield = mysqli_real_escape_string(trim($_POST['searchfield']));
- $map = mysqli_real_escape_string(trim($_POST['map']));
- $ip = mysqli_real_escape_string(trim($_POST['ip']));
+ $searchfield = db()->escape_value(trim($_POST['searchfield']));
+ $map = db()->escape_value(trim($_POST['map']));
+ $ip = db()->escape_value(trim($_POST['ip']));
  $freeslots = trim($_POST['freeslots']);
- $country = mysqli_real_escape_string(trim($_POST['country']));
+ $country = db()->escape_value(trim($_POST['country']));
  $query_params = Array();
  /* Search field */
  if (!empty($searchfield)) {

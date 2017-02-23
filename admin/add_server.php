@@ -22,19 +22,19 @@ $location = '';
 $about = '';
 
 if (isset($_POST['submit_registration'])) {
- $address = mysqli_real_escape_string($_POST['server_address']);
+ $address = db()->escape_value($_POST['server_address']);
  $steam = 0;
  $errors = Array();
 
  if (isset($_POST['server_steam'])) $steam = 1;
 
- $email = mysqli_real_escape_string($_POST['server_email']);
- $site = mysqli_real_escape_string($_POST['server_site']);
- $game = mysqli_real_escape_string($_POST['server_game']);
- $mode = mysqli_real_escape_string($_POST['server_mode']);
- $icq = mysqli_real_escape_string($_POST['server_icq']);
- $location = mysqli_real_escape_string($_POST['server_location']);
- $about = mysqli_real_escape_string($_POST['server_about']);
+ $email = db()->escape_value($_POST['server_email']);
+ $site = db()->escape_value($_POST['server_site']);
+ $game = db()->escape_value($_POST['server_game']);
+ $mode = db()->escape_value($_POST['server_mode']);
+ $icq = db()->escape_value($_POST['server_icq']);
+ $location = db()->escape_value($_POST['server_location']);
+ $about = db()->escape_value($_POST['server_about']);
  $regex_ipport = "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\:[0-9]{1,5}";
  $regex_hostport = "[a-zA-Z0-9](-*[a-zA-Z0-9]+)*(\.[a-zA-Z0-9](-*[a-zA-Z0-9]+)*)+\:[0-9]{1,5}";
 

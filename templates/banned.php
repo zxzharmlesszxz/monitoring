@@ -4,8 +4,8 @@
  * Made by starky
 */
 
-$take_server = dbquery("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".$_GET['id']."");
-$server_data = dbarray_fetch($take_server);
+$take_server = db()->query("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".$_GET['id']."");
+$server_data = db()->fetch_array($take_server);
 
 /* Other code */
 echo <<<EOT
