@@ -38,7 +38,7 @@ if(!defined("MONENGINE")) {
    <table cellpadding="0" cellspacing="0">
     <tr>
      <td valign="top" class="faq-arrow">
-      <img src="/images/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
+      <img src="/images/img/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
      </td>
      <td valign="top" class="faq">
       <div class="answer-open answer-open-l">
@@ -53,7 +53,7 @@ if(!defined("MONENGINE")) {
     </tr>
     <tr>
      <td valign="top" class="faq-arrow">
-      <img src="/images/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
+      <img src="/images/img/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
      </td>
      <td valign="top" class="faq">
       <div class="answer-open answer-open-l">
@@ -67,7 +67,7 @@ if(!defined("MONENGINE")) {
     </tr>
     <tr>
      <td valign="top" class="faq-arrow">
-      <img src="/images/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
+      <img src="/images/img/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
      </td>
      <td valign="top" class="faq">
       <div class="answer-open answer-open-l">
@@ -82,7 +82,7 @@ if(!defined("MONENGINE")) {
     </tr>
     <tr>
      <td valign="top" class="faq-arrow">
-      <img src="/images/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
+      <img src="/images/img/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
      </td>
      <td valign="top" class="faq">
       <div class="answer-open answer-open-l">
@@ -96,7 +96,7 @@ if(!defined("MONENGINE")) {
     </tr>
     <tr>
      <td valign="top" class="faq-arrow">
-      <img src="/images/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
+      <img src="/images/img/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
      </td>
      <td valign="top" class="faq">
       <div class="answer-open answer-open-l">
@@ -111,7 +111,7 @@ if(!defined("MONENGINE")) {
     </tr>
     <tr>
      <td valign="top" class="faq-arrow">
-      <img src="/images/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
+      <img src="/images/img/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
      </td>
      <td valign="top" class="faq">
       <div class="answer-open answer-open-l">
@@ -125,7 +125,7 @@ if(!defined("MONENGINE")) {
     </tr>
     <tr>
      <td valign="top" class="faq-arrow">
-      <img src="/images/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
+      <img src="/images/img/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
      </td>
      <td valign="top" class="faq">
       <div class="answer-open answer-open-l">
@@ -139,7 +139,7 @@ if(!defined("MONENGINE")) {
     </tr>
     <tr>
      <td valign="top" class="faq-arrow">
-      <img src="/images/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
+      <img src="/images/img/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
      </td>
      <td valign="top" class="faq">
       <div class="answer-open answer-open-l">
@@ -153,7 +153,7 @@ if(!defined("MONENGINE")) {
     </tr>
     <tr>
      <td valign="top" class="faq-arrow">
-      <img src="/images/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
+      <img src="/images/img/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
      </td>
      <td valign="top" class="faq">
       <div class="answer-open answer-open-l">
@@ -167,7 +167,7 @@ if(!defined("MONENGINE")) {
     </tr>
     <tr>
      <td valign="top" class="faq-arrow">
-      <img src="/images/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
+      <img src="/images/img/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
      </td>
      <td valign="top" class="faq">
       <div class="answer-open answer-open-l">
@@ -184,7 +184,7 @@ if(!defined("MONENGINE")) {
      </td>
     </tr>
      <td valign="top" class="faq-arrow">
-      <img src="/images/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
+      <img src="/images/img/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
      </td>
      <td valign="top" class="faq">
       <div class="answer-open answer-open-l">
@@ -209,7 +209,7 @@ if(!defined("MONENGINE")) {
     </tr>
     <tr>
      <!--<td valign="top" class="faq-arrow">
-      <img src="/images/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
+      <img src="/images/img/para-vip.gif" width="9" height="13" style="margin-top:2px;" />
      </td>
      <td valign="top" class="faq">
       <div class="answer-open answer-open-sb">
