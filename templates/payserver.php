@@ -15,10 +15,10 @@ if (!defined("MONENGINE")) {
 require_once LOCALE.LOCALESET."serv.php";
 
 $server_id = $_GET['id'];
-$take_server = dbquery("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".mysql_real_escape_string($server_id)."");
-$server_data = dbarray_fetch($take_server);
+$take_server = db()->query("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".db()->escape_value($server_id)."");
+$server_data = db()->fetch_array($take_server);
 
-if (mysql_num_rows($take_server) == 0) {
+if (db()->num_rows($take_server) == 0) {
  displayMessage('Выбранный сервер не существует, либо был удалён.', 'error');
 } else {
  if ($server_data['server_off'] == 1) {

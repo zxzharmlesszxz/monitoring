@@ -89,7 +89,7 @@ echo <<<EOT
 EOT;
 
 for ($itop=1; $itop < 5 * LINES_NUM+1; $itop++) {
- $rtop = mysql_fetch_array(mysql_query("SELECT * FROM `mon_servers` WHERE server_top=$itop"));
+ $rtop = db()->fetch_array(db()->query("SELECT * FROM `mon_servers` WHERE server_top=$itop"));
  if ($rtop['server_top']) {
   echo "<li><font size='2px'>Место занято сервером <a href='/server/{$rtop['server_id']}/'>{$rtop['server_name']}</a>. Освободится через ".time2string($rtop['server_top_time'] - time(),true,false,false,false)." (".formatDate("d.m.Y H:i:s",$rtop['server_top_time']).")</li>";
  } else {
@@ -104,13 +104,13 @@ echo "</ol>
  <font size='4px'>Листинг VIP серверов:</font>
  <ol>";
 
-$qvip = mysql_query("SELECT * FROM `mon_servers` WHERE server_vip=1");
+$qvip = db()->query("SELECT * FROM `mon_servers` WHERE server_vip=1");
 
-if (mysql_num_rows($qvip) == 1) {
+if (db()->num_rows($qvip) == 1) {
  echo "<font size='2px'><li>Все места свободны</li></font>";
 }
 
-while ($rvip = mysql_fetch_array($qvip)) {
+while ($rvip = db()->fetch_array($qvip)) {
  echo "<font size='2px'><li>Место занято сервером <a href='/server/{$rvip['server_id']}/'>{$rvip['server_name']}</a>. Освободится через ".time2string($rvip['server_vip_time'] - time(),true,false,false,false)." (".formatDate("d.m.Y H:i:s",$rvip['server_vip_time']).")</li>";
 }
 
@@ -122,13 +122,13 @@ echo "
 <div class='listingcolor'><font size='4px'>Листинг серверов с цветом:</font>
  <ol>";
 
-$qcolor = mysql_query("SELECT * FROM `mon_servers` WHERE server_row_style RLIKE '_'");
+$qcolor = db()->query("SELECT * FROM `mon_servers` WHERE server_row_style RLIKE '_'");
 
-if (mysql_num_rows($qcolor) == 1) {
+if (db()->num_rows($qcolor) == 1) {
  echo "<li>Все места свободны</li>";
 }
 
-while ($rcolor = mysql_fetch_array($qcolor)) {
+while ($rcolor = db()->fetch_array($qcolor)) {
  echo "<li>Место занято сервером <a href='/server/{$rcolor['server_id']}/'>{$rcolor['server_name']}</a>. Освободится через ".time2string($rcolor['server_color_time'] - time(),true,false,false,false)." (".formatDate("d.m.Y H:i:s",$rcolor['server_color_time']).")</li>";
 }
 

@@ -151,7 +151,7 @@ if($_GET['page'] == "pay" && !isset($_GET['serverpay']))
 ";
 for($itop=1;$itop<5 * LINES_NUM+1;$itop++)
 {
-  $rtop = mysql_fetch_array(mysql_query("SELECT * FROM `mon_servers` WHERE server_top=$itop"));
+  $rtop = db()->fetch_array(db()->query("SELECT * FROM `mon_servers` WHERE server_top=$itop"));
   if($rtop['server_top']) 
   {
    echo "<li><font size='2px'>Место занято сервером <a href='/{$rtop['server_id']}/' style='color:#3dcbfa;'>{$rtop['server_name']}</a>. Освободится через ".time2string($rtop['server_top_time'] - time(),true,false,false,false)." (".formatDate("d.m.Y H:i:s",$rtop['server_top_time']).") <a href='/{$rtop['server_id']}/' style='color:#3dcbfa;'>продлить</a></li>";
@@ -168,9 +168,9 @@ echo "</ol></div></div></div>
    <div class='viplist'>
     <ol>
   ";
-$qvip = mysql_query("SELECT * FROM `mon_servers` WHERE server_vip=1");
-if(mysql_num_rows($qvip) == 1) echo "<font size='2px'><li>Все места свободны</li></font>";
-while($rvip = mysql_fetch_array($qvip))
+$qvip = db()->query("SELECT * FROM `mon_servers` WHERE server_vip=1");
+if(db()->num_rows($qvip) == 1) echo "<font size='2px'><li>Все места свободны</li></font>";
+while($rvip = db()->fetch_array($qvip))
 {
 echo "<font size='2px'><li>Место занято сервером <a href='/{$rvip['server_id']}/'>{$rvip['server_name']}</a>. Освободится через ".time2string($rvip['server_vip_time'] - time(),true,false,false,false)." (".formatDate("d.m.Y H:i:s",$rvip['server_vip_time']).")</li>"; 
 }
@@ -223,16 +223,16 @@ echo "</ol></div></div></div>";
 }
 else if($_GET['page'] == "pay" && isset($_GET['serverpay']) && $_GET['serverpay'] > 0)
 {
-$test_sever = mysql_query("SELECT server_name FROM mon_servers WHERE server_id = '".$_GET['serverpay']."'");
-$r = mysql_fetch_array($test_sever);
-if(mysql_num_rows($test_sever) <= 0)
+$test_sever = db()->query("SELECT server_name FROM mon_servers WHERE server_id = '".$_GET['serverpay']."'");
+$r = db()->fetch_array($test_sever);
+if(db()->num_rows($test_sever) <= 0)
 {
  echo "Сервер не найден";
  return 1;
 }
-$test_query = mysql_query("SELECT server_top FROM mon_servers WHERE server_id = '".$_GET['serverpay']."' AND `server_top` > 0");
-$r_top = mysql_fetch_array($test_query);
-$glb_count = mysql_num_rows($test_query);
+$test_query = db()->query("SELECT server_top FROM mon_servers WHERE server_id = '".$_GET['serverpay']."' AND `server_top` > 0");
+$r_top = db()->fetch_array($test_query);
+$glb_count = db()->num_rows($test_query);
 if(isset($_POST['posit'])) $pos_tops = $_POST['posit'];
 else $pos_tops = $r_top['server_top'];
 /* Other code */
@@ -306,4 +306,3 @@ echo "<div class='mytitle'><div>Заказ платной услуги для с
  </div>
 </div>';
 }
-?>

@@ -25,7 +25,7 @@ if(count($_POST) == 0) {
 if($page == 'advanced_search') {
  include(INCLUDES."countries.class.php");
  $countries = new countries;
- $servers = dbquery("SELECT `server_location` FROM `".DB_SERVERS."` WHERE `server_location` != ''");
+ $servers = db()->query("SELECT `server_location` FROM `".DB_SERVERS."` WHERE `server_location` != ''");
 
  echo "
  <div class='horizontal_line'>Просмотр страницы запрещен</div>
@@ -43,11 +43,11 @@ setTimeout( 'GoNah()', 1 );
  </div>
  ";
 } elseif($page == 'adv_search_results') {
- $searchfield = mysql_real_escape_string(trim($_POST['searchfield']));
- $map = mysql_real_escape_string(trim($_POST['map']));
- $ip = mysql_real_escape_string(trim($_POST['ip']));
+ $searchfield = db()->escape_value(trim($_POST['searchfield']));
+ $map = db()->escape_value(trim($_POST['map']));
+ $ip = db()->escape_value(trim($_POST['ip']));
  $freeslots = trim($_POST['freeslots']);
- $country = mysql_real_escape_string(trim($_POST['country']));
+ $country = db()->escape_value(trim($_POST['country']));
  $query_params = Array();
  /* Search field */
  if(!empty($searchfield)) {
@@ -118,15 +118,9 @@ setTimeout( 'GoNah()', 1 );
   } else {
    $ip = trim($ip);
    $query_params[]= "`server_ip` = '$ip'";
-  
-  
-  
-   
-   
   }
  }
- 
- 
+
   /* Site */
  if(!empty($site) and $site != '*') {
   if(mb_strpos($site, ',', 0, 'UTF-8') !== false) {
@@ -193,9 +187,9 @@ if($page == 'adv_search_results' or $page == 'quick_search') {
   }
   $search_query .= " ORDER BY `server_vip` DESC, `votes` DESC LIMIT 100";
   //echo $search_query; // *Debug*
-  $servers = dbquery($search_query);
+  $servers = db()->query($search_query);
   
-  if(mysql_num_rows($servers) != 0) {
+  if(db()->num_rows($servers) != 0) {
    while($r=dbarray_fetch($servers)) {
     $players = $r['server_players']."/".$r['server_maxplayers'];
     
@@ -230,5 +224,3 @@ if($page == 'adv_search_results' or $page == 'quick_search') {
  echo "</tbody></table>";
  /* TABLE END */
 }
-
-?>
