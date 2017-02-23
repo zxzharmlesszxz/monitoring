@@ -47,10 +47,6 @@ Registry::_set('config', Config::getInstance());
 Registry::_set('database', new MySQL_Database);
 
 require_once __DIR__."/function.php";
-
-// Если бд нет, то переадресует на install.php
-if (!isset($db_name)) exit("Нет базы данных.");
-
 require_once __DIR__."/constants.php";
 require_once __DIR__."/rus_name_fix.php";
 require_once __DIR__."/games.inc.php";
