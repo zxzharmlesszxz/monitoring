@@ -4,8 +4,6 @@
  * Made by starky
 */
 
-require_once __DIR__."/config.php";
-
 error_reporting(E_ALL);
 
 //Проверка от XSS атак $_GET
