@@ -381,7 +381,7 @@ function dbrows($query) {
 
 function dbconnect($db_host, $db_user, $db_pass, $db_name) {
  $db_connect = @mysqli_connect($db_host, $db_user, $db_pass);
- $db_select = @mysqli_select_db($db_name);
+ $db_select = @mysqli_select_db($db_connect, $db_name);
 
  if (!$db_connect) {
   die("<div style='font-family:Verdana;font-size:11px;text-align:center;'><b>Не могу подключиться к MySQL</b><br />".mysqli_errno($db_connect)." : ".mysqli_error($db_connect)."</div>");
@@ -390,7 +390,7 @@ function dbconnect($db_host, $db_user, $db_pass, $db_name) {
  }
 
  // Fix кодировки
- mysqli_query("SET NAMES 'utf8'");
+ mysqli_query($db_connect, "SET NAMES 'utf8'");
 }
 
 function isValidURL($url) {
