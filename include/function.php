@@ -123,14 +123,14 @@ function playersInfo($server) {
 /*
 function getlistservers() {
  $sql = "SELECT adress FROM amx_servers";
- $result = mysql_query($sql);
+ $result = mysqli_query($sql);
  dbquery("SELECT adress FROM amx_servers");
- if (mysql_num_rows($result) == 0) {
+ if (mysqli_num_rows($result) == 0) {
   echo "No Servers";
   exit;
  }
 
- if (mysql_error()!=='') return mysql_error
+ if (mysqli_error()!=='') return mysqli_error
  $result=array();
  while ($row=dbarray(adress)) $result[]=$row;
  // или $result[$row['adress']]=$row так красивее
@@ -230,9 +230,9 @@ function stripinput($text) {
 
 // MySQL функции
 function dbquery($query) {
- $result = @mysql_query($query);
+ $result = @mysqli_query($query);
  if (!$result) {
-  echo mysql_error();
+  echo mysqli_error();
   return false;
  } else {
   return $result;
@@ -240,9 +240,9 @@ function dbquery($query) {
 }
 
 function dbresult($query, $row) {
- $result = @mysql_result($query, $row);
+ $result = @mysqli_result($query, $row);
  if (!$result) {
-  echo mysql_error();
+  echo mysqli_error();
   return false;
  } else {
   return $result;
@@ -279,9 +279,9 @@ function time2string($sal,$day=true,$has=true,$min=true,$sek=true) {
 }
 
 function dbarray($query) {
- $result = @mysql_fetch_assoc($query);
+ $result = @mysqli_fetch_assoc($query);
  if (!$result) {
-  echo mysql_error();
+  echo mysqli_error();
   return false;
  } else {
   return $result;
@@ -289,9 +289,9 @@ function dbarray($query) {
 }
 
 function dbarray_fetch($query) {
- $result = @mysql_fetch_array($query);
+ $result = @mysqli_fetch_array($query);
  if (!$result) {
-  echo mysql_error();
+  echo mysqli_error();
   return false;
  } else {
   return $result;
@@ -376,21 +376,21 @@ function servers($server_num_data) {
 }
 
 function dbrows($query) {
- return @mysql_num_rows($query);
+ return @mysqli_num_rows($query);
 }
 
 function dbconnect($db_host, $db_user, $db_pass, $db_name) {
- $db_connect = @mysql_connect($db_host, $db_user, $db_pass);
- $db_select = @mysql_select_db($db_name);
+ $db_connect = @mysqli_connect($db_host, $db_user, $db_pass);
+ $db_select = @mysqli_select_db($db_name);
 
  if (!$db_connect) {
-  die("<div style='font-family:Verdana;font-size:11px;text-align:center;'><b>Не могу подключиться к MySQL</b><br />".mysql_errno()." : ".mysql_error()."</div>");
+  die("<div style='font-family:Verdana;font-size:11px;text-align:center;'><b>Не могу подключиться к MySQL</b><br />".mysqli_errno()." : ".mysqli_error()."</div>");
  } elseif (!$db_select) {
-  die("<div style='font-family:Verdana;font-size:11px;text-align:center;'><b>НЕ могу подключиться к MySQL базе данных</b><br />".mysql_errno()." : ".mysql_error()."</div>");
+  die("<div style='font-family:Verdana;font-size:11px;text-align:center;'><b>НЕ могу подключиться к MySQL базе данных</b><br />".mysqli_errno()." : ".mysqli_error()."</div>");
  }
 
  // Fix кодировки
- mysql_query("SET NAMES 'utf8'");
+ mysqli_query("SET NAMES 'utf8'");
 }
 
 function isValidURL($url) {
