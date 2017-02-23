@@ -123,14 +123,13 @@ function playersInfo($server) {
 /*
 function getlistservers() {
  $sql = "SELECT adress FROM amx_servers";
- $result = mysqli_query($sql);
+ $result = db()->query($sql);
  dbquery("SELECT adress FROM amx_servers");
- if (mysqli_num_rows($result) == 0) {
+ if (db()->num_rows($result) == 0) {
   echo "No Servers";
   exit;
  }
 
- if (mysqli_error()!=='') return mysqli_error
  $result=array();
  while ($row=dbarray(adress)) $result[]=$row;
  // или $result[$row['adress']]=$row так красивее
@@ -239,16 +238,6 @@ function dbquery($query) {
  }
 }
 
-function dbresult($query, $row) {
- $result = @mysqli_result($query, $row);
- if (!$result) {
-  echo mysqli_error($db_connect);
-  return false;
- } else {
-  return $result;
- }
-}
-
 function formatDate($forma,$time) {
  return gmdate($forma,$time +3600*(3+date("I"))+3600);
 }
@@ -279,9 +268,8 @@ function time2string($sal,$day=true,$has=true,$min=true,$sek=true) {
 }
 
 function dbarray($query) {
- $result = @mysqli_fetch_assoc($query);
+ $result = db()->fetch_array($query);
  if (!$result) {
-  echo mysqli_error();
   return false;
  } else {
   return $result;
@@ -289,9 +277,8 @@ function dbarray($query) {
 }
 
 function dbarray_fetch($query) {
- $result = @mysqli_fetch_array($query);
+ $result = db()->fetch_array($query);
  if (!$result) {
-  echo mysqli_error();
   return false;
  } else {
   return $result;
@@ -376,21 +363,7 @@ function servers($server_num_data) {
 }
 
 function dbrows($query) {
- return @mysqli_num_rows($query);
-}
-
-function dbconnect($db_host, $db_user, $db_pass, $db_name) {
- $db_connect = @mysqli_connect($db_host, $db_user, $db_pass);
- $db_select = @mysqli_select_db($db_connect, $db_name);
-
- if (!$db_connect) {
-  die("<div style='font-family:Verdana;font-size:11px;text-align:center;'><b>Не могу подключиться к MySQL</b><br />".mysqli_errno($db_connect)." : ".mysqli_error($db_connect)."</div>");
- } elseif (!$db_select) {
-  die("<div style='font-family:Verdana;font-size:11px;text-align:center;'><b>НЕ могу подключиться к MySQL базе данных</b><br />".mysqli_errno($db_connect)." : ".mysqli_error($db_connect)."</div>");
- }
-
- // Fix кодировки
- mysqli_query($db_connect, "SET NAMES 'utf8'");
+ return db()->num_rows($query);
 }
 
 function isValidURL($url) {
