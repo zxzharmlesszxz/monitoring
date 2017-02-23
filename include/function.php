@@ -384,9 +384,9 @@ function dbconnect($db_host, $db_user, $db_pass, $db_name) {
  $db_select = @mysqli_select_db($db_name);
 
  if (!$db_connect) {
-  die("<div style='font-family:Verdana;font-size:11px;text-align:center;'><b>Не могу подключиться к MySQL</b><br />".mysqli_errno()." : ".mysqli_error()."</div>");
+  die("<div style='font-family:Verdana;font-size:11px;text-align:center;'><b>Не могу подключиться к MySQL</b><br />".mysqli_errno($db_connect)." : ".mysqli_error($db_connect)."</div>");
  } elseif (!$db_select) {
-  die("<div style='font-family:Verdana;font-size:11px;text-align:center;'><b>НЕ могу подключиться к MySQL базе данных</b><br />".mysqli_errno()." : ".mysqli_error()."</div>");
+  die("<div style='font-family:Verdana;font-size:11px;text-align:center;'><b>НЕ могу подключиться к MySQL базе данных</b><br />".mysqli_errno($db_connect)." : ".mysqli_error($db_connect)."</div>");
  }
 
  // Fix кодировки
