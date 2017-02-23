@@ -12,7 +12,7 @@ class Config {
  protected $_configuration;
 
  private function __construct() {
-  $this->_configFile = __DIR__.'/../config/config.inc.php';
+  $this->_configFile = __DIR__.'/config.php';
   include_once($this->_configFile);
   $this->_configuration = $config;
  }
