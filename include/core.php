@@ -30,6 +30,11 @@ $start_time = $start_array[1] + $start_array[0];
 //if($current_time == 'none') exit();
 
 require_once __DIR__."/config.php";
+require_once __DIR__."/SimpleImage.class.php";
+require_once __DIR__."/Registry.class.php";
+require_once __DIR__."/Config.class.php";
+require_once __DIR__."/Database.class.php";
+require_once __DIR__."/MySQL_Database.class.php";
 require_once __DIR__."/function.php";
 
 // Если бд нет, то переадресует на install.php
@@ -39,11 +44,6 @@ require_once __DIR__."/constants.php";
 require_once __DIR__."/rus_name_fix.php";
 require_once __DIR__."/games.inc.php";
 require_once __DIR__."/modes.inc.php";
-require_once __DIR__."/SimpleImage.class.php";
-require_once __DIR__."/Registry.class.php";
-require_once __DIR__."/Config.class.php";
-require_once __DIR__."/Database.class.php";
-require_once __DIR__."/MySQL_Database.class.php";
 require_once(LOCALE.LOCALESET.'global.php');
 require_once(LOCALE.LOCALESET.'serv.php');
 
