@@ -4,6 +4,8 @@
  * Made by starky
 */
 
+require_once __DIR__."/config.php";
+
 error_reporting(E_ALL);
 
 //Проверка от XSS атак $_GET
@@ -37,7 +39,6 @@ function db(){
  return Registry::_get('database');
 }
 
-require_once __DIR__."/config.php";
 require_once __DIR__."/SimpleImage.class.php";
 require_once __DIR__."/Registry.class.php";
 require_once __DIR__."/Config.class.php";
