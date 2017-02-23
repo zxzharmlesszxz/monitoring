@@ -238,7 +238,7 @@ function stripinput($text) {
 
 // MySQL функции
 function dbquery($query) {
- $result = @mysqli_query($db_connect, $query);
+ $result = db()->query($query);
  if (!$result) {
   echo mysqli_error($db_connect);
   return false;
