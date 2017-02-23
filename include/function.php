@@ -1,5 +1,13 @@
 <?php
 
+function config(){
+ return Registry::_get('config');
+}
+
+function db(){
+ return Registry::_get('database');
+}
+
 if (!function_exists('getmicrotime')) {
  function getmicrotime() {
   list($usec, $sec) = explode(" ", microtime());
@@ -230,9 +238,9 @@ function stripinput($text) {
 
 // MySQL функции
 function dbquery($query) {
- $result = @mysqli_query($query);
+ $result = @mysqli_query($db_connect, $query);
  if (!$result) {
-  echo mysqli_error();
+  echo mysqli_error($db_connect);
   return false;
  } else {
   return $result;
@@ -242,7 +250,7 @@ function dbquery($query) {
 function dbresult($query, $row) {
  $result = @mysqli_result($query, $row);
  if (!$result) {
-  echo mysqli_error();
+  echo mysqli_error($db_connect);
   return false;
  } else {
   return $result;
