@@ -17,7 +17,7 @@ require_once LOCALE.LOCALESET."serv.php";
 
 $site_link = SITE_URL;
 $server_id = $_GET['id'];
-$take_server = db()->query("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".mysqli_real_escape_string($server_id)."");
+$take_server = db()->query("SELECT * FROM ".DB_SERVERS." WHERE server_id = ".db()->escape_value($server_id)."");
 $server_data = db()->fetch_array($take_server);
 
 if (db()->num_rows($take_server) == 0) {
@@ -100,9 +100,9 @@ if (db()->num_rows($take_server) == 0) {
   if (count($errors) != 0) {
    $com_error = "<div style='font-size: 13px;color:white;padding: 5px;margin-bottom:7px;border: 1px solid#BC2E2E;background:#522828;text-align: left;'>".$errors[0]."</div>";
   } else {
-   $server_id = mysqli_real_escape_string($server_id);
-   $com_name = mysqli_real_escape_string(htmlspecialchars($com_name));
-   $com_text = mysqli_real_escape_string(htmlspecialchars($com_text));
+   $server_id = db()->escape_value($server_id);
+   $com_name = db()->escape_value(htmlspecialchars($com_name));
+   $com_text = db()->escape_value(htmlspecialchars($com_text));
    $result = db()->query("INSERT INTO ".DB_COMMENTS." (server_id, username, text, date) VALUES ('$server_id', '$com_name', '$com_text', '".time()."')");
    $message = "<div style='font-size: 13px;color:white;padding: 5px;margin-bottom:7px;border: 1px solid#108014;background:#3A4337;text-align: left;'>Спасибо! Ваш комментарий будет добавлен после модерации.</div>";
   }
