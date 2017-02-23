@@ -63,7 +63,7 @@ class MySQL_Database extends Database{
             if ($this->magic_quotes_active) {
                 $value = stripslashes($value);
             }
-            $value = mysqli_real_escape_string($value);
+            $value = mysqli_real_escape_string($value, $this->connection);
         } else { // before PHP v4.3.0
             // if magic quotes aren't already on then add slashes manualy
             if (!$this->magic_quotes_active) {
