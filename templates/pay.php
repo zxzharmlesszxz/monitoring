@@ -5,9 +5,9 @@
 */
 
 /* Script security */
-if(!defined("MONENGINE")) {
- header("Location: index.php");
- exit();
+if (!defined("MONENGINE")) {
+    header("Location: index.php");
+    exit();
 }
 
 echo <<<EOT
@@ -88,13 +88,13 @@ echo <<<EOT
   <ol>
 EOT;
 
-for ($itop=1; $itop < 5 * LINES_NUM+1; $itop++) {
- $rtop = db()->fetch_array(db()->query("SELECT * FROM `mon_servers` WHERE server_top=$itop"));
- if ($rtop['server_top']) {
-  echo "<li><font size='2px'>Место занято сервером <a href='/server/{$rtop['server_id']}/'>{$rtop['server_name']}</a>. Освободится через ".time2string($rtop['server_top_time'] - time(),true,false,false,false)." (".formatDate("d.m.Y H:i:s",$rtop['server_top_time']).")</li>";
- } else {
-  echo "<li><font size='2px'>Место свободно!</li></font></font>";
- }
+for ($itop = 1; $itop < 5 * LINES_NUM + 1; $itop++) {
+    $rtop = db()->fetch_array(db()->query("SELECT * FROM `mon_servers` WHERE server_top=$itop"));
+    if ($rtop['server_top']) {
+        echo "<li><font size='2px'>Место занято сервером <a href='/server/{$rtop['server_id']}/'>{$rtop['server_name']}</a>. Освободится через " . time2string($rtop['server_top_time'] - time(), true, false, false, false) . " (" . formatDate("d.m.Y H:i:s", $rtop['server_top_time']) . ")</li>";
+    } else {
+        echo "<li><font size='2px'>Место свободно!</li></font></font>";
+    }
 }
 
 echo "</ol>
@@ -107,11 +107,11 @@ echo "</ol>
 $qvip = db()->query("SELECT * FROM `mon_servers` WHERE server_vip=1");
 
 if (db()->num_rows($qvip) == 1) {
- echo "<font size='2px'><li>Все места свободны</li></font>";
+    echo "<font size='2px'><li>Все места свободны</li></font>";
 }
 
 while ($rvip = db()->fetch_array($qvip)) {
- echo "<font size='2px'><li>Место занято сервером <a href='/server/{$rvip['server_id']}/'>{$rvip['server_name']}</a>. Освободится через ".time2string($rvip['server_vip_time'] - time(),true,false,false,false)." (".formatDate("d.m.Y H:i:s",$rvip['server_vip_time']).")</li>";
+    echo "<font size='2px'><li>Место занято сервером <a href='/server/{$rvip['server_id']}/'>{$rvip['server_name']}</a>. Освободится через " . time2string($rvip['server_vip_time'] - time(), true, false, false, false) . " (" . formatDate("d.m.Y H:i:s", $rvip['server_vip_time']) . ")</li>";
 }
 
 echo "
@@ -125,11 +125,11 @@ echo "
 $qcolor = db()->query("SELECT * FROM `mon_servers` WHERE server_row_style RLIKE '_'");
 
 if (db()->num_rows($qcolor) == 1) {
- echo "<li>Все места свободны</li>";
+    echo "<li>Все места свободны</li>";
 }
 
 while ($rcolor = db()->fetch_array($qcolor)) {
- echo "<li>Место занято сервером <a href='/server/{$rcolor['server_id']}/'>{$rcolor['server_name']}</a>. Освободится через ".time2string($rcolor['server_color_time'] - time(),true,false,false,false)." (".formatDate("d.m.Y H:i:s",$rcolor['server_color_time']).")</li>";
+    echo "<li>Место занято сервером <a href='/server/{$rcolor['server_id']}/'>{$rcolor['server_name']}</a>. Освободится через " . time2string($rcolor['server_color_time'] - time(), true, false, false, false) . " (" . formatDate("d.m.Y H:i:s", $rcolor['server_color_time']) . ")</li>";
 }
 
 echo "</ol>
