@@ -38,7 +38,7 @@ if (count($_POST) != 0 and !$logged_in) {
   //удаляем лишние пробелы
   $login = trim($login);
 
-  $result = ddb()->query("SELECT * FROM ".DB_ADMIN." WHERE admin_name='".$login."'");
+  $result = db()->query("SELECT * FROM ".DB_ADMIN." WHERE admin_name='".$login."'");
   $myrow = db()->fetch_array($result);
 
   if (empty($myrow['admin_pass'])) {

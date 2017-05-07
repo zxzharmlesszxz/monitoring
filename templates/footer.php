@@ -4,9 +4,8 @@
    <!-- FOOTER -->
    <div id="footer">
     <div>
-     Copyright <a href="https://contra.net.ua/">contra.net.ua</a> © 2014-2016.<br>Хорошей игры!
-    </div>
-    <div style="float:right;padding-right:5px;opacity: 0.5;">
+     Copyright <a href="https://contra.net.ua/">contra.net.ua</a> © 2014-2017.
+     <div style="float:right;padding-right:5px;opacity: 0.5;">
      <noindex>
       <!--LiveInternet counter-->
       <script type="text/javascript">
@@ -16,7 +15,7 @@
       </script>
       <!--/LiveInternet-->
      </noindex>
-    </div>
+	</div>
     <div class="clearfix"></div>
    </div>
    <!-- /FOOTER -->
