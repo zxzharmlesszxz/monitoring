@@ -14,10 +14,7 @@ while ($r = db()->fetch_array($query)) {
     $servers[] = $r;
 }
 
-var_dump($servers);
-exit;
-
-foreach ($servers as $serv) {
+foreach ($servers as $num => $serv) {
     $serv = serverInfo($r['server_ip']);
     if ($serv['status'] == 'off' || empty($serv['name'])) {
         $result = db()->query("UPDATE " . DB_SERVERS . "
