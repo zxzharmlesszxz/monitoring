@@ -14,7 +14,7 @@ class AsyncOperation extends Thread {
             printf('%s: %s  -start -sleeps %d' . "\n", date("g:i:sa"), $this->arg['server_id'], $sleep);
             sleep($sleep);
             printf('%s: %s  -finish' . "\n", date("g:i:sa"), $this->arg['server_id']);
-            $this->sql[] = "SQL: Doing with server $this->arg['server_id']";
+            $this->sql[] = "SQL: Doing with server {$this->arg['server_id']}";
         }
     }
 }
