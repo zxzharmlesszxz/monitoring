@@ -14,8 +14,8 @@ while ($r = db()->fetch_array($query)) {
     $servers[] = $r;
 }
 
-foreach ($servers as $num => $serv) {
-    $serv = serverInfo($r['server_ip']);
+foreach ($servers as $num => $server) {
+    $serv = serverInfo($server['server_ip']);
     if ($serv['status'] == 'off' || empty($serv['name'])) {
         $result = db()->query("UPDATE " . DB_SERVERS . "
    SET
@@ -23,8 +23,8 @@ foreach ($servers as $num => $serv) {
     server_map = '-',
     server_players = '-',
     server_maxplayers = '-'
-    " . (($r['server_status'] == 1 or $r['status_change'] == 0) ? ", status_change = " . time() : ", status_change = 10") . "
-   WHERE server_id='" . $r['server_id'] . "'");
+    " . (($server['server_status'] == 1 or $server['status_change'] == 0) ? ", status_change = " . time() : ", status_change = 10") . "
+   WHERE server_id='" . $server['server_id'] . "'");
         continue;
     }
     $servers_online++;
@@ -37,13 +37,13 @@ foreach ($servers as $num => $serv) {
     server_players = '" . $serv['players'] . "',
     server_maxplayers = '" . $serv['max_players'] . "',
     server_status = '1'
-  " . (($r['server_status'] == 0 or $r['status_change'] == 0) ? ", status_change = " . time() : ", status_change = 10") . "
-  WHERE server_id='" . $r['server_id'] . "'
+  " . (($server['server_status'] == 0 or $server['status_change'] == 0) ? ", status_change = " . time() : ", status_change = 10") . "
+  WHERE server_id='" . $server['server_id'] . "'
  ");
     if ($result) {
-        echo "<font color='green'>Даные сервера с порядковым " . $r['server_id'] . " внесены в базу данных</font>\n";
+        echo "<font color='green'>Даные сервера с порядковым " . $server['server_id'] . " внесены в базу данных</font>\n";
     } else {
-        echo "<font color='red'><b>Ошибка</b>, данные сервера с порядковым " . $r['server_id'] . " не были внесены в БД</font>\n";
+        echo "<font color='red'><b>Ошибка</b>, данные сервера с порядковым " . $server['server_id'] . " не были внесены в БД</font>\n";
     }
 }
 
