@@ -25,15 +25,7 @@ $servers = array();
 $servers_online = 0;
 
 while ($r = db()->fetch_array($query)) {
-    $servers[] = $r;
-    var_dump($r);
-}
-
-foreach ($servers as $num => $server) {
-    var_dump($num);
-    var_dump($server);
-    $servers[$num] = serverInfo($server['server_ip']);
-    var_dump($servers[$num]);
+    $servers[] = serverInfo($r['server_ip']);;
 }
 
 $topMap = topMap($servers);
