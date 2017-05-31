@@ -37,15 +37,16 @@ while ($r = db()->fetch_array($servers)) {
   WHERE server_id='" . $r['server_id'] . "'
  ");
     if ($result) {
-        echo "<font color='green'>Даные сервера с порядковым " . $r['server_id'] . " внесены в базу данных</font>";
+        echo "<font color='green'>Даные сервера с порядковым " . $r['server_id'] . " внесены в базу данных</font>\n";
     } else {
-        echo "<font color='red'><b>Ошибка</b>, данные сервера с порядковым " . $r['server_id'] . " не были внесены в БД</font>";
+        echo "<font color='red'><b>Ошибка</b>, данные сервера с порядковым " . $r['server_id'] . " не были внесены в БД</font>\n";
     }
-    echo "<br>
- </body>
- </html>
- ";
 }
 
 $update_timestamp = time(); // запоминаем дату
 $result = db()->query("UPDATE " . DB_SETTINGS . " SET last_update='$update_timestamp', servers_total='$servers_total', servers_online='$servers_online'");
+
+?>
+  <br>
+ </body>
+</html>

@@ -38,12 +38,15 @@ function serverInfo($server) {
  $fp = @fsockopen('udp://'.$ip, $port);
  if ($fp) {
   stream_set_timeout($fp, 2);
-  fwrite($fp,"\xFF\xFF\xFF\xFFTSource Engine Query\0\r");
+  fwrite($fp,"\xFF\xFF\xFF\xFFTSource Engine Query\x00");
   $temp = fread($fp, 4);
+//  var_dump($temp);
   $status = socket_get_status($fp);
 
   if ($status['unread_bytes']>0) {
-   $temp = fread($fp, $status['unread_bytes']);
+   //$temp = fread($fp, $status['unread_bytes']);
+   $temp = stream_get_contents($fp);
+//   var_dump($temp);
    $version = ord(getChar($temp));
    $array = array();
    $array['ping'] = (int)((getmicrotime() - $timeStart)*1000);
