@@ -31,6 +31,9 @@ while ($r = db()->fetch_array($query)) {
 foreach ($servers as $num => $server) {
     $servers[$num] = serverInfo($server['server_ip']);
 }
+
+var_dump($servers);
+
 foreach ($servers as $num => $server)
 {
     if ($server['status'] == 'off' || empty($server['name'])) {
