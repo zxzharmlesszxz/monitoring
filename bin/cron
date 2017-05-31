@@ -1,0 +1,85 @@
+#!/usr/bin/env php
+<?php
+class AsyncOperation extends Thread {
+
+    public function __construct($arg) {
+        $this->arg = $arg;
+    }
+
+    public function run() {
+        if ($this->arg) {
+            $sleep = mt_rand(1, 10);
+            printf('%s: %s  -start -sleeps %d' . "\n", date("g:i:sa"), $this->arg['server_id'], $sleep);
+            sleep($sleep);
+            printf('%s: %s  -finish' . "\n", date("g:i:sa"), $this->arg['server_id']);
+        }
+    }
+}
+
+// Create a array
+$stack = array();
+
+require_once __DIR__ . "/../include/core.php";
+
+function topMap(array $servers)
+{
+    $max = "";
+    $count = 0;
+    $maps = array();
+    foreach ($servers as $server) {
+        if (!array_key_exists($server['map'], $maps))
+            $maps[$server['map']] = 1;
+        else
+            $maps[$server['map']] += 1;
+    }
+
+    foreach ($maps as $map => $num) {
+        if ($num > $count) {
+            $count = $num;
+            $max = $map;
+        }
+    }
+    return $max;
+}
+
+$query = db()->query("SELECT * FROM " . DB_SERVERS);
+$servers = array();
+$servers_online = 0;
+$sql = array();
+$items = array();
+
+while ($r = db()->fetch_array($query)) {
+    $items[] = $r;
+}
+
+foreach ($items as $n => $server) {
+    $stack[] = new AsyncOperation($server);
+}
+
+
+// Start The Threads
+foreach ( $stack as $t ) {
+    $t->start();
+}
+
+/*
+foreach ($servers as $num => $server) {
+    if ($r['server_status'] == 0 and (time() - $r['status_change']) > 86400) {
+        $sql[] = "DROP FROM " . DB_SERVERS . " WHERE server_id = {$r['server_id']}";
+        continue;
+    }
+    if ($server['status'] == 'off' || empty($server['name'])) {
+        $sql[] = "UPDATE " . DB_SERVERS . " SET server_status = '0', server_map = '-', server_players = '-', server_maxplayers = '-' " . (($server['server_status'] == 1) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}'";
+        continue;
+    }
+    $servers_online++;
+    $name = db()->escape_value($server['name']);
+    $sql[] = "UPDATE " . DB_SERVERS . " SET server_name = '{$name}'," . " server_map = '{$server['map']}', server_players = '{$server['players']}'," . " server_maxplayers = '{$server['max_players']}', server_status = '1' " . (($server['server_status'] == 0) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}'";
+}
+
+$topMap = topMap($servers);
+
+$update_timestamp = time(); // запоминаем дату
+$sql[] = "UPDATE " . DB_SETTINGS . " SET last_update='$update_timestamp', servers_total='" . count($servers) . "', servers_online='$servers_online', top_map='$topMap'";
+$result = db()->query(implode(';', $sql));
+*/
