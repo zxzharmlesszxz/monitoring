@@ -69,7 +69,7 @@ switch ($load) {
         $load_file = __DIR__ . '/templates/search.php';
         break;
     case 'info':
-        $take_server = dbquery("SELECT * FROM " . DB_SERVERS . " WHERE server_id = " . $_GET['id'] . "");
+        $take_server = dbquery("SELECT * FROM " . DB_SERVERS . " WHERE server_id = '{$_GET['id']}';");
         $server_data = dbarray_fetch($take_server);
         $page_title = "Сервер: $server_data[server_name]";
         $load_file = (!empty($_GET['id']) and is_numeric($_GET['id'])) ? __DIR__ . '/templates/server_info.php' : __DIR__ . '/templates/servers.php';
@@ -123,7 +123,7 @@ switch ($load) {
 }
 
 // Header block
-require_once THEME . "header.php";
+require_once (THEME . "header.php");
 
 // Main area
 if (file_exists($load_file)) {
@@ -135,10 +135,6 @@ if (file_exists($load_file)) {
 
 // Footer block
 require_once THEME . "footer.php";
-
-if (!defined('_SAPE_USER')) {
-    define('_SAPE_USER', '189e973cb06bd7bc0997a7a64f78a648');
-}
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/' . _SAPE_USER . '/sape.php');
 $sape_article = new SAPE_articles();

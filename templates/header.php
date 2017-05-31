@@ -85,7 +85,7 @@ $icon = (file_exists(IMAGES.'favicon.ico')) ? "<link rel='shortcut icon' href='"
      <div id="header_stat_main">
       <div id="stats">
        Всего игровых серверов в мониторинге: <span class="servers_online"><?php echo $servers_total;?></span> серверов, из них <span class="servers_online"><?php echo $servers_online; ?></span> серверов онлайн.<br />
-       Самая популярная карта: <span class="servers_online">de_dust2_2x2</span>. Последние обновление было: <span class="servers_online"><?php echo time() - $settings['last_update']; ?></span> секунд(ы) назад.
+       Самая популярная карта: <span class="servers_online"><?php echo $top_map;?></span>. Последние обновление было: <span class="servers_online"><?php echo time() - $settings['last_update']; ?></span> секунд(ы) назад.
       </div>
       <div id="header_stat_search">
        <form action="/search/" method="POST">

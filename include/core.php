@@ -70,6 +70,7 @@ while($style = dbarray_fetch($get_styles)) {
 // Определяем сколько серверов находится в БД
 $servers_total = $settings['servers_total'];
 $servers_online = $settings['servers_online'];
+$top_map = $settings['top_map'];
 
 if (file_exists("./install.php")) {
  exit("<center>Для продолжения работы необходимо удалить файл <b>install.php</b>.</center>");

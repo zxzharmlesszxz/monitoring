@@ -5,6 +5,9 @@ $db_pass = "monitoring";
 $db_name = "monitoring";
 $db_prefix = "mon_";
 define("DB_PREFIX", $db_prefix);
+if (!defined('_SAPE_USER')) {
+    define('_SAPE_USER', '111111111111111111111111111111');
+}
 $config = array(
  'mysql' => array(
   'host' => $db_host,
