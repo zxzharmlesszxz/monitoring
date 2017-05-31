@@ -11,12 +11,8 @@ $servers = array();
 $servers_online = 0;
 
 while ($r = db()->fetch_array($query)) {
-    var_dump($r);
     $servers[] = $r;
 }
-
-var_dump($servers);
-exit;
 
 foreach ($servers as $num => $serv) {
     $serv = serverInfo($r['server_ip']);
