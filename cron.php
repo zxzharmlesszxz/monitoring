@@ -10,7 +10,7 @@ $query = db()->query("SELECT * FROM " . DB_SERVERS);
 $servers = array();
 $servers_online = 0;
 
-while ($r = db()->fetch_array($query)) {
+while ($r = db()->fetch_array($query, MYSQLI_ASSOC)) {
     var_dump($r);
     $servers[] = $r;
 }
