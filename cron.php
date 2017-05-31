@@ -36,7 +36,6 @@ while ($r = db()->fetch_array($query)) {
 }
 
 foreach ($servers as $num => $server) {
-    var_dump($server);
     if ($server['status'] == 'off' || empty($server['name'])) {
         $sql[] = "UPDATE " . DB_SERVERS . " SET server_status = '0', server_map = '-', server_players = '-', server_maxplayers = '-' " . (($server['server_status'] == 1) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}'";
         continue;
@@ -50,5 +49,4 @@ $topMap = topMap($servers);
 
 $update_timestamp = time(); // запоминаем дату
 $sql[] = "UPDATE " . DB_SETTINGS . " SET last_update='$update_timestamp', servers_total='" . count($servers) . "', servers_online='$servers_online', top_map='$topMap'";
-print_r($sql);
 $result = db()->query(implode(';', $sql));
