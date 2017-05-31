@@ -26,14 +26,19 @@ $servers_online = 0;
 
 while ($r = db()->fetch_array($query)) {
     $servers[] = $r;
+    var_dump($r);
 }
 
 foreach ($servers as $num => $server) {
+    var_dump($num);
+    var_dump($server);
     $servers[$num] = serverInfo($server['server_ip']);
+    var_dump($servers[$num]);
 }
 
-var_dump($servers);
+$topMap = topMap($servers);
 
+exit;
 foreach ($servers as $num => $server)
 {
     if ($server['status'] == 'off' || empty($server['name'])) {
