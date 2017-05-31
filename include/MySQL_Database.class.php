@@ -76,7 +76,7 @@ class MySQL_Database extends Database{
 
 // "database-neutral" methods	
     public function fetch_array($result_set) {
-        return mysqli_fetch_array($result_set);
+        return mysqli_fetch_array($result_set, MYSQL_ASSOC);
     }
 
     public function num_rows($result_set) {
