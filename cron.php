@@ -18,7 +18,7 @@ foreach ($servers as $num => $server) {
     $serv = serverInfo($server['server_ip']);
     if ($serv['status'] == 'off' || empty($serv['name'])) {
         $str = "UPDATE " . DB_SERVERS . " SET server_status = '0', server_map = '-', server_players = '-', server_maxplayers = '-' ";
-        $str .= (($server['server_status'] == 1 or $server['status_change'] == 0) ? ", status_change = " . time() : ", status_change = 10");
+        $str .= (($server['server_status'] == 1) ? ", status_change = " . time() : "");
         $str .= " WHERE server_id='{$server['server_id']}'";
         echo "$str\n";
         $result = db()->query($str);
@@ -29,7 +29,7 @@ foreach ($servers as $num => $server) {
     $str = "UPDATE " . DB_SERVERS . " SET server_name = '{$name}',";
     $str .= " server_map = '{$serv['map']}', server_players = '{$serv['players']}',";
     $str .= " server_maxplayers = '{$serv['max_players']}', server_status = '1' ";
-    $str .= (($server['server_status'] == 0 or $server['status_change'] == 0) ? ", status_change = " . time() : ", status_change = 10");
+    $str .= (($server['server_status'] == 0) ? ", status_change = " . time() : "");
     $str .= " WHERE server_id='{$server['server_id']}'";
     echo "$str\n";
     $result = db()->query($str);
