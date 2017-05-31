@@ -159,13 +159,12 @@ function send_mail($email, $message) {
 }
 
 function parse_site($url) {
- $str = "<a href='http://contra.net.ua/' target='_blank'>Игровые сервера cs 1.6 Украина</a>";
  $page = new DOMDocument;
  libxml_use_internal_errors(true);
  $page->loadHTMLfile($url);
  libxml_clear_errors();
  foreach ($page->getElementsByTagName('a') as $el) {
-  if ($el->getAttribute('href') == 'http://contra.net.ua/') {
+  if ($el->getAttribute('href') == 'https://contra.net.ua/') {
    if ($el->nodeValue == "Игровые сервера cs 1.6 Украина") {
     return true;
    }
