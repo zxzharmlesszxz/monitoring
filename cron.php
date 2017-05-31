@@ -6,11 +6,18 @@
 <?php
 require_once __DIR__ . "/include/core.php";
 
-$servers = db()->query("SELECT * FROM " . DB_SERVERS);
-$servers_total = 0;
+$query = db()->query("SELECT * FROM " . DB_SERVERS);
+$servers = array();
 $servers_online = 0;
-while ($r = db()->fetch_array($servers)) {
-    $servers_total++;
+
+while ($r = db()->fetch_array($query)) {
+    $servers[] = $r;
+}
+
+var_dump($servers);
+exit;
+
+foreach ($servers as $serv) {
     $serv = serverInfo($r['server_ip']);
     if ($serv['status'] == 'off' || empty($serv['name'])) {
         $result = db()->query("UPDATE " . DB_SERVERS . "
@@ -44,9 +51,10 @@ while ($r = db()->fetch_array($servers)) {
 }
 
 $update_timestamp = time(); // запоминаем дату
-$result = db()->query("UPDATE " . DB_SETTINGS . " SET last_update='$update_timestamp', servers_total='$servers_total', servers_online='$servers_online'");
+$result = db()->query("UPDATE " . DB_SETTINGS . " SET last_update='$update_timestamp',
+ servers_total='" . count($servers) . "', servers_online='$servers_online'");
 
 ?>
-  <br>
- </body>
+<br>
+</body>
 </html>
