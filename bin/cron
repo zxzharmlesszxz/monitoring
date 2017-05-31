@@ -9,7 +9,7 @@ class AsyncOperation extends Thread {
     public function run() {
         if ($this->arg) {
             printf('%s: %d  -start' . "\n", date("g:i:sa"), $this->arg['server_id']);
-            $this->arg = array_merge($this->arg, serverInfo($this->arg['server_ip']));
+            $server = array_merge($this->arg, serverInfo($this->arg['server_ip']));
             printf("SQL: Doing with server %d", $this->arg['server_id']);
             printf('%s: %s  -finish' . "\n", date("g:i:sa"), $this->arg['server_id']);
         }
