@@ -40,7 +40,7 @@ class Provider extends Threaded
         }
     }
 
-    public function __destruct()
+    private function destruct()
     {
         $servers = array();
         $online = db()->query("SELECT COUNT(*) FROM " . DB_SERVERS . "WHERE server_status = '1';");
@@ -68,6 +68,7 @@ class Provider extends Threaded
     public function getNext()
     {
         if ($this->processed === $this->total) {
+            $this->destruct();
             return null;
         }
 
