@@ -161,14 +161,14 @@ function send_mail($email, $message)
     if (empty($email) or empty($message)) {
         return true;
     }
-    mail($email, "From: Monitoring System http://www.monitoring.contra.net.ua\n", $message);
+    mail($email, "From: Monitoring System https://www.monitoring.contra.net.ua\n", $message);
 }
 
 function parse_site($url)
 {
     $page = new DOMDocument;
     libxml_use_internal_errors(true);
-    $page->loadHTMLfile($url);
+    @$page->loadHTMLfile($url);
     libxml_clear_errors();
     foreach ($page->getElementsByTagName('a') as $el) {
         if ($el->getAttribute('href') == 'https://contra.net.ua/') {
