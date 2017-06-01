@@ -31,14 +31,14 @@ class CronPool extends Pool
     public function shutdown($hostname, $username, $password, $database, $charset, $port = 3306)
     {
 $this->connection = new mysqli(
-                $this->hostname,
-                $this->username,
-                $this->password,
-                $this->database,
-                $this->port);
+                $hostname,
+                $username,
+                $password,
+                $database,
+                $port);
         }
 
-        $this->connection->set_charset($this->charset);
+        $this->connection->set_charset($charset);
         $this->destruct();
         parent::shutdown();
     }
