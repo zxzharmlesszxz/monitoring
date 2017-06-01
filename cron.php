@@ -49,4 +49,7 @@ $topMap = topMap($servers);
 
 $update_timestamp = time(); // запоминаем дату
 $sql[] = "UPDATE " . DB_SETTINGS . " SET last_update='$update_timestamp', servers_total='" . count($servers) . "', servers_online='$servers_online', top_map='$topMap'";
-$result = db()->query(implode(';', $sql));
+
+foreach ($sql as $num => $query) {
+    $result = db()->query($query);
+}
