@@ -24,7 +24,7 @@ class Work extends Threaded
             $provider = $this->worker->getProvider();
 
             // Синхронизируем получение данных
-            $provider->synchronized(function($provider) use (&$value) {
+            $provider->synchronized(function ($provider) use (&$value) {
                 $value = $provider->getNext();
             }, $provider);
 
@@ -35,20 +35,19 @@ class Work extends Threaded
             }
 
             // Некая ресурсоемкая операция
-            $server = array_merge((array) $value, serverInfo($value['server_ip']));
+            $server = array_merge((array)$value, serverInfo($value['server_ip']));
             if ($server['status'] == 'off' || empty($server['name'])) {
 //                $result = db()->query("UPDATE " . DB_SERVERS . " SET server_status = '0', server_map = '-', server_players = '-', server_maxplayers = '-' " . (($server['server_status'] == 1) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}';");
 //                var_dump($result);
-                print("UPDATE " . DB_SERVERS . " SET server_status = '0', server_map = '-', server_players = '-', server_maxplayers = '-' " . (($server['server_status'] == 1) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}';");
+                print("UPDATE " . DB_SERVERS . " SET server_status = '0', server_map = '-', server_players = '-', server_maxplayers = '-' " . (($server['server_status'] == 1) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}';" . PHP_EOL);
                 continue;
             }
 //            $name = db()->escape_value($server['name']);
 //            $result = db()->query("UPDATE " . DB_SERVERS . " SET server_name = '{$name}'," . " server_map = '{$server['map']}', server_players = '{$server['players']}'," . " server_maxplayers = '{$server['max_players']}', server_status = '1' " . (($server['server_status'] == 0) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}';");
 //            var_dump($result);
-            print("UPDATE " . DB_SERVERS . " SET server_name = '{$server['name']}'," . " server_map = '{$server['map']}', server_players = '{$server['players']}'," . " server_maxplayers = '{$server['max_players']}', server_status = '1' " . (($server['server_status'] == 0) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}';");
+            print("UPDATE " . DB_SERVERS . " SET server_name = '{$server['name']}'," . " server_map = '{$server['map']}', server_players = '{$server['players']}'," . " server_maxplayers = '{$server['max_players']}', server_status = '1' " . (($server['server_status'] == 0) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}';" . PHP_EOL);
             //$provider->items[]
-        }
-        while ($value !== null);
+        } while ($value !== null);
     }
 
 }
