@@ -151,6 +151,8 @@ if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
  }
 }
 
+var_dump($server);
+
 $steam = ($server['server_steam'] == '1') ? "checked='checked'" : "";
 $off = ($server['server_off'] == 1) ? "checked='checked'" : "";
 $top = ($server['server_top'] == 0) ? "selected='selected'" : "";
