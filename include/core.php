@@ -43,14 +43,6 @@ require_once __DIR__."/modes.inc.php";
 require_once(LOCALE.LOCALESET.'global.php');
 require_once(LOCALE.LOCALESET.'serv.php');
 
-function config(){
- return Registry::_get('config');
-}
-
-function db(){
- return Registry::_get('database');
-}
-
 // Стили выделения
 $styles = Array();
 $get_styles = db()->query("SELECT * FROM `".DB_ROWSTYLES."` ORDER BY `id` DESC");
