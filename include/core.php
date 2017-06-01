@@ -56,8 +56,8 @@ function db(){
 
 // Стили выделения
 $styles = Array();
-$get_styles = dbquery("SELECT * FROM `".DB_ROWSTYLES."` ORDER BY `id` DESC");
-while($style = dbarray_fetch($get_styles)) {
+$get_styles = db()->query("SELECT * FROM `".DB_ROWSTYLES."` ORDER BY `id` DESC");
+while($style = db()->array_fetch($get_styles)) {
  $styles[$style['name']]['id'] = $style['id'];
  $styles[$style['name']]['title'] = $style['title'];
  $styles[$style['name']]['style'] = $style['style'];
