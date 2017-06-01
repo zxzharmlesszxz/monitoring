@@ -28,12 +28,11 @@ for ($i = 0; $i < $workers; $i++) {
     $pool->submit(new Work());
 }
 
-$pool->shutdown(
+$pool->destruct(
         config()->mysql['host'],
         config()->mysql['user'],
         config()->mysql['password'],
-        config()->mysql['database'],
-        config()->mysql['charset']
-);
+        config()->mysql['database']
+)->shutdown();
 
 printf("Done for %.2f seconds" . PHP_EOL, microtime(true) - $start);
