@@ -8,11 +8,9 @@ require_once __DIR__ . "/../include/Registry.class.php";
 require_once __DIR__ . "/../include/Config.class.php";
 require_once __DIR__ . "/../include/Database.class.php";
 require_once __DIR__ . "/../include/MySQL_Database.class.php";
-
+require_once __DIR__ . "/../include/function.php";
 Registry::_set('config', Config::getInstance());
 Registry::_set('database', new MySQL_Database);
-
-require_once __DIR__ . "/../include/function.php";
 require_once __DIR__ . "/../include/constants.php";
 
 $query = db()->query("SELECT * FROM " . DB_SERVERS);
