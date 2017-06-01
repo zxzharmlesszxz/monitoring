@@ -28,7 +28,7 @@ class Work extends Threaded
                 $value = $provider->getNext();
             }, $provider);
 
-            var_dump($provider->db);
+            var_dump(db());
 
             if ($value === null) {
                 continue;
