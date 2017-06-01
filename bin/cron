@@ -32,7 +32,8 @@ $pool->destruct(
         config()->mysql['host'],
         config()->mysql['user'],
         config()->mysql['password'],
-        config()->mysql['database']
+        config()->mysql['database'],
+        config()->mysql['charset']
 )->shutdown();
 
 printf("Done for %.2f seconds" . PHP_EOL, microtime(true) - $start);
