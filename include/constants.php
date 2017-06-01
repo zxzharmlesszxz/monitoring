@@ -14,7 +14,7 @@ define("DB_VOTES", DB_PREFIX."vote_ip");
 define("DB_COMMENTS", DB_PREFIX."comments");
 define("DB_ROWSTYLES", DB_PREFIX."rowstyles");
 define("DB_SERVERS_EDITS", DB_PREFIX."servers_edits");
-$settings = dbarray(dbquery("SELECT * FROM ".DB_SETTINGS));
+$settings = db()->fetch_array(db()->query("SELECT * FROM ".DB_SETTINGS));
 define("SITE_URL", $settings['site_url']);
 
 // Pathes
