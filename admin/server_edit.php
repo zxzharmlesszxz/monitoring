@@ -151,7 +151,7 @@ if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
  }
 }
 
-var_dump($server);
+//var_dump($server);
 
 $steam = ($server['server_steam'] == '1') ? "checked='checked'" : "";
 $off = ($server['server_off'] == 1) ? "checked='checked'" : "";
@@ -268,7 +268,7 @@ echo <<<EOT
       <div class='row'>
        <label>Игра сервера:</label>
        <div class='right'>
-        <select name='server_game' id='server_game' value='{$server['game']}'>
+        <select name='server_game' id='server_game' value='{$server['server_game']}'>
          <option value='cs16'>Counter-Strike</option>
          <option value='css'>Counter-Strike: Source</option>
          <option value='cz'>Counter Strike: Condition zero</option>
@@ -285,7 +285,7 @@ echo <<<EOT
       <div class='row'>
        <label>Мод сервера:</label>
        <div class='right'>
-        <select name='server_mode' value='{$server['mode']}'>
+        <select name='server_mode' value='{$server['server_mode']}'>
          <option value='classic'>Classic</option>
          <option value='warcraft'>Warcraft</option>
          <option value='csdm'>CSDM</option>
