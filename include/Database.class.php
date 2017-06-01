@@ -8,10 +8,6 @@
 
 abstract class Database {
 
-    private $connection;
-    private $config;
-    public $last_query;
-
 // Create a database connection function
     abstract function open_connection();
 
