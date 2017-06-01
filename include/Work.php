@@ -33,8 +33,6 @@ class Work extends Threaded
 
             // Некая ресурсоемкая операция
             $server = array_merge((array)$value, serverInfo($value['server_ip']));
-            print "{$server['server_id']} - {$server['status']}:{$server['server_status']}({$server['status_change']}) delay " . (time() - $server['status_change']) . PHP_EOL;
-            print ((time() - $server['status_change']) > 86400) == 1 . PHP_EOL;
 
 
             if ($server['status'] == 'off' || empty($server['name'])) {
@@ -50,7 +48,7 @@ class Work extends Threaded
                 continue;
             }
 
-            if ($server['status'] == 'off' and ($server['server_status'] == 0) and (time() - $server['status_change']) > 86400) {
+            if ($server['status'] == 'off' and ($server['server_status'] == 0) and time() - $server['status_change'] > 86400) {
                 $this->worker->getConnection()->real_query(
                     "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';"
                 );
