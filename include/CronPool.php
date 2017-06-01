@@ -17,7 +17,7 @@ class CronPool extends Pool
         while ($r = db()->fetch_array($sql)) {
             $servers[] = $r;
         }
-        var_dump($servers);
+        //var_dump($servers);
         $map = topMap((array) $servers);
         $result = db()->query("
             UPDATE " . DB_SETTINGS . " SET
