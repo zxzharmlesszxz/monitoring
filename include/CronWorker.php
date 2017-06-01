@@ -23,7 +23,7 @@ class CronWorker extends Worker
      * @param $connection
      * @param Provider $provider
      */
-    public function __construct($connection, Provider $provider)
+    public function __construct(&$connection, Provider $provider)
     {
         $this->connection = $connection;
         $this->provider = $provider;
