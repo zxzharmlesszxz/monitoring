@@ -24,10 +24,7 @@ unset($check_url);
 // Калькулятор вывода генерации страницы
 $start_time = microtime();
 $start_array = explode(" ",$start_time);
-//define("SSER_US", $db_user);
 $start_time = $start_array[1] + $start_array[0];
-//$current_time = file_get_contents("http://starky.axmservers.ru/current_time.txt");
-//if($current_time == 'none') exit();
 
 require_once __DIR__."/SimpleImage.class.php";
 require_once __DIR__."/Registry.class.php";
