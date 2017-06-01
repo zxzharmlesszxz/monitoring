@@ -183,6 +183,9 @@ function parse_site($url)
 function get_page_html($url)
 {
     $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
     $page = curl_exec($ch);
     curl_close($ch);
     return $page;
