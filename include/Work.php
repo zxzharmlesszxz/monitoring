@@ -52,9 +52,9 @@ class Work extends Threaded
 
             if ($server['status'] == 'off' and ($server['server_status'] == 0) and (time() - $server['status_change']) > 86400) {
                 $this->worker->getConnection()->real_query(
-                    "DROP FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';"
+                    "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';"
                 );
-                print "DROP FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';" . PHP_EOL;
+                print "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';" . PHP_EOL;
                 continue;
             }
 
