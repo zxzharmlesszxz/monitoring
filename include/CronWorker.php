@@ -23,7 +23,6 @@ class CronWorker extends Worker
     public function __construct(Provider $provider)
     {
         $this->provider = $provider;
-        var_dump(db());
     }
 
     /**
@@ -42,5 +41,12 @@ class CronWorker extends Worker
     public function getProvider()
     {
         return $this->provider;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getConnection() {
+        return db();
     }
 }

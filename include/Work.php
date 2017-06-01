@@ -12,12 +12,6 @@
  */
 class Work extends Threaded
 {
-
-    public function __construct(&$db)
-    {
-        $this->db = $db;
-    }
-
     /**
      *
      */
@@ -33,7 +27,7 @@ class Work extends Threaded
                 $value = $provider->getNext();
             }, $provider);
 
-            var_dump($this->db);
+            var_dump($this->worker->getConnection());
 
             if ($value === null) {
                 continue;
