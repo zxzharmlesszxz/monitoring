@@ -30,10 +30,7 @@ class Work extends Threaded
             }
 
             // Некая ресурсоемкая операция
-            $count = 100;
-            for ($j = 1; $j <= $count; $j++) {
-                sqrt($j+$value) + sin($value/$j) + cos($value);
-            }
+            var_dump(serverInfo($value['server_ip']));
         }
         while ($value !== null);
     }

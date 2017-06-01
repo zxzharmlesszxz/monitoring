@@ -15,12 +15,24 @@ class Provider extends Threaded
     /**
      * @var int Сколько элементов в нашей воображаемой БД
      */
-    private $total = 2000000;
+    private $total = 0;
 
     /**
      * @var int Сколько элементов было обработано
      */
     private $processed = 0;
+
+    private $items = array();
+
+    public function __construct()
+    {
+        $query = db()->query("SELECT * FROM " . DB_SERVERS);
+
+        while ($r = db()->fetch_array($query)) {
+            $this->items[] = $r;
+            $this->total++;
+        }
+    }
 
     /**
      * Переходим к следующему элементу и возвращаем его
@@ -35,6 +47,6 @@ class Provider extends Threaded
 
         $this->processed++;
 
-        return $this->processed;
+        return $this->items[$this->processed];
     }
 }

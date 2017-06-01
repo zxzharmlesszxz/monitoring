@@ -16,14 +16,12 @@ while ($r = db()->fetch_array($query)) {
     $items[] = $r;
 }
 
-$threads = count($items);
+$threads = 32;
 $provider = new Provider();
 
 $pool = new Pool($threads, 'CronWorker', [$provider]);
 $start = microtime(true);
 
-// В нашем случае потоки сбалансированы.
-// Поэтому тут хорошо создать столько потоков, сколько процессов в нашем пуле.
 $workers = $threads;
 for ($i = 0; $i < $workers; $i++) {
     $pool->submit(new Work());
@@ -32,76 +30,3 @@ for ($i = 0; $i < $workers; $i++) {
 $pool->shutdown();
 
 printf("Done for %.2f seconds" . PHP_EOL, microtime(true) - $start);
-
-/*
-class AsyncOperation extends Thread {
-
-    public function __construct($arg) {
-        $this->arg = $arg;
-    }
-
-    public function run() {
-        if ($this->arg) {
-            $item = (array) $this->arg;
-            printf('%s: %d  -start' . "\n", date("g:i:sa"), $this->arg['server_id']);
-            $info = serverInfo($this->arg['server_ip']);
-if (!is_array($info)){
-var_dump($item);
- var_dump($info);}
-            $server = array_merge($item, $info);
-            if ($server['status'] == 'off' || empty($server['name'])) {
-                $sql = "UPDATE " . DB_SERVERS . " SET server_status = '0', server_map = '-', server_players = '-', server_maxplayers = '-' " . (($server['server_status'] == 1) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}'";
-//                db()->query($sql);
-print($sql."\n");
-                return;
-            }
-//            $servers_online++;
-//            $name = db()->escape_value($server['name']);
-            $sql = "UPDATE " . DB_SERVERS . " SET server_name = '{$server['name']}'," . " server_map = '{$server['map']}', server_players = '{$server['players']}'," . " server_maxplayers = '{$server['max_players']}', server_status = '1' " . (($server['server_status'] == 0) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}'";
-//            db()->query($sql);
-print($sql."\n");
-        }
-    }
-
-    public function __destruct()
-    {
-//        var_dump(db());
-        printf('%s: %s  -finish' . "\n", date("g:i:sa"), $this->arg['server_id']);
-    }
-}
-
-// Create a array
-$stack = array();
-*/
-
-/*foreach ($items as $n => $server) {
-    $stack[] = new AsyncOperation($server);
-}
-
-
-// Start The Threads
-foreach ( $stack as $t ) {
-    $t->start();
-}
-//var_dump(db());
-/*
-foreach ($servers as $num => $server) {
-    if ($r['server_status'] == 0 and (time() - $r['status_change']) > 86400) {
-        $sql[] = "DROP FROM " . DB_SERVERS . " WHERE server_id = {$r['server_id']}";
-        continue;
-    }
-    if ($server['status'] == 'off' || empty($server['name'])) {
-        $sql[] = "UPDATE " . DB_SERVERS . " SET server_status = '0', server_map = '-', server_players = '-', server_maxplayers = '-' " . (($server['server_status'] == 1) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}'";
-        continue;
-    }
-    $servers_online++;
-    $name = db()->escape_value($server['name']);
-    $sql[] = "UPDATE " . DB_SERVERS . " SET server_name = '{$name}'," . " server_map = '{$server['map']}', server_players = '{$server['players']}'," . " server_maxplayers = '{$server['max_players']}', server_status = '1' " . (($server['server_status'] == 0) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}'";
-}
-
-$topMap = topMap($servers);
-
-$update_timestamp = time(); // запоминаем дату
-$sql[] = "UPDATE " . DB_SETTINGS . " SET last_update='$update_timestamp', servers_total='" . count($servers) . "', servers_online='$servers_online', top_map='$topMap'";
-$result = db()->query(implode(';', $sql));
-*/
