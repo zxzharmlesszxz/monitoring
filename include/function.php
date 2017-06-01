@@ -537,3 +537,24 @@ function get_map_image($map, $game = 'cs16')
         }
     }
 }
+
+function topMap(array $servers)
+{
+    $max = "";
+    $count = 0;
+    $maps = array();
+    foreach ($servers as $server) {
+        if (!array_key_exists($server['map'], $maps))
+            $maps[$server['map']] = 1;
+        else
+            $maps[$server['map']] += 1;
+    }
+
+    foreach ($maps as $map => $num) {
+        if ($num > $count) {
+            $count = $num;
+            $max = $map;
+        }
+    }
+    return $max;
+}

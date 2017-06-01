@@ -3,6 +3,34 @@
 define('MONENGINE', 'Remake by starky');
 require_once __DIR__ . "/../include/core.php";
 
+$query = db()->query("SELECT * FROM " . DB_SERVERS);
+$servers = array();
+$servers_online = 0;
+$sql = array();
+$items = array();
+
+while ($r = db()->fetch_array($query)) {
+    $items[] = $r;
+}
+
+$threads = count($items);
+$provider = new Provider();
+
+$pool = new Pool($threads, 'CronWorker', [$provider]);
+$start = microtime(true);
+
+// В нашем случае потоки сбалансированы.
+// Поэтому тут хорошо создать столько потоков, сколько процессов в нашем пуле.
+$workers = $threads;
+for ($i = 0; $i < $workers; $i++) {
+    $pool->submit(new MyWork());
+}
+
+$pool->shutdown();
+
+printf("Done for %.2f seconds" . PHP_EOL, microtime(true) - $start);
+
+/*
 class AsyncOperation extends Thread {
 
     public function __construct($arg) {
@@ -41,39 +69,9 @@ print($sql."\n");
 
 // Create a array
 $stack = array();
+*/
 
-function topMap(array $servers)
-{
-    $max = "";
-    $count = 0;
-    $maps = array();
-    foreach ($servers as $server) {
-        if (!array_key_exists($server['map'], $maps))
-            $maps[$server['map']] = 1;
-        else
-            $maps[$server['map']] += 1;
-    }
-
-    foreach ($maps as $map => $num) {
-        if ($num > $count) {
-            $count = $num;
-            $max = $map;
-        }
-    }
-    return $max;
-}
-
-$query = db()->query("SELECT * FROM " . DB_SERVERS);
-$servers = array();
-$servers_online = 0;
-$sql = array();
-$items = array();
-
-while ($r = db()->fetch_array($query)) {
-    $items[] = $r;
-}
-
-foreach ($items as $n => $server) {
+/*foreach ($items as $n => $server) {
     $stack[] = new AsyncOperation($server);
 }
 
