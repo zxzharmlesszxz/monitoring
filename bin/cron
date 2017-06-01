@@ -4,12 +4,13 @@ define('MONENGINE', 'Remake by starky');
 require_once __DIR__ . "/../include/core.php";
 require_once __DIR__ . "/../include/Provider.php";
 require_once __DIR__ . "/../include/CronWorker.php";
+require_once __DIR__ . "/../include/CronPool.php";
 require_once __DIR__ . "/../include/Work.php";
 
 $threads = 32;
 $provider = new Provider();
 
-$pool = new Pool($threads,
+$pool = new CronPool($threads,
     'CronWorker',
     [
         $provider,
