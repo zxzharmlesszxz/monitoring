@@ -22,17 +22,28 @@ class Provider extends Threaded
      */
     private $processed = 0;
 
+    /**
+     * @var array
+     */
     private $items = array();
 
+    /**
+     * @var
+     */
+    public $db;
+
+    /**
+     * Provider constructor.
+     */
     public function __construct()
     {
-        $query = db()->query("SELECT * FROM " . DB_SERVERS);
+        $this->db = db();
+        $query = $this->db->query("SELECT * FROM " . DB_SERVERS);
 
-        while ($r = db()->fetch_array($query)) {
+        while ($r = $this->db->fetch_array($query)) {
             $this->items[] = $r;
             $this->total++;
         }
-        var_dump($this->items);
     }
 
     /**
