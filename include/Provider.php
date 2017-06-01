@@ -32,6 +32,7 @@ class Provider extends Threaded
             $this->items[] = $r;
             $this->total++;
         }
+        var_dump($this->items);
     }
 
     /**
