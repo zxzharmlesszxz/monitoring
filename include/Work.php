@@ -18,9 +18,6 @@ class Work extends Threaded
      */
     public function run()
     {
-        Registry::_set('config', Config::getInstance());
-        Registry::_set('database', new MySQL_Database);
-
         do {
             $value = null;
 
