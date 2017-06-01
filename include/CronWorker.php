@@ -50,6 +50,7 @@ class CronWorker extends Worker
      * @return mixed|null
      */
     public function getConnection() {
+        var_dump(static::$connection);
         return static::$connection;
     }
 }
