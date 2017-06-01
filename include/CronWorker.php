@@ -17,11 +17,15 @@ class CronWorker extends Worker
      */
     private $provider;
 
+    private $connection;
+
     /**
+     * @param $connection
      * @param Provider $provider
      */
-    public function __construct(Provider $provider)
+    public function __construct($connection, Provider $provider)
     {
+        $this->connection = $connection;
         $this->provider = $provider;
     }
 
@@ -47,6 +51,6 @@ class CronWorker extends Worker
      * @return mixed|null
      */
     public function getConnection() {
-        return db();
+        return $this->connection;
     }
 }
