@@ -13,6 +13,11 @@
 class Work extends Threaded
 {
 
+    public function __construct($db)
+    {
+        $this->db = $db;
+    }
+
     /**
      *
      */
@@ -28,7 +33,7 @@ class Work extends Threaded
                 $value = $provider->getNext();
             }, $provider);
 
-            var_dump(config());
+            var_dump($this->db);
 
             if ($value === null) {
                 continue;

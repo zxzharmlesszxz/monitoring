@@ -21,7 +21,7 @@ $start = microtime(true);
 
 $workers = $threads;
 for ($i = 0; $i < $workers; $i++) {
-    $pool->submit(new Work());
+    $pool->submit(new Work(db()));
 }
 
 $pool->shutdown();
