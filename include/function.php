@@ -191,9 +191,9 @@ function get_page_html($url)
 //функция для перевода из HEX кода в RBG
 function htmlcolor($img, $color)
 {
+    $red = $green = $blue = '';
     sscanf($color, "%2x%2x%2x", $red, $green, $blue);
     return ImageColorAllocate($img, $red, $green, $blue);
-    return ($c);
 }
 
 //функция для русского текста
