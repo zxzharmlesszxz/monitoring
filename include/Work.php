@@ -34,20 +34,11 @@ class Work extends Threaded
             // Некая ресурсоемкая операция
             $server = array_merge((array)$value, serverInfo($value['server_ip']));
 
-            var_dump($server['status'] == 'off');
-            print PHP_EOL;
-            var_dump($server['server_status'] == 0);
-            print PHP_EOL;
-            var_dump(time() - $server['status_change'] > 86400);
-            print PHP_EOL;
-            var_dump($server['status'] == 'off' and $server['server_status'] == 0 and time() - $server['status_change'] > 86400);
-            print PHP_EOL;
-
             if ($server['status'] == 'off' and ($server['server_status'] == 0) and time() - $server['status_change'] > 86400) {
                 $this->worker->getConnection()->real_query(
                     "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';"
                 );
-                print "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';" . PHP_EOL;
+                //print "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';" . PHP_EOL;
                 continue;
             }
 
