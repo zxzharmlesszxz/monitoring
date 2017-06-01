@@ -23,6 +23,7 @@ class CronWorker extends Worker
     public function __construct(Provider $provider)
     {
         $this->provider = $provider;
+        var_dump(db());
     }
 
     /**
