@@ -42,9 +42,15 @@ class Provider extends Threaded
 
     public function __destruct()
     {
+        $servers = array();
         $online = db()->query("SELECT COUNT(*) FROM " . DB_SERVERS . "WHERE server_status = '1';");
-        $servers = db()->query("SELECT * FROM " . DB_SERVERS . ";");
-        $map = topMap($servers);
+        var_dump($online);
+        $sql = db()->query("SELECT * FROM " . DB_SERVERS . ";");
+        while ($r = db()->fetch_array($sql)) {
+            $servers[] = $r;
+        }
+        var_dump($servers);
+        $map = topMap((array) $servers);
         db()->query("
             UPDATE " . DB_SETTINGS . " SET
             last_update='" . time() . "',
