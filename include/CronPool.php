@@ -22,7 +22,7 @@ class CronPool extends Pool
         db()->query("
             UPDATE " . DB_SETTINGS . " SET
             last_update='" . time() . "',
-            servers_total='{$this->total}',
+            servers_total='" . count($servers) . "',
             servers_online='{$online}',
             top_map='{$map}';"
         );
