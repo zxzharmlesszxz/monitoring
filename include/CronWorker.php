@@ -25,7 +25,7 @@ class CronWorker extends Worker
     public function __construct(Provider $provider)
     {
         $this->connection = db();
-        var_dump($this->connection);
+        print_r($this->connection);
         $this->provider = $provider;
     }
 
