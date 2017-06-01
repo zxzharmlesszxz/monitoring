@@ -19,7 +19,7 @@ class CronPool extends Pool
         }
         var_dump($servers);
         $map = topMap((array) $servers);
-        db()->query("
+        $result = db()->query("
             UPDATE " . DB_SETTINGS . " SET
             last_update='" . time() . "',
             servers_total='" . count($servers) . "',
