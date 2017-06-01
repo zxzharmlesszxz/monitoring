@@ -51,6 +51,7 @@ class Work extends Threaded
                 $this->worker->getConnection()->real_query(
                     "DROP FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';"
                 );
+                print "DROP FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';" . PHP_EOL;
                 continue;
             }
 
