@@ -30,7 +30,7 @@ class Work extends Threaded
             }
 
             // Некая ресурсоемкая операция
-            var_dump(array_merge($value, serverInfo($value['server_ip'])));
+            var_dump(array_merge((array) $value, serverInfo($value['server_ip'])));
         }
         while ($value !== null);
     }
