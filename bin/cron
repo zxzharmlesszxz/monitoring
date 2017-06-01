@@ -9,12 +9,7 @@ require_once __DIR__ . "/../include/Work.php";
 $threads = 32;
 $provider = new Provider();
 
-var_dump(config());
-var_dump(db());
-
-$GLOBALS['db'] = db();
-
-$pool = new Pool($threads, 'CronWorker', [$provider]);
+$pool = new Pool($threads, 'CronWorker', [$provider, $config['host'], $config['user'], $config['password'], $config['database'], $config['charset']]);
 $start = microtime(true);
 
 $workers = $threads;
