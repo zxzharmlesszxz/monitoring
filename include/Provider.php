@@ -40,6 +40,20 @@ class Provider extends Threaded
         }
     }
 
+    public function __destruct()
+    {
+        $online = db()->query("SELECT COUNT(*) FROM " . DB_SERVERS . "WHERE server_status = '1';");
+        $servers = db()->query("SELECT * FROM " . DB_SERVERS . ";");
+        $map = topMap($servers);
+        db()->query("
+            UPDATE " . DB_SETTINGS . " SET
+            last_update='" . time() . "',
+            servers_total='{$this->total}',
+            servers_online='{$online}',
+            top_map='{$map}';"
+        );
+    }
+
     /**
      * Переходим к следующему элементу и возвращаем его
      *
