@@ -29,14 +29,6 @@ $start_time = $start_array[1] + $start_array[0];
 //$current_time = file_get_contents("http://starky.axmservers.ru/current_time.txt");
 //if($current_time == 'none') exit();
 
-function config(){
- return Registry::_get('config');
-}
-
-function db(){
- return Registry::_get('database');
-}
-
 require_once __DIR__."/SimpleImage.class.php";
 require_once __DIR__."/Registry.class.php";
 require_once __DIR__."/Config.class.php";
@@ -54,6 +46,13 @@ require_once __DIR__."/modes.inc.php";
 require_once(LOCALE.LOCALESET.'global.php');
 require_once(LOCALE.LOCALESET.'serv.php');
 
+function config(){
+ return Registry::_get('config');
+}
+
+function db(){
+ return Registry::_get('database');
+}
 
 // Стили выделения
 $styles = Array();
