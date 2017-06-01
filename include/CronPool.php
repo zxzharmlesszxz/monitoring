@@ -38,7 +38,7 @@ self::$connection = new mysqli(
                 $port);
         }
 
-        self::$connection->set_charset($charset);
+        //self::$connection->set_charset($charset);
         $this->destruct();
         parent::shutdown();
     }
