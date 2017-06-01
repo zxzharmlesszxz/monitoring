@@ -168,7 +168,9 @@ function parse_site($url)
 {
     $page = new DOMDocument;
     libxml_use_internal_errors(true);
-    @$page->loadHTMLfile($url);
+    $src = curl_init($url);
+    $source = curl_exec($src);
+    @$page->loadHTMLfile($source);
     libxml_clear_errors();
     foreach ($page->getElementsByTagName('a') as $el) {
         if ($el->getAttribute('href') == 'https://contra.net.ua/') {
