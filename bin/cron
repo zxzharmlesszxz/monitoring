@@ -15,8 +15,9 @@ require_once __DIR__ . "/../include/constants.php";
 
 $threads = 32;
 $provider = new Provider();
+$db = db();
 
-$pool = new Pool($threads, 'CronWorker', [db(), $provider]);
+$pool = new Pool($threads, 'CronWorker', [$db, $provider]);
 $start = microtime(true);
 
 $workers = $threads;
