@@ -2,6 +2,8 @@
 <?php
 define('MONENGINE', 'Remake by starky');
 require_once __DIR__ . "/../include/core.php";
+require_once __DIR__ . "/../include/Provider.php";
+require_once __DIR__ . "/../include/CronWorker.php";
 
 $query = db()->query("SELECT * FROM " . DB_SERVERS);
 $servers = array();
