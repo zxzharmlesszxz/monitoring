@@ -538,6 +538,10 @@ function get_map_image($map, $game = 'cs16')
     }
 }
 
+/**
+ * @param array $servers
+ * @return int|string
+ */
 function topMap(array $servers)
 {
     $max = "";
@@ -557,4 +561,18 @@ function topMap(array $servers)
         }
     }
     return $max;
+}
+
+/**
+ * @return mixed|null
+ */
+function config(){
+    return Registry::_get('config');
+}
+
+/**
+ * @return mixed|null
+ */
+function db(){
+    return Registry::_get('database');
 }
