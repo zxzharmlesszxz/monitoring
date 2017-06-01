@@ -13,16 +13,6 @@ Registry::_set('config', Config::getInstance());
 Registry::_set('database', new MySQL_Database);
 require_once __DIR__ . "/../include/constants.php";
 
-$query = db()->query("SELECT * FROM " . DB_SERVERS);
-$servers = array();
-$servers_online = 0;
-$sql = array();
-$items = array();
-
-while ($r = db()->fetch_array($query)) {
-    $items[] = $r;
-}
-
 $threads = 32;
 $provider = new Provider();
 
