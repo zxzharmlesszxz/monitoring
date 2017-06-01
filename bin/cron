@@ -4,6 +4,7 @@ define('MONENGINE', 'Remake by starky');
 require_once __DIR__ . "/../include/core.php";
 require_once __DIR__ . "/../include/Provider.php";
 require_once __DIR__ . "/../include/CronWorker.php";
+require_once __DIR__ . "/../include/Work.php";
 
 $query = db()->query("SELECT * FROM " . DB_SERVERS);
 $servers = array();
@@ -25,7 +26,7 @@ $start = microtime(true);
 // Поэтому тут хорошо создать столько потоков, сколько процессов в нашем пуле.
 $workers = $threads;
 for ($i = 0; $i < $workers; $i++) {
-    $pool->submit(new MyWork());
+    $pool->submit(new Work());
 }
 
 $pool->shutdown();
