@@ -5,6 +5,7 @@
 */
 
 error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 //Проверка от XSS атак $_GET
 foreach ($_GET as $check_url) {
