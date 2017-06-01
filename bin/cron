@@ -20,8 +20,10 @@ $pool = new Pool($threads, 'CronWorker', [$provider]);
 $start = microtime(true);
 
 $workers = $threads;
+
+$db = db();
 for ($i = 0; $i < $workers; $i++) {
-    $pool->submit(new Work(db()));
+    $pool->submit(new Work($db));
 }
 
 $pool->shutdown();
