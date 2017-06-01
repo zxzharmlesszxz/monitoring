@@ -27,8 +27,6 @@ class Work extends Threaded
                 $value = $provider->getNext();
             }, $provider);
 
-            var_dump($this->worker->getConnection());
-
             if ($value === null) {
                 continue;
             }
