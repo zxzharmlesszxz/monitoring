@@ -23,12 +23,13 @@ class CronPool extends Pool
         $online = $connection->query("SELECT COUNT(*) FROM " . DB_SERVERS . "WHERE server_status = '1';");
         var_dump($online);
         $sql = $connection->query("SELECT * FROM " . DB_SERVERS . ";");
-        while ($r = $connection->fetch_array($sql)) {
+
+        while ($r = $sql->fetch_array()) {
             $servers[] = $r;
         }
-        //var_dump($servers);
+
         $map = topMap((array) $servers);
-        $result = $connection->query("
+        $result = $connection->real_query("
             UPDATE " . DB_SETTINGS . " SET
             last_update='" . time() . "',
             servers_total='" . count($servers) . "',
