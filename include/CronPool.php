@@ -20,14 +20,12 @@ class CronPool extends Pool
 
         $connection->set_charset($charset);
         $servers = array();
-        $sql = $connection->query("SELECT COUNT(*) FROM " . DB_SERVERS . " WHERE server_status = '1';");
-        var_dump($sql);
-        $online = $sql->fetch_field();
-        var_dump($online);
         $sql = $connection->query("SELECT * FROM " . DB_SERVERS . ";");
-
+        $online = 0;
         while ($r = $sql->fetch_array()) {
             $servers[] = $r;
+            if($r['server_status'] == 1)
+                $online++;
         }
 
         $map = topMap((array) $servers);
