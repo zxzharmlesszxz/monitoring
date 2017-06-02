@@ -20,7 +20,8 @@ class CronPool extends Pool
 
         $connection->set_charset($charset);
         $servers = array();
-        $online = $connection->query("SELECT COUNT(*) FROM " . DB_SERVERS . "WHERE server_status = '1';")->fetch_all(MYSQLI_ASSOC);
+        $sql = $connection->query("SELECT COUNT(*) FROM " . DB_SERVERS . "WHERE server_status = '1';");
+        $online = $sql->fetch_all(MYSQLI_ASSOC);
         var_dump($online);
         $sql = $connection->query("SELECT * FROM " . DB_SERVERS . ";");
 
