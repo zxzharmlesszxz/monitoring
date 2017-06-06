@@ -97,7 +97,7 @@ if (db()->num_rows($get_comments) != 0) {
    </div>";
  }
 } else {
- $comms .= "<div class='row'><center>Нет отзывов о данном сервере</center></div>";
+ $comms .= "<div class='row'>Нет отзывов о данном сервере</div>";
 }
 
 echo <<<EOT

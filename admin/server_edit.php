@@ -328,7 +328,7 @@ echo <<<EOT
         <button type='submit' class='green'>
          <span>Сохранить</span>
         </button>
-        <button type='button' class='grey' onClick=\"window.location.href='server/$id/'\">
+        <button type='button' class='grey' onClick="window.location.href='server/$id/'">
          <span>Отмена</span>
         </button>
        </div>

@@ -52,7 +52,7 @@ if (count($styles) != 0) {
  $styleses .= '
      <tr>
       <td colspan="3">
-       <center>Нет ни одного стиля.</center>
+       Нет ни одного стиля.
       </td>
      </tr>';
 }

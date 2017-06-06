@@ -18,7 +18,7 @@ $replies = '';
 if ($replies_num == 0) {
  $replies .= "
      <div class='row'>
-      <center>Нет непромодерированных отзывов.</center>
+      Нет непромодерированных отзывов.
      </div>
  ";
 } else {

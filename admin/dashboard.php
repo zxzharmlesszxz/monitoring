@@ -1,10 +1,10 @@
 <?php
 $comms = '';
-$comments = db()->query("SELECT * FROM `".DB_COMMENTS."` ORDER BY `id` DESC LIMIT 5");
+$comments = db()->query("SELECT * FROM `" . DB_COMMENTS . "` ORDER BY `id` DESC LIMIT 5");
 
 if (db()->num_rows($comments) != 0) {
- while ($comment = db()->fetch_array($comments)) {
-  $comms .= "
+    while ($comment = db()->fetch_array($comments)) {
+        $comms .= "
      <li class='comment' id='comment_{$comment['id']}'>
       <div class='hover'>
        <a href='javascript://' onClick='setReplyId({$comment['id']});' class='modalopen'>
@@ -16,26 +16,26 @@ if (db()->num_rows($comments) != 0) {
       {$comment['text']}
      </li>
   ";
- }
+    }
 } else {
- $comms = '<li class="comment"><center>Список отзывов пуст.</center></li>';
+    $comms = '<li class="comment"><center>Список отзывов пуст.</center></li>';
 }
 
-$servers_list_l = db()->query("SELECT * FROM `".DB_SERVERS."` ORDER BY `server_id` DESC LIMIT 5");
+$servers_list_l = db()->query("SELECT * FROM `" . DB_SERVERS . "` ORDER BY `server_id` DESC LIMIT 5");
 $servers_new = '';
 
 $i = 0;
 while ($server_l = db()->fetch_array($servers_list_l)) {
- if ($server_l['server_off'] == 1) {
-  $status = "<font color='gray'>Забанен</font>";
- } elseif ($server_l['server_new'] == 1) {
-  $status = "<font color='gray'><b>Не активирован</b></font>";
- } elseif ($server_l['server_status'] == 1) {
-  $status = "<font color='green'>Онлайн</font>";
- } elseif ($server_l['server_status'] == 0) {
-  $status = "<font color='red'>Оффлайн</font>";
- }
- $servers_new .= "
+    if ($server_l['server_off'] == 1) {
+        $status = "<font color='gray'>Забанен</font>";
+    } elseif ($server_l['server_new'] == 1) {
+        $status = "<font color='gray'><b>Не активирован</b></font>";
+    } elseif ($server_l['server_status'] == 1) {
+        $status = "<font color='green'>Онлайн</font>";
+    } elseif ($server_l['server_status'] == 0) {
+        $status = "<font color='red'>Оффлайн</font>";
+    }
+    $servers_new .= "
       <tr>
        <td>
         <a href='server/{$server_l['server_id']}'>{$server_l['server_name']}</a>
@@ -43,25 +43,25 @@ while ($server_l = db()->fetch_array($servers_list_l)) {
        <td>{$status}</td>
       </tr>
  ";
- $i++;
+    $i++;
 }
 
-$servers_list = db()->query("SELECT * FROM `".DB_SERVERS."`");
+$servers_list = db()->query("SELECT * FROM `" . DB_SERVERS . "`");
 
 $servers = '';
 
 while ($server = db()->fetch_array($servers_list)) {
- if ($server['server_off'] == 1) {
-  $status = "<font color='gray'>Забанен</font>";
- } elseif ($server['server_new'] == 1) {
-  $status = "<font color='gray'><b>Не активирован</b></font>";
- } elseif ($server['server_status'] == 1) {
-  $status = "<font color='green'>Онлайн</font>";
- } elseif ($server['server_status'] == 0) {
-  $status = "<font color='red'>Оффлайн</font>";
- }
+    if ($server['server_off'] == 1) {
+        $status = "<font color='gray'>Забанен</font>";
+    } elseif ($server['server_new'] == 1) {
+        $status = "<font color='gray'><b>Не активирован</b></font>";
+    } elseif ($server['server_status'] == 1) {
+        $status = "<font color='green'>Онлайн</font>";
+    } elseif ($server['server_status'] == 0) {
+        $status = "<font color='red'>Оффлайн</font>";
+    }
 
- $servers .= "
+    $servers .= "
      <tr>
       <td>
        <a href='server/{$server['server_id']}'>{$server['server_name']}</a>
@@ -87,11 +87,9 @@ echo <<<EOT
       {$comms}
      </ul>
      <div class="modal" style="height:100px !important; text-align:center !important;" title="Подтверждение действия">
-      <center>
        <p>Вы уверены что хотите удалить комментарий?</p>
        <button type="submit" onClick="delReply();" class="medium red"><span>Удалить</span></button>
        <button type="submit" onClick="dialogClose('.modal');" class="medium grey"><span>Отмена</span></button>
-      </center>
      </div>
     </div>
    </div>
