@@ -3,6 +3,8 @@
 $comments_num = db()->query("SELECT id FROM `".DB_COMMENTS."`");
 $comments_num = db()->num_rows($comments_num);
 $last_update = @date("d.m H:i", $settings['last_update']);
+$servers_total = $settings['servers_total'];
+$servers_online = $settings['servers_online'];
 
 echo <<<EOT
   <div id="left">
