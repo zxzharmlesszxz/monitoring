@@ -4,8 +4,8 @@ $image = imagecreatetruecolor(297, 202);
 if (!isset($q)) $q = 100;
 $map = $_GET['map'];
 $game = $_GET['game'];
-$map_url = __DIR__ . "$game/$map";
-$background = imagecreatefrompng('monitor.png');
+$map_url = __DIR__ . "/$game/$map";
+$background = imagecreatefrompng(__DIR__ . '/monitor.png');
 $map_create = imagecreatefrompng($map_url);
 $map_rotate = imagerotate($map_create, -20, 0);
 
