@@ -13,7 +13,7 @@ echo <<<EOT
        <h2>Статистика</h2>
       </li>
       <li>Отзывов <div class="info blue"><span>{$comments_num}</span></div></li>
-      <li>Серверов online<div class="info green"><span>{$servers_total}</span></div></li>
+      <li>Серверов всего/online<div class="info black"><span>{$servers_total}</span></div>/<div class="info green"><span>{$servers_online}</span></div></li>
       <li>Обновление <div class="info black"><span>{$last_update}</span></div></li>
      </ul>
     </div>
