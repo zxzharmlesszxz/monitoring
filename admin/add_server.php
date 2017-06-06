@@ -15,6 +15,8 @@ $countries = new countries;
 $address = '';
 $steam = 0;
 $message = '';
+$game = '';
+$mode = '';
 $email = $settings['site_email'];
 $site = '';
 $icq = '';
@@ -92,7 +94,7 @@ echo <<<EOT
      $message
      <form action='' method='POST'>
       <div class='row'>
-       <label>Адрес сервера <font color='red'>*</font></label>
+       <label>Адрес сервера <span color='red'>*</span></label>
        <div class='right'>
         <input type='text' name='server_address' placeholder='127.0.0.1:27015' value='$address'>
        </div>
@@ -161,7 +163,7 @@ echo <<<EOT
        </div>
       </div>
       <div class='row'>
-       <label>Локация сервера <font color='red'>*</font></label>
+       <label>Локация сервера <span color='red'>*</span></label>
        <div class='right'>
         <select name='server_location' class='big'>
          {$options}
