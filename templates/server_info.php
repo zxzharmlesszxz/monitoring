@@ -36,7 +36,7 @@ if (db()->num_rows($take_server) == 0) {
    </div>" : "";
 
  $icq = (!empty($server_data['server_icq'])) ? "ICQ Администратора <b>ICQ#{$server_data['server_icq']} <img src='//status.icq.com/online.gif?icq={$server_data['server_icq']}&img=26'>" : "";
- $status = ($server_data['server_status'] == 1) ? "<font color='#6e8d4c'><b>Online</b></font>" : "<font color='#B53333'><b>Offline</b></font>";
+ $status = ($server_data['server_status'] == 1) ? "<span style='color: #6e8d4c'><b>Online</b></span>" : "<span style='color:#B53333'><b>Offline</b></span>";
  $work = (($server_data['server_status'] == 1) ? "Работает" : "Не работает")." с <b>".@date("d.m.Y H:i", $server_data['status_change'])."</b>";
  $regdate = @date("d.m.Y H:i", $server_data['server_regdata']);
  $last_update = $settings['last_update'];
@@ -138,9 +138,7 @@ if (db()->num_rows($take_server) == 0) {
        <td valign='top' width='250' style='padding-bottom:20px;'>
         <div style='padding: 5px;margin: 4px;line-height: 12px;background: #1E1E1E;border: 1px solid #444;'>
          <div style='padding-top:10px;'></div>
-         <center>
           <img src='/images/maps/cs16/{$server_data['server_map']}.jpg' style='width:231px;height:174px;border:1px solid #7F7F7F;opacity:0.8;'>
-         </center>
         </div>
         <div style='text-align:center;padding-right:50px;'>
          <table align='center' cellpadding='0' cellspacing='0' width='236' height='30'>
@@ -257,12 +255,10 @@ if (db()->num_rows($take_server) == 0) {
         <div style='padding-bottom:3px;'>
          <div class='box_title'>Большой HTML-мониторинг:</div>
         </div>
-        <center>
          <iframe style='border: 1px solid #7D7D7D;' src='https://monitoring.contra.net.ua/byweb?id={$server_data['server_id']}' frameborder='1' width='190' height='260' scrolling='no'>
          </iframe>
          <br>
          <textarea rows='6' cols='24'><iframe src='https://monitoring.contra.net.ua/byweb?id={$server_data['server_id']}' frameborder='1' width='190' height='260' scrolling='no'></iframe></textarea>
-        </center>
        </div>
        <div style='margin-bottom:-11px;'></div>
        {$about}

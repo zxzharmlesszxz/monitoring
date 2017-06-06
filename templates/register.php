@@ -111,15 +111,13 @@ if ($settings['enable_registration'] == 0) {
   {$message}
   <div style='padding-top:7px'></div>
   <div class='horizontal_line'>
-   <font color='#789ABF'>Перед тем как добавить сервер разместите нашу ссылку на своём сайте (скопировать и вставить):</font>
+   <span style='color: #789ABF'>Перед тем как добавить сервер разместите нашу ссылку на своём сайте (скопировать и вставить):</span>
   </div>
   <form action='' method='POST'>
    <table width='100%' class='regform'>
     <tr>
      <td colspan='2'>
-      <center>
        <input size='65' onclick='this.select()' readonly='' value="<a href='https://contra.net.ua/' target='_blank'>Игровые сервера cs 1.6 Украина</a>" />
-      </center>
      </td>
     </tr>
     <tr>

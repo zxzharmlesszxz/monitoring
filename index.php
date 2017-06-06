@@ -123,7 +123,7 @@ switch ($load) {
 }
 
 // Header block
-require_once (THEME . "header.php");
+require_once(THEME . "header.php");
 
 // Main area
 if (file_exists($load_file)) {
@@ -136,6 +136,6 @@ if (file_exists($load_file)) {
 // Footer block
 require_once THEME . "footer.php";
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/' . _SAPE_USER . '/sape.php');
+require_once(__DIR__ . '/' . _SAPE_USER . '/sape.php');
 $sape_article = new SAPE_articles();
 echo $sape_article->return_announcements();

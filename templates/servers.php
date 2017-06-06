@@ -44,7 +44,7 @@ if ($servers_total !=0 ) {
   }
 
   if ($r['server_players'] == $r['server_maxplayers']) {
-   $players = "<font color='#00FF00'>".$r['server_players']."/".$r['server_maxplayers']."</font>";
+   $players = "<span style='color: #00FF00'>".$r['server_players']."/".$r['server_maxplayers']."</span>";
   }
 
   if ($r['server_status'] ==1) {

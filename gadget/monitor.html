@@ -129,7 +129,7 @@
    }
 
    function settingsClosed(event) {
-    if (event.closeAction == event.Action.commit) {
+    if (event.closeAction === event.Action.commit) {
      variableName = System.Gadget.Settings.read("server_id");
      GetData();
     }

@@ -229,14 +229,14 @@ EOT;
       "</a>
      </td>
      <td>
-      <img src='/images/icons/$r[server_game].gif' style='width:16px;height:16px;vertical-align:middle;margin-bottom:2px;opacity:0.7;' title='$r[server_game] сервер'  alt='$r[server_game] сервер'  />
+      <img src='/images/icons/$r[server_game].gif' style='width:16px;height:16px;vertical-align:middle;margin-bottom:2px;opacity:0.7;' title='$r[server_game] сервер'  alt='$r[server_game] сервер' />
       {$r['server_ip']}
      </td>
-     <td><center>$r[server_mode]</center></td>
-     <td>{$r['server_map']}</center></td>
-     <td><center>$players</center></td>
-     <td><center>{$r['votes']}</center></td>
-     <td style='padding-right:20px;'><center>$status</center></td>
+     <td>$r[server_mode]</></td>
+     <td>{$r['server_map']}</td>
+     <td>$players</td>
+     <td>{$r['votes']}</td>
+     <td style='padding-right:20px;'>$status</td>
     </tr>";
    }
   } else {
