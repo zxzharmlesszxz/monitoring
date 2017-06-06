@@ -138,7 +138,7 @@ if (db()->num_rows($take_server) == 0) {
        <td valign='top' width='250' style='padding-bottom:20px;'>
         <div style='padding: 5px;margin: 4px;line-height: 12px;background: #1E1E1E;border: 1px solid #444;'>
          <div style='padding-top:10px;'></div>
-          <img src='/images/maps/{$server_data['server_game']}/{$server_data['server_map']}.jpg' style='width:231px;height:174px;border:1px solid #7F7F7F;opacity:0.8;'>
+          <img src='/images/maps/monitor.php?game={$server_data['server_game']}&map={$server_data['server_map']}.jpg' style='width:231px;height:174px;border:1px solid #7F7F7F;opacity:0.8;'>
         </div>
         <div style='text-align:center;padding-right:50px;'>
          <table align='center' cellpadding='0' cellspacing='0' width='236' height='30'>
