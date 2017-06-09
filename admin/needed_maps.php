@@ -9,8 +9,8 @@ if (!defined("MONENGINE")) {
 $file = __DIR__ . '/../data/needed_maps_icons.txt';
 
 if (file_exists($file)) {
-    $items = array_unique(explode("\n", file_get_contents($file)));
-    $maps = asort($items);
+    $maos = array_unique(explode("\n", file_get_contents($file)));
+    asort($maps);
     $files = scandir(__DIR__ . '/../images/maps/cs16/');
 
     foreach ($files as $f) {
