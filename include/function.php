@@ -485,8 +485,8 @@ function create_map_image($map, $game = 'cs16')
     }
 
     if (isset($file) and $ext == '.bmp') {
-        $image = new imagick($file . $ext);
-        $image->writeImage("$file.jpg");
+        $img = new imagick($file . $ext);
+        $img->writeImage("$file.jpg");
         unlink($file . $ext);
         $ext = ".jpg";
     }
