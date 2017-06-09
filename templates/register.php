@@ -116,7 +116,7 @@ if ($settings['enable_registration'] == 0) {
   <form action='' method='POST'>
    <table width='100%' class='regform'>
     <tr>
-     <td colspan='2'>
+     <td colspan='2' align="center">
        <input size='65' onclick='this.select()' readonly='' value="<a href='https://contra.net.ua/' target='_blank'>Игровые сервера cs 1.6 Украина</a>" />
      </td>
     </tr>
