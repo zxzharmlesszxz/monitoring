@@ -1,28 +1,53 @@
 <?php
 
 /**
-* Registry Class
-**/
+ * Class Registry
+ */
+class Registry
+{
+    /**
+     * @var array
+     */
+    static private $store = array();
 
-//namespace Core;
+    /**
+     * Registry constructor.
+     */
+    protected function __construct()
+    {
+    }
 
-class Registry {
- static private $store = array();
+    /**
+     *
+     */
+    protected function __clone()
+    {
+    }
 
- protected function __construct() {}
- protected function __clone() {}
+    /**
+     * @param $key
+     * @param $value
+     */
+    static public function _set($key, $value)
+    {
+        self::$store[$key] = $value;
+    }
 
- static public function _set($key, $value) {
-  self::$store[$key] = $value;
- }
+    /**
+     * @param $key
+     * @return mixed|null
+     */
+    static public function _get($key)
+    {
+        return isset(self::$store[$key]) ? self::$store[$key] : null;
+    }
 
- static public function _get($key) {
-  return isset(self::$store[$key]) ? self::$store[$key] : null;
- }
-
- static public function _remove($key) {
-  unset(self::$store[$key]);
-  #return (isset(self::$store[$key]) && unset(self::$store[$key])) ? TRUE : FALSE;
- }
+    /**
+     * @param $key
+     */
+    static public function _remove($key)
+    {
+        unset(self::$store[$key]);
+    }
 }
 

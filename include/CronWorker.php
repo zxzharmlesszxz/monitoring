@@ -16,12 +16,33 @@ class CronWorker extends Worker
      * @var Provider
      */
     private $provider;
+    /**
+     * @var
+     */
     protected $hostname;
+    /**
+     * @var
+     */
     protected $username;
+    /**
+     * @var
+     */
     protected $password;
+    /**
+     * @var
+     */
     protected $database;
+    /**
+     * @var
+     */
     protected $charset;
+    /**
+     * @var int
+     */
     protected $port;
+    /**
+     * @var
+     */
     protected static $connection;
 
     /**
@@ -45,6 +66,9 @@ class CronWorker extends Worker
         $this->port = $port;
     }
 
+    /**
+     * @return mysqli
+     */
     public function getConnection()
     {
         if (!self::$connection) {

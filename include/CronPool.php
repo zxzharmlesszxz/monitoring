@@ -8,6 +8,15 @@
  */
 class CronPool extends Pool
 {
+    /**
+     * @param $hostname
+     * @param $username
+     * @param $password
+     * @param $database
+     * @param $charset
+     * @param int $port
+     * @return $this
+     */
     public function destruct($hostname, $username, $password, $database, $charset, $port = 3306)
     {
          $connection = new mysqli(

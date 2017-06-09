@@ -1,19 +1,31 @@
 <?php
 
 /**
- * MySQLDatabase Class
- **/
-//namespace Database/MySQL;
-
+ * Class MySQL_Database
+ */
 class MySQL_Database extends Database
 {
 
+    /**
+     * @var
+     */
     private $connection;
+    /**
+     * @var
+     */
     public $last_query;
+    /**
+     * @var int
+     */
     private $magic_quotes_active;
+    /**
+     * @var bool
+     */
     private $real_escape_string_exists;
 
-// Create a object
+    /**
+     * MySQL_Database constructor.
+     */
     public function __construct()
     {
         $this->open_connection();
@@ -22,7 +34,9 @@ class MySQL_Database extends Database
 
     }
 
-// Create a database connection function
+    /**
+     *
+     */
     public function open_connection()
     {
         $config = config()->mysql;
@@ -30,7 +44,6 @@ class MySQL_Database extends Database
         if (!$this->connection) {
             die("Database connection failed: " . mysqli_error($this->connection));
         } else {
-            // 2. Select a database to use
             mysqli_set_charset($this->connection, $config['charset']);
             $db_select = mysqli_select_db($this->connection, $config['database']);
             if (!$db_select) {
@@ -39,7 +52,9 @@ class MySQL_Database extends Database
         }
     }
 
-// Close a database connection function
+    /**
+     *
+     */
     public function close_connection()
     {
         if (isset($this->connection)) {
@@ -48,7 +63,10 @@ class MySQL_Database extends Database
         }
     }
 
-// Perform database query function
+    /**
+     * @param $sql
+     * @return bool|mysqli_result
+     */
     public function query($sql)
     {
         $this->last_query = $sql;
@@ -58,50 +76,64 @@ class MySQL_Database extends Database
         return $result;
     }
 
-// hz
+    /**
+     * @param $value
+     * @return string
+     */
     public function escape_value($value)
     {
-        // i.e. PHP >= v4.3.0
         $value = htmlspecialchars(trim($value));
-        if ($this->real_escape_string_exists) { // PHP v4.3.0 or higher
-            // undo any magic quote effects so mysqli_real_escape_string can do the work
+        if ($this->real_escape_string_exists) {
             if ($this->magic_quotes_active) {
                 $value = stripslashes($value);
             }
             $value = mysqli_real_escape_string($this->connection, $value);
-        } else { // before PHP v4.3.0
-            // if magic quotes aren't already on then add slashes manualy
+        } else {
             if (!$this->magic_quotes_active) {
                 $value = addslashes($value);
             }
-            // if magic quotes are active, then the slashes already exist
         }
         return $value;
     }
 
-// "database-neutral" methods	
+    /**
+     * @param $result_set
+     * @return array|null
+     */
     public function fetch_array($result_set)
     {
         return mysqli_fetch_array($result_set, MYSQLI_ASSOC);
     }
 
+    /**
+     * @param $result_set
+     * @return int
+     */
     public function num_rows($result_set)
     {
         return mysqli_num_rows($result_set);
     }
 
+    /**
+     * @return int|string
+     */
     public function insert_id()
     {
-        // get the last id inserted over the current db connection
         return mysqli_insert_id($this->connection);
     }
 
+    /**
+     * @return int
+     */
     public function affected_rows()
     {
         return mysqli_affected_rows($this->connection);
     }
 
-// Confirm database query function
+    /**
+     * @param $result
+     * @return string
+     */
     protected function confirm_query($result)
     {
         if (!$result) {
