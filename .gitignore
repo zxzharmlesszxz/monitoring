@@ -3,3 +3,6 @@ include/config.php
 **/.nomedia
 google*.html
 yandex*.html
+/load/
+/data/
+/log/
