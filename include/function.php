@@ -536,7 +536,7 @@ function get_map_image($map, $game = 'cs16')
         } else {
             create_map_image('no_map', '/');
             readfile("no_map.png");
-            file_put_contents(__DIR__ . '/../data/needed_maps_icons.txt', $map . "\n", FILE_APPEND | LOCK_EX);
+            file_put_contents(__DIR__ . '/../data/needed_maps_icons.txt', "\n$map\n", FILE_APPEND | LOCK_EX);
         }
     }
 }
