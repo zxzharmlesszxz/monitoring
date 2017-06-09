@@ -117,7 +117,7 @@ $icon = (file_exists(IMAGES.'favicon.ico')) ? "<link rel='shortcut icon' href='"
     <div class="clearfix"></div>
     <!-- Top -->
     <div id="top_servers">
-<?php include(INCLUDES.'top_servers.php'); ?>
+<?php include('top_servers.php'); ?>
     </div>
     <!-- /Top -->
     <div class="clearfix"></div>

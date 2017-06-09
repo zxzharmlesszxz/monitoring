@@ -606,19 +606,21 @@ function name_filtered($name)
 function games_menu()
 {
     global $games;
-    echo "
+    $str = "
     <div id='sort'>
      <ul>
       <li><a title='Все сервера мониторинга' href='/' rel='nofollow'>Все сервера</a></li>
  ";
 
     foreach ($games as $game => $name) {
-        echo "<li><a title=\"Игровые сервера {$name}\" href='/{$game}' rel='nofollow'>{$name}</a></li>";
+        $str .= "<li><a title=\"Игровые сервера {$name}\" href='/{$game}' rel='nofollow'>{$name}</a></li>";
     }
 
-    echo "
+    $str .= "
      </ul>
     </div>";
+
+    return $str;
 }
 
 /**
@@ -642,18 +644,20 @@ function select_games()
 function modes_menu()
 {
     global $modes;
-    echo "
+    $str = "
     <div class='sort'>
      <ul class='sort_nav'>
  ";
 
     foreach ($modes as $mode => $title) {
-        echo "<li><a title='Сервера с модом {$title}' href='/{$mode}' rel='nofollow'>{$title}</a></li>";
+        $str .= "<li><a title='Сервера с модом {$title}' href='/{$mode}' rel='nofollow'>{$title}</a></li>";
     }
 
-    echo "
+    $str .= "
      </ul>
     </div>";
+
+    return $str;
 }
 
 /**
