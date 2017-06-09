@@ -1,6 +1,9 @@
 <?php
 
 if (!function_exists('getmicrotime')) {
+    /**
+     * @return float
+     */
     function getmicrotime()
     {
         list($usec, $sec) = explode(" ", microtime());
@@ -8,6 +11,10 @@ if (!function_exists('getmicrotime')) {
     }
 }
 
+/**
+ * @param $packet
+ * @return string
+ */
 function getString(&$packet)
 {
     $str = "";
@@ -21,6 +28,10 @@ function getString(&$packet)
     return trim($str);
 }
 
+/**
+ * @param $packet
+ * @return mixed
+ */
 function getChar(&$packet)
 {
     $char = $packet[0];
@@ -28,6 +39,11 @@ function getChar(&$packet)
     return $char;
 }
 
+/**
+ * @param $a
+ * @param $b
+ * @return int
+ */
 function sortByKills($a, $b)
 {
     if ($a['kills'] == $b['kills']) {
@@ -36,6 +52,10 @@ function sortByKills($a, $b)
     return ($a['kills'] > $b['kills']) ? -1 : 1;
 }
 
+/**
+ * @param $server
+ * @return array
+ */
 function serverInfo($server)
 {
     list($ip, $port) = explode(":", $server);
@@ -88,6 +108,10 @@ function serverInfo($server)
     }
 }
 
+/**
+ * @param $server
+ * @return array
+ */
 function playersInfo($server)
 {
     list($ip, $port) = explode(":", $server);
@@ -144,6 +168,12 @@ function getlistservers() {
 }
 */
 
+/**
+ * @param $needle
+ * @param $replacement
+ * @param $haystack
+ * @return string
+ */
 function mb_str_replace($needle, $replacement, $haystack)
 {
     $needle_len = mb_strlen($needle);
@@ -156,6 +186,11 @@ function mb_str_replace($needle, $replacement, $haystack)
     return $haystack;
 }
 
+/**
+ * @param $email
+ * @param $message
+ * @return bool
+ */
 function send_mail($email, $message)
 {
     if (empty($email) or empty($message)) {
@@ -164,6 +199,10 @@ function send_mail($email, $message)
     mail($email, "From: Monitoring System https://www.monitoring.contra.net.ua\n", $message);
 }
 
+/**
+ * @param $url
+ * @return bool
+ */
 function parse_site($url)
 {
     $page = new DOMDocument;
@@ -180,6 +219,10 @@ function parse_site($url)
     return false;
 }
 
+/**
+ * @param $url
+ * @return mixed
+ */
 function get_page_html($url)
 {
     $ch = curl_init($url);
@@ -191,7 +234,11 @@ function get_page_html($url)
     return $page;
 }
 
-//функция для перевода из HEX кода в RBG
+/**
+ * @param $img
+ * @param $color
+ * @return int
+ */
 function htmlcolor($img, $color)
 {
     $red = $green = $blue = '';
@@ -199,21 +246,10 @@ function htmlcolor($img, $color)
     return ImageColorAllocate($img, $red, $green, $blue);
 }
 
-//функция для русского текста
-function iso2uni($isoLine)
-{
-    $uniLine = "";
-    $isoLine = convert_cyr_string($isoLine, "w", "k");
-    $isoLine = convert_cyr_string($isoLine, "k", "i");
-
-    for ($i = 0; $i < strlen($isoLine); $i++) {
-        $thisChar = substr($isoLine, $i, 1);
-        $charCode = ord($thisChar);
-        $uniLine .= ($charCode > 175) ? "&#" . (1040 + ($charCode - 176)) . ";" : $thisChar;
-    }
-    return $uniLine;
-}
-
+/**
+ * @param $text
+ * @param string $style
+ */
 function displayMessage($text, $style = 'warning')
 {
     if (!empty($text)) {
@@ -232,7 +268,10 @@ function displayMessage($text, $style = 'warning')
     }
 }
 
-// Функция, извлекающая HTML теги
+/**
+ * @param $text
+ * @return mixed|string
+ */
 function stripinput($text)
 {
     if (QUOTES_GPC) {
@@ -246,7 +285,10 @@ function stripinput($text)
     return $text;
 }
 
-// MySQL функции
+/**
+ * @param $query
+ * @return bool
+ */
 function dbquery($query)
 {
     global $db_connect;
@@ -259,11 +301,24 @@ function dbquery($query)
     }
 }
 
+/**
+ * @param $forma
+ * @param $time
+ * @return false|string
+ */
 function formatDate($forma, $time)
 {
     return gmdate($forma, $time + 3600 * (3 + date("I")) + 3600);
 }
 
+/**
+ * @param $sal
+ * @param bool $day
+ * @param bool $has
+ * @param bool $min
+ * @param bool $sek
+ * @return string
+ */
 function time2string($sal, $day = true, $has = true, $min = true, $sek = true)
 {
     $days = '';
@@ -290,16 +345,10 @@ function time2string($sal, $day = true, $has = true, $min = true, $sek = true)
     return $return;
 }
 
-function dbarray($query)
-{
-    $result = db()->fetch_array($query);
-    if (!$result) {
-        return false;
-    } else {
-        return $result;
-    }
-}
-
+/**
+ * @param $query
+ * @return bool
+ */
 function dbarray_fetch($query)
 {
     $result = db()->fetch_array($query);
@@ -310,128 +359,49 @@ function dbarray_fetch($query)
     }
 }
 
-function redirect($location)
-{
-    echo "<script type='text/javascript'>document.location.href='" . str_replace("&amp;", "&", $location) . "'</script>\n";
-    exit;
-}
-
-function stripslash($text)
-{
-    return (QUOTES_GPC) ? stripslashes($text) : $text;
-}
-
-function addslash($text)
-{
-    return (!QUOTES_GPC) ? addslashes(addslashes($text)) : addslashes($text);
-}
-
-function descript($text, $striptags = true)
-{
-    // Функция убирает все скрипты из запроса
-    $search = array("40", "41", "58", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122");
-    $replace = array("(", ")", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
-    $entities = count($search);
-
-    for ($i = 0; $i < $entities; $i++) {
-        $text = preg_replace("#(&\#)(0*" . $search[$i] . "+);*#si", $replace[$i], $text);
-    }
-
-    $text = preg_replace('#(&\#x)([0-9A-F]+);*#si', "", $text);
-    $text = preg_replace('#(<[^>]+[/\"\'\s])(onmouseover|onmousedown|onmouseup|onmouseout|onmousemove|onclick|ondblclick|onfocus|onload|xmlns)[^>]*>#iU', ">", $text);
-    $text = preg_replace('#([a-z]*)=([\`\'\"]*)script:#iU', '$1=$2nojscript...', $text);
-    $text = preg_replace('#([a-z]*)=([\`\'\"]*)javascript:#iU', '$1=$2nojavascript...', $text);
-    $text = preg_replace('#([a-z]*)=([\'\"]*)vbscript:#iU', '$1=$2novbscript...', $text);
-    $text = preg_replace('#(<[^>]+)style=([\`\'\"]*).*expression\([^>]*>#iU', "$1>", $text);
-    $text = preg_replace('#(<[^>]+)style=([\`\'\"]*).*behaviour\([^>]*>#iU', "$1>", $text);
-
-    if ($striptags) {
-        do {
-            $thistext = $text;
-            $text = preg_replace('#</*(applet|meta|xml|blink|link|style|script|embed|object|iframe|frame|frameset|ilayer|layer|bgsound|title|base)[^>]*>#i', "", $text);
-        } while ($thistext != $text);
-    }
-
-    return $text;
-}
-
-function makefilelist($folder, $filter, $sort = true, $type = "files")
-{
-    $res = array();
-    $filter = explode("|", $filter);
-    $temp = opendir($folder);
-
-    while ($file = readdir($temp)) {
-        if ($type == "files" && !in_array($file, $filter)) {
-            if (!is_dir($folder . $file)) {
-                $res[] = $file;
-            }
-        } elseif ($type == "folders" && !in_array($file, $filter)) {
-            if (is_dir($folder . $file)) {
-                $res[] = $file;
-            }
-        }
-    }
-    closedir($temp);
-
-    if ($sort) {
-        sort($res);
-    }
-    return $res;
-}
-
-function makefileopts($files, $selected = "")
-{
-    $res = "";
-    for ($i = 0; $i < count($files); $i++) {
-        $sel = ($selected == $files[$i] ? "selected='selected'" : "");
-        $res .= "<option value='" . $files[$i] . "' $sel>" . $files[$i] . "</option>\n";
-    }
-    return $res;
-}
-
-function servers($server_num_data)
-{
-    //$sql = "SELECT * FROM ".DB_SERVERS." WHERE server_new != 1 AND server_status != 0 AND server_off != 1 ORDER BY server_vip desc, votes DESC".(($server_num_data != 'all') ? " LIMIT $server_num_data" : "");
-    return dbquery("SELECT * FROM " . DB_SERVERS . " WHERE server_new != 1 AND server_status != 0 AND server_off != 1 ORDER BY server_vip desc, votes DESC" . (($server_num_data != 'all') ? " LIMIT $server_num_data" : ""));
-}
-
-function dbrows($query)
-{
-    return db()->num_rows($query);
-}
-
+/**
+ * @param $url
+ * @return mixed
+ */
 function isValidURL($url)
 {
     return filter_var($url, FILTER_VALIDATE_URL);
 }
 
+/**
+ * @param $email
+ * @return mixed
+ */
 function isValidEmail($email)
 {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
+/**
+ * @param $int
+ * @return bool
+ */
 function isOnOff($int)
 {
     return ($int == 1 or $int == 0) ? true : false;
 }
 
+/**
+ * @param $var
+ * @return bool
+ */
 function myempty($var)
 {
-    return ($var != "") ? false : true;
+    return !empty($var) ? false : true;
 }
 
-function getdomain($url)
-{
-    preg_match("/^(http:\/\/|https:\/\/)?([^\/]+)/i", $url, $matches);
-
-    //$host = $matches[2];
-
-    preg_match("/[^\.\/]+\.[^\.\/]+$/", $matches[2], $matches);
-
-    return strtolower($matches[0]);
-}
-
+/**
+ * @param string $server
+ * @param $to
+ * @param $from
+ * @param $subject
+ * @param $message
+ */
 function socketmail($server = 'localhost', $to, $from, $subject, $message)
 {
     $connect = fsockopen($server, 25, $errno, $errstr, 30);
@@ -453,11 +423,19 @@ function socketmail($server = 'localhost', $to, $from, $subject, $message)
     fputs($connect, "RSET\r\n");
 }
 
+/**
+ * @param $email
+ * @return int
+ */
 function isEmail($email)
 {
     return (preg_match("/^[-_.[:alnum:]]+@((([[:alnum:]]|[[:alnum:]][[:alnum:]-]*[[:alnum:]])\.)+(ad|ae|aero|af|ag|ai|al|am|an|ao|aq|ar|arpa|as|at|au|aw|az|ba|bb|bd|be|bf|bg|bh|bi|biz|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|com|coop|cr|cs|cu|cv|cx|cy|cz|de|dj|dk|dm|do|dz|ec|edu|ee|eg|eh|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gh|gi|gl|gm|gn|gov|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|in|info|int|io|iq|ir|is|it|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|mg|mh|mil|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|museum|mv|mw|mx|my|mz|na|name|nc|ne|net|nf|ng|ni|nl|no|np|nr|nt|nu|nz|om|org|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|pro|ps|pt|pw|py|qa|re|ro|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sk|sl|sm|sn|so|sr|st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|um|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw)$|(([0-9][0-9]?|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\.){3}([0-9][0-9]?|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5]))$/i", $email));
 }
 
+/**
+ * @param $tpl
+ * @return string
+ */
 function use_top_tpl($tpl)
 {
     global $server_location;
@@ -482,6 +460,11 @@ function use_top_tpl($tpl)
     return $tpl;
 }
 
+/**
+ * @param $map
+ * @param string $game
+ * @return bool
+ */
 function create_map_image($map, $game = 'cs16')
 {
     $image = new SimpleImage();
@@ -509,6 +492,11 @@ function create_map_image($map, $game = 'cs16')
     return false;
 }
 
+/**
+ * @param $map
+ * @param string $game
+ * @return bool
+ */
 function check_map_image($map, $game = 'cs16')
 {
     if (file_exists(__DIR__ . "/../images/maps/$game/$map.png")) {
@@ -517,6 +505,10 @@ function check_map_image($map, $game = 'cs16')
     return false;
 }
 
+/**
+ * @param $image
+ * @return bool
+ */
 function check_map_image_size($image)
 {
     $img = imagecreatefrompng($image);
@@ -525,6 +517,10 @@ function check_map_image_size($image)
     return ($width == 160) ? true : false;
 }
 
+/**
+ * @param $map
+ * @param string $game
+ */
 function get_map_image($map, $game = 'cs16')
 {
     header("Content-Type: image/png");
@@ -569,13 +565,15 @@ function topMap(array $servers)
 /**
  * @return mixed|null
  */
-function config(){
+function config()
+{
     return Registry::_get('config');
 }
 
 /**
  * @return mixed|null
  */
-function db(){
+function db()
+{
     return Registry::_get('database');
 }
