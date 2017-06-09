@@ -121,7 +121,7 @@ if ($settings['enable_registration'] == 0) {
      </td>
     </tr>
     <tr>
-     <td align='right'><b><font size='2' color='red'>*</font>Адрес сервера:</b></td>
+     <td align='right'><b><span style="color: red;">*</span>Адрес сервера:</b></td>
      <td><input type='text' name='server_address' value='{$address}' size='30' /></td>
     </tr>
     <tr>
@@ -143,7 +143,7 @@ if ($settings['enable_registration'] == 0) {
     <tr>
      <td align='right'>
       <b>
-       <font size='2' color='red'>*</font>Адрес нашей ссылки на Вашем сайте:
+       <span style="color: red;">*</span>Адрес нашей ссылки на Вашем сайте:
       </b>
      </td>
      <td>
@@ -153,7 +153,7 @@ if ($settings['enable_registration'] == 0) {
     <tr>
      <td align='right'>
       <b>
-       <font size='2' color='red'>*</font>E-mail Админа:
+       <span style="color: red;">*</span>E-mail Админа:
       </b>
      </td>
      <td>
@@ -168,7 +168,7 @@ if ($settings['enable_registration'] == 0) {
     </tr>
     <tr>
      <td align='right'>
-      <b><font size='2' color='red'>*</font>Описание сервера:</b>
+      <b><span style="color: red;">*</span>Описание сервера:</b>
      </td>
      <td>
       <textarea name='server_about' rows='2' cols='30'>{$about}</textarea>
@@ -190,7 +190,7 @@ if ($settings['enable_registration'] == 0) {
     </tr>
     <tr>
      <td align='right'>
-      <b><font size='2' color='red'>*</font>Код безопасности:</b>
+      <b><span style="color: red;">*</span>Код безопасности:</b>
      </td>
      <td>
       <img src='/include/cap/index.php?{$captch}'>
