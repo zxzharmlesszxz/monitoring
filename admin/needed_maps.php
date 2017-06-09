@@ -11,6 +11,8 @@ $file = __DIR__ . '/../data/needed_maps_icons.txt';
 if (file_exists($file)) {
     $maps = array_unique(explode("\n", file_get_contents($file)));
     asort($maps);
+
+    var_dump($maps);
     $files = scandir(__DIR__ . '/../images/maps/cs16/');
 
     foreach ($files as $f) {
