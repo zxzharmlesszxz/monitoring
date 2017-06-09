@@ -2,27 +2,28 @@
 
 /* Script security */
 if (!defined("MONENGINE")) {
- header("Location: index.php");
- exit();
+    header("Location: index.php");
+    exit();
 }
 
-$file = __DIR__.'/../data/needed_maps_icons.txt';
+$file = __DIR__ . '/../data/needed_maps_icons.txt';
 
 if (file_exists($file)) {
- $maps = sort(array_unique(explode("\n", file_get_contents($file))));
- $files = scandir(__DIR__.'/../images/maps/cs16/');
+    $items = array_unique(explode("\n", file_get_contents($file)));
+    $maps = sort($items);
+    $files = scandir(__DIR__ . '/../images/maps/cs16/');
 
- foreach ($files as $f) {
-  if ($f == '.' or $f == '..') continue;
-  $a = explode('.', $f);
+    foreach ($files as $f) {
+        if ($f == '.' or $f == '..') continue;
+        $a = explode('.', $f);
 
-  $i = array_search($a[0], $maps);
+        $i = array_search($a[0], $maps);
 
-  if($i) {
-   unset($maps[$i]);
-  }
- }
- file_put_contents(__DIR__.'/../data/needed_maps_icons.txt', implode("\n",$maps), LOCK_EX);
+        if ($i) {
+            unset($maps[$i]);
+        }
+    }
+    file_put_contents(__DIR__ . '/../data/needed_maps_icons.txt', implode("\n", $maps), LOCK_EX);
 }
 
 echo <<<EOT
@@ -35,8 +36,8 @@ echo <<<EOT
 EOT;
 
 foreach ($maps as $map) {
- if (empty($map)) continue;
- echo "<li><a target='_blank' href='https://www.google.com.ua/search?q={$map}.jpg&source=lnms'>{$map}</a></li>";
+    if (empty($map)) continue;
+    echo "<li><a target='_blank' href='https://www.google.com.ua/search?q={$map}.jpg&source=lnms'>{$map}</a></li>";
 }
 echo <<<EOT
   </ol>
