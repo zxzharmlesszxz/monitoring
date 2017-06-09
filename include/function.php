@@ -587,3 +587,86 @@ function db()
 {
     return Registry::_get('database');
 }
+
+/**
+ * @param $name
+ * @return mixed|string
+ */
+function name_filtered($name)
+{
+    $name = iconv('UTF-8', 'windows-1251', $name);
+    $name = preg_replace("/[^(\x9|\xA|\xD|\x20-\xD7FF|\xE000-\xFFFD|\x10000\-\x10FFFF)]*/", "", $name);
+    if (strlen($name) <= 50) return $name;
+    return substr($name, 0, 50) . '... ';
+}
+
+/**
+ *
+ */
+function games_menu()
+{
+    global $games;
+    echo "
+    <div id='sort'>
+     <ul>
+      <li><a title='Все сервера мониторинга' href='/' rel='nofollow'>Все сервера</a></li>
+ ";
+
+    foreach ($games as $game => $name) {
+        echo "<li><a title=\"Игровые сервера {$name}\" href='/{$game}' rel='nofollow'>{$name}</a></li>";
+    }
+
+    echo "
+     </ul>
+    </div>";
+}
+
+/**
+ * @return string
+ */
+function select_games()
+{
+    global $games;
+    $gamess = array();
+
+    foreach ($games as $game => $title) {
+        $gamess[$game] = "<option value='{$game}'>{$title}</option>";
+    }
+
+    return implode('\n', $gamess);
+}
+
+/**
+ *
+ */
+function modes_menu()
+{
+    global $modes;
+    echo "
+    <div class='sort'>
+     <ul class='sort_nav'>
+ ";
+
+    foreach ($modes as $mode => $title) {
+        echo "<li><a title='Сервера с модом {$title}' href='/{$mode}' rel='nofollow'>{$title}</a></li>";
+    }
+
+    echo "
+     </ul>
+    </div>";
+}
+
+/**
+ * @return string
+ */
+function select_modes()
+{
+    global $modes;
+    $modess = array();
+
+    foreach ($modes as $mode => $title) {
+        $modess[$mode] = "<option value='{$mode}'>{$title}</option>";
+    }
+
+    return implode('\n', $modess);
+}
