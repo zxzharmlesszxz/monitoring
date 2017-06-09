@@ -36,7 +36,7 @@ EOT;
 
 foreach ($maps as $map) {
  if (empty($map)) continue;
- echo "<li><a target='_blank' href='https://www.google.com.ua/search?q={$map}.jpg&source=lnms>{$map}</a></li>";
+ echo "<li><a target='_blank' href='https://www.google.com.ua/search?q={$map}.jpg&source=lnms'>{$map}</a></li>";
 }
 echo <<<EOT
   </ol>
