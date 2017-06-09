@@ -478,17 +478,27 @@ function create_map_image($map, $game = 'cs16')
         $ext = ".jpeg";
     } elseif (file_exists("$file.gif")) {
         $ext = ".gif";
+    } elseif (file_exists("$file.bmp")) {
+        $ext = ".bmp";
     } else {
         unset($file, $game);
+    }
+
+    if (isset($file) and $ext == '.bmp') {
+        $image = new imagick($file . $ext);
+        $image->writeImage("$file.jpg");
+        unlink($file . $ext);
+        $ext = ".jpg";
     }
 
     if (isset($file)) {
         $image->load($file . $ext);
         $image->resizeToWidth(160);
-        $image->save(__DIR__ . "/../images/maps/$game/$map.png", IMAGETYPE_PNG);
+        $image->save("$file.png", IMAGETYPE_PNG);
         if ($ext != '.png') unlink($file . $ext);
         return true;
     }
+
     return false;
 }
 
