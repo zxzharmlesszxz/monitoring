@@ -6,6 +6,7 @@ if (!defined("MONENGINE")) {
     exit();
 }
 
+$maps = array();
 $file = __DIR__ . '/../data/needed_maps_icons.txt';
 
 if (file_exists($file)) {
