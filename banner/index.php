@@ -41,7 +41,7 @@ if (isset($_GET["serv"])) {
 
     if ($info['serverName']) {
         if (strlen($info['serverName']) > 50)
-            $info['serverName'] = substr($info['serverName'], 0, 50) . "\n" . substr($info['serverName'], 50);
+            $info['serverName'] = substr($info['serverName'], 0, 50) . "...";
         $players = $info['playerNumber'] . " / " . $info['maxPlayers'];
         $status = "Включен";
         $color = $green;
