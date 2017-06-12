@@ -40,8 +40,8 @@ if (isset($_GET["serv"])) {
     $red = imagecolorallocate($img, 255, 0, 0);
 
     if ($info['serverName']) {
-        if (strlen($info['serverName']) > 50)
-            $info['serverName'] = substr($info['serverName'], 0, 50) . "...";
+        if (strlen($info['serverName']) > 40)
+            $info['serverName'] = substr($info['serverName'], 0, 40) . "...";
         $players = $info['playerNumber'] . " / " . $info['maxPlayers'];
         $status = "Включен";
         $color = $green;
