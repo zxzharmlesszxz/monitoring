@@ -467,7 +467,6 @@ function use_top_tpl($tpl)
  */
 function create_map_image($map, $game = 'cs16')
 {
-    $image = new SimpleImage();
     $file = __DIR__ . "/../images/maps/$game/$map";
 
     if (file_exists("$file.png")) {
@@ -484,18 +483,13 @@ function create_map_image($map, $game = 'cs16')
         unset($file, $game);
     }
 
-    if (isset($file) and $ext == '.bmp') {
+    if (isset($file) and $ext !== '.png') {
         $img = new imagick($file . $ext);
-        $img->writeImage("$file.jpg");
+        $width = $img->getImageWidth();
+        $height = $img->getImageHeight();
+        $img->resizeImage(160, $height * $width / 160, Imagick::FILTER_LANCZOS,1, true);
+        $img->writeImage("$file.png");
         unlink($file . $ext);
-        $ext = ".jpg";
-    }
-
-    if (isset($file)) {
-        $image->load($file . $ext);
-        $image->resizeToWidth(160);
-        $image->save("$file.png", IMAGETYPE_PNG);
-        if ($ext != '.png') unlink($file . $ext);
         return true;
     }
 
