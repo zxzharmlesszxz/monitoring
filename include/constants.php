@@ -28,6 +28,7 @@ define("THEME", BASEDIR . "templates/");
 define("LOCALESET", $settings['locale'] . "/");
 define("USER_IP", (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : ''));
 define("ASR", $settings['AMX']);
+define("LINES_NUM", $settings['top_rows']);
 
 $games = [
     'cs16' => 'CS 1.6',

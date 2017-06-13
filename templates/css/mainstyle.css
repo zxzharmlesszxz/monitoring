@@ -86,6 +86,14 @@ margin:1px;
 padding:1px;
 }
 
+.info2 {
+    border:1px solid #717171;
+    background:#222;
+    color:red;
+    margin:1px;
+    padding:1px;
+}
+
 .sort {
 background:#393939 url(/images/img/sort_bg.gif) repeat-x 0 0;
 }

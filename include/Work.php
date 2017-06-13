@@ -34,7 +34,9 @@ class Work extends Threaded
             // Некая ресурсоемкая операция
             $server = array_merge((array)$value, serverInfo($value['server_ip']));
 
-            if ($server['status'] == 'off' and ($server['server_status'] == 0) and time() - $server['status_change'] > 86400) {
+            $site = !empty($server['server_site']) ? parse_site($server['server_site']) : false;
+
+            if ($server['status'] == 'off' and $server['server_status'] == 0 and time() - $server['status_change'] > 86400) {
                 $this->worker->getConnection()->real_query(
                     "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';"
                 );
@@ -42,7 +44,7 @@ class Work extends Threaded
                 continue;
             }
 
-            if ($server['status'] == 'off' || empty($server['name'])) {
+            if (($server['status'] == 'off' || empty($server['name'])) or !$site) {
                 $this->worker->getConnection()->real_query(
                     "UPDATE " . DB_SERVERS . " SET
                     server_status = '0',

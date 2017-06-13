@@ -19,8 +19,7 @@ if ($settings['top_rows'] > 0) {
             $tops_array[$i][$k] = $v;
         }
     }
-    // Максимальное кол-во строк с топ-серверами
-    define("LINES_NUM", $settings['top_rows']);
+
     // Шаблон занятого места
     $template_got = '
   <div class="unit">
@@ -70,7 +69,7 @@ if ($settings['top_rows'] > 0) {
     <a title="Заказать место в шапке" href="/paytop" rel="nofollow">«Премиум место» свободно!</a>
     <br>
     <div style="padding-top:3px;">
-    127.0.0.1:27015
+    0.0.0.0:00000
    </div>
   </div>
  </div>
