@@ -490,7 +490,7 @@ function create_map_image($map, $game = 'cs16')
         $width = $img->getImageWidth();
         $height = $img->getImageHeight();
         $img->resizeImage(160, $height * $width / 160, Imagick::FILTER_LANCZOS,1, true);
-        $img->compositeImage($watermark, imagick::COMPOSITE_OVER, 0, 0);
+        $img->compositeImage($watermark, imagick::COMPOSITE_OVER, 3, 3);
         $img->writeImage("$file.png");
         $img->destroy();
         $watermark->destroy();
