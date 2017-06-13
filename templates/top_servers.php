@@ -78,7 +78,7 @@ if ($settings['top_rows'] > 0) {
                 $server_name = mb_substr($server_name, 0, 24, 'UTF-8') . "...";
             }*/
 
-            $server_name = htmlspecialchars($server_name);
+            $server_name = htmlentities($server_name);
             $server_location = $tops_array[$i]['server_location'];
             $server_address = $tops_array[$i]['server_ip'];
             $server_players_num = $tops_array[$i]['server_players'];
