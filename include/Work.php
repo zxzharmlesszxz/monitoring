@@ -46,18 +46,17 @@ class Work extends Threaded
 
             //if (($server['status'] == 'off' || empty($server['name'])) or !$site) {
             if ($server['status'] == 'off' || empty($server['name'])) {
-                    $this->worker->getConnection()->real_query(
-                        "UPDATE " . DB_SERVERS . " SET
+                $this->worker->getConnection()->real_query(
+                    "UPDATE " . DB_SERVERS . " SET
                     server_status = '0',
                     server_map = '-',
                     server_players = '-',
                     server_maxplayers = '-' "
-                        . (($server['server_status'] == 1) ? ", status_change = " . time() : "")
-                        . " WHERE server_id='{$server['server_id']}';"
-                    );
-                    //print "UPDATE " . DB_SERVERS . " SET server_status = '0', server_map = '-', server_players = '-', server_maxplayers = '-' " . (($server['server_status'] == 1) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}';" . PHP_EOL;
-                    continue;
-                }
+                    . (($server['server_status'] == 1) ? ", status_change = " . time() : "")
+                    . " WHERE server_id='{$server['server_id']}';"
+                );
+                //print "UPDATE " . DB_SERVERS . " SET server_status = '0', server_map = '-', server_players = '-', server_maxplayers = '-' " . (($server['server_status'] == 1) ? ", status_change = " . time() : "") . " WHERE server_id='{$server['server_id']}';" . PHP_EOL;
+                continue;
             }
 
             $name = $this->worker->getConnection()->real_escape_string(htmlspecialchars(trim($server['name'])));
