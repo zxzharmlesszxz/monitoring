@@ -210,7 +210,7 @@ function parse_site($url)
     @$page->loadHTML(get_page_html($url));
     libxml_clear_errors();
     foreach ($page->getElementsByTagName('a') as $el) {
-        if ($el->getAttribute('href') == 'https://contra.net.ua/') {
+        if ($el->getAttribute('href') == 'https://contra.net.ua/' or $el->getAttribute('href') == 'http://contra.net.ua/') {
             if ($el->nodeValue == "Игровые сервера cs 1.6 Украина") {
                 return true;
             }
@@ -485,10 +485,14 @@ function create_map_image($map, $game = 'cs16')
 
     if (isset($file) and $ext !== '.png') {
         $img = new imagick($file . $ext);
+        $watermark = new Imagick(__DIR__ . "/../images/watermark/watermark.png");
         $width = $img->getImageWidth();
         $height = $img->getImageHeight();
         $img->resizeImage(160, $height * $width / 160, Imagick::FILTER_LANCZOS,1, true);
+        $img->compositeImage($watermark, imagick::COMPOSITE_OVER, 0, $img->getImageHeight() - 5);
         $img->writeImage("$file.png");
+        $img->destroy();
+        $watermark->destroy();
         unlink($file . $ext);
         return true;
     }
