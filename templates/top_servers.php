@@ -94,7 +94,8 @@ if ($settings['top_rows'] > 0) {
             $server_map = $tops_array[$i]['server_map'];
             $server_game = $tops_array[$i]['server_game'];
 
-            if ($tops_array[$i]['server_off'] == 1) $server_address = "<span style='color:#789ABF;cursor:help;' title='Данный сервер заблокирован в мониторинге'>[Сервер заблокирован]</a>";
+            if ($tops_array[$i]['server_off'] == 1)
+                $server_address = "<span style='color:#789ABF;cursor:help;' title='Данный сервер заблокирован в мониторинге'>[Сервер заблокирован]</a>";
 
             if ($tops_array[$i]['server_ipport_style']) {
                 $grc = db()->fetch_array(db()->query("SELECT * FROM mon_rowstyles WHERE name='" . $tops_array[$i]['server_ipport_style'] . "'"));
