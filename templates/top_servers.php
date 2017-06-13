@@ -74,9 +74,9 @@ if ($settings['top_rows'] > 0) {
             $server_id = $tops_array[$i]['server_id'];
             $server_name = $tops_array[$i]['server_name'];
 
-            if (mb_strlen($server_name, 'UTF-8') > 24) {
+            /*if (mb_strlen($server_name, 'UTF-8') > 24) {
                 $server_name = mb_substr($server_name, 0, 24, 'UTF-8') . "...";
-            }
+            }*/
 
             $server_name = htmlspecialchars($server_name);
             $server_location = $tops_array[$i]['server_location'];
