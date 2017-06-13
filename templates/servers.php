@@ -79,7 +79,7 @@ if ($servers_total !=0 ) {
   $row .= "<td><img src='/images/icons/{$r['server_game']}.gif' class='game' title='{$r['server_game']} сервер' alt='{$r['server_game']} сервер' />";
   $row .= "{$r['server_ip']}</td>";
   $row .= "<td class='mode'>{$r['server_mode']}</td>";
-  $row .= "<td class='map'>{$r['server_map']}<span class='icon' data-icon='/images/maps/{$r['server_game']}/{$r['server_map']}.jpg'></span></td>";
+  $row .= "<td class='map'>{$r['server_map']}<span class='icon' data-icon='MAPS.{$r['server_game']}/{$r['server_map']}.png'></span></td>";
   $row .= "<td class='players'><span class='la'><img src='/images/la_icons/{$la}.gif'></span>{$players}</td>";
   $row .= "<td class='votes'>";
 
