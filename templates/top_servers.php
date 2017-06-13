@@ -29,12 +29,10 @@ if ($settings['top_rows'] > 0) {
    </div>
    <div class="info_section">
     <span class="title">Игроки:</span>
-    <br>
     {players}/{players_max}
     <br>
     <br>
     <span class="title">Карта:</span>
-    <br>
     {map}
     <br>
    </div>
@@ -57,10 +55,8 @@ if ($settings['top_rows'] > 0) {
    </div>
    <div class="info_section">
     <span class="title">Игроки:</span>
-    <br>
     Пока нет<br><br>
     <span class="title">Карта:</span>
-    <br>
     Пока нет
     <br>
    </div>
