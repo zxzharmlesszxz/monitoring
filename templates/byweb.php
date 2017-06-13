@@ -12,7 +12,7 @@ echo '<html>
 if (isset($_GET["id"]) and $_GET["id"] >= 1) {
  if (db()->num_rows(db()->query("SELECT * FROM mon_servers WHERE server_id=" . $_GET["id"])) == 1) {
   $q = db()->fetch_array(db()->query("SELECT * FROM mon_servers WHERE server_id=" . $_GET["id"]));
-  $img = '<img src="MAPS.$q['server_game'].'/'.$q['server_map'].'.png" width="150" height="113" style="border:1px solid #898989;"/>';
+  $img = '<img src="'. MAPS . $q['server_game'].'/'.$q['server_map'].'.png" width="150" height="113" style="border:1px solid #898989;"/>';
 
   echo '
   <div style="padding-top:0.1px;padding-left:6px;">
