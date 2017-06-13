@@ -35,7 +35,7 @@ if ($settings['top_rows'] > 0) {
    </div>
    <div class="clearfix"></div>
    <div class="adress_section">
-    <a title="Перейти на страницу сервера {name}" href="server/{id}" rel="nofollow">{name}</a>
+    <a title="Перейти на страницу сервера" href="server/{id}" rel="nofollow">{name}</a>
     <br>
     <div style="padding-top:3px;">
      {address}
