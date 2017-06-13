@@ -486,6 +486,7 @@ function create_map_image($map, $game = 'cs16')
     if (isset($file) and $ext !== '.png') {
         $img = new imagick($file . $ext);
         $watermark = new Imagick(__DIR__ . "/../images/watermark/watermark.png");
+        $watermark->resizeImage(32, 32, Imagick::FILTER_LANCZOS,1, true);
         $width = $img->getImageWidth();
         $height = $img->getImageHeight();
         $img->resizeImage(160, $height * $width / 160, Imagick::FILTER_LANCZOS,1, true);
