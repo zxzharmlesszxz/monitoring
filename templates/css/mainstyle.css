@@ -309,7 +309,9 @@ input:focus, textarea:focus, select:focus {
 
 #header div#top_servers div.unit div.info_section span.title {
     color: #ccc;
-    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    display: block;
+    width: 100%;
 }
 
 #header div#top_servers div.unit div.adress_section {
