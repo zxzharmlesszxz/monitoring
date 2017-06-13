@@ -289,6 +289,7 @@ input:focus, textarea:focus, select:focus {
 
 #header div#top_servers div.unit {
     max-width: 18%;
+    min-width: 18%;
     color: #C7914C;
     font-size: 11px;
     float: left;
