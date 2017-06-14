@@ -27,7 +27,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
         $players = '';
         foreach ($sq->getPlayers() as $player)
         {
-            $players .= $player['name'] . ' - ' . $player['score'] . ' - ' . $player['time'] . "\n";
+            $players .= $player['name'] . ' - ' . $player['score'] . "\n";
         }
 
         echo <<<EOT
