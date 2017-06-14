@@ -210,6 +210,7 @@ function send_mail($email, $message)
     $mailer->Send();
     $mailer->ClearAddresses();
     $mailer->ClearAttachments();
+    return true;
 }
 
 /**
