@@ -1,7 +1,7 @@
 ﻿<?php
-require_once(__DIR__. '/../include/core.php');
-require_once(__DIR__. '/../banner/inc/ServerQueries.php');
-require_once(__DIR__. '/../banner/inc/SourceServerQueries.php');
+require_once(__DIR__ . '/../include/core.php');
+require_once(__DIR__ . '/../banner/inc/ServerQueries.php');
+require_once(__DIR__ . '/../banner/inc/SourceServerQueries.php');
 
 echo <<<EOT
 <html>
@@ -25,9 +25,8 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
         $address = explode(':', $q['server_ip']);
         $sq->connect($address[0], $address[1]);
         $players = '';
-        foreach ($sq->getPlayers() as $player)
-        {
-            $players .= $player['name'] . ' - ' . $player['score'] . "\n";
+        foreach ($sq->getPlayers() as $player) {
+            $players .= "<span>{$player['name']} - {$player['score']}</span>\n";
         }
 
         echo <<<EOT
@@ -51,7 +50,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
       <b>Подключиться</b>
      </a>
     </div>
-    <textarea cols="24" rows="6">{$players}</textarea>
+    {$players}
     </div>
   </div>
 EOT;
