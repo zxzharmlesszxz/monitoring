@@ -60,10 +60,10 @@ if ($page == 'advanced_search') {
 
 } elseif ($page == 'adv_search_results') {
  $searchfield = isset($_POST['searchfield']) ? db()->escape_value(trim($_POST['searchfield'])) : null;
- $map = isset($_POST['map']) ? db()->escape_value(trim($_POST['map'])) : '*';
- $ip = isset($_POST['ip']) ? db()->escape_value(trim($_POST['ip'])) : '*';
- $freeslots = isset($_POST['freeslots']) ? trim($_POST['freeslots']) : '*';
- $country = isset($_POST['country']) ? db()->escape_value(trim($_POST['country'])) : '*';
+ $map = isset($_POST['map']) ? db()->escape_value(trim($_POST['map'])) : '';
+ $ip = isset($_POST['ip']) ? db()->escape_value(trim($_POST['ip'])) : '';
+ $freeslots = isset($_POST['freeslots']) ? trim($_POST['freeslots']) : '';
+ $country = isset($_POST['country']) ? db()->escape_value(trim($_POST['country'])) : '';
  $query_params = Array();
  /* Search field */
  if (!empty($searchfield)) {
