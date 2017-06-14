@@ -20,6 +20,7 @@ $menu->add('settings', 'settings', 'Настройки сайта');
 $menu->add('rowstyles', 'rowstyles', 'Управление стилями');
 $menu->add('add_server', 'add_server', 'Добавить сервер');
 $menu->add('needed_maps', 'needed_maps', 'Недостающие картинки карт');
+$menu->add('send_email', 'send_email', 'Рассылка почты');
 
 $load = "";
 $page = "";
