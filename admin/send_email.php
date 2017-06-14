@@ -12,12 +12,14 @@ $header_text = "Доброго времени суток.
      для поднятия Вашего сервера на главной странице нашего мониторинга, чем выше сервер, тем больше человек посещает Ваш сервер.";
 $footer_text = 'С уважением администрация мониторинга https://www.monitoring.contra.net.ua';
 
+$str = '';
+
 if (isset($_POST['submit'])) {
     $servers = db()->query("SELECT * FROM `" . DB_SERVERS . "` WHERE `server_email` != '';");
 
     while ($server = db()->fetch_array($servers)) {
         $message = sprintf($header_text, $server['server_name'], $server['server_id'], date("d.m.Y", $server['server_regdata']));
-        echo "<div>send_mail({$server['server_email']}, {$message}\n\n{$_POST['message']}\n\n{$footer_text})</div>><br>";
+        $str .= "<div>send_mail({$server['server_email']}, {$message}\n\n{$_POST['message']}\n\n{$footer_text})</div>><br>";
     }
 }
 
@@ -25,6 +27,7 @@ if (isset($_POST['submit'])) {
 echo <<<EOT
  <div id='right'>
   <div class='section'>
+  {$str}
    <div class='box'>
     <div class='title'>Рассылка почты<span class='hide'></span></div>
     <div class='content'>
