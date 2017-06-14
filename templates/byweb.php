@@ -18,7 +18,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
   <div style="padding-top:0.1px;padding-left:6px;">
     <div style="padding-bottom:1px;font-size:14px; font-weight: bold;">
       <a style="color:#aaa;" href="/server/' . $q["server_id"] . '/" target="_blank">
-       ' . htmlspecialchars($q["server_name"]) . '
+       ' . html_entity_decode($q["server_name"]) . '
       </a>
     </div>
     <a href="/server/' . $q["server_id"] . '/" target="_blank">' . $img . '</a>
