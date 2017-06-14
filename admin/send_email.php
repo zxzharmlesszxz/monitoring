@@ -16,16 +16,13 @@ $str = '';
 $servers = db()->query("SELECT * FROM `" . DB_SERVERS . "` WHERE `server_email` != '';");
 
 while ($server = db()->fetch_array($servers)) {
-        $message = sprintf($header_text, $server['server_name'], $server['server_ip'], $server['server_id'], date("d.m.Y", $server['server_regdata']));
-        //send_mail($server['server_email'], "{$message}\n\n{$_POST['message']}\n\n{$footer_text}");
         $str .= "<option value='{$server['server_id']}'>{$server['server_id']}-{$server['server_ip']}({$server['server_name']})</option>";
 }
 
-
 if (isset($_POST['submit']) && isset($_POST['server'])) {
- var_dump($_POST);
- $server = db()->fetch_array(db()->query("SELECT * FROM `" . DB_SERVERS . "` WHERE `server_id` = '" . intval($_POST['server']) . "';"));
- var_dump($server);
+        $server = db()->fetch_array(db()->query("SELECT * FROM `" . DB_SERVERS . "` WHERE `server_id` = '" . intval($_POST['server']) . "';"));
+        $message = sprintf($header_text, $server['server_name'], $server['server_ip'], $server['server_id'], date("d.m.Y", $server['server_regdata']));
+        send_mail($server['server_email'], "{$message}\n\n{$_POST['message']}\n\n{$footer_text}");
 }
 
 /* Other code */
