@@ -51,9 +51,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
       <b>Подключиться</b>
      </a>
     </div>
-    <textarea cols="24" rows="6">
-    {$players}
-    </textarea>
+    <textarea cols="24" rows="6">{$players}</textarea>
     </div>
   </div>
 EOT;
