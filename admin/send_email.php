@@ -30,8 +30,10 @@ echo <<<EOT
       <div class='row'>
        <label>Сообщение <span color='red'>*</span></label>
        <div class='right'>
+       <div>{$header_text}</div>
         <textarea name='message'></textarea>
        </div>
+       <div>{$footer_text}</div>
       </div>
       <div class='row'>
        <div class='right'>
