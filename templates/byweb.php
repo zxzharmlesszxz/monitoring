@@ -24,7 +24,11 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
         $sq = new SourceServerQueries();
         $address = explode(':', $q['server_ip']);
         $sq->connect($address[0], $address[1]);
-        $players = $sq->getPlayers();
+        $players = '';
+        foreach ($sq->getPlayers() as $player)
+        {
+            $players .= $player['name'] . ' - ' . $player['score'] . ' - ' . $player['time'];
+        }
 
         echo <<<EOT
   <div style="padding-top:0.1px;padding-left:6px;">
@@ -52,7 +56,6 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
     </div>
   </div>
 EOT;
-        var_dump($players);
     }
 } else {
     echo "Сервер не найден в базе";
