@@ -36,7 +36,7 @@ echo <<<EOT
       <div class='row'>
        <label>Сервер <span color='red'>*</span></label>
        <div class='right'>
-        <select name="server">
+        <select name="server" style="width: 70%;">
          {$str}
         </select>
        </div>
