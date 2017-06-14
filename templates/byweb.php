@@ -1,5 +1,7 @@
 ﻿<?php
-require_once('include/core.php');
+require_once(__DIR__. '/../include/core.php');
+require_once(__DIR__. '/../banner/inc/ServerQueries.php');
+require_once(__DIR__. '/../banner/inc/SourceServerQueries.php');
 
 echo <<<EOT
 <html>
@@ -19,7 +21,10 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
         $status = (($q['server_status'] == 1) ? '<span style="color:#51F505;"><b>Online</b></span>' : '<span style="color:#f00;"><b>Offline</b></span>');
         $map = ((strlen($q["server_map"]) >= 12) ? mb_substr($q["server_map"], 0, 12, 'UTF-8') . '...' : $q["server_map"]);
         $name = html_entity_decode($q["server_name"]);
-        $players = playersInfo($q["server_ip"]);
+        $sq = new SourceServerQueries();
+        $address = explode(':', $q['server_ip']);
+        $sq->connect($address[0], $address[1]);
+        $players = $sq->getPlayers();
 
         echo <<<EOT
   <div style="padding-top:0.1px;padding-left:6px;">
