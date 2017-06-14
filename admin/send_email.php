@@ -22,7 +22,8 @@ while ($server = db()->fetch_array($servers)) {
 }
 
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit']) && isset($_POST['server'])) {
+ var_dump($_POST);
 }
 
 /* Other code */

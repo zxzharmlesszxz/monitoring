@@ -22,7 +22,7 @@ if (count($_POST) == 0) {
  $page = 'advanced_search';
 }
 
-var_dump($page);
+//var_dump($page);
 
 if ($page == 'advanced_search') {
  include(INCLUDES."countries.class.php");
@@ -59,11 +59,11 @@ if ($page == 'advanced_search') {
  ";
 
 } elseif ($page == 'adv_search_results') {
- $searchfield = db()->escape_value(trim($_POST['searchfield']));
- $map = db()->escape_value(trim($_POST['map']));
- $ip = db()->escape_value(trim($_POST['ip']));
- $freeslots = trim($_POST['freeslots']);
- $country = db()->escape_value(trim($_POST['country']));
+ $searchfield = isset($_POST['searchfield']) ? db()->escape_value(trim($_POST['searchfield'])) : null;
+ $map = isset($_POST['map']) ? db()->escape_value(trim($_POST['map'])) : '*';
+ $ip = isset($_POST['ip']) ? db()->escape_value(trim($_POST['ip'])) : '*';
+ $freeslots = isset($_POST['freeslots']) ? trim($_POST['freeslots']) : '*';
+ $country = isset($_POST['country']) ? db()->escape_value(trim($_POST['country'])) : '*';
  $query_params = Array();
  /* Search field */
  if (!empty($searchfield)) {
