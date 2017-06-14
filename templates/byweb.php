@@ -16,12 +16,10 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
 
         echo '
   <div style="padding-top:0.1px;padding-left:6px;">
-    <div style="padding-bottom:1px;font-size:14px;">
-     <strong>
+    <div style="padding-bottom:1px;font-size:14px; font-weight: bold;">
       <a style="color:#aaa;" href="/server/' . $q["server_id"] . '/" target="_blank">
-       ' . ((strlen($q["server_name"]) >= 20) ? mb_substr(htmlspecialchars($q["server_name"]), 0, 20, 'UTF-8') . '...' : htmlspecialchars($q["server_name"])) . '
+       ' . htmlspecialchars($q["server_name"]) . '
       </a>
-     </strong>
     </div>
     <a href="/server/' . $q["server_id"] . '/" target="_blank">' . $img . '</a>
     <div style="padding:4px;color:#aaa;font-size:12px;">Карта: ' . ((strlen($q["server_map"]) >= 12) ? mb_substr($q["server_map"], 0, 12, 'UTF-8') . '...' : $q["server_map"]) . '</div>
