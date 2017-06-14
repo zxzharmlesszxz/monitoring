@@ -60,7 +60,7 @@ Version: 1.0
 #menu ul {
 	float : left;
 	padding : 1px 0 0;
-	font : 13px/1.0em 'MuseoSans500', Arial;
+	font : 13px/1.0em Arial;
 	text-transform : uppercase;
 }
 
