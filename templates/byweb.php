@@ -24,10 +24,11 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
         $sq = new SourceServerQueries();
         $address = explode(':', $q['server_ip']);
         $sq->connect($address[0], $address[1]);
-        $players = '';
+        $players = '<ol>';
         foreach ($sq->getPlayers() as $player) {
-            $players .= "<span>{$player['name']} - {$player['score']}</span>\n";
+            $players .= "<li>{$player['name']} - {$player['score']}</li>\n";
         }
+        $players .= '</ol>';
 
         echo <<<EOT
   <div style="padding-top: 0.1px; padding-left: 6px;">
