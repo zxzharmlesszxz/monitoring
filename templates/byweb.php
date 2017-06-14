@@ -27,7 +27,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
         $players = '';
         foreach ($sq->getPlayers() as $player)
         {
-            $players .= $player['name'] . ' - ' . $player['score'] . ' - ' . $player['time'];
+            $players .= $player['name'] . ' - ' . $player['score'] . ' - ' . $player['time'] . "\n";
         }
 
         echo <<<EOT
@@ -51,8 +51,9 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
       <b>Подключиться</b>
      </a>
     </div>
-    <div>
+    <textarea cols="24" rows="6">
     {$players}
+    </textarea>
     </div>
   </div>
 EOT;
