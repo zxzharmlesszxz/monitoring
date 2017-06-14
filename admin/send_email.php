@@ -1,8 +1,4 @@
 <?php
-/*
- * Server registration script
- * Made by starky
-*/
 
 /* Script security */
 if (!defined("MONENGINE")) {
