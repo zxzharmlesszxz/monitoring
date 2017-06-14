@@ -24,7 +24,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
         $sq = new SourceServerQueries();
         $address = explode(':', $q['server_ip']);
         $sq->connect($address[0], $address[1]);
-        $players = '<ol>';
+        $players = '<ol style="padding-left: 10px;">';
         foreach ($sq->getPlayers() as $player) {
             $players .= "<li>{$player['name']} - {$player['score']}</li>\n";
         }
