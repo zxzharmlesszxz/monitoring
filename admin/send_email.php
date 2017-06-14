@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
     $servers = db()->query("SELECT * FROM `" . DB_SERVERS . "` WHERE `server_email` != '';");
 
     while ($server = db()->fetch_array($servers)) {
-        $message = sprintf($header_text, $server['server_name '], $server['server_id'], $server['server_regdata']);
+        $message = sprintf($header_text, $server['server_name'], $server['server_id'], $server['server_regdata']);
         echo "send_mail({$server['server_email']}, {$message}\n\n{$_POST['message']}\n\n{$footer_text})";
     }
 }
