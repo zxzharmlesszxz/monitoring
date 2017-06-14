@@ -32,6 +32,8 @@ require_once __DIR__ . "/Registry.class.php";
 require_once __DIR__ . "/Config.class.php";
 require_once __DIR__ . "/Database.class.php";
 require_once __DIR__ . "/MySQL_Database.class.php";
+require_once __DIR__ . "/PHPMailer.class.php";
+require_once __DIR__ . "/smtp.class.php";
 require_once __DIR__ . "/function.php";
 Registry::_set('config', Config::getInstance());
 Registry::_set('database', new MySQL_Database);

@@ -193,10 +193,23 @@ function mb_str_replace($needle, $replacement, $haystack)
  */
 function send_mail($email, $message)
 {
-    if (empty($email) or empty($message)) {
-        return true;
-    }
-    mail($email, "From: Monitoring System https://www.monitoring.contra.net.ua\n", $message);
+    $mailer = new PHPMailer();
+    $mailer->CharSet = 'utf-8';
+    $mailer->Host = config()->mail['host'];
+    $mailer->Port = config()->mail['port'];
+    $mailer->Mailer = "smtp";
+    $mailer->SMTPAuth = true;
+    $mailer->SMTPSecure = config()->mail['secure'];
+    $mailer->Username = config()->mail['user'];
+    $mailer->Password = config()->mail['password'];
+    $mailer->Priority = 3;
+    $mailer->Subject = "From: Monitoring System https://www.monitoring.contra.net.ua";
+    $mailer->Body = $message;
+    $mailer->SetFrom(config()->mail['email'], "Monitoring System");
+    $mailer->AddAddress($email);
+    $mailer->Send();
+    $mailer->ClearAddresses();
+    $mailer->ClearAttachments();
 }
 
 /**
@@ -393,34 +406,6 @@ function isOnOff($int)
 function myempty($var)
 {
     return !empty($var) ? false : true;
-}
-
-/**
- * @param string $server
- * @param $to
- * @param $from
- * @param $subject
- * @param $message
- */
-function socketmail($server = 'localhost', $to, $from, $subject, $message)
-{
-    $connect = fsockopen($server, 25, $errno, $errstr, 30);
-    sleep(10);
-    fputs($connect, "HELO $server\r\n");
-    sleep(3);
-    fputs($connect, "MAIL FROM: $from\n");
-    sleep(3);
-    fputs($connect, "RCPT TO: $to\n");
-    sleep(3);
-    fputs($connect, "DATA\r\n");
-    sleep(1);
-    fputs($connect, "Content-Type: text/plain; charset=utf8\n");
-    fputs($connect, "To: $to\n");
-    fputs($connect, "Subject: $subject\n");
-    fputs($connect, "\n\n");
-    fputs($connect, stripslashes($message) . " \r\n");
-    fputs($connect, ".\r\n");
-    fputs($connect, "RSET\r\n");
 }
 
 /**

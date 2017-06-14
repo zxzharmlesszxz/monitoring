@@ -17,4 +17,12 @@ $config = array(
   'charset' => 'utf8',
   'prefix' => $db_prefix,
   ),
+  'mail' => array(
+   'host' => 'localhost',
+   'port' => '587',
+   'secure' => 'tls',
+   'user' => 'monitoring',
+   'password' => 'monitoring',
+   'email' => 'monitoring@localhost',
+  ),
 );
