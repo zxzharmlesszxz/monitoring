@@ -52,6 +52,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
     </div>
   </div>
 EOT;
+        var_dump($players);
     }
 } else {
     echo "Сервер не найден в базе";
