@@ -388,7 +388,7 @@ img { border: 0; }
 #wrapper #container #left .box.togglemenu ul li h2 {
 	margin : 0;
 	padding : 0;
-	font : 13px/1.0em 'MuseoSans500', Arial;
+	font : 13px/1.0em Arial;
 	font-weight : normal;
 	color : #000000;
 	text-transform : uppercase;
@@ -531,7 +531,7 @@ img { border: 0; }
 
 #wrapper #container #right  a.item span {
 	display : block;
-	font : 13px/1.0em 'MuseoSans500', Arial;
+	font : 13px/1.0em Arial;
 	color : #7b7b7b;
 	text-transform : uppercase;
 }
@@ -594,7 +594,7 @@ img { border: 0; }
 }
 
 #wrapper #container #right .section .third:first-child {
-	width : 33.4444%
+	width : 33.4444%;
 	*width : 33.3%;
 }
 
@@ -604,7 +604,7 @@ img { border: 0; }
 	position : relative;
 	background : url(../gfx/box-title.gif) repeat-x left top;
 	padding : 8px 10px 0 ;
-	font : 13px/1.0em 'MuseoSans500', Arial;
+	font : 13px/1.0em Arial;
 	color : #000000;
 	text-transform : uppercase;
 	height : 21px;
