@@ -1,6 +1,8 @@
 <?php
 
-ini_set('display_errors', 1);
+error_reporting(E_ERROR);
+ini_set('display_errors', 0);
+
 $redis = new Redis();
 $redis->connect($settings['redis_host']);
 $redis->auth($settings['redis_password']);
