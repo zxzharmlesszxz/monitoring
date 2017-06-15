@@ -8,6 +8,8 @@
  */
 define('MONENGINE', 'Remake by starky');
 require_once __DIR__ . "/../include/core.php";
+require_once __DIR__ . "/../banner/inc/ServerQueries.php";
+require_once __DIR__ . "/../banner/inc/SourceServerQueries.php";
 
 $items = array();
 $query = db()->query("SELECT `server_id`, `server_ip` FROM `" . DB_SERVERS . "`;");
