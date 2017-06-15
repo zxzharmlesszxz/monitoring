@@ -3,8 +3,8 @@
 mb_language('uni');
 mb_internal_encoding('UTF-8');
 
-$url = "../images/banner/banner.png";
-var_dump($_GET);
+$url = __DIR__ . "/../images/banner/banner.png";
+
 if (isset($_GET["serv"])) {
     $sq = new SourceServerQueries();
     $server = $_GET["serv"];
@@ -36,22 +36,23 @@ if (isset($_GET["serv"])) {
         $color = $red;
     }
 
-    imagettftext($img, 10, 0, 40, 18, $brown, "../images/banner/fonts/arial.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', "Сервер:")));
-    imagettftext($img, 10, 0, 40, 34, $white, "../images/banner/fonts/arialbd.ttf", $info['serverName'] ?? '');
-    imagettftext($img, 10, 0, 320, 18, $brown, "../images/banner/fonts/arial.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', "Время на карте:")));
-    imagettftext($img, 9, 0, 320, 34, $white, "../images/banner/fonts/arialbd.ttf", $rules['amx_timeleft'] ?? '');
-    imagettftext($img, 10, 0, 490, 18, $brown, "../images/banner/fonts/arial.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', "Статус:")));
-    imagettftext($img, 9, 0, 490, 34, $color, "../images/banner/fonts/arialbd.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', $status)));
-    imagettftext($img, 10, 0, 40, 57, $brown, "../images/banner/fonts/arial.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', "Адрес:")));
-    imagettftext($img, 9, 0, 40, 72, $white, "../images/banner/fonts/arialbd.ttf", $server);
-    imagettftext($img, 10, 0, 40, 95, $brown, "../images/banner/fonts/arial.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', "Карта:")));
-    imagettftext($img, 9, 0, 40, 108, $white, "../images/banner/fonts/arialbd.ttf", $info['mapName'] ?? '');
-    imagettftext($img, 10, 0, 320, 57, $brown, "../images/banner/fonts/arial.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', "След.карта:")));
-    imagettftext($img, 9, 0, 320, 72, $white, "../images/banner/fonts/arialbd.ttf", $rules['amx_nextmap'] ?? '');
-    imagettftext($img, 10, 0, 490, 57, $brown, "../images/banner/fonts/arial.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', "Игроки:")));
-    imagettftext($img, 9, 0, 490, 72, $white, "../images/banner/fonts/arialbd.ttf", $players);
-    imagettftext($img, 8, 0, 415, 88, $green, "../images/banner/fonts/arialbd.ttf", $server_full ?? '');
+    imagettftext($img, 10, 0, 40, 18, $brown, __DIR__ . "/../images/banner/fonts/arial.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', "Сервер:")));
+    imagettftext($img, 10, 0, 40, 34, $white, __DIR__ . "/../images/banner/fonts/arialbd.ttf", $info['serverName'] ?? '');
+    imagettftext($img, 10, 0, 320, 18, $brown, __DIR__ . "/../images/banner/fonts/arial.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', "Время на карте:")));
+    imagettftext($img, 9, 0, 320, 34, $white, __DIR__ . "/../images/banner/fonts/arialbd.ttf", $rules['amx_timeleft'] ?? '');
+    imagettftext($img, 10, 0, 490, 18, $brown, __DIR__ . "/../images/banner/fonts/arial.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', "Статус:")));
+    imagettftext($img, 9, 0, 490, 34, $color, __DIR__ . "/../images/banner/fonts/arialbd.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', $status)));
+    imagettftext($img, 10, 0, 40, 57, $brown, __DIR__ . "/../images/banner/fonts/arial.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', "Адрес:")));
+    imagettftext($img, 9, 0, 40, 72, $white, __DIR__ . "/../images/banner/fonts/arialbd.ttf", $server);
+    imagettftext($img, 10, 0, 40, 95, $brown, __DIR__ . "/../images/banner/fonts/arial.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', "Карта:")));
+    imagettftext($img, 9, 0, 40, 108, $white, __DIR__ . "/../images/banner/fonts/arialbd.ttf", $info['mapName'] ?? '');
+    imagettftext($img, 10, 0, 320, 57, $brown, __DIR__ . "/../images/banner/fonts/arial.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', "След.карта:")));
+    imagettftext($img, 9, 0, 320, 72, $white, __DIR__ . "/../images/banner/fonts/arialbd.ttf", $rules['amx_nextmap'] ?? '');
+    imagettftext($img, 10, 0, 490, 57, $brown, __DIR__ . "/../images/banner/fonts/arial.ttf", toUnicodeEntities(iconv('UTF-8', 'WINDOWS-1251', "Игроки:")));
+    imagettftext($img, 9, 0, 490, 72, $white, __DIR__ . "/../images/banner/fonts/arialbd.ttf", $players);
+    imagettftext($img, 8, 0, 415, 88, $green, __DIR__ . "/../images/banner/fonts/arialbd.ttf", $server_full ?? '');
 
     imagePNG($img);
     imagedestroy($img);
 }
+
