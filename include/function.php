@@ -193,19 +193,20 @@ function mb_str_replace($needle, $replacement, $haystack)
  */
 function send_mail($email, $message)
 {
+    global $settings;
     $mailer = new PHPMailer();
     $mailer->CharSet = 'utf-8';
-    $mailer->Host = config()->mail['host'];
-    $mailer->Port = config()->mail['port'];
+    $mailer->Host = $settings['mail_host'];
+    $mailer->Port = $settings['mail_port'];
     $mailer->Mailer = "smtp";
     $mailer->SMTPAuth = true;
-    $mailer->SMTPSecure = config()->mail['secure'];
-    $mailer->Username = config()->mail['user'];
-    $mailer->Password = config()->mail['password'];
+    $mailer->SMTPSecure = $settings['mail_secure'];
+    $mailer->Username = $settings['mail_user'];
+    $mailer->Password = $settings['mail_password'];
     $mailer->Priority = 3;
     $mailer->Subject = "From: Monitoring System https://www.monitoring.contra.net.ua";
     $mailer->Body = $message;
-    $mailer->SetFrom(config()->mail['email'], "Monitoring System");
+    $mailer->SetFrom($settings['mail_email'], "Monitoring System");
     $mailer->AddAddress($email);
     $mailer->Send();
     $mailer->ClearAddresses();
@@ -472,10 +473,10 @@ function create_map_image($map, $game = 'cs16')
     if (isset($file) and $ext !== '.png') {
         $img = new imagick($file . $ext);
         $watermark = new Imagick(__DIR__ . "/../images/watermark/watermark.png");
-        $watermark->resizeImage(32, 32, Imagick::FILTER_LANCZOS,1, true);
+        $watermark->resizeImage(32, 32, Imagick::FILTER_LANCZOS, 1, true);
         $width = $img->getImageWidth();
         $height = $img->getImageHeight();
-        $img->resizeImage(160, $height * $width / 160, Imagick::FILTER_LANCZOS,1, true);
+        $img->resizeImage(160, $height * $width / 160, Imagick::FILTER_LANCZOS, 1, true);
         $img->compositeImage($watermark, imagick::COMPOSITE_OVER, 3, 3);
         $img->writeImage("$file.png");
         $img->destroy();

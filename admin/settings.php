@@ -6,75 +6,77 @@
 
 /* Script security */
 if (!defined("MONENGINE")) {
- header("Location: index.php");
- exit();
+    header("Location: index.php");
+    exit();
 }
 /* Other code */
 $errors = Array();
 $message = '';
 if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
- if (
-  !isset($_POST['site_name']) or 
-  !isset($_POST['site_url']) or 
-  !isset($_POST['site_email']) or 
-  !isset($_POST['enable_registration']) or 
-  !isset($_POST['site_open']) or 
-  !isset($_POST['servers_per_page']) or 
-  !isset($_POST['top_rows'])) {
-  $errors[] = 'Не все данные были переданы в запросе.';
- }
- 
- if (
- myempty($_POST['site_name']) or 
- myempty($_POST['site_url']) or 
- myempty($_POST['site_email']) or 
- myempty($_POST['enable_registration']) or 
- myempty($_POST['site_open']) or 
- myempty($_POST['servers_per_page']) or 
- myempty($_POST['top_rows'])) {
-  $errors[] = 'Вы заполнили не все поля.';
- }
- 
- $site_name = db()->escape_value($_POST['site_name']);
- $site_url = db()->escape_value($_POST['site_url']);
- $site_email = db()->escape_value($_POST['site_email']);
- $site_registration = db()->escape_value($_POST['enable_registration']);
- $site_open = db()->escape_value($_POST['site_open']);
- $site_spp = db()->escape_value($_POST['servers_per_page']);
- $site_top_rows = db()->escape_value($_POST['top_rows']);
- 
- if (!isValidUrl($site_url)) {
-  $errors[] = 'Введён неправильный URL сайта.';
- }
+    if (
+        !isset($_POST['site_name']) or
+        !isset($_POST['site_url']) or
+        !isset($_POST['site_email']) or
+        !isset($_POST['enable_registration']) or
+        !isset($_POST['site_open']) or
+        !isset($_POST['servers_per_page']) or
+        !isset($_POST['top_rows'])
+    ) {
+        $errors[] = 'Не все данные были переданы в запросе.';
+    }
 
- if ($site_url{mb_strlen($site_url, 'UTF-8') - 1} != "/") {
-  $site_url = $site_url."/";
- }
+    if (
+        myempty($_POST['site_name']) or
+        myempty($_POST['site_url']) or
+        myempty($_POST['site_email']) or
+        myempty($_POST['enable_registration']) or
+        myempty($_POST['site_open']) or
+        myempty($_POST['servers_per_page']) or
+        myempty($_POST['top_rows'])
+    ) {
+        $errors[] = 'Вы заполнили не все поля.';
+    }
 
- if (!isValidEmail($site_email)) {
-  $errors[] = 'Введён неправильный E-mail адрес.';
- }
+    $site_name = db()->escape_value($_POST['site_name']);
+    $site_url = db()->escape_value($_POST['site_url']);
+    $site_email = db()->escape_value($_POST['site_email']);
+    $site_registration = db()->escape_value($_POST['enable_registration']);
+    $site_open = db()->escape_value($_POST['site_open']);
+    $site_spp = db()->escape_value($_POST['servers_per_page']);
+    $site_top_rows = db()->escape_value($_POST['top_rows']);
 
- if ($site_spp < 1) {
-  $errors[] = 'Минимальное количество серверов на одной странице - 1.';
- }
+    if (!isValidUrl($site_url)) {
+        $errors[] = 'Введён неправильный URL сайта.';
+    }
 
- if ($site_top_rows < 0) {
-  $errors[] = 'Кол-во строк топ-серверов не может быть ниже чем 0.';
- }
+    if ($site_url{mb_strlen($site_url, 'UTF-8') - 1} != "/") {
+        $site_url = $site_url . "/";
+    }
 
- if (count($errors) == 0 and isOnOff($site_registration) and isOnOff($site_open)) {
-  $site_close = 0;
-  if ($site_open == 0) {
-    $site_close = 1;
-   }
-  if (isset($_POST['site_close_reason'])) {
-   $site_close_reason = db()->escape_value($_POST['site_close_reason']);
-  } else {
-   $site_close_reason = '';
-  }
-  $update_query = "
-  UPDATE `".DB_SETTINGS."` SET 
+    if (!isValidEmail($site_email)) {
+        $errors[] = 'Введён неправильный E-mail адрес.';
+    }
+
+    if ($site_spp < 1) {
+        $errors[] = 'Минимальное количество серверов на одной странице - 1.';
+    }
+
+    if ($site_top_rows < 0) {
+        $errors[] = 'Кол-во строк топ-серверов не может быть ниже чем 0.';
+    }
+
+    if (count($errors) == 0 and isOnOff($site_registration) and isOnOff($site_open)) {
+        $site_close = 0;
+        if ($site_open == 0) {
+            $site_close = 1;
+        }
+        if (isset($_POST['site_close_reason'])) {
+            $site_close_reason = db()->escape_value($_POST['site_close_reason']);
+        } else {
+            $site_close_reason = '';
+        }
+        $update_query = "
+  UPDATE `" . DB_SETTINGS . "` SET 
   `site_name` = '{$site_name}',
   `site_url` = '{$site_url}',
   `site_email` = '{$site_email}',
@@ -83,16 +85,16 @@ if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
   `site_closed_message` = '{$site_close_reason}',
   `servers_per_page` = '{$site_spp}',
   `top_rows` = '{$site_top_rows}'";
-  $update = db()->query($update_query);
-  if ($update) {
-   $message = "<div class='message green'><span><b>Успех</b>: изменения успешно сохранены.</span></div>";
-   $settings = db()->fetch_array(dbquery("SELECT * FROM ".DB_SETTINGS)); // Refreshing info
-  } else {
-   $message = "<div class='message red'><span><b>Ошибка</b>: не удалось записать данные в БД.</span></div>";
-  }
- } else {
-  $message = "<div class='message orange'><span><b>Внимание</b>: {$errors[0]}</span></div>";
- }
+        $update = db()->query($update_query);
+        if ($update) {
+            $message = "<div class='message green'><span><b>Успех</b>: изменения успешно сохранены.</span></div>";
+            $settings = db()->fetch_array(dbquery("SELECT * FROM " . DB_SETTINGS)); // Refreshing info
+        } else {
+            $message = "<div class='message red'><span><b>Ошибка</b>: не удалось записать данные в БД.</span></div>";
+        }
+    } else {
+        $message = "<div class='message orange'><span><b>Внимание</b>: {$errors[0]}</span></div>";
+    }
 }
 
 $registration = ($settings['enable_registration'] == 1) ? "
@@ -180,6 +182,54 @@ echo <<<EOT
       <label>Строк в топе</label>
       <div class='right'>
        <input type='text' name='top_rows' class='onlynum' style='width:70px;' value='{$settings['top_rows']}'>
+      </div>
+     </div>
+     <div class='row'>
+      <label>Сервер почты</label>
+      <div class='right'>
+       <input type='text' name='mail_host' style='width:70px;' value='{$settings['mail_host']}'>
+      </div>
+     </div>
+     <div class='row'>
+      <label>Порт почты</label>
+      <div class='right'>
+       <input type='number' name='mail_port' class='onlynum' style='width:70px;' value='{$settings['mail_port']}'>
+      </div>
+     </div>
+     <div class='row'>
+      <label>Безопасность почты</label>
+      <div class='right'>
+       <input type='text' name='mail_secure' style='width:70px;' value='{$settings['mail_secure']}'>
+      </div>
+     </div>
+     <div class='row'>
+      <label>Логин почты</label>
+      <div class='right'>
+       <input type='text' name='mail_user' style='width:70px;' value='{$settings['mail_user']}'>
+      </div>
+     </div>
+     <div class='row'>
+      <label>Пароль почты</label>
+      <div class='right'>
+       <input type='text' name='mail_password' style='width:70px;' value='{$settings['mail_password']}'>
+      </div>
+     </div>
+     <div class='row'>
+      <label>Почта</label>
+      <div class='right'>
+       <input type='email' name='mail_email' style='width:70px;' value='{$settings['mail_email']}'>
+      </div>
+     </div>
+     <div class='row'>
+      <label>Шапка писем</label>
+      <div class='right'>
+       <textarea name='mail_header' style='width:70px;'>{$settings['mail_header']}</textarea>
+      </div>
+     </div>
+     <div class='row'>
+      <label>Подпись в письмах</label>
+      <div class='right'>
+       <textarea name='mail_footer' style='width:70px;'>{$settings['mail_footer']}</textarea>
       </div>
      </div>
      <div class='row'>
