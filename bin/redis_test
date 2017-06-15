@@ -26,4 +26,4 @@ foreach ($items as $item)
     $redis->hSet('servers', $item['server_id'], serialize($item));
 }
 var_dump($redis->get('message'));
-var_dump($redis->hGetAll('servers'));
+print_r($redis->hGetAll('servers'));
