@@ -58,7 +58,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
 EOT;
     }
 } else {
-    echo "Сервер не найден в базе";
+    echo "Сервер не найден в базе!";
 }
 
 echo <<<EOT
