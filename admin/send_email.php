@@ -13,26 +13,34 @@ $header_text = "Доброго времени суток.
 $footer_text = 'С уважением администрация мониторинга https://www.monitoring.contra.net.ua';
 
 $str = '';
+$servers = db()->query("SELECT * FROM `" . DB_SERVERS . "` WHERE `server_email` != '';");
 
-if (isset($_POST['submit'])) {
-    $servers = db()->query("SELECT * FROM `" . DB_SERVERS . "` WHERE `server_email` != '';");
+while ($server = db()->fetch_array($servers)) {
+        $str .= "<option value='{$server['server_id']}'>{$server['server_id']}-{$server['server_ip']}({$server['server_name']})</option>";
+}
 
-    while ($server = db()->fetch_array($servers)) {
+if (isset($_POST['submit']) && isset($_POST['server'])) {
+        $server = db()->fetch_array(db()->query("SELECT * FROM `" . DB_SERVERS . "` WHERE `server_id` = '" . intval($_POST['server']) . "';"));
         $message = sprintf($header_text, $server['server_name'], $server['server_ip'], $server['server_id'], date("d.m.Y", $server['server_regdata']));
         send_mail($server['server_email'], "{$message}\n\n{$_POST['message']}\n\n{$footer_text}");
-        //$str .= nl2br("<div>send_mail({$server['server_email']}, {$message}\n\n{$_POST['message']}\n\n{$footer_text})</div>><br>");
-    }
 }
 
 /* Other code */
 echo <<<EOT
  <div id='right'>
   <div class='section'>
-  {$str}
    <div class='box'>
     <div class='title'>Рассылка почты<span class='hide'></span></div>
     <div class='content'>
      <form action='' method='POST'>
+      <div class='row'>
+       <label>Сервер <span color='red'>*</span></label>
+       <div class='right'>
+        <select name="server" style="width: 70%;">
+         {$str}
+        </select>
+       </div>
+      </div>
       <div class='row'>
        <label>Сообщение <span color='red'>*</span></label>
        <div class='right'>
