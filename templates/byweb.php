@@ -4,11 +4,11 @@ require_once(__DIR__ . '/../banner/inc/ServerQueries.php');
 require_once(__DIR__ . '/../banner/inc/SourceServerQueries.php');
 
 echo <<<EOT
-<html>
+<html style="overflow: hidden; max-width: 190px;">
  <head>
   <link rel="stylesheet" type="text/css" href="/templates/css/style.css">
  </head>
- <body>
+ <body style="overflow: hidden;">
   <table>
    <tr>
     <td>
@@ -31,27 +31,27 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
         $players .= '</ol>';
 
         echo <<<EOT
-  <div style="padding-top: 0.1px; padding-left: 6px;">
-    <div style="padding-bottom: 1px; font-size: 14px; font-weight: bold;">
+  <div>
+    <div style="font-size: 14px; font-weight: bold;">
       <a style="color: #aaa;" href="/server/{$q["server_id"]}/" target="_blank">
        {$name}
       </a>
     </div>
     <a href="/server/{$q["server_id"]}/" target="_blank">{$img}</a>
-    <div style="padding: 4px; color: #aaa; font-size: 12px;">Карта: {$map}</div>
-    <div style="padding: 2px; color: #aaa; font-size: 12px;">Игроки: {$q["server_players"]} / {$q["server_maxplayers"]}</div>
-    <div style="padding: 5px; color: #aaa; font-size: 12px;">
+    <div style="color: #aaa; font-size: 12px;">Карта: {$map}</div>
+    <div style="color: #aaa; font-size: 12px;">Игроки: {$q["server_players"]} / {$q["server_maxplayers"]}</div>
+    <div style="color: #aaa; font-size: 12px;">
      <b>{$q["server_ip"]}</b>
     </div>
-    <div style="padding: 1px; color: #aaa; font-size: 12px">
+    <div style="color: #aaa; font-size: 12px">
      {$status}
     </div>
-    <div style="padding-bottom: 5px; font-size:12px;">
+    <div style="font-size:12px;">
      <a style="color: #aaa;" href="steam://connect/{$q["server_ip"]}/" title="Подключиться через Steam" target="_blank">
       <b>Подключиться</b>
      </a>
     </div>
-    <div style="padding: 1px; color: #aaa; font-size: 10px">
+    <div style="color: #aaa; font-size: 10px">
     {$players}
     </div>
   </div>
