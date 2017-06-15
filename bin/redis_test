@@ -10,8 +10,9 @@ define('MONENGINE', 'Remake by starky');
 require_once __DIR__ . "/../include/core.php";
 
 $items = array();
+$query = db()->query("SELECT * FROM " . DB_SERVERS);
 
-while ($r = db()->fetch_array(db()->query("SELECT * FROM " . DB_SERVERS))) {
+while ($r = db()->fetch_array($query)) {
     $items[] = $r;
 }
 
