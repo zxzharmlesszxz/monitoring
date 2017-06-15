@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: harmless
+ * Date: 15.06.17
+ * Time: 15:47
+ */
+
+$redis = new Redis();
+$redis->connect('localhost');
+$redis->set('message', 'Hello world');
+var_dump($redis->get('message'));
