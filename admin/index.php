@@ -21,6 +21,7 @@ $menu->add('rowstyles', 'rowstyles', 'Управление стилями');
 $menu->add('add_server', 'add_server', 'Добавить сервер');
 $menu->add('needed_maps', 'needed_maps', 'Недостающие картинки карт');
 $menu->add('send_email', 'send_email', 'Рассылка почты');
+$menu->add('servers_redis', 'servers_redis', 'Servers in redis');
 
 $load = "";
 $page = "";
@@ -65,6 +66,11 @@ switch ($page) {
         $menu->set('send_email');
         $page_title = "Панель управления | Рассылка почты";
         $load_file = "send_email.php";
+        break;
+    case 'servers_redis':
+        $menu->set('servers_redis');
+        $page_title = "Панель управления | Servers in redis";
+        $load_file = "redis.php";
         break;
     default:
         $menu->set('main');
