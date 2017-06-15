@@ -660,3 +660,15 @@ function select_modes()
 
     return implode('\n', $modess);
 }
+
+function toUnicodeEntities($text, $from = "w")
+{
+    $text = convert_cyr_string($text, $from, "i");
+    $uni = "";
+    for ($i = 0, $len = strlen($text); $i < $len; $i++) {
+        $char = $text{$i};
+        $code = ord($char);
+        $uni .= ($code > 175) ? "&#" . (1040 + ($code - 176)) . ";" : $char;
+    }
+    return $uni;
+}

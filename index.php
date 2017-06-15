@@ -20,6 +20,10 @@ $load = "";
 if (isset($_GET['page'])) $load = $_GET['page'];
 
 switch ($load) {
+    case 'banner':
+         $load_file = __DIR__ . '/templates/banner.php';
+         require($load_file);
+         exit;
     case 'add':
         $page_title = "Добавить сервер CS 1.6, CS:S, CS:GO";
         $load_file = __DIR__ . '/templates/register.php';

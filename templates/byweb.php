@@ -1,7 +1,5 @@
 ﻿<?php
 require_once(__DIR__ . '/../include/core.php');
-require_once(__DIR__ . '/../banner/inc/ServerQueries.php');
-require_once(__DIR__ . '/../banner/inc/SourceServerQueries.php');
 
 echo <<<EOT
 <html style="overflow: hidden; max-width: 190px;">

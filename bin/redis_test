@@ -8,8 +8,6 @@
  */
 define('MONENGINE', 'Remake by starky');
 require_once __DIR__ . "/../include/core.php";
-require_once __DIR__ . "/../banner/inc/ServerQueries.php";
-require_once __DIR__ . "/../banner/inc/SourceServerQueries.php";
 $redis = new Redis();
 $redis->connect($settings['redis_host']);
 $redis->auth($settings['redis_password']);
