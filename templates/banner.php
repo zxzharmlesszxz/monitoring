@@ -4,7 +4,7 @@ mb_language('uni');
 mb_internal_encoding('UTF-8');
 
 $url = "../images/banner/banner.png";
-
+var_dump($_GET);
 if (isset($_GET["serv"])) {
     $sq = new SourceServerQueries();
     $server = $_GET["serv"];
