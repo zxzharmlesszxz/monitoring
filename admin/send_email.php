@@ -6,12 +6,6 @@ if (!defined("MONENGINE")) {
     exit();
 }
 
-$header_text = "Доброго времени суток.
-    Ваш сервер %s(%s), id=%s , зарегистрирован %s, находится в нашем мониторинге https://www.monitoring.contra.net.ua.
-    Для улучшения Ваших позиций в рейтинге, предлагаем голосовать раз в сутки
-     для поднятия Вашего сервера на главной странице нашего мониторинга, чем выше сервер, тем больше человек посещает Ваш сервер.";
-$footer_text = 'С уважением администрация мониторинга https://www.monitoring.contra.net.ua';
-
 $str = '';
 $servers = db()->query("SELECT * FROM `" . DB_SERVERS . "` WHERE `server_email` != '';");
 
@@ -21,8 +15,8 @@ while ($server = db()->fetch_array($servers)) {
 
 if (isset($_POST['submit']) && isset($_POST['server'])) {
         $server = db()->fetch_array(db()->query("SELECT * FROM `" . DB_SERVERS . "` WHERE `server_id` = '" . intval($_POST['server']) . "';"));
-        $message = sprintf($header_text, $server['server_name'], $server['server_ip'], $server['server_id'], date("d.m.Y", $server['server_regdata']));
-        send_mail($server['server_email'], "{$message}\n\n{$_POST['message']}\n\n{$footer_text}");
+        $message = sprintf($settings['mail_header'], $server['server_name'], $server['server_ip'], $server['server_id'], date("d.m.Y", $server['server_regdata']));
+        send_mail($server['server_email'], "{$message}\n\n{$_POST['message']}\n\n{$settings['mail_footer']}");
 }
 
 /* Other code */
@@ -44,10 +38,10 @@ echo <<<EOT
       <div class='row'>
        <label>Сообщение <span color='red'>*</span></label>
        <div class='right'>
-       <div>{$header_text}</div>
+       <div>{$settings['mail_header']}</div>
         <textarea name='message'></textarea>
        </div>
-       <div>{$footer_text}</div>
+       <div>{$settings['mail_footer']}</div>
       </div>
       <div class='row'>
        <div class='right'>
