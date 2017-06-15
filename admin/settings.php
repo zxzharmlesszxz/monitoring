@@ -129,13 +129,13 @@ $registration = ($settings['enable_registration'] == 1) ? "
 
 $maintenens = ($settings['site_closed'] == 1) ? "
        <select name='site_open' id='site_open'>
-        <option value='0'>Открыт</option>
-        <option value='1' selected='selected'>Закрыт</option>
+        <option value='1'>Открыт</option>
+        <option value='0' selected='selected'>Закрыт</option>
        </select>
 " : "
        <select name='site_open' id='site_open'>
-        <option value='0' selected='selected'>Открыт</option>
-        <option value='1'>Закрыт</option>
+        <option value='1' selected='selected'>Открыт</option>
+        <option value='0'>Закрыт</option>
        </select>
 ";
 
