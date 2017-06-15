@@ -45,6 +45,15 @@ if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
     $site_spp = db()->escape_value($_POST['servers_per_page']);
     $site_top_rows = db()->escape_value($_POST['top_rows']);
 
+    $mail_host = db()->escape_value($_POST['mail_host']);
+    $mail_port = db()->escape_value($_POST['mail_port']);
+    $mail_secure = db()->escape_value($_POST['mail_secure']);
+    $mail_user = db()->escape_value($_POST['mail_user']);
+    $mail_password = db()->escape_value($_POST['mail_password']);
+    $mail_email = db()->escape_value($_POST['mail_email']);
+    $mail_header = db()->escape_value($_POST['mail_header']);
+    $mail_footer = db()->escape_value($_POST['mail_footer']);
+
     if (!isValidUrl($site_url)) {
         $errors[] = 'Введён неправильный URL сайта.';
     }
@@ -84,7 +93,16 @@ if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
   `site_closed` = '{$site_close}',
   `site_closed_message` = '{$site_close_reason}',
   `servers_per_page` = '{$site_spp}',
-  `top_rows` = '{$site_top_rows}'";
+  `top_rows` = '{$site_top_rows}',
+  `mail_host` = '{$mail_host}',
+  `mail_port` = '{$mail_port}',
+  `mail_secure` = '{$mail_secure}',
+  `mail_user` = '{$mail_user}',
+  `mail_password` = '{$mail_password}',
+  `mail_email` = '{$mail_email}',
+  `mail_header` = '{$mail_header}',
+  `mail_footer` = '{$mail_footer}';
+  ";
         $update = db()->query($update_query);
         if ($update) {
             $message = "<div class='message green'><span><b>Успех</b>: изменения успешно сохранены.</span></div>";
