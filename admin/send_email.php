@@ -38,10 +38,10 @@ echo <<<EOT
       <div class='row'>
        <label>Сообщение <span color='red'>*</span></label>
        <div class='right'>
-       <div>{$settings['mail_header']}</div>
+        <div>{$settings['mail_header']}</div>
         <textarea name='message'></textarea>
+        <div>{$settings['mail_footer']}</div>
        </div>
-       <div>{$settings['mail_footer']}</div>
       </div>
       <div class='row'>
        <div class='right'>
