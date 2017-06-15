@@ -19,8 +19,8 @@ echo <<<EOT
 EOT;
 
 foreach ($servers as $id => $server) {
+    $server['info']['serverName'] = htmlspecialchars($server['info']['serverName']);
     echo <<<EOT
-    
    <div class='box'>
         <div class='title'>{$server['info']['serverName']}<span class='hide'></span></div>
         <div class='content'>
