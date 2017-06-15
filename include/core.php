@@ -42,6 +42,8 @@ require_once __DIR__ . "/constants.php";
 require_once(LOCALE . LOCALESET . 'global.php');
 require_once(LOCALE . LOCALESET . 'serv.php');
 
+$settings = db()->fetch_array(dbquery("SELECT * FROM " . DB_SETTINGS));
+
 // Стили выделения
 $styles = Array();
 $get_styles = db()->query("SELECT * FROM `" . DB_ROWSTYLES . "` ORDER BY `id` DESC");
