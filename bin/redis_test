@@ -8,6 +8,6 @@
  */
 
 $redis = new Redis();
-$redis->connect('localhost');
+$redis->connect('89.200.254.53');
 $redis->set('message', 'Hello world');
 var_dump($redis->get('message'));
