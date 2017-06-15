@@ -10,10 +10,17 @@ define('MONENGINE', 'Remake by starky');
 require_once __DIR__ . "/../include/core.php";
 
 $items = array();
-$query = db()->query("SELECT * FROM " . DB_SERVERS);
+$query = db()->query("SELECT `server_id`, `server_ip` FROM `" . DB_SERVERS . "`;");
 
 while ($r = db()->fetch_array($query)) {
-    $items[] = $r;
+    $sq = new SourceServerQueries();
+    $address = explode(':', $r['server_ip']);
+    $sq->connect($address[0], $address[1]);
+    $info = $sq->getInfo();
+    $players = $sq->getPlayers();
+    $rules = $sq->getRules();
+    $sq->disconnect();
+    $items[$r['server_id']] = array('info' => $info, 'players' => $players, 'rules' => $rules);
 }
 
 $redis = new Redis();
@@ -21,9 +28,10 @@ $redis->connect($settings['redis_host']);
 $redis->auth($settings['redis_password']);
 $redis->select(1);
 $redis->set('message', 'Hello world');
-foreach ($items as $item)
+foreach ($items as $id => $item)
 {
-    $redis->hSet('servers', $item['server_id'], serialize($item));
+    $redis->del('servers', $item['server_id']);
+    $redis->hSet('servers', $id, serialize($item));
 }
 var_dump($redis->get('message'));
 print_r($redis->hGetAll('servers'));
