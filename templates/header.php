@@ -21,7 +21,7 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
     <meta NAME="Copyright" CONTENT="Мониторинг игровых серверов: WG">
     <meta NAME="Language" CONTENT="Russian">
     <meta NAME="Robots" CONTENT="All">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="revisit-after" content="1 day">
     <meta name="distribution" content="Global">
     <meta name="rating" content="General">
