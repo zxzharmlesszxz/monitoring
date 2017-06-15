@@ -4,10 +4,11 @@ mb_language('uni');
 mb_internal_encoding('UTF-8');
 
 error_reporting(E_ALL);
-include "inc/ServerQueries.php";
-include "inc/SourceServerQueries.php";
+include __DIR__ . "/../include/ServerQueries.php";
+include __DIR__ . "/../include/SourceServerQueries.php";
 
 $url = "banner.png";
+
 
 function toUnicodeEntities($text, $from = "w")
 {
