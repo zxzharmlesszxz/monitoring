@@ -31,6 +31,7 @@ echo <<<EOT
        <label>Сервер <span color='red'>*</span></label>
        <div class='right'>
         <select name="server" style="width: 70%;">
+         <option value="" selected disabled>Select</option>
          {$str}
         </select>
        </div>
