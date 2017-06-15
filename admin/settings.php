@@ -51,8 +51,8 @@ if (isset($_POST['save_changes']) and $_POST['save_changes'] == 1) {
     $mail_user = db()->escape_value($_POST['mail_user']);
     $mail_password = db()->escape_value($_POST['mail_password']);
     $mail_email = db()->escape_value($_POST['mail_email']);
-    $mail_header = db()->escape_value($_POST['mail_header']);
-    $mail_footer = db()->escape_value($_POST['mail_footer']);
+    $mail_header = db()->escape_value(nl2br($_POST['mail_header']));
+    $mail_footer = db()->escape_value(nl2br($_POST['mail_footer']));
 
     if (!isValidUrl($site_url)) {
         $errors[] = 'Введён неправильный URL сайта.';
