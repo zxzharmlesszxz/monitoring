@@ -32,7 +32,6 @@ $redis->select(1);
 $redis->set('message', 'Hello world');
 foreach ($items as $id => $item)
 {
-    $redis->del('servers', $item['server_id']);
     $redis->hSet('servers', $id, serialize($item));
 }
 var_dump($redis->get('message'));
