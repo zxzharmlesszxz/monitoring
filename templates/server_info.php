@@ -194,15 +194,15 @@ if (db()->num_rows($take_server) == 0) {
        <div style='padding:10px;background-color: #1E1E1E;border:1px solid #444444'>
         <b>Горизонтальный банер-мониторинг:</b>
         <div style='padding-top:4px;'></div>
-        <img src='/banner/userbar.png?serv={$server_data['server_ip']}'>
+        <img src='/banner/?serv={$server_data['server_ip']}'>
         <div style='padding-top:8px;'></div>
         HTML-код:
         <br>
-        <textarea rows='3' cols='76'><a href='{$site_link}/server/{$server_data['server_id']}'><img src='{$site_link}/banner/userbar.png?serv={$server_data['server_ip']}'></a></textarea>
+        <textarea rows='3' cols='76'><a href='{$site_link}server/{$server_data['server_id']}'><img src='{$site_link}banner/?serv={$server_data['server_ip']}'></a></textarea>
         <br>
         BB-код:
         <br>
-        <textarea rows='3' cols='76'>[url={$site_link}/server/{$server_data['server_id']}][img]{$site_link}/banner/userbar.png?serv={$server_data['server_ip']}[/img][/url]</textarea>
+        <textarea rows='3' cols='76'>[url={$site_link}server/{$server_data['server_id']}][img]{$site_link}banner/?serv={$server_data['server_ip']}[/img][/url]</textarea>
        </div>
        <div style='margin-bottom:5px;'></div>
        <div class='box_rounded'>
