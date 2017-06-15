@@ -149,13 +149,13 @@ echo <<<EOT
      <div class='row'>
       <label>URL сайта</label>
       <div class='right'>
-       <input type='text' name='site_url' value='{$settings['site_url']}'>
+       <input type='url' name='site_url' value='{$settings['site_url']}'>
       </div>
      </div>
      <div class='row'>
       <label>E-mail сайта</label>
       <div class='right'>
-       <input type='text' name='site_email' value='{$settings['site_email']}'>
+       <input type='email' name='site_email' value='{$settings['site_email']}'>
       </div>
      </div>
      <div class='row'>
@@ -181,55 +181,55 @@ echo <<<EOT
      <div class='row'>
       <label>Строк в топе</label>
       <div class='right'>
-       <input type='text' name='top_rows' class='onlynum' style='width:70px;' value='{$settings['top_rows']}'>
+       <input type='number' name='top_rows' class='onlynum' style='width:70px;' value='{$settings['top_rows']}'>
       </div>
      </div>
      <div class='row'>
       <label>Сервер почты</label>
       <div class='right'>
-       <input type='text' name='mail_host' style='width:70px;' value='{$settings['mail_host']}'>
+       <input type='text' name='mail_host' value='{$settings['mail_host']}'>
       </div>
      </div>
      <div class='row'>
       <label>Порт почты</label>
       <div class='right'>
-       <input type='number' name='mail_port' class='onlynum' style='width:70px;' value='{$settings['mail_port']}'>
+       <input type='number' name='mail_port' class='onlynum' value='{$settings['mail_port']}'>
       </div>
      </div>
      <div class='row'>
       <label>Безопасность почты</label>
       <div class='right'>
-       <input type='text' name='mail_secure' style='width:70px;' value='{$settings['mail_secure']}'>
+       <input type='text' name='mail_secure' value='{$settings['mail_secure']}'>
       </div>
      </div>
      <div class='row'>
       <label>Логин почты</label>
       <div class='right'>
-       <input type='text' name='mail_user' style='width:70px;' value='{$settings['mail_user']}'>
+       <input type='text' name='mail_user' value='{$settings['mail_user']}'>
       </div>
      </div>
      <div class='row'>
       <label>Пароль почты</label>
       <div class='right'>
-       <input type='text' name='mail_password' style='width:70px;' value='{$settings['mail_password']}'>
+       <input type='text' name='mail_password' value='{$settings['mail_password']}'>
       </div>
      </div>
      <div class='row'>
       <label>Почта</label>
       <div class='right'>
-       <input type='email' name='mail_email' style='width:70px;' value='{$settings['mail_email']}'>
+       <input type='email' name='mail_email' value='{$settings['mail_email']}'>
       </div>
      </div>
      <div class='row'>
       <label>Шапка писем</label>
       <div class='right'>
-       <textarea name='mail_header' style='width:70px;'>{$settings['mail_header']}</textarea>
+       <textarea name='mail_header'>{$settings['mail_header']}</textarea>
       </div>
      </div>
      <div class='row'>
       <label>Подпись в письмах</label>
       <div class='right'>
-       <textarea name='mail_footer' style='width:70px;'>{$settings['mail_footer']}</textarea>
+       <textarea name='mail_footer'>{$settings['mail_footer']}</textarea>
       </div>
      </div>
      <div class='row'>
