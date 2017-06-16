@@ -38,13 +38,13 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
         echo <<<EOT
   <div>
     <div style="font-size: 14px; font-weight: bold;">
-      <a style="color: #aaa;" href="/server/{$q["server_id"]}/" target="_blank">
+      <a style="color: #aaa;" href="/server/{$_GET['id']}/" target="_blank">
        {$name}
       </a>
     </div>
     <a href="/server/{$_GET['id']}/" target="_blank">{$img}</a>
     <div style="color: #aaa; font-size: 12px;">Карта: {$map}</div>
-    <div style="color: #aaa; font-size: 12px;">Игроки: {$infoInfo["playerNumber"]} / {$q["maxPlayers"]}</div>
+    <div style="color: #aaa; font-size: 12px;">Игроки: {$infoInfo["playerNumber"]} / {$infoInfo["maxPlayers"]}</div>
     <div style="color: #aaa; font-size: 12px;">
      <b>{$dbInfo["server_ip"]}</b>
     </div>
