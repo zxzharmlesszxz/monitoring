@@ -109,13 +109,15 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
                 <li><a title="Редактировать свой сервер" href="/edit" rel="follow">Редактирование</a></li>
                 <li><a title="VIP/TOP/Выделение цветом для серверов" href="/pay" rel="follow">Бесплатные услуги</a></li>
                 <li>
-                    <noindex><a title="Наш форум сайта" href=" https://contra.net.ua" target="_blank" rel="nofollow">Наш
-                            сайт</a></noindex>
+                    <noindex>
+                        <a title="Наш форум сайта" href=" https://contra.net.ua" target="_blank" rel="nofollow">Наш сайт</a>
+                    </noindex>
                 </li>
                 <li><a title="Наши контактные данные" href="/feedback" rel="nofollow">Контакты</a></li>
                 <li><a title="Каталог интернет сайтов" href="/links" rel="nofollow">Партнеры</a></li>
                 <li><a title="Наш мастерсервер" href="/mserv" rel="follow">Мастерсервер</a></li>
                 <li><a title="Скачать игру cs 1.6" href="/load/CS 1.6.exe" rel="follow">Скачать cs 1.6</a></li>
+                <li><a title="Сервера из redis" href="/servers_from_redis" rel="follow">Сервера из redis</a></li>
             </ul>
         </div>
         <!-- /Navigation -->
