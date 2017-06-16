@@ -37,6 +37,8 @@ class Provider extends Threaded
         while ($r = db()->fetch_array($query)) {
             $this->items[] = $r;
             $this->total++;
+            print_r($r);
+            echo "\n";
         }
     }
 
