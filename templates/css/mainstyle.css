@@ -562,6 +562,10 @@ div.block div.t {
     padding-bottom: 5px;
 }
 
+div.load_bar {
+    background: url('/images/la_icons/la5.gif') 10px 5px no-repeat;
+}
+
 div.players {
     background: url('/images/img/server_page/players.png') 10px 5px no-repeat;
 }
