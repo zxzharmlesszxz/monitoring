@@ -29,7 +29,7 @@ $info = $data['info'];
 $players = $data['players'];
 $rules = $data['rules'];
 $server_data = $data['dbInfo'];
-
+var_dump($data);
 if (db()->num_rows($take_server) == 0) {
     displayMessage('Выбранный сервер не существует, либо был удалён.', 'error');
 } elseif ($server_data['server_off'] == 1) {
