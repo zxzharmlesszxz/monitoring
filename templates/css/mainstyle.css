@@ -541,15 +541,15 @@ input.searchfield {
 }
 
 .load_green {
-    background: url('/images/img/server_page/load_green.gif') left 0 no-repeat;
+    background: url('/images/img/server_page/load_green.gif') left 0 no-repeat !important;
 }
 
 .load_yellow {
-    background: url('/images/img/server_page/load_yellow.gif') left 0 no-repeat;
+    background: url('/images/img/server_page/load_yellow.gif') left 0 no-repeat !important;
 }
 
 .load_red {
-    background: url('/images/img/server_page/load_red.gif') left 0 no-repeat;
+    background: url('/images/img/server_page/load_red.gif') left 0 no-repeat !important;
 }
 
 div.block {

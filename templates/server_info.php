@@ -142,7 +142,7 @@ if (db()->num_rows($take_server) == 0) {
         <div class='block_line'>
          <div class='block load_bar'>
           <div class='t'>Загруженность сервера</div>
-          <div class='block_line load_{$load_color}' style="width:{$percent_loaded}%;">{$percent_loaded}%</div>
+          <div class='block_line load_{$load_color}'>{$percent_loaded}%</div>
          </div>
         </div>
         <div class='block_line'>
