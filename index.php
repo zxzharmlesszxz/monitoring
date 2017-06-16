@@ -72,7 +72,7 @@ switch ($load) {
         $page_title = "Поиск серверов CS 1.6, CS:S, CS:GO";
         $load_file = __DIR__ . '/templates/search.php';
         break;
-    case 'info':
+    case 'server':
         $take_server = dbquery("SELECT * FROM " . DB_SERVERS . " WHERE server_id = '{$_GET['id']}';");
         $server_data = dbarray_fetch($take_server);
         $page_title = "Сервер: $server_data[server_name]";
