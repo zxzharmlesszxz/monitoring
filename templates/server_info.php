@@ -65,10 +65,10 @@ if (db()->num_rows($take_server) == 0) {
    <div style='font-size: 10px;'>
     <div style='padding-bottom:3px;'>
      <div class='box_title'>Пару слов о сервере:</div>
+     <span style='color:#999999;'>{$server_data['about']}</span>
     </div>
    </div>
-  </div>
-  <span style='color:#999999;'>{$server_data['about']}</span>" : "";
+  </div>" : "";
 
     $com_error = '';
     $errors = Array();
@@ -259,7 +259,6 @@ if (db()->num_rows($take_server) == 0) {
          <br>
          <textarea rows='6' cols='24'><iframe src='https://monitoring.contra.net.ua/byweb?id={$server_data['server_id']}' frameborder='1' width='190' height='400' scrolling='no'></iframe></textarea>
        </div>
-       <div style='margin-bottom:-11px;'></div>
        {$about}
       </td>
      </tr>
