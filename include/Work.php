@@ -34,6 +34,7 @@ class Work extends Threaded
                 continue;
             }
 
+            // Некая ресурсоемкая операция
             list($ip, $port) = explode(':', $value['server_ip']);
             $sq->connect($ip, $port);
             $info = $sq->getInfo();
@@ -43,7 +44,7 @@ class Work extends Threaded
             $serverForRedis = serialize(array('info' => $info, 'players' => $players, 'rules' => $rules));
             $redisConnection->hSet('servers', $value['server_id'], $serverForRedis);
 
-            // Некая ресурсоемкая операция
+            var_dump($info);
             $server = array_merge((array)$value, $info);
             $server['status'] = (!empty($info)) ? 'on' : 'off';
 
