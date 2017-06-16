@@ -11,9 +11,6 @@ html, body {
     border: 1px solid #4F4F4F;
     box-shadow: 0 0 23px #000;
     margin: 0 auto;
-    padding: 0;
-    min-width: 99% !important;
-    max-width: 99% !important;
 }
 
 h2 {
