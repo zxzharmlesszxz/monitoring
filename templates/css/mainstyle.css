@@ -540,14 +540,6 @@ input.searchfield {
     padding: 3px 6px;
 }
 
-.load_bar {
-    padding-bottom: 2px;
-    border: 1px solid #333;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 14px;
-}
-
 .load_green {
     background: url('/images/img/server_page/load_green.gif') left 0 no-repeat;
 }
