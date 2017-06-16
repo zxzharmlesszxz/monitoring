@@ -21,6 +21,7 @@ if ($servers_total != 0) {
     $row = '';
     foreach ($servers as $id => $server) {
         $server = unserialize($server);
+        var_dump($server);
         $r = array_merge($server['info'], $server['dbInfo']);
         if ($r['server_status'] == '0')
             continue;
