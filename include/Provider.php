@@ -52,9 +52,10 @@ class Provider extends Threaded
         if ($this->processed === $this->total) {
             return null;
         }
+        $i = $this->processed;
 
         $this->processed++;
 
-        return $this->items[$this->processed];
+        return $this->items[$i];
     }
 }
