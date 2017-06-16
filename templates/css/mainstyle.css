@@ -13,6 +13,7 @@ html, body {
     margin: 0 auto;
     padding: 0;
     min-width: 99% !important;
+    max-width: 99% !important;
 }
 
 h2 {
@@ -99,7 +100,7 @@ ul.sort_nav {
     list-style: none;
     height: 20px;
     font-size: 11px;
-    width: 1040px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -198,19 +199,19 @@ input:focus, textarea:focus, select:focus {
 #header div#horizontal_menu {
     height: 35px;
     background: #292929 url('/images/img/hmenu.jpg') top repeat-x;
-    float: left;
+/*    float: left;
     width: 100%;
     overflow: hidden;
-    position: relative;
+    position: relative;*/
 }
 
 #header div#horizontal_menu ul {
     height: 40px;
-    float: left;
+/*    float: left;
     position: relative;
     left: 50%;
     margin: -3px;
-    padding: 0;
+    padding: 0;*/
 }
 
 #header div#horizontal_menu ul li {
@@ -218,16 +219,13 @@ input:focus, textarea:focus, select:focus {
     line-height: 40px;
     float: left;
     list-style: none;
-    position: relative;
-    right: 50%;
+/*    position: relative;
+    right: 50%;*/
     border-left: 1px solid #292929;
     border-right: 1px solid #555;
 }
 
-#header div#horizontal_menu ul :first-child {
-    border-left: 0;
-}
-
+#header div#horizontal_menu ul :first-child,
 #header div#horizontal_menu ul :last-child {
     border-right: 0;
 }
