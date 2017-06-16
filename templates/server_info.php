@@ -140,7 +140,7 @@ if (db()->num_rows($take_server) == 0) {
           <img src='/images/maps/monitor.php?game={$server_data['server_game']}&map={$server_data['server_map']}' style='opacity:0.8;'>
         </div>
         <div style='text-align:center;padding-right:50px;'>
-         <table align='center' cellpadding='0' cellspacing='0' width='236' height='30'>
+         <table align='center' cellpadding='0' cellspacing='0' width='236'>
           <tr>
            <td class='load_bar load_$load_color' width='{$percent_loaded}%' valign='middle'>
             <div style='position:absolute;'>
@@ -151,6 +151,12 @@ if (db()->num_rows($take_server) == 0) {
            </td>
           </tr>
          </table>
+        </div>
+        <div class='block_line'>
+         <div class='block address'>
+          <div class='t'>Загруженность сервера</div>
+          <div class='block_line_small load_bar load_{$load_color}' width='{$percent_loaded}%>{$percent_loaded}%</div>
+         </div>
         </div>
         <div class='block_line'>
          <div class='block address'>
