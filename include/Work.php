@@ -47,6 +47,7 @@ class Work extends Threaded
             var_dump($info);
             $server = array_merge((array)$value, $info);
             $server['status'] = (!empty($info)) ? 'on' : 'off';
+            var_dump($server);
 
             $site = !empty($server['server_site']) ? parse_site($server['server_site']) : false;
 
