@@ -6,7 +6,7 @@ mb_internal_encoding('UTF-8');
 $url = __DIR__ . "/../images/banner/banner.png";
 
 if (isset($_GET["serv"])) {
-
+    $server = $_GET["serv"];
     $query = db()->query("SELECT `server_id` FROM `" . DB_SERVERS . "` WHERE `server_ip` = " . intval(trim($_GET['serv'])) . ";");
     $r = db()->fetch_array($query);
 
