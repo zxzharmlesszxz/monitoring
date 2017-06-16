@@ -6,14 +6,18 @@ mb_internal_encoding('UTF-8');
 $url = __DIR__ . "/../images/banner/banner.png";
 
 if (isset($_GET["serv"])) {
-    $sq = new SourceServerQueries();
-    $server = $_GET["serv"];
-    $address = explode(':', $server);
-    $sq->connect($address[0], $address[1]);
-    $info = $sq->getInfo();
-    $players = $sq->getPlayers();
-    $rules = $sq->getRules();
-    $sq->disconnect();
+
+    $query = db()->query("SELECT `server_id` FROM `" . DB_SERVERS . "` WHERE `server_ip` = " . intval(trim($_GET['serv'])) . ";");
+    $r = db()->fetch_array($query);
+
+    $redis = new Redis();
+    $redis->connect($settings['redis_host']);
+    $redis->auth($settings['redis_password']);
+    $redis->select(1);
+    $data = unserialize($redis->hGet('servers', $r['server_id']));
+    $info = $data['info'];
+    $players = $data['players'];
+    $rules = $data['rules'];
 
     header("Content-type: image/png");
     $img = imagecreatefrompng($url);
