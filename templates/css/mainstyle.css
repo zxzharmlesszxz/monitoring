@@ -540,7 +540,7 @@ input.searchfield {
     padding: 3px 6px;
 }
 
-td.load_bar {
+.load_bar {
     padding-bottom: 2px;
     border: 1px solid #333;
     padding-left: 5px;
@@ -548,15 +548,15 @@ td.load_bar {
     font-size: 14px;
 }
 
-td.load_green {
+.load_green {
     background: url('/images/img/server_page/load_green.gif') left 0 no-repeat;
 }
 
-td.load_yellow {
+.load_yellow {
     background: url('/images/img/server_page/load_yellow.gif') left 0 no-repeat;
 }
 
-td.load_red {
+.load_red {
     background: url('/images/img/server_page/load_red.gif') left 0 no-repeat;
 }
 
