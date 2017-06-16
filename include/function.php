@@ -661,6 +661,11 @@ function select_modes()
     return implode('\n', $modess);
 }
 
+/**
+ * @param $text
+ * @param string $from
+ * @return string
+ */
 function toUnicodeEntities($text, $from = "w")
 {
     $text = convert_cyr_string($text, $from, "i");

@@ -36,6 +36,7 @@ class Work extends Threaded
 
             list($ip, $port) = $value['server_ip'];
             $sq->connect($ip, $port);
+            var_dump($sq);
             $info = $sq->getInfo();
             var_dump($info);
             $players = $sq->getPlayers();
