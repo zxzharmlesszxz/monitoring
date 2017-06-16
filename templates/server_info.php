@@ -16,7 +16,7 @@ require_once LOCALE . LOCALESET . "serv.php";
 
 
 $site_link = SITE_URL;
-$server_id = $_GET['id'];
+$server_id = db()->escape_value($_GET['id']);
 //$take_server = db()->query("SELECT * FROM " . DB_SERVERS . " WHERE server_id = " . db()->escape_value($server_id) . ";");
 //$server_data = db()->fetch_array($take_server);
 
