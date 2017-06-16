@@ -1,6 +1,11 @@
 <?php
 require_once(__DIR__ . '/../include/core.php');
 
+$redis = new Redis();
+$redis->connect($settings['redis_host']);
+$redis->auth($settings['redis_password']);
+$redis->select(1);
+
 echo <<<EOT
 <html style="overflow: hidden; max-width: 190px;">
  <head>
@@ -13,17 +18,19 @@ echo <<<EOT
 EOT;
 
 if (isset($_GET["id"]) and $_GET["id"] >= 1) {
-    if (db()->num_rows(db()->query("SELECT * FROM mon_servers WHERE server_id=" . $_GET["id"])) == 1) {
-        $q = db()->fetch_array(db()->query("SELECT * FROM mon_servers WHERE server_id=" . $_GET["id"]));
-        $img = '<img src="' . MAPS . $q['server_game'] . '/' . $q['server_map'] . '.png" width="150" height="113" style="border:1px solid #898989;"/>';
-        $status = (($q['server_status'] == 1) ? '<span style="color:#51F505;"><b>Online</b></span>' : '<span style="color:#f00;"><b>Offline</b></span>');
-        $map = ((strlen($q["server_map"]) >= 12) ? mb_substr($q["server_map"], 0, 12, 'UTF-8') . '...' : $q["server_map"]);
-        $name = html_entity_decode($q["server_name"]);
-        $sq = new SourceServerQueries();
-        $address = explode(':', $q['server_ip']);
-        $sq->connect($address[0], $address[1]);
+    $data = unserialize($redis->hGet('servers', $_GET['id']));
+    if (!empty($data)) {
+        $infoInfo = $data['info'];
+        $playersInfo = $data['players'];
+        $rulesInfo = $data['rules'];
+        $dbInfo = $data['dbInfo'];
+
+        $img = '<img src="' . MAPS . $dbInfo['server_game'] . '/' . $infoInfo['mapName'] . '.png" width="150" height="113" style="border:1px solid #898989;"/>';
+        $status = (($dbInfo['server_status'] == 1) ? '<span style="color:#51F505;"><b>Online</b></span>' : '<span style="color:#f00;"><b>Offline</b></span>');
+        $map = ((strlen($infoInfo["mapName"]) >= 12) ? mb_substr($infoInfo["mapName"], 0, 12, 'UTF-8') . '...' : $infoInfo["mapName"]);
+        $name = html_entity_decode($infoInfo["serverName"]);
         $players = '<ol style="padding-left: 10px; height: 100px; overflow: auto;">';
-        foreach ($sq->getPlayers() as $player) {
+        foreach ($playersInfo as $player) {
             $players .= "<li>{$player['name']} - {$player['score']}</li>\n";
         }
         $players .= '</ol>';
@@ -35,17 +42,17 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
        {$name}
       </a>
     </div>
-    <a href="/server/{$q["server_id"]}/" target="_blank">{$img}</a>
+    <a href="/server/{$_GET['id']}/" target="_blank">{$img}</a>
     <div style="color: #aaa; font-size: 12px;">Карта: {$map}</div>
-    <div style="color: #aaa; font-size: 12px;">Игроки: {$q["server_players"]} / {$q["server_maxplayers"]}</div>
+    <div style="color: #aaa; font-size: 12px;">Игроки: {$infoInfo["playerNumber"]} / {$q["maxPlayers"]}</div>
     <div style="color: #aaa; font-size: 12px;">
-     <b>{$q["server_ip"]}</b>
+     <b>{$dbInfo["server_ip"]}</b>
     </div>
     <div style="color: #aaa; font-size: 12px">
      {$status}
     </div>
     <div style="font-size:12px;">
-     <a style="color: #aaa;" href="steam://connect/{$q["server_ip"]}/" title="Подключиться через Steam" target="_blank">
+     <a style="color: #aaa;" href="steam://connect/{$dbInfo["server_ip"]}/" title="Подключиться через Steam" target="_blank">
       <b>Подключиться</b>
      </a>
     </div>
