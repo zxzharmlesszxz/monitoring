@@ -40,10 +40,25 @@ class CronWorker extends Worker
      * @var int
      */
     protected $port;
+
+    /**
+     * @var
+     */
+    protected $redisHost;
+
+    /**
+     * @var
+     */
+    protected $redisPassword;
     /**
      * @var
      */
     protected static $connection;
+
+    /**
+     * @var
+     */
+    protected static $redis;
 
     /**
      * @param Provider $provider
@@ -52,10 +67,12 @@ class CronWorker extends Worker
      * @param $password
      * @param $database
      * @param $charset
+     * @param $redis_host
+     * @param $redis_password
      * @param int $port
      * @internal param Provider $provider
      */
-    public function __construct(Provider $provider, $hostname, $username, $password, $database, $charset, $port = 3306)
+    public function __construct(Provider $provider, $hostname, $username, $password, $database, $charset, $redis_host, $redis_password, $port = 3306)
     {
         $this->provider = $provider;
         $this->hostname = $hostname;
@@ -63,6 +80,8 @@ class CronWorker extends Worker
         $this->password = $password;
         $this->database = $database;
         $this->charset = $charset;
+        $this->redisHost = $redis_host;
+        $this->redisPassword = $redis_password;
         $this->port = $port;
     }
 
@@ -78,11 +97,25 @@ class CronWorker extends Worker
                 $this->password,
                 $this->database,
                 $this->port);
+            self::$connection->set_charset($this->charset);
         }
 
-        self::$connection->set_charset($this->charset);
-
         return self::$connection;
+    }
+
+    /**
+     * @return Redis
+     */
+    public function getRedis()
+    {
+        if (!self::$redis) {
+            self::$redis = new Redis();
+            self::$redis->connect($this->redisHost);
+            self::$redis->auth($this->redisPassword);
+            self::$redis->select(1);
+        }
+
+        return self::$redis;
     }
 
     /**

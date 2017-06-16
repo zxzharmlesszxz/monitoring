@@ -17,10 +17,13 @@ class Work extends Threaded
      */
     public function run()
     {
+        $mysqlConnection = $this->worker->getConnection();
+        $redisConnection = $this->worker->getRedis();
+        $provider = $this->worker->getProvider();
+        $sq = new SourceServerQueries();
+
         do {
             $value = null;
-
-            $provider = $this->worker->getProvider();
 
             // Синхронизируем получение данных
             $provider->synchronized(function ($provider) use (&$value) {
@@ -31,13 +34,21 @@ class Work extends Threaded
                 continue;
             }
 
+            list($ip, $port) = $value['server_ip'];
+            $info = $sq->connect($ip, $port)->getInfo();
+            $players = $sq->getPlayers();
+            $rules = $sq->getRules();
+            $sq->disconnect();
+            $serverForRedis = serialize(array('info' => $info, 'players' => $players, 'rules' => $rules));
+            $redisConnection->hSet('servers', $value['server_id'], $serverForRedis);
+
             // Некая ресурсоемкая операция
             $server = array_merge((array)$value, serverInfo($value['server_ip']));
 
             $site = !empty($server['server_site']) ? parse_site($server['server_site']) : false;
 
             if ($server['status'] == 'off' and $server['server_status'] == 0 and time() - $server['status_change'] > 86400) {
-                $this->worker->getConnection()->real_query(
+                $mysqlConnection->real_query(
                     "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';"
                 );
                 //print "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';" . PHP_EOL;
@@ -46,7 +57,7 @@ class Work extends Threaded
 
             //if (($server['status'] == 'off' || empty($server['name'])) or !$site) {
             if ($server['status'] == 'off' || empty($server['name'])) {
-                $this->worker->getConnection()->real_query(
+                $mysqlConnection->real_query(
                     "UPDATE " . DB_SERVERS . " SET
                     server_status = '0',
                     server_map = '-',
@@ -59,8 +70,8 @@ class Work extends Threaded
                 continue;
             }
 
-            $name = $this->worker->getConnection()->real_escape_string(htmlspecialchars(trim($server['name'])));
-            $this->worker->getConnection()->real_query(
+            $name = $mysqlConnection->real_escape_string(htmlspecialchars(trim($server['name'])));
+            $mysqlConnection->real_query(
                 "UPDATE " . DB_SERVERS . " SET
                 server_name = '{$name}',
                 server_map = '{$server['map']}',

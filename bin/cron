@@ -18,7 +18,9 @@ $pool = new CronPool($threads,
         config()->mysql['user'],
         config()->mysql['password'],
         config()->mysql['database'],
-        config()->mysql['charset']
+        config()->mysql['charset'],
+        $settings['redis_host'],
+        $settings['redis_password'],
     ]);
 $start = microtime(true);
 
