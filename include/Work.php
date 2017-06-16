@@ -34,17 +34,11 @@ class Work extends Threaded
                 continue;
             }
 
-            var_dump($value);
             list($ip, $port) = explode(':', $value['server_ip']);
             $sq->connect($ip, $port);
-            var_dump($sq);
             $info = $sq->getInfo();
-            $info = (empty($info)) ? serverInfo($value['server_ip']) : $info;
-            var_dump($info);
             $players = $sq->getPlayers();
-            var_dump($players);
             $rules = $sq->getRules();
-            var_dump($rules);
             $sq->disconnect();
             $serverForRedis = serialize(array('info' => $info, 'players' => $players, 'rules' => $rules));
             $redisConnection->hSet('servers', $value['server_id'], $serverForRedis);
