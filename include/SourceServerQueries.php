@@ -84,7 +84,7 @@ final class SourceServerQueries extends ServerQueries
             }
         } else {
             $this->disconnect();
-            return false;
+            return $return;
         }
         return $return;
     }
