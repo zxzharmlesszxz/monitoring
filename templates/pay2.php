@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
  * Server search script
  * Made by BaMTTuP

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
  * Server editing script
  * Made by starky 123

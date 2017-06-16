@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
  * Server registration script
  * Made by starky
