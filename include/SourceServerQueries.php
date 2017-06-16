@@ -5,6 +5,9 @@
  */
 final class SourceServerQueries extends ServerQueries
 {
+    /**
+     * @return array|bool
+     */
     public function getInfo()
     {
         $return = [
@@ -86,6 +89,9 @@ final class SourceServerQueries extends ServerQueries
         return $return;
     }
 
+    /**
+     * @return array
+     */
     function getPlayers()
     {
         $return = array();
@@ -117,6 +123,9 @@ final class SourceServerQueries extends ServerQueries
         return $return;
     }
 
+    /**
+     * @return array
+     */
     function getRules()
     {
         $return = array();
@@ -143,6 +152,9 @@ final class SourceServerQueries extends ServerQueries
         return $return;
     }
 
+    /**
+     * @return bool|string
+     */
     private function getChallenge()
     {
         if (!$this->connected)
@@ -152,6 +164,10 @@ final class SourceServerQueries extends ServerQueries
         return substr($this->raw, 5);
     }
 
+    /**
+     * @param bool $many_packets
+     * @return int
+     */
     protected function read($many_packets = false)
     {
         if ($many_packets) {
