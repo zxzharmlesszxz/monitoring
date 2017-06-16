@@ -60,7 +60,7 @@ class Work extends Threaded
             }
 
             //if (($server['status'] == 'off' || empty($server['name'])) or !$site) {
-            if ($server['status'] == 'off' || empty($server['name'])) {
+            if ($server['status'] == 'off' || empty($server['server_name'])) {
                 $mysqlConnection->real_query(
                     "UPDATE " . DB_SERVERS . " SET
                     server_status = '0',
@@ -74,13 +74,13 @@ class Work extends Threaded
                 continue;
             }
 
-            $name = $mysqlConnection->real_escape_string(htmlspecialchars(trim($server['name'])));
+            $name = $mysqlConnection->real_escape_string(htmlspecialchars(trim($server['serverName'])));
             $mysqlConnection->real_query(
                 "UPDATE " . DB_SERVERS . " SET
                 server_name = '{$name}',
-                server_map = '{$server['map']}',
-                server_players = '{$server['players']}',
-                server_maxplayers = '{$server['max_players']}',
+                server_map = '{$server['mapName']}',
+                server_players = '{$server['playerNumber']}',
+                server_maxplayers = '{$server['maxPlayers']}',
                 server_status = '1' "
                 . (($server['server_status'] == 0) ? ", status_change = " . time() : "")
                 . " WHERE server_id='{$server['server_id']}';"
