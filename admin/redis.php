@@ -14,6 +14,8 @@ foreach ($items as $id => $item) {
     $servers[$id] = unserialize($item);
 }
 
+sort($servers);
+
 echo <<<EOT
 <div id='right'>
     <div class='section'>
