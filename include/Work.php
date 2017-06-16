@@ -20,6 +20,7 @@ class Work extends Threaded
         $mysqlConnection = $this->worker->getConnection();
         $redisConnection = $this->worker->getRedis();
         $provider = $this->worker->getProvider();
+        $sq = new SourceServerQueries();
 
         do {
             $value = null;
@@ -34,9 +35,8 @@ class Work extends Threaded
             }
 
             var_dump($value);
-            $sq = new SourceServerQueries();
-            list($ip, $port) = $value['server_ip'];
-            var_dump($sq->connect($ip, $port));
+            list($ip, $port) = explode(':', $value['server_ip']);
+            $sq->connect($ip, $port);
             var_dump($sq);
             $info = $sq->getInfo();
             $info = (empty($info)) ? serverInfo($value['server_ip']) : $info;
