@@ -564,6 +564,7 @@ div.block div.t {
 
 div.load_bar {
     background: url('/images/la_icons/la5.gif') 10px 5px no-repeat;
+    background-size: 40px 40px;
 }
 
 div.players {
