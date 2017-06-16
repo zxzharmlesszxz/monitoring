@@ -6,8 +6,8 @@ mb_internal_encoding('UTF-8');
 $url = __DIR__ . "/../images/banner/banner.png";
 
 if (isset($_GET["serv"])) {
-    $server = $_GET["serv"];
-    $query = db()->query("SELECT `server_id` FROM `" . DB_SERVERS . "` WHERE `server_ip` = " . db()->escape_value($_GET['serv']) . ";");
+    $server = db()->escape_value($_GET['serv']);
+    $query = db()->query("SELECT `server_id` FROM `" . DB_SERVERS . "` WHERE `server_ip` = '{$server}';");
     $r = db()->fetch_array($query);
 
     $redis = new Redis();
