@@ -20,6 +20,8 @@ $servers = $redis->hGetAll('servers');
 if ($servers_total != 0) {
     $row = '';
     foreach ($servers as $id => $r) {
+        var_dump($r);
+        /*
         $players = $r['server_players'] . "/" . $r['server_maxplayers'];
         $server_location = $r['server_location'];
 
@@ -83,9 +85,10 @@ if ($servers_total != 0) {
         }
         $row .= "</td>";
         $row .= "</tr>";
+        */
     }
 }
-
+/*
 echo <<<EOT
 <table class='servers' cellspacing='0' border='0'>
  <thead>
