@@ -17,8 +17,18 @@ require_once LOCALE . LOCALESET . "serv.php";
 
 $site_link = SITE_URL;
 $server_id = $_GET['id'];
-$take_server = db()->query("SELECT * FROM " . DB_SERVERS . " WHERE server_id = " . db()->escape_value($server_id) . "");
-$server_data = db()->fetch_array($take_server);
+//$take_server = db()->query("SELECT * FROM " . DB_SERVERS . " WHERE server_id = " . db()->escape_value($server_id) . ";");
+//$server_data = db()->fetch_array($take_server);
+
+$redis = new Redis();
+$redis->connect($settings['redis_host']);
+$redis->auth($settings['redis_password']);
+$redis->select(1);
+$data = unserialize($redis->hGet('servers', $server_id));
+$info = $data['info'];
+$players = $data['players'];
+$rules = $data['rules'];
+$server_data = $data['dbInfo'];
 
 if (db()->num_rows($take_server) == 0) {
     displayMessage('Выбранный сервер не существует, либо был удалён.', 'error');
