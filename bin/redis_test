@@ -24,6 +24,6 @@ while ($r = db()->fetch_array($query)) {
     $players = $sq->getPlayers();
     $rules = $sq->getRules();
     $sq->disconnect();
-    $item = array('info' => $info, 'players' => $players, 'rules' => $rules);
+    $item = array('info' => $info, 'players' => $players, 'rules' => $rules, 'dbInfo' => $r);
     $redis->hSet('servers', $r['server_id'], serialize($item));
 }
