@@ -20,7 +20,8 @@ $servers = $redis->hGetAll('servers');
 if ($servers_total != 0) {
     $row = '';
     foreach ($servers as $id => $server) {
-        $r = unserialize($server)['info'];
+        $server = unserialize($server);
+        $r = array_merge($server['info'], $server['dbInfo']);
 
         $players = $r['playerNumber'] . "/" . $r['maxPlayers'];
         $server_location = $r['server_location'];
