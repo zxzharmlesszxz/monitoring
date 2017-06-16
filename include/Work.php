@@ -45,7 +45,7 @@ class Work extends Threaded
             $redisConnection->hSet('servers', $value['server_id'], $serverForRedis);
 
             $server = array_merge((array)$value, $info);
-            $server['status'] = (!empty($info['server_name'])) ? 'on' : 'off';
+            $server['status'] = (!empty($info['serverName'])) ? 'on' : 'off';
 
             $site = !empty($server['server_site']) ? parse_site($server['server_site']) : false;
 
