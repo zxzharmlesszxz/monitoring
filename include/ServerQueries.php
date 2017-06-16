@@ -56,7 +56,7 @@ abstract class ServerQueries
         $this->ip = @gethostbyname($address);
         if ($this->resource = @fsockopen('udp://' . $this->ip, $this->port, $errno, $errstr, 1)) {
             $this->connected = true;
-            stream_set_timeout($this->resource, 1);
+            stream_set_timeout($this->resource, 3);
         }
         return $this->connected;
     }
