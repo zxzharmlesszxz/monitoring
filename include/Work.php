@@ -33,6 +33,7 @@ class Work extends Threaded
                 continue;
             }
 
+            var_dump($value);
             $sq = new SourceServerQueries();
             list($ip, $port) = $value['server_ip'];
             var_dump($sq->connect($ip, $port));
