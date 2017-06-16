@@ -37,14 +37,17 @@ class Work extends Threaded
             list($ip, $port) = $value['server_ip'];
             $sq->connect($ip, $port);
             $info = $sq->getInfo();
+            var_dump($info);
             $players = $sq->getPlayers();
+            var_dump($players);
             $rules = $sq->getRules();
+            var_dump($rules);
             $sq->disconnect();
             $serverForRedis = serialize(array('info' => $info, 'players' => $players, 'rules' => $rules));
             $redisConnection->hSet('servers', $value['server_id'], $serverForRedis);
 
             // Некая ресурсоемкая операция
-            $server = array_merge((array)$value, serverInfo($value['server_ip']));
+            $server = array_merge((array)$value, $info);
 
             $site = !empty($server['server_site']) ? parse_site($server['server_site']) : false;
 
