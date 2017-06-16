@@ -44,10 +44,8 @@ class Work extends Threaded
             $serverForRedis = serialize(array('info' => $info, 'players' => $players, 'rules' => $rules));
             $redisConnection->hSet('servers', $value['server_id'], $serverForRedis);
 
-            var_dump($info);
             $server = array_merge((array)$value, $info);
-            $server['status'] = (!empty($info)) ? 'on' : 'off';
-            var_dump($server);
+            $server['status'] = (!empty($info['server_name'])) ? 'on' : 'off';
 
             $site = !empty($server['server_site']) ? parse_site($server['server_site']) : false;
 
