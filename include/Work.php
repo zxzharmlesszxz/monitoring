@@ -41,7 +41,7 @@ class Work extends Threaded
             $players = $sq->getPlayers();
             $rules = $sq->getRules();
             $sq->disconnect();
-            $serverForRedis = serialize(array('info' => $info, 'players' => $players, 'rules' => $rules));
+            $serverForRedis = serialize(array('info' => $info, 'players' => $players, 'rules' => $rules, 'dbInfo' => (array) $value));
             $redisConnection->hSet('servers', $value['server_id'], $serverForRedis);
 
             $server = array_merge((array)$value, $info);
