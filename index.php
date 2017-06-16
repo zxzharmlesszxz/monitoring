@@ -120,7 +120,7 @@ switch ($load) {
         $filter = "AND server_mode = '${load}'";
         $load_file = __DIR__ . '/templates/servers.php';
         break;
-    case 'servers_from_redis':
+    case 'serversredis':
         $page_title = "Сервера из redis";
         $filter = '';
         $load_file = __DIR__ . '/templates/servers_from_redis.php';
