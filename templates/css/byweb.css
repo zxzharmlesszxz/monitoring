@@ -48,3 +48,7 @@ span.score {
     float: right;
     margin-right: 1em;
 }
+
+div.map {
+    position: relative;
+}
