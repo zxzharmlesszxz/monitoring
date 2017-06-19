@@ -19,7 +19,7 @@ $servers = $redis->hGetAll('servers');
 
 function sortByVotes($a, $b)
 {
-    return $a['dbInfo']['votes'] - $b['dbInfo']['votes'];
+    return $b['dbInfo']['votes'] - $a['dbInfo']['votes'];
 }
 
 if ($servers_total != 0) {
