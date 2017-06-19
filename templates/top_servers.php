@@ -99,7 +99,7 @@ if ($settings['top_rows'] > 0) {
                 $server_address = "<span style='color:#789ABF;cursor:help;' title='Данный сервер заблокирован в мониторинге'>[Сервер заблокирован]</a>";
 */
             if ($tops_array[$i]['dbInfo']['server_ipport_style']) {
-                $grc = db()->fetch_array(db()->query("SELECT * FROM mon_rowstyles WHERE name='" . $tops_array[$i]['dbInfo']['server_ipport_style'] . "'"));
+                $grc = $styles[$tops_array[$i]['dbInfo']['server_ipport_style']];
                 $server_address = "<span style='" . $grc['style'] . "'>$server_address</span>";
             }
 
