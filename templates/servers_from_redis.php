@@ -21,7 +21,7 @@ if ($servers_total != 0) {
     $row = '';
     foreach ($servers as $id => $server) {
         $server = unserialize($server);
-        if ($server['dbInfo']['server_status'] == '0')
+        if ($server['info']['serverName'] == null)
             continue;
         $r = array_merge($server['info'], $server['dbInfo']);
 
