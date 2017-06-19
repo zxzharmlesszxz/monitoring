@@ -78,7 +78,7 @@ if ($servers_total != 0) {
             $str .= '<img src="/images/img/vip.png" align="texttop" style="opacity:0.6;">';
         } else {
             $str .= "<span class='votes_count' id='votes_count_{$id}' >" . intval($r['votes']) . "</span>";
-            $str .= "<span class='vote_buttons' id='vote_buttons_{$r['server_id']}'>";
+            $str .= "<span class='vote_buttons' id='vote_buttons_{$id}'>";
             $str .= "<a href='javascript://' onClick=\"rating({$id}, 'up', '" . md5("m0n3ng1ne.s4lt:P{]we{$id}@._)%;") . "');\" class='voteup' id='{$id}'></a>";
             $str .= "<a href='javascript://' onClick=\"rating({$id}, 'down', '" . md5("m0n3ng1ne.s4lt:P{]we{$id}@._)%;") . "');\" class='votedown' id='{$id}'></a>";
             $str .= "</span>";
