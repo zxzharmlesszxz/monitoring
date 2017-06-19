@@ -23,6 +23,7 @@ class Work extends Threaded
         $sq = new SourceServerQueries();
 
         do {
+            global $servers;
             $value = null;
 
             // Синхронизируем получение данных
@@ -42,12 +43,11 @@ class Work extends Threaded
             $rules = $sq->getRules();
             $sq->disconnect();
             $serverForRedis = serialize(array('info' => $info, 'players' => $players, 'rules' => $rules, 'dbInfo' => (array) $value));
-
+            $oldStatus = (!empty($servers[$value['server_id']]['info']['serverName'])) ? 'on' : 'off';
             $redisConnection->hSet('servers', $value['server_id'], $serverForRedis);
 
             $server = array_merge((array)$value, $info);
             $server['status'] = (!empty($info['serverName'])) ? 'on' : 'off';
-            $oldStatus = (!empty($value['info']['serverName'])) ? 'on' : 'off';
 
             $site = !empty($server['server_site']) ? parse_site($server['server_site']) : false;
 
