@@ -19,7 +19,7 @@ $servers = $redis->hGetAll('servers');
 
 if ($servers_total != 0) {
     $row = '';
-    foreach ($servers as $id => $server) {
+    foreach (ksort($servers) as $id => $server) {
         $server = unserialize($server);
         if ($server['info']['serverName'] == null)
             continue;
@@ -41,7 +41,7 @@ if ($servers_total != 0) {
             $players = "<span style='color: #00FF00'>{$r['playerNumber']}/{$r['maxPlayers']}</span>";
         }
 
-        if ($r['serverName'] != null and $r['maxPlayers'] != 0) {
+        if ($r['serverName'] !== null and $r['maxPlayers'] != 0) {
             $server_full = floor(($r['playerNumber'] / $r['maxPlayers']) * 100);
         } else {
             $server_full = "0";
