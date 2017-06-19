@@ -43,7 +43,7 @@ class Work extends Threaded
             $rules = $sq->getRules();
             $sq->disconnect();
             $serverForRedis = serialize(array('info' => $info, 'players' => $players, 'rules' => $rules, 'dbInfo' => (array) $value));
-            var_dump($servers[$value['server_id']]['info']['serverName']);
+            var_dump($servers[$value['server_id']]);
             $oldStatus = (!empty($servers[$value['server_id']]['info']['serverName'])) ? 'on' : 'off';
             $redisConnection->hSet('servers', $value['server_id'], $serverForRedis);
 
