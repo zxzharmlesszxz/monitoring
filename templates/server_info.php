@@ -20,10 +20,6 @@ $server_id = db()->escape_value($_GET['id']);
 //$take_server = db()->query("SELECT * FROM " . DB_SERVERS . " WHERE server_id = " . db()->escape_value($server_id) . ";");
 //$server_data = db()->fetch_array($take_server);
 
-$redis = new Redis();
-$redis->connect($settings['redis_host']);
-$redis->auth($settings['redis_password']);
-$redis->select(1);
 $data = unserialize($redis->hGet('servers', $server_id));
 $info = $data['info'];
 $players = $data['players'];

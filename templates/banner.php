@@ -10,10 +10,6 @@ if (isset($_GET["serv"])) {
     $query = db()->query("SELECT `server_id` FROM `" . DB_SERVERS . "` WHERE `server_ip` = '{$server}';");
     $r = db()->fetch_array($query);
 
-    $redis = new Redis();
-    $redis->connect($settings['redis_host']);
-    $redis->auth($settings['redis_password']);
-    $redis->select(1);
     $data = unserialize($redis->hGet('servers', $r['server_id']));
     $info = $data['info'];
     $players = $data['players'];

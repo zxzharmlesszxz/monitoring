@@ -1,11 +1,6 @@
 <?php
 require_once(__DIR__ . '/../include/core.php');
 
-$redis = new Redis();
-$redis->connect($settings['redis_host']);
-$redis->auth($settings['redis_password']);
-$redis->select(1);
-
 echo <<<EOT
 <html style="overflow: hidden; max-width: 190px;">
  <head>

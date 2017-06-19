@@ -10,13 +10,6 @@ if (!defined("MONENGINE")) {
     exit();
 }
 
-$redis = new Redis();
-$redis->connect($settings['redis_host']);
-$redis->auth($settings['redis_password']);
-$redis->select(1);
-
-$servers = $redis->hGetAll('servers');
-
 if ($servers_total != 0) {
     $row = '';
     $vip = '';

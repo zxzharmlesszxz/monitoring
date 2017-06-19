@@ -67,3 +67,10 @@ $top_map = $settings['top_map'];
 if (file_exists("./install.php")) {
     exit("Для продолжения работы необходимо удалить файл <b>install.php</b>.");
 }
+
+$redis = new Redis();
+$redis->connect($settings['redis_host']);
+$redis->auth($settings['redis_password']);
+$redis->select(1);
+
+$servers = $redis->hGetAll('servers');

@@ -3,11 +3,6 @@
 error_reporting(E_ERROR);
 ini_set('display_errors', 0);
 
-$redis = new Redis();
-$redis->connect($settings['redis_host']);
-$redis->auth($settings['redis_password']);
-$redis->select(1);
-$items = $redis->hGetAll('servers');
 $servers = array();
 
 foreach ($items as $id => $item) {
