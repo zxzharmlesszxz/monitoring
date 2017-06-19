@@ -28,7 +28,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
         $players .= '</ol>';
 
         echo <<<EOT
-  <div>
+  <div id="frame">
     <div class="name">
       <a href="/server/{$_GET['id']}/" target="_blank">
        {$name}
