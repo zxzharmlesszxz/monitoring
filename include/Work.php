@@ -23,7 +23,6 @@ class Work extends Threaded
         $sq = new SourceServerQueries();
 
         do {
-            global $servers;
             $value = null;
 
             // Синхронизируем получение данных
@@ -43,17 +42,13 @@ class Work extends Threaded
             $rules = $sq->getRules();
             $sq->disconnect();
             $serverForRedis = serialize(array('info' => $info, 'players' => $players, 'rules' => $rules, 'dbInfo' => (array) $value));
-            var_dump($servers[$value['server_id']]);
-            $oldStatus = (!empty($servers[$value['server_id']]['info']['serverName'])) ? 'on' : 'off';
             $redisConnection->hSet('servers', $value['server_id'], $serverForRedis);
 
             $server = array_merge((array)$value, $info);
             $server['status'] = (!empty($info['serverName'])) ? 'on' : 'off';
 
-            //var_dump($server['status']);
             $site = !empty($server['server_site']) ? parse_site($server['server_site']) : false;
 
-            //var_dump($server['status'] !== $oldStatus);
             if ($server['status'] == 'off' and time() - $server['status_change'] > 86400) {
                 $mysqlConnection->real_query(
                     "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';"
@@ -62,53 +57,9 @@ class Work extends Threaded
                 continue;
             }
 
-            //if (($server['status'] == 'off' || empty($server['serverName'])) or !$site) {
-            /*if ($server['status'] == 'off' || empty($server['serverName'])) {
-                $mysqlConnection->real_query(
-                /*    "UPDATE " . DB_SERVERS . " SET
-                    server_status = '0',
-                    server_map = '-',
-                    server_players = '-',
-                    server_maxplayers = '-' "
-                    . (($server['server_status'] == 1) ? ", status_change = " . time() : "")
-                    . " WHERE server_id='{$server['server_id']}';"
-                    (($server['status'] == 'off') ?
-                        "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" :
-                        ""
-                    )
-                );
-                print (($server['status'] == 'off') ?
-                        "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" :
-                        ""
-                    ) . PHP_EOL;
-                continue;
-            }
-
-            $name = $mysqlConnection->real_escape_string(htmlspecialchars(trim($server['serverName'])));
-            $mysqlConnection->real_query(
-            /*    "UPDATE " . DB_SERVERS . " SET
-                server_name = '{$name}',
-                server_map = '{$server['mapName']}',
-                server_players = '{$server['playerNumber']}',
-                server_maxplayers = '{$server['maxPlayers']}',
-                server_status = '1' "
-                . (($server['server_status'] == 0) ? ", status_change = " . time() : "")
-                . " WHERE server_id='{$server['server_id']}';"
-                ($server['status'] == 'on') ?
-                    "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" :
-                    ""
-            );
-            print (($server['status'] == 'on') ?
-                    "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" :
-                    ""
-                ) . PHP_EOL;
-            */
-
-
-                if ($server['status'] !== $oldStatus) {
+            if (!empty($server['serverName'] )) {
                     $mysqlConnection->real_query("UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';");
-                    //print "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" . PHP_EOL;
-                }
+            }
         } while ($value !== null);
     }
 }
