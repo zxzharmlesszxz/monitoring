@@ -20,7 +20,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
         $rulesInfo = $data['rules'];
         $dbInfo = $data['dbInfo'];
 
-        $img = '<img src="' . MAPS . $dbInfo['server_game'] . '/' . $infoInfo['mapName'] . '.png" width="150" height="113" style="border:1px solid #898989;"/>';
+        $mapImg = MAPS . "{$dbInfo['server_game']}/{$infoInfo['mapName']}.png";
         $status = ((!empty($infoInfo['serverName'])) ? '<span style="color:#51F505;"><b>Online</b></span>' : '<span style="color:#f00;"><b>Offline</b></span>');
         $map = ((strlen($infoInfo["mapName"]) >= 12) ? mb_substr($infoInfo["mapName"], 0, 12, 'UTF-8') . '...' : $infoInfo["mapName"]);
         $name = html_entity_decode($infoInfo["serverName"]);
@@ -37,7 +37,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
        {$name}
       </a>
     </div>
-    <div class="map" style="background-image: url('{MAPS}{$dbInfo['server_game']}/{$infoInfo['mapName']}.png')">
+    <div class="map" style="background-image: url('{$mapImg}')">
         <span>Карта: {$map}</span>
     </div>
     <div class="players">Игроки: {$infoInfo["playerNumber"]} / {$infoInfo["maxPlayers"]}</div>

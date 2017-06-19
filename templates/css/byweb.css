@@ -51,4 +51,7 @@ span.score {
 
 div.map {
     position: relative;
+    width: 150px;
+    height: 113px;
+    border:1px solid #898989;
 }
