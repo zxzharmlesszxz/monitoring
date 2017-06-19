@@ -38,11 +38,12 @@ div.playersBlock {
 }
 
 div.playersBlock ol {
-    padding-left: 20px;
+    padding-left: 2em;
     height: 100px;
     overflow: auto;
 }
 
 span.score {
     float: right;
+    margin-right: 1em;
 }
