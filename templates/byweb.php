@@ -24,7 +24,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
         $status = ((!empty($infoInfo['serverName'])) ? '<span style="color:#51F505;"><b>Online</b></span>' : '<span style="color:#f00;"><b>Offline</b></span>');
         $map = ((strlen($infoInfo["mapName"]) >= 12) ? mb_substr($infoInfo["mapName"], 0, 12, 'UTF-8') . '...' : $infoInfo["mapName"]);
         $name = html_entity_decode($infoInfo["serverName"]);
-        $players = '<ol style="padding-left: 10px; height: 100px; overflow: auto;">';
+        $players = '<ol style="padding-left: 20px; height: 100px; overflow: auto;">';
         foreach ($playersInfo as $player) {
             $players .= "<li>{$player['name']} - {$player['score']}</li>\n";
         }
