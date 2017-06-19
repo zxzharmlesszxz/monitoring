@@ -7,9 +7,6 @@ echo <<<EOT
   <link rel="stylesheet" type="text/css" href="/templates/css/byweb.css">
  </head>
  <body>
-  <table>
-   <tr>
-    <td>
 EOT;
 
 if (isset($_GET["id"]) and $_GET["id"] >= 1) {
@@ -63,13 +60,6 @@ EOT;
 }
 
 echo <<<EOT
-    </td>
-   </tr>
-   <tr>
-    <td>
-    </td>
-   </tr>
-  </table>
  </body>
 </html>
 EOT;
