@@ -41,7 +41,7 @@ if ($servers_total != 0) {
             $players = "<span style='color: #00FF00'>{$r['playerNumber']}/{$r['maxPlayers']}</span>";
         }
 
-        if ($r['server_status'] == 1 and $r['maxPlayers'] != 0) {
+        if ($r['serverName'] != null and $r['maxPlayers'] != 0) {
             $server_full = floor(($r['playerNumber'] / $r['maxPlayers']) * 100);
         } else {
             $server_full = "0";
