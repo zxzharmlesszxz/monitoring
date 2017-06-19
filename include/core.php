@@ -74,3 +74,9 @@ $redis->auth($settings['redis_password']);
 $redis->select(1);
 
 $servers = $redis->hGetAll('servers');
+
+foreach ($servers as $id => $item) {
+    $servers[$id] = unserialize($item);
+}
+
+ksort($servers);

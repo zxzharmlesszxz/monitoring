@@ -13,7 +13,7 @@ echo <<<EOT
 EOT;
 
 if (isset($_GET["id"]) and $_GET["id"] >= 1) {
-    $data = unserialize($redis->hGet('servers', $_GET['id']));
+    $data = $servers[$_GET['id']];
     if (!empty($data)) {
         $infoInfo = $data['info'];
         $playersInfo = $data['players'];

@@ -3,14 +3,6 @@
 error_reporting(E_ERROR);
 ini_set('display_errors', 0);
 
-$servers = array();
-
-foreach ($items as $id => $item) {
-    $servers[$id] = unserialize($item);
-}
-
-ksort($servers);
-
 echo <<<EOT
 <div id='right'>
     <div class='section'>

@@ -20,12 +20,12 @@ $server_id = db()->escape_value($_GET['id']);
 //$take_server = db()->query("SELECT * FROM " . DB_SERVERS . " WHERE server_id = " . db()->escape_value($server_id) . ";");
 //$server_data = db()->fetch_array($take_server);
 
-$data = unserialize($redis->hGet('servers', $server_id));
+$data = $servers[$server_id];
 $info = $data['info'];
 $players = $data['players'];
 $rules = $data['rules'];
 $server_data = $data['dbInfo'];
-if (db()->num_rows($take_server) == 0) {
+if (empty($data)) {
     displayMessage('Выбранный сервер не существует, либо был удалён.', 'error');
 } elseif ($server_data['server_off'] == 1) {
     include("banned.php");
