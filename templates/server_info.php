@@ -27,9 +27,9 @@ $rules = $data['rules'];
 $server_data = $data['dbInfo'];
 if (empty($data)) {
     displayMessage('Выбранный сервер не существует, либо был удалён.', 'error');
-} elseif ($server_data['server_off'] == 1) {
+/*} elseif ($server_data['server_off'] == 1) {
     include("banned.php");
-} else {
+*/} else {
     $site = ($server_data['server_site'] != "") ? "
   <div class='block_line' style='margin-bottom:0;'>
    <div class='block site'>
@@ -47,7 +47,7 @@ if (empty($data)) {
     $last_update = $settings['last_update'];
     $time_diff = time() - $last_update;
     $time_lasted = ($time_diff >= 60) ? floor($time_diff / 60) . " минут" : $time_diff . " секунд";
-    $percent_loaded = @floor(($server_data['server_players'] / $server_data['server_maxplayers']) * 100);
+    $percent_loaded = @floor(($info['playerNumber'] / $info['maxPlayers']) * 100);
     $vote_hash = md5("m0n3ng1ne.s4lt:P{]we{$server_data['server_id']}@._)%;");
 
     switch ($percent_loaded) {
@@ -136,13 +136,13 @@ if (empty($data)) {
     $captch = session_name() . "=" . session_id();
 
     echo <<<EOT
-   <div class='horizontal_line'>Сервер: <b>{$server_data['server_name']}</b></div>
+   <div class='horizontal_line'>Сервер: <b>{$info['serverName']}</b></div>
     <div class='cont'>
      <table cellspacing='0' cellpadding='0' width='100%' class='info_tbl'>
       <tr>
        <td valign='top' width='250' style='padding-bottom:20px;'>
         <div style='padding: 5px;margin: 4px;line-height: 12px;background: #1E1E1E;border: 1px solid #444;'>
-          <img src='/images/maps/monitor.php?game={$server_data['server_game']}&map={$server_data['server_map']}' style='opacity:0.8;'>
+          <img src='/images/maps/monitor.php?game={$server_data['server_game']}&map={$info['mapName']}' style='opacity:0.8;'>
         </div>
         <div class='block_line'>
          <div class='block load_bar'>
@@ -165,13 +165,13 @@ if (empty($data)) {
         <div class='block_line'>
          <div class='block map'>
           <div class='t'>Текущая карта:</div>
-          <div class='block_line_small'>{$server_data['server_map']}</div>
+          <div class='block_line_small'>{$info['mapName']}</div>
          </div>
         </div>
         <div class='block_line'>
          <div class='block players'>
           <div class='t'>Игроки:</div>
-          <div class='block_line_small'>{$server_data['server_players']}/{$server_data['server_maxplayers']}</div>
+          <div class='block_line_small'>{$info['playerNumber']}/{$info['maxPlayers']}</div>
          </div>
         </div>
         <div class='block_line'>
@@ -225,7 +225,7 @@ if (empty($data)) {
         </form>
         <div style='margin-bottom:5px;'></div>
         <div class='box_rounded'>
-         <div style='font-size: 15px;'>Комментарии к серверу {$server_data['server_name']}</div>
+         <div style='font-size: 15px;'>Комментарии к серверу {$info['serverName']}</div>
          <div class='server_comments'>
           {$comms}
          </div>
