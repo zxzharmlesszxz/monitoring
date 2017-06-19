@@ -20,7 +20,7 @@ $servers = $redis->hGetAll('servers');
 $top_servers = array();
 
 foreach ($servers as $id => $server) {
-    $servers[$id] = unserialize($server);
+    $server = unserialize($server);
     if ($server['dbInfo']['server_top'] != '0')
     {
         $tops_array[$server['dbInfo']['server_top']] = $server;
