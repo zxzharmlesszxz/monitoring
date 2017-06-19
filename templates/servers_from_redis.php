@@ -16,10 +16,10 @@ $redis->auth($settings['redis_password']);
 $redis->select(1);
 
 $servers = $redis->hGetAll('servers');
-
+ksort($servers);
 if ($servers_total != 0) {
     $row = '';
-    foreach (ksort($servers) as $id => $server) {
+    foreach ($servers as $id => $server) {
         $server = unserialize($server);
         if ($server['info']['serverName'] == null)
             continue;
