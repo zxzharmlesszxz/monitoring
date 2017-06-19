@@ -13,8 +13,7 @@ if (!defined("MONENGINE")) {
 if ($servers_total != 0) {
     $row = '';
     $vip = '';
-    foreach ($servers as $id => $server)
-        $servers[$id] = unserialize($server);
+
     usort($servers, "sortByVotes");
 
     foreach ($servers as $id => $server) {
