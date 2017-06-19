@@ -16,12 +16,20 @@ $redis->auth($settings['redis_password']);
 $redis->select(1);
 
 $servers = $redis->hGetAll('servers');
-ksort($servers);
+
+function sortByVotes($a, $b)
+{
+    return $a['dbInfo']['votes'] - $b['dbInfo']['votes'];
+}
+
 if ($servers_total != 0) {
     $row = '';
     $vip = '';
+    foreach ($servers as $id => $server)
+        $servers[$id] = unserialize($server);
+    usort($servers, "sortByVotes");
+
     foreach ($servers as $id => $server) {
-        $server = unserialize($server);
         $str = '';
         if ($server['info']['serverName'] == null)
             continue;
