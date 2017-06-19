@@ -26,7 +26,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
         $name = html_entity_decode($infoInfo["serverName"]);
         $players = '<ol>';
         foreach ($playersInfo as $player) {
-            $players .= "<li>{$player['name']} - {$player['score']}</li>\n";
+            $players .= "<li>{$player['name']}<span class='score'>{$player['score']}</span></li>\n";
         }
         $players .= '</ol>';
 

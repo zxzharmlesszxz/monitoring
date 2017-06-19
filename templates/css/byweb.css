@@ -42,3 +42,7 @@ div.playersBlock ol {
     height: 100px;
     overflow: auto;
 }
+
+span.score {
+    float: right;
+}
