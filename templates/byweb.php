@@ -2,11 +2,12 @@
 require_once(__DIR__ . '/../include/core.php');
 
 echo <<<EOT
-<html style="overflow: hidden; max-width: 190px;">
+<html>
  <head>
   <link rel="stylesheet" type="text/css" href="/templates/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/templates/css/byweb.css">
  </head>
- <body style="overflow: hidden;">
+ <body>
   <table>
    <tr>
     <td>
@@ -24,7 +25,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
         $status = ((!empty($infoInfo['serverName'])) ? '<span style="color:#51F505;"><b>Online</b></span>' : '<span style="color:#f00;"><b>Offline</b></span>');
         $map = ((strlen($infoInfo["mapName"]) >= 12) ? mb_substr($infoInfo["mapName"], 0, 12, 'UTF-8') . '...' : $infoInfo["mapName"]);
         $name = html_entity_decode($infoInfo["serverName"]);
-        $players = '<ol style="padding-left: 20px; height: 100px; overflow: auto;">';
+        $players = '<ol>';
         foreach ($playersInfo as $player) {
             $players .= "<li>{$player['name']} - {$player['score']}</li>\n";
         }
@@ -32,26 +33,26 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
 
         echo <<<EOT
   <div>
-    <div style="font-size: 14px; font-weight: bold;">
-      <a style="color: #aaa;" href="/server/{$_GET['id']}/" target="_blank">
+    <div class="name">
+      <a href="/server/{$_GET['id']}/" target="_blank">
        {$name}
       </a>
     </div>
     <a href="/server/{$_GET['id']}/" target="_blank">{$img}</a>
-    <div style="color: #aaa; font-size: 12px;">Карта: {$map}</div>
-    <div style="color: #aaa; font-size: 12px;">Игроки: {$infoInfo["playerNumber"]} / {$infoInfo["maxPlayers"]}</div>
-    <div style="color: #aaa; font-size: 12px;">
+    <div class="map">Карта: {$map}</div>
+    <div class="players">Игроки: {$infoInfo["playerNumber"]} / {$infoInfo["maxPlayers"]}</div>
+    <div class="address">
      <b>{$dbInfo["server_ip"]}</b>
     </div>
-    <div style="color: #aaa; font-size: 12px">
+    <div class="status">
      {$status}
     </div>
-    <div style="font-size:12px;">
-     <a style="color: #aaa;" href="steam://connect/{$dbInfo["server_ip"]}/" title="Подключиться через Steam" target="_blank">
+    <div class="steam">
+     <a href="steam://connect/{$dbInfo["server_ip"]}/" title="Подключиться через Steam" target="_blank">
       <b>Подключиться</b>
      </a>
     </div>
-    <div style="color: #aaa; font-size: 10px">
+    <div class="playersBlock">
     {$players}
     </div>
   </div>

@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow: hidden;
+    max-width: 190px;
+}
+
+body {
+    overflow: hidden;
+}
+
+div.name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+a {
+    color: #aaa;
+    font-size: 12px;
+}
+
+div.players,
+div.map,
+div.address,
+div.status,
+div.steam {
+    font-size: 12px;
+    font-weight: bold;
+    color: #aaa;
+}
+
+div.playersBlock {
+    color: #aaa;
+    font-size: 10px;
+}
+
+div.playersBlock ol {
+    padding-left: 20px;
+    height: 100px;
+    overflow: auto;
+}
