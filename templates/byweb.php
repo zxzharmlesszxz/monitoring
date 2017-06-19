@@ -38,14 +38,14 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
     <div class="map" style="background-image: url('{$mapImg}')">
         <div class="block">
             <div class="mapName">Карта: {$map}</div>
+            <div class="status">
+                {$status}
+            </div>
         </div>
     </div>
     <div class="players">Игроки: {$infoInfo["playerNumber"]} / {$infoInfo["maxPlayers"]}</div>
     <div class="address">
      <b>{$dbInfo["server_ip"]}</b>
-    </div>
-    <div class="status">
-     {$status}
     </div>
     <div class="steam">
      <a href="steam://connect/{$dbInfo["server_ip"]}/" title="Подключиться через Steam" target="_blank">
