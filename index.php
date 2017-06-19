@@ -77,8 +77,8 @@ switch ($load) {
         //$server_data = dbarray_fetch($take_server);
         //$page_title = "Сервер: $server_data[server_name]";
         //$load_file = (!empty($_GET['id']) and is_numeric($_GET['id'])) ? __DIR__ . '/templates/server_info.php' : __DIR__ . '/templates/servers.php';
-        $page_title = "Сервер: {$servers[$server_id]['info']['serverName']}";
-        $load_file = (!empty($_GET['id']) and is_numeric($_GET['id'])) ? __DIR__ . '/templates/server_info.php' : __DIR__ . '/templates/servers.php';
+        $page_title = "Сервер: {$servers[$_GET['id']]['info']['serverName']}";
+        $load_file = (!empty($servers[$_GET['id']])) ? __DIR__ . '/templates/server_info.php' : __DIR__ . '/templates/servers.php';
         break;
     case 'message':
         $msg_code = $_GET['code'];
