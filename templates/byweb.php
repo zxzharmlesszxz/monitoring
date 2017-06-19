@@ -4,7 +4,6 @@ require_once(__DIR__ . '/../include/core.php');
 echo <<<EOT
 <html>
  <head>
-  <link rel="stylesheet" type="text/css" href="/templates/css/style.css">
   <link rel="stylesheet" type="text/css" href="/templates/css/byweb.css">
  </head>
  <body>
