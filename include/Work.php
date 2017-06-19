@@ -47,6 +47,7 @@ class Work extends Threaded
 
             $server = array_merge((array)$value, $info);
             $server['status'] = (!empty($info['serverName'])) ? 'on' : 'off';
+            $oldStatus = (!empty($value['info']['serverName'])) ? 'on' : 'off';
 
             $site = !empty($server['server_site']) ? parse_site($server['server_site']) : false;
 
@@ -59,7 +60,7 @@ class Work extends Threaded
             }
 
             //if (($server['status'] == 'off' || empty($server['serverName'])) or !$site) {
-            if ($server['status'] == 'off' || empty($server['serverName'])) {
+            /*if ($server['status'] == 'off' || empty($server['serverName'])) {
                 $mysqlConnection->real_query(
                 /*    "UPDATE " . DB_SERVERS . " SET
                     server_status = '0',
@@ -67,7 +68,7 @@ class Work extends Threaded
                     server_players = '-',
                     server_maxplayers = '-' "
                     . (($server['server_status'] == 1) ? ", status_change = " . time() : "")
-                    . " WHERE server_id='{$server['server_id']}';"*/
+                    . " WHERE server_id='{$server['server_id']}';"
                     (($server['status'] == 'off') ?
                         "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" :
                         ""
@@ -89,7 +90,7 @@ class Work extends Threaded
                 server_maxplayers = '{$server['maxPlayers']}',
                 server_status = '1' "
                 . (($server['server_status'] == 0) ? ", status_change = " . time() : "")
-                . " WHERE server_id='{$server['server_id']}';"*/
+                . " WHERE server_id='{$server['server_id']}';"
                 ($server['status'] == 'on') ?
                     "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" :
                     ""
@@ -98,6 +99,13 @@ class Work extends Threaded
                     "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" :
                     ""
                 ) . PHP_EOL;
+            */
+
+
+                if ($server['status'] !== $oldStatus) {
+                    $mysqlConnection->real_query("UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';");
+                    print "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" . PHP_EOL;
+                }
         } while ($value !== null);
     }
 }
