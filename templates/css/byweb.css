@@ -64,7 +64,7 @@ div.map {
     background-size: cover;
 }
 
-div.mapName {
+div.block {
     position: absolute;
     bottom: 0;
     width: 100%;
