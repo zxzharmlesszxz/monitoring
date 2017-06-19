@@ -444,10 +444,10 @@ function topMap(array $servers)
     $count = 0;
     $maps = array();
     foreach ($servers as $server) {
-        if (!array_key_exists($server['server_map'], $maps))
-            $maps[$server['server_map']] = 1;
+        if (!array_key_exists($server['info']['mapName'], $maps))
+            $maps[$server['info']['mapName']] = 1;
         else
-            $maps[$server['server_map']] += 1;
+            $maps[$server['info']['mapName']] += 1;
     }
 
     foreach ($maps as $map => $num) {

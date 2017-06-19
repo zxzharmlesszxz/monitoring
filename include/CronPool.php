@@ -19,6 +19,7 @@ class CronPool extends Pool
      */
     public function destruct($hostname, $username, $password, $database, $charset, $port = 3306)
     {
+        global $servers;
          $connection = new mysqli(
              $hostname,
              $username,
@@ -28,17 +29,15 @@ class CronPool extends Pool
           );
 
         $connection->set_charset($charset);
-        $servers = array();
-        $sql = $connection->query("SELECT * FROM " . DB_SERVERS . ";");
         $online = 0;
-        while ($r = $sql->fetch_array()) {
-            $servers[] = $r;
-            if($r['server_status'] == 1)
+
+        foreach ($servers as $id => $server) {
+            if(!empty($server['info']['serverName']))
                 $online++;
         }
 
         $map = topMap((array) $servers);
-        $result = $connection->real_query("
+        $connection->real_query("
             UPDATE " . DB_SETTINGS . " SET
             last_update='" . time() . "',
             servers_total='" . count($servers) . "',
