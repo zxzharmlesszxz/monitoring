@@ -38,7 +38,6 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
       </a>
     </div>
     <div class="map" style="background-image: url('{MAPS}{$dbInfo['server_game']}/{$infoInfo['mapName']}.png')">
-        <a href="/server/{$_GET['id']}/" target="_blank">{$img}</a>
         <span>Карта: {$map}</span>
     </div>
     <div class="players">Игроки: {$infoInfo["playerNumber"]} / {$infoInfo["maxPlayers"]}</div>
