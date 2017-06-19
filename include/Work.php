@@ -50,10 +50,10 @@ class Work extends Threaded
             $server = array_merge((array)$value, $info);
             $server['status'] = (!empty($info['serverName'])) ? 'on' : 'off';
 
-            var_dump($server['status']);
+            //var_dump($server['status']);
             $site = !empty($server['server_site']) ? parse_site($server['server_site']) : false;
 
-            var_dump($server['status'] !== $oldStatus);
+            //var_dump($server['status'] !== $oldStatus);
             if ($server['status'] == 'off' and time() - $server['status_change'] > 86400) {
                 $mysqlConnection->real_query(
                     "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';"
@@ -107,7 +107,7 @@ class Work extends Threaded
 
                 if ($server['status'] !== $oldStatus) {
                     $mysqlConnection->real_query("UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';");
-                    print "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" . PHP_EOL;
+                    //print "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" . PHP_EOL;
                 }
         } while ($value !== null);
     }
