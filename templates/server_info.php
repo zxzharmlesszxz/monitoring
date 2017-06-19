@@ -252,10 +252,10 @@ if (empty($data)) {
         <div style='padding-bottom:3px;'>
          <div class='box_title'>Большой HTML-мониторинг:</div>
         </div>
-         <iframe style='border: 1px solid #7D7D7D;' src='https://monitoring.contra.net.ua/byweb?id={$server_data['server_id']}' frameborder='1' width='190' height='400' scrolling='no'>
+         <iframe style='border: 1px solid #7D7D7D;' src='https://monitoring.contra.net.ua/byweb?id={$server_data['server_id']}' frameborder='1' width='190' height='310' scrolling='no'>
          </iframe>
          <br>
-         <textarea rows='6' cols='24'><iframe src='https://monitoring.contra.net.ua/byweb?id={$server_data['server_id']}' frameborder='1' width='190' height='400' scrolling='no'></iframe></textarea>
+         <textarea rows='6' cols='24'><iframe src='https://monitoring.contra.net.ua/byweb?id={$server_data['server_id']}' frameborder='1' width='190' height='310' scrolling='no'></iframe></textarea>
        </div>
        {$about}
       </td>
