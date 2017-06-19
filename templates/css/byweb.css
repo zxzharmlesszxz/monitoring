@@ -49,6 +49,8 @@ div.playersBlock ol {
     padding-left: 2em;
     height: 100px;
     overflow: auto;
+    max-width: 100%;
+    min-width: calc(100% - 2em);
 }
 
 span.score {
