@@ -68,12 +68,12 @@ class Work extends Threaded
                     server_maxplayers = '-' "
                     . (($server['server_status'] == 1) ? ", status_change = " . time() : "")
                     . " WHERE server_id='{$server['server_id']}';"*/
-                    (($server['server_status'] == 1) ?
+                    (($server['status'] == 'off') ?
                         "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" :
                         ""
                     )
                 );
-                print (($server['server_status'] == 1) ?
+                print (($server['status'] == 'off') ?
                         "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" :
                         ""
                     ) . PHP_EOL;
@@ -90,11 +90,11 @@ class Work extends Threaded
                 server_status = '1' "
                 . (($server['server_status'] == 0) ? ", status_change = " . time() : "")
                 . " WHERE server_id='{$server['server_id']}';"*/
-                ($server['server_status'] == 0) ?
+                ($server['status'] == 'on') ?
                     "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" :
                     ""
             );
-            print (($server['server_status'] == 0) ?
+            print (($server['status'] == 'on') ?
                     "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" :
                     ""
                 ) . PHP_EOL;
