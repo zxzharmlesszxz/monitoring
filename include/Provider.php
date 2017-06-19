@@ -47,7 +47,7 @@ class Provider extends Threaded
             $this->items[] = $r;
             $this->total++;
             //print_r($r);
-            echo "\n";
+            //echo "\n";
         }
     }
 
