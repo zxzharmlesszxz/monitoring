@@ -57,5 +57,11 @@ div.map {
 }
 
 div.mapName {
-
+    position: absolute;
+    bottom: 0;
+    opacity: 0.5;
+    background-color: white;
+    width: 100%;
+    padding: 1em;
+    color: black;
 }
