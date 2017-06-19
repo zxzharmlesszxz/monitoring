@@ -11,15 +11,31 @@ if (!defined("MONENGINE")) {
 }
 /* Other code */
 
+$redis = new Redis();
+$redis->connect($settings['redis_host']);
+$redis->auth($settings['redis_password']);
+$redis->select(1);
+
+$servers = $redis->hGetAll('servers');
+$top_servers = array();
+
+foreach ($servers as $id => $server) {
+    $servers[$id] = unserialize($server);
+    if ($server['dbInfo']['server_top'] != '0')
+    {
+        $tops_array[$server['dbInfo']['server_top']] = $server;
+    }
+}
+
 if ($settings['top_rows'] > 0) {
-    $top_servers = db()->query("SELECT * FROM " . DB_SERVERS . " WHERE server_new = '0' AND server_top != '0'");
+/*    $top_servers = db()->query("SELECT * FROM " . DB_SERVERS . " WHERE server_new = '0' AND server_top != '0'");
     while ($top_servers_array = db()->fetch_array($top_servers)) {
         $i = $top_servers_array['server_top'];
         foreach ($top_servers_array as $k => $v) {
             $tops_array[$i][$k] = $v;
         }
     }
-
+*/
     // Шаблон занятого места
     $template_got = '
   <div class="unit">
@@ -71,30 +87,30 @@ if ($settings['top_rows'] > 0) {
     $line = 0;
     for ($i = 1; $i <= 5 * LINES_NUM; $i++) {
         if (@is_array($tops_array[$i])) {
-            $server_id = $tops_array[$i]['server_id'];
-            $server_name = $tops_array[$i]['server_name'];
+            $server_id = $tops_array[$i]['dbInfo']['server_id'];
+            $server_name = $tops_array[$i]['info']['serverName'];
 
             /*if (mb_strlen($server_name, 'UTF-8') > 24) {
                 $server_name = mb_substr($server_name, 0, 24, 'UTF-8') . "...";
             }*/
 
             $server_name = html_entity_decode($server_name);
-            $server_location = $tops_array[$i]['server_location'];
-            $server_address = $tops_array[$i]['server_ip'];
-            $server_players_num = $tops_array[$i]['server_players'];
-            $server_players_num_max = $tops_array[$i]['server_maxplayers'];
-            $server_map = $tops_array[$i]['server_map'];
-            $server_game = $tops_array[$i]['server_game'];
+            $server_location = $tops_array[$i]['dbInfo']['server_location'];
+            $server_address = $tops_array[$i]['dbInfo']['server_ip'];
+            $server_players_num = $tops_array[$i]['info']['playerNumber'];
+            $server_players_num_max = $tops_array[$i]['info']['maxPlayers'];
+            $server_map = $tops_array[$i]['info']['mapName'];
+            $server_game = $tops_array[$i]['dbInfo']['server_game'];
 
-            if ($tops_array[$i]['server_off'] == 1)
+            /*if ($tops_array[$i]['info']['serverName'] == null)
                 $server_address = "<span style='color:#789ABF;cursor:help;' title='Данный сервер заблокирован в мониторинге'>[Сервер заблокирован]</a>";
-
-            if ($tops_array[$i]['server_ipport_style']) {
-                $grc = db()->fetch_array(db()->query("SELECT * FROM mon_rowstyles WHERE name='" . $tops_array[$i]['server_ipport_style'] . "'"));
+*/
+            if ($tops_array[$i]['dbInfo']['server_ipport_style']) {
+                $grc = db()->fetch_array(db()->query("SELECT * FROM mon_rowstyles WHERE name='" . $tops_array[$i]['dbInfo']['server_ipport_style'] . "'"));
                 $server_address = "<span style='" . $grc['style'] . "'>$server_address</span>";
             }
 
-            if ($tops_array[$i]['server_status'] == 0) {
+            if ($tops_array[$i]['info']['serverName'] == null) {
                 $server_address .= " <span style='color:#789ABF;cursor:help;' title='Данный сервер выключен'>[<span style='color:#AAAAAA; cursor:help;'>OFF</span>]</span>";
                 $server_players_num = "N";
                 $server_players_num_max = "A";

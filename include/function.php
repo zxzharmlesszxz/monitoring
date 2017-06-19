@@ -677,3 +677,13 @@ function toUnicodeEntities($text, $from = "w")
     }
     return $uni;
 }
+
+/**
+ * @param $a
+ * @param $b
+ * @return mixed
+ */
+function sortByVotes($a, $b)
+{
+    return $b['dbInfo']['votes'] - $a['dbInfo']['votes'];
+}
