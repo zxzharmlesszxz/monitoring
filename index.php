@@ -73,9 +73,11 @@ switch ($load) {
         $load_file = __DIR__ . '/templates/search.php';
         break;
     case 'server':
-        $take_server = dbquery("SELECT * FROM " . DB_SERVERS . " WHERE server_id = '{$_GET['id']}';");
-        $server_data = dbarray_fetch($take_server);
-        $page_title = "Сервер: $server_data[server_name]";
+        //$take_server = dbquery("SELECT * FROM " . DB_SERVERS . " WHERE server_id = '{$_GET['id']}';");
+        //$server_data = dbarray_fetch($take_server);
+        //$page_title = "Сервер: $server_data[server_name]";
+        //$load_file = (!empty($_GET['id']) and is_numeric($_GET['id'])) ? __DIR__ . '/templates/server_info.php' : __DIR__ . '/templates/servers.php';
+        $page_title = "Сервер: {$servers[$server_id]['info']['serverName']}";
         $load_file = (!empty($_GET['id']) and is_numeric($_GET['id'])) ? __DIR__ . '/templates/server_info.php' : __DIR__ . '/templates/servers.php';
         break;
     case 'message':
