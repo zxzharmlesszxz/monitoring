@@ -53,6 +53,14 @@ div.playersBlock ol {
     min-width: calc(100% - 2em);
 }
 
+div.playersBlock ol li:nth-child(odd) {
+    background-color: #4b4b4b;
+}
+
+div.playersBlock ol li:nth-child(even) {
+    background-color: #6c6c6c;
+}
+
 span.score {
     float: right;
     margin-right: 1em;
