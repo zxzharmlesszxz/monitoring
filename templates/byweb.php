@@ -13,7 +13,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
     $data = $servers[$_GET['id']];
     if (!empty($data)) {
         $infoInfo = $data['info'];
-        $playersInfo = $data['players'];
+        $playersInfo = usort($data['players'], 'sortByKills');
         $rulesInfo = $data['rules'];
         $dbInfo = $data['dbInfo'];
 
