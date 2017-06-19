@@ -14,6 +14,9 @@ body {
 
 div#frame {
     margin: 1px;
+    max-width: 188px;
+    overflow: hidden;
+    min-width: 188px;
 }
 
 div.name {
@@ -55,7 +58,7 @@ span.score {
 
 div.map {
     position: relative;
-    width: 100%;
+    width: 186px;
     height: 120px;
     border:1px solid #898989;
 }
@@ -65,7 +68,7 @@ div.mapName {
     bottom: 0;
     opacity: 0.5;
     background-color: white;
-    width: 180px;
+    width: 176px;
     padding: 1em 5px;
     color: black;
     overflow: hidden;
