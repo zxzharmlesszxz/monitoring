@@ -43,14 +43,17 @@ class Work extends Threaded
             $rules = $sq->getRules();
             $sq->disconnect();
             $serverForRedis = serialize(array('info' => $info, 'players' => $players, 'rules' => $rules, 'dbInfo' => (array) $value));
+            var_dump($servers[$value['server_id']]['info']['serverName']);
             $oldStatus = (!empty($servers[$value['server_id']]['info']['serverName'])) ? 'on' : 'off';
             $redisConnection->hSet('servers', $value['server_id'], $serverForRedis);
 
             $server = array_merge((array)$value, $info);
             $server['status'] = (!empty($info['serverName'])) ? 'on' : 'off';
 
+            var_dump($server['status']);
             $site = !empty($server['server_site']) ? parse_site($server['server_site']) : false;
 
+            var_dump($server['status'] !== $oldStatus);
             if ($server['status'] == 'off' and time() - $server['status_change'] > 86400) {
                 $mysqlConnection->real_query(
                     "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';"
