@@ -36,7 +36,9 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
       </a>
     </div>
     <div class="map" style="background-image: url('{$mapImg}')">
-        <div class="mapName">Карта: {$map}</div>
+        <div>
+            <div class="mapName">Карта: {$map}</div>
+        </div>
     </div>
     <div class="players">Игроки: {$infoInfo["playerNumber"]} / {$infoInfo["maxPlayers"]}</div>
     <div class="address">
