@@ -92,7 +92,7 @@ div.mapName {
 
 div.status {
     position: absolute;
-    left: calc(50% - 28px);
+    left: calc(50% - 33px);
     z-index: 999;
     top: 0;
     padding: 1em 5px;
