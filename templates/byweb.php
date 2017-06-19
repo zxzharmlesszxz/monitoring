@@ -36,7 +36,7 @@ if (isset($_GET["id"]) and $_GET["id"] >= 1) {
       </a>
     </div>
     <div class="map" style="background-image: url('{$mapImg}')">
-        <div>
+        <div class="block">
             <div class="mapName">Карта: {$map}</div>
         </div>
     </div>
