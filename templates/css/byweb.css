@@ -51,8 +51,8 @@ span.score {
 
 div.map {
     position: relative;
-    width: 150px;
-    height: 113px;
+    width: 100%;
+    height: 120px;
     border:1px solid #898989;
 }
 
@@ -61,7 +61,8 @@ div.mapName {
     bottom: 0;
     opacity: 0.5;
     background-color: white;
-    width: 100%;
-    padding: 1em;
+    width: 180px;
+    padding: 1em 5px;
     color: black;
+    overflow: hidden;
 }
