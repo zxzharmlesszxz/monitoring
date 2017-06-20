@@ -38,7 +38,7 @@ while ($server_l = db()->fetch_array($servers_list_l)) {
     $servers_new .= "
       <tr>
        <td>
-        <a href='server/{$server_l['server_id']}'>{$server_l['server_name']}</a>
+        <a href='server/{$server_l['server_id']}'>{$servers[$server_l['server_id']]['info']['serverName']}</a>
        </td>
        <td>{$status}</td>
       </tr>
@@ -64,10 +64,10 @@ while ($server = db()->fetch_array($servers_list)) {
     $servers .= "
      <tr>
       <td>
-       <a href='server/{$server['server_id']}'>{$server['server_name']}</a>
+       <a href='server/{$server['server_id']}'>{$servers[$server_l['server_id']]['info']['serverName']}</a>
       </td>
-      <td>{$server['server_players']} / {$server['server_maxplayers']}</td>
-      <td>{$server['server_map']}</td>
+      <td>{$servers[$server_l['server_id']]['info']['playersNumber']} / {$servers[$server_l['server_id']]['info']['maxPlayers']}</td>
+      <td>{$servers[$server_l['server_id']]['info']['mapName']}</td>
       <td>{$server['votes']}</td>
       <td>{$status}</td>
      </tr>
