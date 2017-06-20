@@ -15,7 +15,7 @@ while ($server = db()->fetch_array($servers)) {
 
 if (isset($_POST['submit']) && isset($_POST['server'])) {
         $server = db()->fetch_array(db()->query("SELECT * FROM `" . DB_SERVERS . "` WHERE `server_id` = '" . intval($_POST['server']) . "';"));
-        $message = sprintf($settings['mail_header'], $server['server_name'], $server['server_ip'], $server['server_id'], date("d.m.Y", $server['server_regdata']));
+        $message = sprintf($settings['mail_header'], $servers[$server['server_id']][info]['server_name'], $server['server_ip'], $server['server_id'], date("d.m.Y", $server['server_regdata']));
         send_mail($server['server_email'], "{$message}\n\n{$_POST['message']}\n\n{$settings['mail_footer']}");
 }
 
