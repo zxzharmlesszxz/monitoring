@@ -72,7 +72,8 @@ $redis = new Redis();
 $redis->connect($settings['redis_host']);
 $redis->auth($settings['redis_password']);
 $redis->select(1);
-//prof_flag("Redis get server");
+prof_flag("Redis get server");
+$servers = array_map('decode', $redis->hGetAll('servers'));
 //$servers = $redis->hGetAll('servers');
 //prof_flag("Decode data");
 /*foreach ($servers as $id => $item) {

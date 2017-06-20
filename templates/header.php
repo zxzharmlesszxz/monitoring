@@ -117,7 +117,6 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
                 <li><a title="Каталог интернет сайтов" href="/links" rel="nofollow">Партнеры</a></li>
                 <li><a title="Наш мастерсервер" href="/mserv" rel="follow">Мастерсервер</a></li>
                 <li><a title="Скачать игру cs 1.6" href="/load/CS 1.6.exe" rel="follow">Скачать cs 1.6</a></li>
-                <li><a title="Сервера из redis" href="/serversredis" rel="follow">Сервера из redis</a></li>
             </ul>
         </div>
         <!-- /Navigation -->

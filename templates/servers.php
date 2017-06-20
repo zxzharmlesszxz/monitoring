@@ -10,37 +10,37 @@ if (!defined("MONENGINE")) {
     exit();
 }
 
-$select_query = "SELECT * FROM " . DB_SERVERS .
-    " WHERE server_new != 1
-    AND server_status != 0
-    AND server_off != 1
-    {$filter}
-    ORDER BY server_vip DESC,
-    votes DESC
-    ";
-$servers = dbquery($select_query);
-
 if ($servers_total != 0) {
     $row = '';
-    while ($r = dbarray_fetch($servers)) {
-        $players = $r['server_players'] . "/" . $r['server_maxplayers'];
+    $vip = '';
+
+    //uasort($servers, "sortByVotes");
+
+    foreach ($servers as $id => $server) {
+        //$server = json_decode($server, true);
+        $str = '';
+        if ($server['info']['serverName'] == null)
+            continue;
+        $r = array_merge($server['info'], $server['dbInfo']);
+
+        $players = $r['playerNumber'] . "/" . $r['maxPlayers'];
         $server_location = $r['server_location'];
 
         if (empty($server_location))
             $server_location = 'undefined';
 
         if (array_key_exists($r['server_row_style'], $styles)) {
-            $row .= "<tr style='{$styles[$r['server_row_style']]['style']}'>";
+            $str .= "<tr style='{$styles[$r['server_row_style']]['style']}'>";
         } else {
-            $row .= "<tr>";
+            $str .= "<tr>";
         }
 
-        if ($r['server_players'] == $r['server_maxplayers']) {
-            $players = "<span style='color: #00FF00'>{$r['server_players']}/{$r['server_maxplayers']}</span>";
+        if ($r['playerNumber'] == $r['maxPlayers']) {
+            $players = "<span>{$r['playerNumber']}/{$r['maxPlayers']}</span>";
         }
 
-        if ($r['server_status'] == 1) {
-            $server_full = floor(($r['server_players'] / $r['server_maxplayers']) * 100);
+        if ($r['serverName'] !== null and $r['maxPlayers'] != 0) {
+            $server_full = floor(($r['playerNumber'] / $r['maxPlayers']) * 100);
         } else {
             $server_full = "0";
         }
@@ -63,29 +63,30 @@ if ($servers_total != 0) {
         if ($server_full <= '100' and $server_full > '80')
             $la = "la5";
 
-        $row .= "<td align='left' style='padding-left:20px;'>";
-        $row .= "<img src='/images/flags/$server_location.png' class='location' title='{$r['server_location']}' alt='{$r['server_location']}'>";
-        $row .= "<a class='name' title='Перейти на страницу сервера {$r['server_name']}' href='" . $settings['site_url'] . "server/{$r['server_id']}' rel='follow'>" . htmlspecialchars($r['server_name']) . "</a> ";
-        $row .= (($r['server_steam'] == '1') ? '<img src=\'/images/img/icon_steam.png\'>' : '');
-        $row .= "</td>";
-        $row .= "<td><img src='/images/icons/{$r['server_game']}.gif' class='game' title='{$r['server_game']} сервер' alt='{$r['server_game']} сервер' />";
-        $row .= "{$r['server_ip']}</td>";
-        $row .= "<td class='mode'>{$r['server_mode']}</td>";
-        $row .= "<td class='map'>{$r['server_map']}<span class='icon' data-icon='" . MAPS . "{$r['server_game']}/{$r['server_map']}.png'></span></td>";
-        $row .= "<td class='players'><span class='la'><img src='/images/la_icons/{$la}.gif'></span>{$players}</td>";
-        $row .= "<td class='votes'>";
+        $str .= "<td>";
+        $str .= "<img src='/images/flags/$server_location.png' class='location' title='{$server_location}' alt='{$server_location}'>";
+        $str .= "<a class='name' title='Перейти на страницу сервера {$r['serverName']}' href='" . $settings['site_url'] . "server/{$id}' rel='follow'>" . htmlspecialchars($r['serverName']) . "</a> ";
+        $str .= (($r['server_steam'] == '1') ? '<img src=\'/images/img/icon_steam.png\'>' : '');
+        $str .= "</td>";
+        $str .= "<td><img src='/images/icons/{$r['server_game']}.gif' class='game' title='{$r['server_game']} сервер' alt='{$r['server_game']} сервер' />";
+        $str .= "{$r['server_ip']}</td>";
+        $str .= "<td class='mode'>{$r['server_mode']}</td>";
+        $str .= "<td class='map'>{$r['mapName']}<span class='icon' data-icon='" . MAPS . "{$r['server_game']}/{$r['mapName']}.png'></span></td>";
+        $str .= "<td class='players'><span class='la'><img src='/images/la_icons/{$la}.gif'></span>{$players}</td>";
+        $str .= "<td class='votes'>";
 
         if ($r['server_vip'] == 1) {
-            $row .= '<img src="/images/img/vip.png" align="texttop" style="opacity:0.6;">';
+            $str .= '<img src="/images/img/vip.png" style="opacity:0.6;">';
         } else {
-            $row .= "<span class='votes_count' id='votes_count_{$r['server_id']}' >" . intval($r['votes']) . "</span>";
-            $row .= "<span class='vote_buttons' id='vote_buttons_{$r['server_id']}'>";
-            $row .= "<a href='javascript://' onClick=\"rating({$r['server_id']}, 'up', '" . md5("m0n3ng1ne.s4lt:P{]we{$r['server_id']}@._)%;") . "');\" class='voteup' id='{$r['server_id']}'></a>";
-            $row .= "<a href='javascript://' onClick=\"rating({$r['server_id']}, 'down', '" . md5("m0n3ng1ne.s4lt:P{]we{$r['server_id']}@._)%;") . "');\" class='votedown' id='{$r['server_id']}'></a>";
-            $row .= "</span>";
+            $str .= "<span class='votes_count' id='votes_count_{$id}' >" . intval($r['votes']) . "</span>";
+            $str .= "<span class='vote_buttons' id='vote_buttons_{$id}'>";
+            $str .= "<a href='javascript://' onClick=\"rating({$id}, 'up', '" . md5("m0n3ng1ne.s4lt:P{]we{$id}@._)%;") . "');\" class='voteup' id='{$id}'></a>";
+            $str .= "<a href='javascript://' onClick=\"rating({$id}, 'down', '" . md5("m0n3ng1ne.s4lt:P{]we{$id}@._)%;") . "');\" class='votedown' id='{$id}'></a>";
+            $str .= "</span>";
         }
-        $row .= "</td>";
-        $row .= "</tr>";
+        $str .= "</td>";
+        $str .= "</tr>";
+        $r['server_vip'] ? $vip .= $str : $row .= $str;
     }
 }
 
@@ -93,7 +94,7 @@ echo <<<EOT
 <table class='servers' cellspacing='0' border='0'>
  <thead>
   <tr>
-   <th style='padding-left:45px;'>Название сервера</th>
+   <th>Название сервера</th>
    <th>Адрес сервера</th>
    <th>Мод</th>
    <th>Карта</th>
@@ -102,6 +103,7 @@ echo <<<EOT
   </tr>
  </thead>
  <tbody>
+ ${vip}
  {$row}
  </tbody>
 </table>

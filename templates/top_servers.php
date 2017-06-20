@@ -13,13 +13,6 @@ if (!defined("MONENGINE")) {
 
 $top_servers = array();
 
-function decode($i)
-{
-    return json_decode($i, true);
-}
-
-$servers = array_map('decode', $redis->hGetAll('servers'));
-
 foreach ($servers as $id => $server) {
     //$server = json_decode($server, true);
     if ($server['dbInfo']['server_top'] != '0') {

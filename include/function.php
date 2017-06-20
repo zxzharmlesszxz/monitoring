@@ -535,3 +535,12 @@ function sortByVotes($a, $b)
 {
     return $b['dbInfo']['votes'] - $a['dbInfo']['votes'];
 }
+
+/**
+ * @param $i
+ * @return mixed
+ */
+function decode($i)
+{
+    return json_decode($i, true);
+}
