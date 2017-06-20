@@ -10,7 +10,7 @@ $str = '';
 $servers = db()->query("SELECT * FROM `" . DB_SERVERS . "` WHERE `server_email` != '';");
 
 while ($server = db()->fetch_array($servers)) {
-        $str .= "<option value='{$server['server_id']}'>{$server['server_id']}-{$server['server_ip']}({$server['server_name']})</option>";
+        $str .= "<option value='{$server['server_id']}'>{$server['server_id']}-{$server['server_ip']}</option>";
 }
 
 if (isset($_POST['submit']) && isset($_POST['server'])) {

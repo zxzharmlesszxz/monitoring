@@ -19,7 +19,6 @@ $game = '';
 $mode = '';
 $email = $settings['site_email'];
 $site = '';
-$icq = '';
 $location = '';
 $about = '';
 
@@ -34,7 +33,6 @@ if (isset($_POST['submit_registration'])) {
  $site = db()->escape_value($_POST['server_site']);
  $game = db()->escape_value($_POST['server_game']);
  $mode = db()->escape_value($_POST['server_mode']);
- $icq = db()->escape_value($_POST['server_icq']);
  $location = db()->escape_value($_POST['server_location']);
  $about = db()->escape_value($_POST['server_about']);
  $regex_ipport = "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\:[0-9]{1,5}";
@@ -53,18 +51,12 @@ if (isset($_POST['submit_registration'])) {
 
  if (!array_key_exists($location, $countries->countries)) $errors[] = "Выбрана несуществующая локация $location.";
  
- if (!empty($icq) and !is_numeric($icq)) {
-  $errors[] = "Введите корректный ICQ.";
- } else {
-  if (strlen($icq) > 9) $errors[] = "Введите корректный ICQ.";
- }
- 
  if (!empty($site) and !isValidURL($site)) $errors[] = "Введите корректный адрес сайта.";
  
  if (count($errors) == 0) {
   $add_server_query = "INSERT INTO `".DB_SERVERS."`
-  (`server_game`, `server_mode`, `server_ip`, `server_location`, `server_steam`, `server_regdata`, `server_email`, `server_icq`, `server_new`, `server_site`, `about`)
-  VALUES ('{$game}', '{$mode}', '{$address}', '{$location}', '{$steam}', '".time()."', '{$email}', '{$icq}', '0', '{$site}', '{$about}')";
+  (`server_game`, `server_mode`, `server_ip`, `server_location`, `server_steam`, `server_regdata`, `server_email`, `server_new`, `server_site`, `about`)
+  VALUES ('{$game}', '{$mode}', '{$address}', '{$location}', '{$steam}', '".time()."', '{$email}', '0', '{$site}', '{$about}')";
   
   $add_server = db()->query($add_server_query);
   if (!$add_server) $errors[] = "Ошибка записи в базу данных.";
@@ -154,12 +146,6 @@ echo <<<EOT
        <label>Сайт сервера</label>
        <div class='right'>
         <input type='text' name='server_site' value='{$site}' id='server_site'>
-       </div>
-      </div>
-      <div class='row'>
-       <label>ICQ администратора</label>
-       <div class='right'>
-        <input type='text' name='server_icq' value='{$icq}' id='server_icq'>
        </div>
       </div>
       <div class='row'>
