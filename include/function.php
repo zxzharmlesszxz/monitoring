@@ -484,7 +484,7 @@ function modes_menu()
  ";
 
     foreach ($modes as $mode => $title) {
-        $str .= "<li><a title='Сервера с модом {$title}' href='/{$mode}' rel='nofollow'>{$title}</a></li>";
+        $str .= "<li><a title='Сервера с модом {$title}' href='#{$mode}'>{$title}</a></li>";
     }
 
     $str .= "
