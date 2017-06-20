@@ -14,7 +14,7 @@ if ($servers_total != 0) {
     $row = '';
     $vip = '';
 
-    uasort($servers, "sortByVotes");
+    //uasort($servers, "sortByVotes");
 
     foreach ($servers as $id => $server) {
         $server = json_decode($server, true);
