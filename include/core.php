@@ -73,10 +73,10 @@ $redis->connect($settings['redis_host']);
 $redis->auth($settings['redis_password']);
 $redis->select(1);
 prof_flag("Redis get server");
-$servers = json_decode($redis->hGetAll('servers'));
-/*prof_flag("Decode data");
+$servers = $redis->hGetAll('servers');
+prof_flag("Decode data");
 foreach ($servers as $id => $item) {
     $servers[$id] = json_decode($item, true);
-}*/
+}
 prof_flag("Sort data");
 ksort($servers);
