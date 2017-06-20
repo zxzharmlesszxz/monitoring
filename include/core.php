@@ -3,6 +3,7 @@
  * Engine core
  * Made by starky
 */
+include_once __DIR__ . "/profieler.php";
 prof_flag("Including " . __FILE__);
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
