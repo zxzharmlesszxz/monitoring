@@ -3,7 +3,7 @@
 define('MONENGINE', 'Remake by starky');
 
 Error_Reporting(E_ALL);
-ini_set('xdebug.profiler_enable', 1);
+ini_set('xdebug.profiler_enable_trigger', 1);
 
 require_once(__DIR__ . '/include/profieler.php');
 
