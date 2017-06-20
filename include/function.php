@@ -485,7 +485,7 @@ function modes_menu()
  ";
 
     foreach ($modes as $mode => $title) {
-        $str .= "<li><a title='Сервера с модом {$title}' data-text='{$title}'>{$title}</a></li>";
+        $str .= "<li><a title='Сервера с модом {$title}' data-text='{$mode}'>{$title}</a></li>";
     }
 
     $str .= "
