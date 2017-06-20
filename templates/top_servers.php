@@ -16,10 +16,10 @@ $top_servers = array();
 $servers = $redis->hGetAll('servers');
 
 foreach ($servers as $id => $server) {
-    $server = json_decode($server, true);
-    if ($server['dbInfo']['server_top'] != '0')
+    $servers[$id] = json_decode($server, true);
+    if ($servers[$id]['dbInfo']['server_top'] != '0')
     {
-        $tops_array[$server['dbInfo']['server_top']] = $server;
+        $tops_array[$server[$id]['dbInfo']['server_top']] = $server;
     }
 }
 
