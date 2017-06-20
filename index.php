@@ -4,8 +4,12 @@ define('MONENGINE', 'Remake by starky');
 
 Error_Reporting(E_ALL);
 
-session_start();
+require_once(__DIR__ . '/include/profieler.php');
 
+prof_flag("Start");
+
+session_start();
+prof_flag("Include core");
 require_once(__DIR__ . '/include/core.php');
 
 if ($settings['site_closed'] == '1') {
@@ -14,7 +18,7 @@ if ($settings['site_closed'] == '1') {
 }
 
 // Body
-
+prof_flag("Determine page");
 $load = "";
 
 if (isset($_GET['page'])) $load = $_GET['page'];
@@ -132,8 +136,11 @@ switch ($load) {
         break;
 }
 
+prof_flag("Including header");
 // Header block
 require_once(THEME . "header.php");
+
+prof_flag("Including page");
 
 // Main area
 if (file_exists($load_file)) {
@@ -143,9 +150,13 @@ if (file_exists($load_file)) {
     require('include/messages.php'); // File not found
 }
 
+prof_flag("Including footer");
+
 // Footer block
 require_once THEME . "footer.php";
-
+prof_flag("Init sape");
 require_once(__DIR__ . '/' . _SAPE_USER . '/sape.php');
 $sape_article = new SAPE_articles();
 echo $sape_article->return_announcements();
+prof_flag("Done");
+prof_print();
