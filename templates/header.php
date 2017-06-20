@@ -90,11 +90,12 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
                         .column(2)
                         .search($(this).text())
                         .draw();
+                } else {
+                    table
+                        .column(2)
+                        .search("")
+                        .draw();
                 }
-                table
-                    .column(2)
-                    .search("")
-                    .draw();
             });
         });
     </script>
