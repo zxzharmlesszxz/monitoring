@@ -56,6 +56,7 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
                     "infoFiltered": "<?php echo $locale['025']; ?>",
                     "lengthMenu": "<?php echo $locale['026']; ?>",
                     "sInfoEmpty": "<?php echo $locale['027']; ?>",
+                    "infoEmpty": "<?php echo $locale['027']; ?>",
                     "oPaginate": {
                         "sFirst": "<?php echo $locale['028']; ?>",
                         "sPrevious": "<?php echo $locale['029']; ?>",
