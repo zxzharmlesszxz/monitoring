@@ -13,25 +13,29 @@ if (!defined("MONENGINE")) {
 
 $top_servers = array();
 
-$servers = $redis->hGetAll('servers');
+function decode($i)
+{
+    return json_decode($i, true);
+}
+
+$servers = array_map('decode', $redis->hGetAll('servers'));
 
 foreach ($servers as $id => $server) {
-    $servers[$id] = json_decode($servers[$id], true);
-    if ($servers[$id]['dbInfo']['server_top'] != '0')
-    {
-        $tops_array[$server[$id]['dbInfo']['server_top']] = $server;
+    //$server = json_decode($server, true);
+    if ($server['dbInfo']['server_top'] != '0') {
+        $tops_array[$server['dbInfo']['server_top']] = $server;
     }
 }
 
 if ($settings['top_rows'] > 0) {
-/*    $top_servers = db()->query("SELECT * FROM " . DB_SERVERS . " WHERE server_new = '0' AND server_top != '0'");
-    while ($top_servers_array = db()->fetch_array($top_servers)) {
-        $i = $top_servers_array['server_top'];
-        foreach ($top_servers_array as $k => $v) {
-            $tops_array[$i][$k] = $v;
+    /*    $top_servers = db()->query("SELECT * FROM " . DB_SERVERS . " WHERE server_new = '0' AND server_top != '0'");
+        while ($top_servers_array = db()->fetch_array($top_servers)) {
+            $i = $top_servers_array['server_top'];
+            foreach ($top_servers_array as $k => $v) {
+                $tops_array[$i][$k] = $v;
+            }
         }
-    }
-*/
+    */
     // Шаблон занятого места
     $template_got = '
   <div class="unit">
