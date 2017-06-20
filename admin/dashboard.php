@@ -66,7 +66,7 @@ while ($server = db()->fetch_array($servers_list)) {
       <td>
        <a href='server/{$server['server_id']}'>{$servers[$server['server_id']]['info']['serverName']}</a>
       </td>
-      <td>{$servers[$server['server_id']]['info']['playersNumber']} / {$servers[$server['server_id']]['info']['maxPlayers']}</td>
+      <td>{$servers[$server['server_id']]['info']['playerNumber']} / {$servers[$server['server_id']]['info']['maxPlayers']}</td>
       <td>{$servers[$server['server_id']]['info']['mapName']}</td>
       <td>{$server['votes']}</td>
       <td>{$status}</td>
