@@ -140,9 +140,6 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
             — Внимание! Все сервера у которых не указан сайт на котором размещена наша ссылка будут переведены в статус оффлайн, а через сутки - удалены из системы!!!
         </div>
         <!-- /Alert -->
-        <!-- Mode navigation -->
-        <?php echo modes_menu(); ?>
-        <!-- /Mode navigation -->
     </div>
     <!-- /Header -->
     <!-- CONTENT -->
