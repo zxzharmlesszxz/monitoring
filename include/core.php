@@ -76,7 +76,7 @@ $redis->select(1);
 $servers = $redis->hGetAll('servers');
 
 foreach ($servers as $id => $item) {
-    $servers[$id] = unserialize($item);
+    $servers[$id] = json_decode($item, true);
 }
 
 ksort($servers);
