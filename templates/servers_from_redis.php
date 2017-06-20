@@ -35,7 +35,7 @@ if ($servers_total != 0) {
         }
 
         if ($r['playerNumber'] == $r['maxPlayers']) {
-            $players = "<span style='color: #00FF00'>{$r['playerNumber']}/{$r['maxPlayers']}</span>";
+            $players = "<span>{$r['playerNumber']}/{$r['maxPlayers']}</span>";
         }
 
         if ($r['serverName'] !== null and $r['maxPlayers'] != 0) {
@@ -62,7 +62,7 @@ if ($servers_total != 0) {
         if ($server_full <= '100' and $server_full > '80')
             $la = "la5";
 
-        $str .= "<td align='left' style='padding-left:20px;'>";
+        $str .= "<td>";
         $str .= "<img src='/images/flags/$server_location.png' class='location' title='{$server_location}' alt='{$server_location}'>";
         $str .= "<a class='name' title='Перейти на страницу сервера {$r['serverName']}' href='" . $settings['site_url'] . "server/{$id}' rel='follow'>" . htmlspecialchars($r['serverName']) . "</a> ";
         $str .= (($r['server_steam'] == '1') ? '<img src=\'/images/img/icon_steam.png\'>' : '');
@@ -75,7 +75,7 @@ if ($servers_total != 0) {
         $str .= "<td class='votes'>";
 
         if ($r['server_vip'] == 1) {
-            $str .= '<img src="/images/img/vip.png" align="texttop" style="opacity:0.6;">';
+            $str .= '<img src="/images/img/vip.png" style="opacity:0.6;">';
         } else {
             $str .= "<span class='votes_count' id='votes_count_{$id}' >" . intval($r['votes']) . "</span>";
             $str .= "<span class='vote_buttons' id='vote_buttons_{$id}'>";
@@ -93,7 +93,7 @@ echo <<<EOT
 <table class='servers' cellspacing='0' border='0'>
  <thead>
   <tr>
-   <th style='padding-left:45px;'>Название сервера</th>
+   <th>Название сервера</th>
    <th>Адрес сервера</th>
    <th>Мод</th>
    <th>Карта</th>
