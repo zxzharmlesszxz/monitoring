@@ -93,14 +93,6 @@ if ($servers_total != 0) {
 $modes = modes_menu();
 
 echo <<<EOT
-<script>
-$('ul').on( 'click', 'a', function () {
-table
-    .columns( 3 )
-    .search(  $(this).text() )
-    .draw();
-});
-</script>
 <!-- Mode navigation -->
 {$modes}
 <!-- /Mode navigation -->

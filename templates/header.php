@@ -64,6 +64,13 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
                     }
                 }
             });
+
+            $('ul').on( 'click', 'a', function () {
+                table
+                    .columns( 3 )
+                    .search(  $(this).text() )
+                    .draw();
+            });
         });
     </script>
     <!-- Put this script tag to the <head> of your page -->
