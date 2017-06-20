@@ -85,15 +85,15 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
              });*/
 
             $('ul#modes').on('click', 'a', function () {
-                if ($(this).text() !== '') {
+                if ($(this).text() === 'all') {
                     table
                         .column(2)
-                        .search($(this).text())
+                        .search("")
                         .draw();
                 } else {
                     table
                         .column(2)
-                        .search("")
+                        .search($(this).text())
                         .draw();
                 }
             });
