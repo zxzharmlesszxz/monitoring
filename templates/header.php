@@ -67,7 +67,7 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
 
             $('ul').on( 'click', 'a', function () {
                 table
-                    .columns( 3 )
+                    .columns( 2 )
                     .search(  $(this).text() )
                     .draw();
             });
