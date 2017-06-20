@@ -90,6 +90,8 @@ if ($servers_total != 0) {
     }
 }
 
+$modes = modes_menu();
+
 echo <<<EOT
 <script>
 $('ul').on( 'click', 'a', function () {
@@ -100,7 +102,7 @@ table
 });
 </script>
 <!-- Mode navigation -->
-<?php echo modes_menu(); ?>
+{$modes}
 <!-- /Mode navigation -->
 <table class='servers' cellspacing='0' border='0'>
  <thead>
