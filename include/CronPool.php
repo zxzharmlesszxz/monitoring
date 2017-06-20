@@ -36,7 +36,7 @@ class CronPool extends Pool
                 $online++;
         }
 
-        $map = topMap((array) $servers);
+        $map = $this->topMap((array) $servers);
         $connection->real_query("
             UPDATE " . DB_SETTINGS . " SET
             last_update='" . time() . "',
@@ -45,5 +45,30 @@ class CronPool extends Pool
             top_map='{$map}';"
         );
         return $this;
+    }
+
+    /**
+     * @param array $servers
+     * @return int|string
+     */
+    private function topMap(array $servers)
+    {
+        $max = "";
+        $count = 0;
+        $maps = array();
+        foreach ($servers as $server) {
+            if (!array_key_exists($server['info']['mapName'], $maps))
+                $maps[$server['info']['mapName']] = 1;
+            else
+                $maps[$server['info']['mapName']] += 1;
+        }
+
+        foreach ($maps as $map => $num) {
+            if ($num > $count) {
+                $count = $num;
+                $max = $map;
+            }
+        }
+        return $max;
     }
 }

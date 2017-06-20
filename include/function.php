@@ -12,34 +12,6 @@ if (!function_exists('getmicrotime')) {
 }
 
 /**
- * @param $packet
- * @return string
- */
-function getString(&$packet)
-{
-    $str = "";
-    $n = strlen($packet);
-
-    for ($i = 0; ($packet[$i] != chr(0)) && ($i < $n); ++$i) {
-        $str .= $packet[$i];
-    }
-
-    $packet = substr($packet, strlen($str));
-    return trim($str);
-}
-
-/**
- * @param $packet
- * @return mixed
- */
-function getChar(&$packet)
-{
-    $char = $packet[0];
-    $packet = substr($packet, 1);
-    return $char;
-}
-
-/**
  * @param $a
  * @param $b
  * @return int
@@ -432,31 +404,6 @@ function get_map_image($map, $game = 'cs16')
             file_put_contents(__DIR__ . '/../data/needed_maps_icons.txt', "\n$map\n", FILE_APPEND | LOCK_EX);
         }
     }
-}
-
-/**
- * @param array $servers
- * @return int|string
- */
-function topMap(array $servers)
-{
-    $max = "";
-    $count = 0;
-    $maps = array();
-    foreach ($servers as $server) {
-        if (!array_key_exists($server['info']['mapName'], $maps))
-            $maps[$server['info']['mapName']] = 1;
-        else
-            $maps[$server['info']['mapName']] += 1;
-    }
-
-    foreach ($maps as $map => $num) {
-        if ($num > $count) {
-            $count = $num;
-            $max = $map;
-        }
-    }
-    return $max;
 }
 
 /**
