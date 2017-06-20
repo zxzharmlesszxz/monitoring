@@ -14,6 +14,7 @@ if (!defined("MONENGINE")) {
 $top_servers = array();
 
 foreach ($servers as $id => $server) {
+    $server = json_decode($server);
     if ($server['dbInfo']['server_top'] != '0')
     {
         $tops_array[$server['dbInfo']['server_top']] = $server;
