@@ -10,7 +10,7 @@
 function prof_flag($str)
 {
     global $prof_timing, $prof_names;
-    $prof_timing[] = microtime(true);
+    $prof_timing[] = microtime();
     $prof_names[] = $str;
 }
 
