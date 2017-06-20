@@ -15,25 +15,25 @@ echo <<<EOT
 <div class='cont'>
  <div style="padding:10px;line-height:19px;">
   <div style="padding:15px;background:#333333;">
-   <b><b>Мастерсервер</b> - это сервер, который передает список IP адресов и полную статистику по игровым серверам в Ваш клиент игры. Подключившись, Вы всегда сможете искать сервера CS 1.6 из нашего мониторинга у себя в игре. Для подключения необходимо заменить 1 файл, в нем прописан IP нашего мастерсервера. Также немаловажной деталью является то, что мастерсервер доступен всегда и работает 24/7.</b>
+   <b><i>Мастерсервер</i> - это сервер, который передает список IP адресов и полную статистику по игровым серверам в Ваш клиент игры. Подключившись, Вы всегда сможете искать сервера CS 1.6 из нашего мониторинга у себя в игре. Для подключения необходимо заменить 1 файл, в нем прописан IP нашего мастерсервера. Также немаловажной деталью является то, что мастерсервер доступен всегда и работает 24/7.</b>
   </div>
  </div>
  <div style="padding:10px;line-height:19px;">
   <div style="padding:15px;background:#333333;">
    <div style="padding-bottom: 10px;" align="">
     <ol>
-     <li>Скачайте <a href="https://monitoring.contra.net.ua/load/MasterServers.rar"><span>MASTERSERVER.vdf</span></a> (1 КБ) и разархивируйте!</li>
-     <li>Скопируйте <font color="#999999">MasterServers.vdf</font> в папку <font color="#999999">config</font> с заменой старого на новый
+     <li>Скачайте <a href="https://monitoring.contra.net.ua/load/MasterServers.rar"><i>MASTERSERVER.vdf</i></a> (1 КБ) и разархивируйте!</li>
+     <li>Скопируйте <i>MasterServers.vdf</i> в папку <i>config</i> с заменой старого на новый
       <ul>
-       <li>в игре No-Steam: <font color="#999999">D:\Games\Counter-strike\platform\config\MasterServers.vdf</font></li>
-       <li>в игре Steam: <font color="#999999">D:\Games\Steam\config\MasterServers.vdf</font></li>
-       <li>Если файл <font color="#999999">masterserver2.vdf</font> находится в той же директории, его также следует заменить</li>
+       <li>в игре No-Steam: <i>D:\Games\Counter-strike\platform\config\MasterServers.vdf</i></li>
+       <li>в игре Steam: <i>D:\Games\Steam\config\MasterServers.vdf</i></li>
+       <li>Если файл <i>masterserver2.vdf</i> находится в той же директории, его также следует заменить</li>
       </ul>
      </li>
-     <li>Измените свойства файла <font color="#999999">MasterServers.vdf</font> на <font color="#999999">«Только для чтения»</font> (read-only file)
+     <li>Измените свойства файла <i>MasterServers.vdf</i> на <i>«Только для чтения»</i> (read-only file)
       <ul>
        <li>свойста изменить очень просто: наведите курсор на файл MasterServers.vdf и нажмите правую кнопку мыши,</li>
-       <li>в появишемся списке выберите <font color="#999999">"Свойства"</font>, в открывшемся окне снизу Вы найдете <font color="#999999">"Атрибуты"</font>, отметьте <font color="#999999">"Только для чтения"</font>.</li>
+       <li>в появишемся списке выберите <i>"Свойства"</i>, в открывшемся окне снизу Вы найдете <i>"Атрибуты"</i>, отметьте <i>"Только для чтения"</i>.</li>
       </ul>
       <img src="/images/img/screen.jpg">
      </li>
@@ -41,7 +41,7 @@ echo <<<EOT
    </div>
    <u>
     <b>
-     <font color="#ffffff">Готово! Теперь можете искать наши сервера прямо у себя с клиента игры Counter-Strike 1.6!</font>
+     <i>Готово! Теперь можете искать наши сервера прямо у себя с клиента игры Counter-Strike 1.6!</i>
     </b>
    </u>
   </div>
