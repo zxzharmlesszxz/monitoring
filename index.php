@@ -108,29 +108,6 @@ switch ($load) {
         $filter = "AND server_game = '${load}'";
         $load_file = __DIR__ . '/templates/servers.php';
         break;
-    case 'classic':
-    case 'csdm':
-    case 'diablomod':
-    case 'gungame':
-    case 'hns':
-    case 'jailbreak':
-    case 'jump':
-    case 'knife':
-    case 'soccerjam':
-    case 'deathrun':
-    case 'superhero':
-    case 'warcraft':
-    case 'surf':
-    case 'zombiemod':
-        $page_title = "Сервера с {$modes[$load]} модом";
-        $filter = "AND server_mode = '${load}'";
-        $load_file = __DIR__ . '/templates/servers.php';
-        break;
-    case 'serversredis':
-        $page_title = "Сервера из redis";
-        $filter = '';
-        $load_file = __DIR__ . '/templates/servers.php';
-        break;
     default:
         $filter = '';
         $load_file = __DIR__ . '/templates/servers.php';
