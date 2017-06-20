@@ -111,6 +111,16 @@ echo <<<EOT
  ${vip}
  {$row}
  </tbody>
+ <tfoot>
+  <tr>
+   <th>Название сервера</th>
+   <th>Адрес сервера</th>
+   <th>Мод</th>
+   <th>Карта</th>
+   <th>Игроки</th>
+   <th>Голоса</th>
+  </tr>
+ </tfoot>
 </table>
 EOT;
 /* TABLE END */
