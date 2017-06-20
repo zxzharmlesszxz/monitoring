@@ -85,7 +85,7 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
              });*/
 
             $('ul#modes').on('click', 'a', function () {
-                if ($(this).text() === 'all') {
+                if ($(this).data('text') === '') {
                     table
                         .column(2)
                         .search("")
@@ -93,7 +93,7 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
                 } else {
                     table
                         .column(2)
-                        .search($(this).text())
+                        .search($(this).data('text'))
                         .draw();
                 }
             });

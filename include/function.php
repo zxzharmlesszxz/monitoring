@@ -481,11 +481,11 @@ function modes_menu()
     $str = "
     <div class='sort'>
      <ul id='modes' class='sort_nav'>
-      <li><a href='#all'>Все сервера</a></li>
+      <li><a data-text=''>Все сервера</a></li>
  ";
 
     foreach ($modes as $mode => $title) {
-        $str .= "<li><a title='Сервера с модом {$title}' href='#{$mode}'>{$title}</a></li>";
+        $str .= "<li><a title='Сервера с модом {$title}' data-text='{$title}'>{$title}</a></li>";
     }
 
     $str .= "
