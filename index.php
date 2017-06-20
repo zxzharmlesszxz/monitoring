@@ -78,15 +78,14 @@ switch ($load) {
         //$page_title = "Сервер: $server_data[server_name]";
         //$load_file = (!empty($_GET['id']) and is_numeric($_GET['id'])) ? __DIR__ . '/templates/server_info.php' : __DIR__ . '/templates/servers.php';
         $page_title = "Сервер: {$servers[$_GET['id']]['info']['serverName']}";
-        $load_file = (!empty($servers[$_GET['id']])) ? __DIR__ . '/templates/server_info.php' : __DIR__ . '/templates/servers.php';
+        $load_file = (!empty($servers[$_GET['id']])) ? __DIR__ . '/templates/server_info.php' : __DIR__ . '/templates/servers_from_redis.php';
         break;
     case 'message':
         $msg_code = $_GET['code'];
         $load_file = __DIR__ . '/templates/messages.php'; // File not found
         break;
     case 'byweb':
-        $load_file = __DIR__ . '/templates/byweb.php';
-        require($load_file);
+        require(__DIR__ . '/templates/byweb.php');
         exit;
         break;
     case 'cs16':
@@ -129,7 +128,7 @@ switch ($load) {
         break;
     default:
         $filter = '';
-        $load_file = __DIR__ . '/templates/servers.php';
+        $load_file = __DIR__ . '/templates/servers_from_redis.php';
         break;
 }
 
