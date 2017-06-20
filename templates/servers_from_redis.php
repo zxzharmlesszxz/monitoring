@@ -17,7 +17,7 @@ if ($servers_total != 0) {
     uasort($servers, "sortByVotes");
 
     foreach ($servers as $id => $server) {
-        $server = json_decode($server);
+        $server = json_decode($server, true);
         $str = '';
         if ($server['info']['serverName'] == null)
             continue;
