@@ -65,6 +65,24 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
                 }
             });
 
+            $("table.servers tfoot th").each(function (i) {
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo($(this).empty())
+                    .on('change', function () {
+                        if (this.value == "") {
+                            table.column(i).search("").draw();
+                        } else {
+                            table.column(i)
+                                .search('^' + $(this).val() + '$', true, false)
+                                .draw();
+                        }
+                    });
+
+                table.column(i).data().unique().sort().each(function (d, j) {
+                    select.append('<option value="' + d + '">' + d + '</option>')
+                });
+            });
+
             $('ul#modes').on('click', 'a', function () {
                 table
                     .columns(2)
