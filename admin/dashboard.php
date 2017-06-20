@@ -48,7 +48,7 @@ while ($server_l = db()->fetch_array($servers_list_l)) {
 
 $servers_list = db()->query("SELECT * FROM `" . DB_SERVERS . "`");
 
-$servers = '';
+$lservers = '';
 
 while ($server = db()->fetch_array($servers_list)) {
     if ($server['server_off'] == 1) {
@@ -61,7 +61,7 @@ while ($server = db()->fetch_array($servers_list)) {
         $status = "<font color='red'>Оффлайн</font>";
     }
 
-    $servers .= "
+    $lservers .= "
      <tr>
       <td>
        <a href='server/{$server['server_id']}'>{$servers[$server_l['server_id']]['info']['serverName']}</a>
@@ -130,7 +130,7 @@ echo <<<EOT
       </tr>
      </thead>
      <tbody>
-      {$servers}
+      {$lservers}
      </tbody>
     </table>
    </div>
