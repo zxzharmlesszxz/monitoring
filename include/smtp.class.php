@@ -1,4 +1,5 @@
 <?php
+prof_flag("Including " . __FILE__);
 /**
  * PHPMailer RFC821 SMTP email transport class.
  * PHP Version 5

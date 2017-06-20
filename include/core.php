@@ -3,10 +3,10 @@
  * Engine core
  * Made by starky
 */
-
+prof_flag("Including " . __FILE__);
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
+prof_flag("XSS");
 //Проверка от XSS атак $_GET
 foreach ($_GET as $check_url) {
     if (!is_array($check_url)) {
@@ -43,9 +43,9 @@ Registry::_set('database', new MySQL_Database);
 require_once __DIR__ . "/constants.php";
 require_once(LOCALE . LOCALESET . 'global.php');
 require_once(LOCALE . LOCALESET . 'serv.php');
-
+prof_flag("DB get settings");
 $settings = db()->fetch_array(dbquery("SELECT * FROM " . DB_SETTINGS));
-
+prof_flag("DB get styles");
 // Стили выделения
 $styles = Array();
 $get_styles = db()->query("SELECT * FROM `" . DB_ROWSTYLES . "` ORDER BY `id` DESC");
@@ -67,16 +67,16 @@ $top_map = $settings['top_map'];
 if (file_exists("./install.php")) {
     exit("Для продолжения работы необходимо удалить файл <b>install.php</b>.");
 }
-
+prof_flag("Start redis connection");
 $redis = new Redis();
 $redis->connect($settings['redis_host']);
 $redis->auth($settings['redis_password']);
 $redis->select(1);
-
+prof_flag("Redis get server");
 $servers = $redis->hGetAll('servers');
-
+prof_flag("Decode data");
 foreach ($servers as $id => $item) {
     $servers[$id] = json_decode($item, true);
 }
-
+prof_flag("Sort data");
 ksort($servers);

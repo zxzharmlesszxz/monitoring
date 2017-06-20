@@ -1,5 +1,5 @@
 <?php
-
+prof_flag("Including " . __FILE__);
 /**
  * Class MySQL_Database
  */

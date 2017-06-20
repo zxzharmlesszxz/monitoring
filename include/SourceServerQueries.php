@@ -1,5 +1,5 @@
 <?php
-
+prof_flag("Including " . __FILE__);
 /**
  * http://developer.valvesoftware.com/wiki/Server_Queries
  */

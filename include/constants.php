@@ -1,4 +1,5 @@
 <?php
+prof_flag("Including " . __FILE__);
 // Константы
 define("BASEDIR", dirname(__DIR__) . '/');
 define("ENGINE_SELF", basename($_SERVER['PHP_SELF']));

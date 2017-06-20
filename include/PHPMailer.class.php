@@ -1,4 +1,5 @@
 <?php
+prof_flag("Including " . __FILE__);
 /**
  * PHPMailer - PHP email creation and transport class.
  * PHP Version 5
