@@ -160,4 +160,4 @@ require_once(__DIR__ . '/' . _SAPE_USER . '/sape.php');
 $sape_article = new SAPE_articles();
 echo $sape_article->return_announcements();
 prof_flag("Done");
-prof_print();
+//prof_print();

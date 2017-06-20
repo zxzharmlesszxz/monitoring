@@ -65,10 +65,10 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
                 }
             });
 
-            $('ul').on( 'click', 'a', function () {
+            $('ul#modes').on('click', 'a', function () {
                 table
-                    .columns( 2 )
-                    .search(  $(this).text() )
+                    .columns(2)
+                    .search($(this).text())
                     .draw();
             });
         });
@@ -117,7 +117,8 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
                 <li><a title="VIP/TOP/Выделение цветом для серверов" href="/pay" rel="follow">Бесплатные услуги</a></li>
                 <li>
                     <noindex>
-                        <a title="Наш форум сайта" href=" https://contra.net.ua" target="_blank" rel="nofollow">Наш сайт</a>
+                        <a title="Наш форум сайта" href=" https://contra.net.ua" target="_blank" rel="nofollow">Наш
+                            сайт</a>
                     </noindex>
                 </li>
                 <li><a title="Наши контактные данные" href="/feedback" rel="nofollow">Контакты</a></li>
@@ -144,7 +145,8 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
             vengeanson
         </div>
         <div class="info2">
-            — Внимание! Все сервера у которых не указан сайт на котором размещена наша ссылка будут переведены в статус оффлайн, а через сутки - удалены из системы!!!
+            — Внимание! Все сервера у которых не указан сайт на котором размещена наша ссылка будут переведены в статус
+            оффлайн, а через сутки - удалены из системы!!!
         </div>
         <!-- /Alert -->
     </div>

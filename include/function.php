@@ -480,7 +480,7 @@ function modes_menu()
     global $modes;
     $str = "
     <div class='sort'>
-     <ul class='sort_nav'>
+     <ul id='modes' class='sort_nav'>
  ";
 
     foreach ($modes as $mode => $title) {

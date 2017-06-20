@@ -45,7 +45,7 @@ $games = [
 ];
 
 $modes = [
-    'classic' => 'Classis',
+    'classic' => 'Classic',
     'warcraft' => 'WarCraft',
     'csdm' => 'DeathMatch',
     'gungame' => 'Gun Game',
