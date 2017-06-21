@@ -3,7 +3,10 @@
    <!-- /CONTENT -->
    <!-- FOOTER -->
    <div id="footer">
-       <?php echo "Время генерации страницы: " . getmicrotime() - $start_time; ?>
+       <?php
+       var_dump(getmicrotime());
+       var_dump($start_time);
+       echo "Время генерации страницы: " . getmicrotime() - $start_time; ?>
     <div>
      Copyright <a href="https://contra.net.ua/">contra.net.ua</a> © 2014-2017.
      <div style="float:right;padding-right:5px;opacity: 0.5;">
