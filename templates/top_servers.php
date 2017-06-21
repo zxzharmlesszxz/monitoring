@@ -20,7 +20,7 @@ foreach ($servers as $id => $server) {
     }
 
     if ($server['dbInfo']['server_top_time'] < time()) {
-        db()->real_query("UPDATE `mon_servers` SET `server_top` = 0 WHERE `server_id` = '{$server['dbInfo']['server_id']}';");
+        db()->query("UPDATE `mon_servers` SET `server_top` = 0 WHERE `server_id` = '{$server['dbInfo']['server_id']}';");
         unset($tops_array[$server['dbInfo']['server_top']]);
     }
 }
