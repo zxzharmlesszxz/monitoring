@@ -47,7 +47,7 @@ if ($stage == 1) {
  $options = '';
  foreach ($servers as $id => $server)
  {
-     $options .= "<option value='{$id}'>{$server['info']['serverName']}</option>";
+     $options .= "<option value='{$id}'>{$server['info']['serverName']}({$server['dbInfo']['server_ip']})</option>";
  }
 
  echo "
@@ -59,7 +59,6 @@ if ($stage == 1) {
    <tr>
     <td align='right'>ID вашего сервера:</td>
     <td>
-     <input type='text' name='id' value='' size='30' />
      <select name='id'>
         <option selected disabled value=''></option>
         {$options}
