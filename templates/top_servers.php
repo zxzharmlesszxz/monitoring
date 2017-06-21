@@ -18,11 +18,6 @@ foreach ($servers as $id => $server) {
     if ($server['dbInfo']['server_top'] != '0') {
         $tops_array[$server['dbInfo']['server_top']] = $server;
     }
-
-    if ($server['dbInfo']['server_top_time'] < time()) {
-        db()->query("UPDATE `mon_servers` SET `server_top` = 0 WHERE `server_id` = '{$server['dbInfo']['server_id']}';");
-        unset($tops_array[$server['dbInfo']['server_top']]);
-    }
 }
 
 if ($settings['top_rows'] > 0) {
