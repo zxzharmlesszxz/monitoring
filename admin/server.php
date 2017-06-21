@@ -12,7 +12,7 @@ if (!defined("MONENGINE")) {
 
 /* Other code */
 $id = db()->escape_value($_GET['id']);
-$get_server = db()->query("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '{$id}'");
+/*$get_server = db()->query("SELECT * FROM `".DB_SERVERS."` WHERE `server_id` = '{$id}'");
 
 if (db()->num_rows($get_server) == 0) {
  exit("
@@ -25,12 +25,14 @@ if (db()->num_rows($get_server) == 0) {
 }
 
 $server = db()->fetch_array($get_server);
+*/
+$server = $servers[$id];
 
-if (file_exists("..".MAPS."{$server['server_game']}/{$server['server_map']}.jpg")) {
- $server_map_img = MAPS."{$server['server_game']}/{$server['server_map']}.jpg";
-} else {
- $server_map_img = "template/gfx/nomap.jpg";
-}
+//if (file_exists("..".MAPS."{$server['dbInfo']['server_game']}/{$server['info']['mapName']}.png")) {
+ $server_map_img = MAPS."{$server['dbInfo']['server_game']}/{$server['info']['mapName']}.png";
+//} else {
+// $server_map_img = "template/gfx/nomap.jpg";
+//}
 
 $server_map_img_style = " width: 160px;
        height: 120px;
@@ -40,20 +42,20 @@ $server_map_img_style = " width: 160px;
        border: 5px solid #f5f5f5;
        ";
 
-$percent = ($server['server_maxplayers'] != 0) ? floor($server['server_players'] / $server['server_maxplayers'] * 100) : 0;
-$steam = ($server['server_steam'] == '1') ? 'Да' : 'Нет';
-$site = $server['server_site'];
+$percent = ($server['info']['maxPlayers'] != 0) ? floor($server['server_players'] / $server['server_maxplayers'] * 100) : 0;
+$steam = ($server['dbInfo']['server_steam'] == '1') ? 'Да' : 'Нет';
+$site = $server['dbInfo']['server_site'];
 $site_link = (!empty($site)) ? "<a href='{$site}' title='Перейти на сайт сервера'>Сайт сервера</a>" : "Сайт сервера";
-$game = $server['server_game'];
-$mode = $server['server_mode'];
-$reg_date = @date("d.m.Y H:i", $server['server_regdata']);
-$top_place = ($server['server_top'] == 0 or empty($server['server_top'])) ? 'Не находится в топе' : $server['server_top'];
+$game = $server['dbInfo']['server_game'];
+$mode = $server['dbInfo']['server_mode'];
+$reg_date = @date("d.m.Y H:i", $server['dbInfo']['server_regdata']);
+$top_place = ($server['dbInfo']['server_top'] == 0 or empty($server['dbInfo']['server_top'])) ? 'Не находится в топе' : $server['dbInfo']['server_top'];
 
-if ($server['server_off'] == 1) {
+if ($server['dbInfo']['server_off'] == 1) {
  $status = 'banned';
-} elseif ($server['server_status'] == 1) {
+} elseif (!empty($server['info']['serverName'])) {
  $status = 'online';
-} elseif ($server['server_status'] == 0) {
+} else {
  $status = 'offline';
 }
 
@@ -66,8 +68,8 @@ if ($status == 'banned') {
 }
 
 $cur_style = 'Нет стиля';
-if (!empty($server['server_row_style'])) {
- $cur_style = $server['server_row_style'];
+if (!empty($server['dbInfo']['server_row_style'])) {
+ $cur_style = $server['dbInfo']['server_row_style'];
  if (array_key_exists($cur_style, $styles)) {
   $cur_style = $styles[$cur_style]['title']." (".$cur_style.")";
  } else {
@@ -76,8 +78,8 @@ if (!empty($server['server_row_style'])) {
 }
 
 $tur_style = 'Нет стиля';
-if (!empty($server['server_ipport_style'])) {
- $tur_style = $server['server_ipport_style'];
+if (!empty($server['dbInfo']['server_ipport_style'])) {
+ $tur_style = $server['dbInfo']['server_ipport_style'];
  if (array_key_exists($tur_style, $styles)) {
   $tur_style = $styles[$tur_style]['title']." (".$tur_style.")";
  } else {
@@ -110,33 +112,33 @@ echo <<<EOT
      <div id='server_info_leftcol'>
       <div>
        <center>
-        <img src='$server_map_img' style='{$server_map_img_style}' title='{$server['server_map']}'>
+        <img src='$server_map_img' style='{$server_map_img_style}' title='{$server['info']['mapName']}'>
        </center>
       </div>
      </div>
      <div class='row'>
       <label>Название сервера</label>
-      <div class='right'><input type='text' readonly value='{$server['server_name']}'></div>
+      <div class='right'><input type='text' readonly value='{$server['info']['serverName']}'></div>
      </div>
      <div class='row'>
       <label>Игра сервера</label>
-      <div class='right'><input type='text' readonly value='{$server['server_game']}'></div>
+      <div class='right'><input type='text' readonly value='{$server['dbInfo']['server_game']}'></div>
      </div>
      <div class='row'>
       <label>Мод сервера</label>
-      <div class='right'><input type='text' readonly value='{$server['server_mode']}'></div>
+      <div class='right'><input type='text' readonly value='{$server['dbInfo']['server_mode']}'></div>
      </div>
      <div class='row'>
       <label>Адрес сервера</label>
-      <div class='right'><input type='text' readonly value='{$server['server_ip']}'></div>
+      <div class='right'><input type='text' readonly value='{$server['dbInfo']['server_ip']}'></div>
      </div>
      <div class='row'>
       <label>Карта</label>
-      <div class='right'><input type='text' readonly value='{$server['server_map']}'></div>
+      <div class='right'><input type='text' readonly value='{$server['info']['mapName']}'></div>
      </div>
      <div class='row'>
       <label>Количество игроков</label>
-      <div class='right'><input type='text' readonly value='{$server['server_players']}/{$server['server_maxplayers']} ({$percent}%)'></div>
+      <div class='right'><input type='text' readonly value='{$server['info']['playersNumber']}/{$server['info']['maxPlayers']} ({$percent}%)'></div>
      </div>
      <div class='row'>
       <label>Сервер Steam?</label>
@@ -144,7 +146,7 @@ echo <<<EOT
      </div>
      <div class='row'>
       <label>Кол-во голосов</label>
-      <div class='right'><input type='text' readonly value='{$server['votes']}'></div>
+      <div class='right'><input type='text' readonly value='{$server['dbInfo']['votes']}'></div>
      </div>
      <div class='row'>
       <label>{$site_link}</label>
@@ -158,7 +160,7 @@ echo <<<EOT
     <div class='title'>Дополнительная информация<span class='hide'></span></div>
     <div class='content'>
      <div class='row'>
-      <label>Id сервера</label><div class='right'><input type='text' value='{$server['server_id']}' readonly></div>
+      <label>Id сервера</label><div class='right'><input type='text' value='{$id}' readonly></div>
      </div>
     <div class='row'>
      <label>Дата регистрации</label><div class='right'><input type='text' value='{$reg_date}' readonly></div>
