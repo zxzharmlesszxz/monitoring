@@ -25,9 +25,9 @@ foreach ($_GET as $check_url) {
 unset($check_url);
 
 // Калькулятор вывода генерации страницы
-$start_time = microtime();
-$start_array = explode(" ", $start_time);
-$start_time = $start_array[1] + $start_array[0];
+$start_time = getmicrotime();
+//$start_array = explode(" ", $start_time);
+//$start_time = $start_array[1] + $start_array[0];
 
 require_once __DIR__ . "/Registry.class.php";
 require_once __DIR__ . "/Config.class.php";
