@@ -200,7 +200,7 @@ echo <<<EOT
 <div id='right'>
  <div class='section'>
   <div class='box'>
-   <div class='title'>Редактирование сервера <b>{$servers[$id]['info']['server_name']}</b></div>
+   <div class='title'>Редактирование сервера <b>{$servers[$id]['info']['serverName']}</b></div>
    <div class='content'>
     {$message}
     <form action='' method='POST'>
