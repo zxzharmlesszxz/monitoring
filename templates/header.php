@@ -155,7 +155,7 @@ $title = (isset($page_title)) ? $page_title : $settings['site_name'];
         </div>
         <!-- /Navigation -->
         <!-- Game navigation -->
-        <?php echo games_menu(); ?>
+        <?php //echo games_menu(); ?>
         <!-- /Game navigation -->
         <div class="clearfix"></div>
         <!-- Top -->
