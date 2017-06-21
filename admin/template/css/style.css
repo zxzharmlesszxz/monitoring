@@ -811,3 +811,18 @@ img { border: 0; }
 	opacity : 0.5;
 	filter : alpha(opacity=50);
 }
+
+.online {
+	color: #6E8D4C;
+	font-weight: 700;
+}
+
+.offline {
+	color: #B53333;
+	font-weight: 700;
+}
+
+.banned {
+	color: #747494;
+	font-weight: 700;
+}

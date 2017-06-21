@@ -31,9 +31,9 @@ while ($server_l = db()->fetch_array($servers_list_l)) {
     } elseif ($server_l['server_new'] == 1) {
         $status = "<span class=''><b>Не активирован</b></span>";
     } elseif (!empty($servers[$server_l['server_id']]['info']['serverName'])) {
-        $status = "<span class='green'>Онлайн</span>";
+        $status = "<span class='online'>Онлайн</span>";
     } else {
-        $status = "<span class='red'>Оффлайн</span>";
+        $status = "<span class='offline'>Оффлайн</span>";
     }
     $servers_new .= "
       <tr>
@@ -56,9 +56,9 @@ while ($server = db()->fetch_array($servers_list)) {
     } elseif ($server['server_new'] == 1) {
         $status = "<span class=''><b>Не активирован</b></span>";
     } elseif (!empty($servers[$server['server_id']]['info']['serverName'])) {
-        $status = "<span class='green'>Онлайн</span>";
+        $status = "<span class='online'>Онлайн</span>";
     } else {
-        $status = "<span class='red'>Оффлайн</span>";
+        $status = "<span class='offline'>Оффлайн</span>";
     }
 
     $lservers .= "
