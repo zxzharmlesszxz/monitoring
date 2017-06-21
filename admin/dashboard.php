@@ -27,13 +27,13 @@ $servers_new = '';
 $i = 0;
 while ($server_l = db()->fetch_array($servers_list_l)) {
     if ($server_l['server_off'] == 1) {
-        $status = "Забанен";
+        $status = "<span class='banned'>Забанен</span>";
     } elseif ($server_l['server_new'] == 1) {
-        $status = "<b>Не активирован</b>";
+        $status = "<span class=''><b>Не активирован</b></span>";
     } elseif (!empty($servers[$server_l['server_id']]['info']['serverName'])) {
-        $status = "Онлайн";
+        $status = "<span class='green'>Онлайн</span>";
     } else {
-        $status = "Оффлайн";
+        $status = "<span class='red'>Оффлайн</span>";
     }
     $servers_new .= "
       <tr>
@@ -52,13 +52,13 @@ $lservers = '';
 
 while ($server = db()->fetch_array($servers_list)) {
     if ($server['server_off'] == 1) {
-        $status = "Забанен";
+        $status = "<span class='banned'>Забанен</span>";
     } elseif ($server['server_new'] == 1) {
-        $status = "<b>Не активирован</b>";
+        $status = "<span class=''><b>Не активирован</b></span>";
     } elseif (!empty($servers[$server['server_id']]['info']['serverName'])) {
-        $status = "Онлайн";
+        $status = "<span class='green'>Онлайн</span>";
     } else {
-        $status = "Оффлайн";
+        $status = "<span class='red'>Оффлайн</span>";
     }
 
     $lservers .= "
