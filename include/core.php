@@ -6,7 +6,7 @@
 include_once __DIR__ . "/profieler.php";
 prof_flag("Including " . __FILE__);
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 prof_flag("XSS");
 //Проверка от XSS атак $_GET
 foreach ($_GET as $check_url) {
