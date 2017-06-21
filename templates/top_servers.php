@@ -18,6 +18,10 @@ foreach ($servers as $id => $server) {
     if ($server['dbInfo']['server_top'] != '0') {
         $tops_array[$server['dbInfo']['server_top']] = $server;
     }
+
+    if ($server['dbInfo']['server_top_time'] < time()) {
+        unset($tops_array[$server['dbInfo']['server_top']]);
+    }
 }
 
 if ($settings['top_rows'] > 0) {
@@ -95,9 +99,9 @@ if ($settings['top_rows'] > 0) {
             $server_map = $tops_array[$i]['info']['mapName'];
             $server_game = $tops_array[$i]['dbInfo']['server_game'];
 
-            /*if ($tops_array[$i]['info']['serverName'] == null)
+            if ($tops_array[$i]['dbInfo']['server_off'] == null)
                 $server_address = "<span style='color:#789ABF;cursor:help;' title='Данный сервер заблокирован в мониторинге'>[Сервер заблокирован]</a>";
-*/
+
             if ($tops_array[$i]['dbInfo']['server_ipport_style']) {
                 $grc = $styles[$tops_array[$i]['dbInfo']['server_ipport_style']];
                 $server_address = "<span style='" . $grc['style'] . "'>$server_address</span>";
