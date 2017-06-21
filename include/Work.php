@@ -41,6 +41,19 @@ class Work extends Threaded
             $players = $sq->getPlayers();
             $rules = $sq->getRules();
             $sq->disconnect();
+
+            if ($value['server_top_time'] < time()) {
+                $mysqlConnection->real_query("UPDATE " . DB_SERVERS . " SET `server_top` = 0 WHERE `server_id` = '{$value['server_id']}';");
+            }
+
+            if ($value['server_vip_time'] < time()) {
+                $mysqlConnection->real_query("UPDATE " . DB_SERVERS . " SET `server_vip` = 0 WHERE `server_id` = '{$value['server_id']}';");
+            }
+
+            if ($value['server_color_time'] < time()) {
+                $mysqlConnection->real_query("UPDATE " . DB_SERVERS . " SET `server_ipport_style` = '', `server_row_style` = '' WHERE `server_id` = '{$value['server_id']}';");
+            }
+
             //$serverForRedis = serialize(array('info' => $info, 'players' => $players, 'rules' => $rules, 'dbInfo' => (array) $value));
             $serverForRedis = json_encode(array('info' => $info, 'players' => $players, 'rules' => $rules, 'dbInfo' => (array) $value));
             $redisConnection->hSet('servers', $value['server_id'], $serverForRedis);
