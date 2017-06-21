@@ -24,11 +24,6 @@ foreach ($_GET as $check_url) {
 }
 unset($check_url);
 
-// Калькулятор вывода генерации страницы
-$start_time = getmicrotime();
-//$start_array = explode(" ", $start_time);
-//$start_time = $start_array[1] + $start_array[0];
-
 require_once __DIR__ . "/Registry.class.php";
 require_once __DIR__ . "/Config.class.php";
 require_once __DIR__ . "/Database.class.php";
@@ -38,6 +33,13 @@ require_once __DIR__ . "/smtp.class.php";
 require_once __DIR__ . "/ServerQueries.php";
 require_once __DIR__ . "/SourceServerQueries.php";
 require_once __DIR__ . "/function.php";
+
+
+// Калькулятор вывода генерации страницы
+$start_time = getmicrotime();
+//$start_array = explode(" ", $start_time);
+//$start_time = $start_array[1] + $start_array[0];
+
 Registry::_set('config', Config::getInstance());
 Registry::_set('database', new MySQL_Database);
 
