@@ -16,7 +16,7 @@ if (isset($_GET['page']) and $_GET['page'] == 'edit_server' and isset($_GET['sec
 
 if ($stage == 1) {
  echo "
- <div class='horizontal_line'>Запрос на редактирование сервера<br><br><br></div>
+ <div class='horizontal_line'>Запрос на редактирование сервера</div>
  <div class='cont'>";
 
  if (isset($_POST['submit_edit_form'])) {
@@ -35,7 +35,7 @@ if ($stage == 1) {
      if (!isset($_SESSION['captcha_keystring']) or $_SESSION['captcha_keystring'] != $_POST['keystring']) {
       echo "<div class='msg redbg'>Вы неверно ввели текст с картинки.<br><br><br></div>";
      } else {
-      if ($edit->SendMail()) echo "<div class='msg greenbg'>Сообщение с инструкциями было отправлено Вам на почту.<br><br><br></div>";
+      if ($edit->SendMail()) echo "<div class='msg greenbg'>Сообщение с инструкциями было отправлено Вам на почту.</div>";
      }
     } else {
      
