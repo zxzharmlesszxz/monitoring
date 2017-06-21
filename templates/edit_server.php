@@ -33,7 +33,7 @@ if ($stage == 1) {
 
     if ($edit->SetupKey()) {
      if (!isset($_SESSION['captcha_keystring']) or $_SESSION['captcha_keystring'] != $_POST['keystring']) {
-      echo "<div class='msg redbg'>Вы неверно ввели текст с картинки.<br><br><br></div>";
+      echo "<div class='msg redbg'>Вы неверно ввели текст с картинки.</div>";
      } else {
       if ($edit->SendMail()) echo "<div class='msg greenbg'>Сообщение с инструкциями было отправлено Вам на почту.</div>";
      }
@@ -42,6 +42,12 @@ if ($stage == 1) {
     }
    }
   }
+ }
+
+ $options = '';
+ foreach ($servers as $id => $server)
+ {
+     $options .= "<option value='{$id}'>{$server['info']['serverName']}</option>";
  }
 
  echo "
@@ -54,6 +60,10 @@ if ($stage == 1) {
     <td align='right'>ID вашего сервера:</td>
     <td>
      <input type='text' name='id' value='' size='30' />
+     <select name='id'>
+        <option selected disabled value=''></option>
+        {$options}
+     </select>
     </td>
    </tr>
    <tr>
