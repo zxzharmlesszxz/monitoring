@@ -223,8 +223,6 @@ input:focus, textarea:focus, select:focus {
     text-decoration: none;
     transition: color .2s ease;
     padding: 0 1em;
-    height: 100%;
-    width: 100%;
 }
 
 #header div#horizontal_menu ul li.important a {
