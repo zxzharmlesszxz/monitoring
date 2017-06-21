@@ -18,7 +18,7 @@ if (db()->num_rows($comments) != 0) {
   ";
     }
 } else {
-    $comms = '<li class="comment"><center>Список отзывов пуст.</center></li>';
+    $comms = '<li class="comment">Список отзывов пуст.</li>';
 }
 
 $servers_list_l = db()->query("SELECT * FROM `" . DB_SERVERS . "` ORDER BY `server_id` DESC LIMIT 5");
@@ -27,13 +27,13 @@ $servers_new = '';
 $i = 0;
 while ($server_l = db()->fetch_array($servers_list_l)) {
     if ($server_l['server_off'] == 1) {
-        $status = "<font color='gray'>Забанен</font>";
+        $status = "Забанен";
     } elseif ($server_l['server_new'] == 1) {
-        $status = "<font color='gray'><b>Не активирован</b></font>";
-    } elseif ($server_l['server_status'] == 1) {
-        $status = "<font color='green'>Онлайн</font>";
-    } elseif ($server_l['server_status'] == 0) {
-        $status = "<font color='red'>Оффлайн</font>";
+        $status = "<b>Не активирован</b>";
+    } elseif (!empty($servers[$server_l['server_id']]['info']['serverName'])) {
+        $status = "Онлайн";
+    } else {
+        $status = "Оффлайн";
     }
     $servers_new .= "
       <tr>
@@ -52,13 +52,13 @@ $lservers = '';
 
 while ($server = db()->fetch_array($servers_list)) {
     if ($server['server_off'] == 1) {
-        $status = "<font color='gray'>Забанен</font>";
+        $status = "Забанен";
     } elseif ($server['server_new'] == 1) {
-        $status = "<font color='gray'><b>Не активирован</b></font>";
-    } elseif ($server['server_status'] == 1) {
-        $status = "<font color='green'>Онлайн</font>";
-    } elseif ($server['server_status'] == 0) {
-        $status = "<font color='red'>Оффлайн</font>";
+        $status = "<b>Не активирован</b>";
+    } elseif (!empty($servers[$server['server_id']]['info']['serverName'])) {
+        $status = "Онлайн";
+    } else {
+        $status = "Оффлайн";
     }
 
     $lservers .= "

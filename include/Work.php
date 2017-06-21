@@ -58,7 +58,7 @@ class Work extends Threaded
                 continue;
             }
 
-            if (!empty($server['serverName'] )) {
+            if (!empty($server['serverName'])) {
                     $mysqlConnection->real_query("UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';");
                     print "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" . PHP_EOL;
             }
