@@ -129,7 +129,7 @@ if (db()->num_rows($qcolor) == 1) {
 }
 
 while ($rcolor = db()->fetch_array($qcolor)) {
-    echo "<li>Место занято сервером <a href='/server/{$rcolor['server_id']}/'>{$rcolor['server_name']}</a>. Освободится через " . time2string($rcolor['server_color_time'] - time(), true, false, false, false) . " (" . formatDate("d.m.Y H:i:s", $rcolor['server_color_time']) . ")</li>";
+    echo "<li>Место занято сервером <a href='/server/{$rcolor['server_id']}/'>{$servers[$rcolor['server_in']]['info']['serverName']}</a>. Освободится через " . time2string($rcolor['server_color_time'] - time(), true, false, false, false) . " (" . formatDate("d.m.Y H:i:s", $rcolor['server_color_time']) . ")</li>";
 }
 
 echo "</ol>
