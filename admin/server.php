@@ -42,7 +42,7 @@ $server_map_img_style = " width: 160px;
        border: 5px solid #f5f5f5;
        ";
 
-$percent = ($server['info']['maxPlayers'] != 0) ? floor($server['server_players'] / $server['server_maxplayers'] * 100) : 0;
+$percent = ($server['info']['maxPlayers'] != 0) ? floor($server['info']['playerNumber'] / $server['info']['maxPlayers'] * 100) : 0;
 $steam = ($server['dbInfo']['server_steam'] == '1') ? 'Да' : 'Нет';
 $site = $server['dbInfo']['server_site'];
 $site_link = (!empty($site)) ? "<a href='{$site}' title='Перейти на сайт сервера'>Сайт сервера</a>" : "Сайт сервера";
@@ -138,7 +138,7 @@ echo <<<EOT
      </div>
      <div class='row'>
       <label>Количество игроков</label>
-      <div class='right'><input type='text' readonly value='{$server['info']['playersNumber']}/{$server['info']['maxPlayers']} ({$percent}%)'></div>
+      <div class='right'><input type='text' readonly value='{$server['info']['playerNumber']}/{$server['info']['maxPlayers']} ({$percent}%)'></div>
      </div>
      <div class='row'>
       <label>Сервер Steam?</label>
