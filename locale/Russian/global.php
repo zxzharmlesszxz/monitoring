@@ -18,7 +18,7 @@ $locale['019'] = "<span style='color: #00ff00'><b>ON<b></span>";
 $locale['020'] = "<span style='color: red'><b>OFF<b></span>";
 $locale['021'] = "Статус";
 $locale['022'] = "Все сервера";
-$locale['023'] = "Страница _PAGE_ из _PAGES_ (_START_ - _END_ из _MAX_)";
+$locale['023'] = "Страница _PAGE_ из _PAGES_ (_START_ - _END_ из _TOTAL_)";
 $locale['024'] = "Фильтр";
 $locale['025'] = "(отфильтровано _TOTAL_ из _MAX_ записей)";
 $locale['026'] = "Отображать _MENU_ записей на странице";
