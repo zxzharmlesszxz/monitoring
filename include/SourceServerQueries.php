@@ -27,7 +27,8 @@ final class SourceServerQueries extends ServerQueries
             return $return;
         $this->send("\xFF\xFF\xFF\xFFTSource Engine Query\x00");
         if ($tmp = $this->read(true)) {
-            #if($tmp = $this->read()) { // if server don't use dproto
+            if(empty($tmp))
+                $tmp = $this->read();  // if server don't use dproto
             if ($tmp == 0x6d) {
                 $this->getString();
                 $return['serverName'] = $this->getString();
