@@ -56,7 +56,6 @@ class Work extends Threaded
 
             //$serverForRedis = serialize(array('info' => $info, 'players' => $players, 'rules' => $rules, 'dbInfo' => (array) $value));
             $serverForRedis = json_encode(array('info' => $info, 'players' => $players, 'rules' => $rules, 'dbInfo' => (array) $value));
-            $redisConnection->hSet('servers', $value['server_id'], $serverForRedis);
 
             $server = array_merge((array)$value, $info);
             $server['status'] = (!empty($info['serverName'])) ? 'on' : 'off';
@@ -67,6 +66,7 @@ class Work extends Threaded
                 $mysqlConnection->real_query(
                     "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';"
                 );
+                $redisConnection->hDel('servers', $value['server_id']);
                 print "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';" . PHP_EOL;
                 continue;
             }
@@ -75,6 +75,8 @@ class Work extends Threaded
                     $mysqlConnection->real_query("UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';");
                     print "UPDATE " . DB_SERVERS . " SET status_change = " . time() . " WHERE server_id='{$server['server_id']}';" . PHP_EOL;
             }
+
+            $redisConnection->hSet('servers', $value['server_id'], $serverForRedis);
         } while ($value !== null);
     }
 }
