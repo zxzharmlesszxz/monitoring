@@ -8,7 +8,7 @@ require_once("includes/inc.php");
 
 // If user is not logged in
 if (!$logged_in) {
-    header("Location: login.php");
+    header("Location: /admin/login.php");
     exit();
 }
 // If user is logged in
