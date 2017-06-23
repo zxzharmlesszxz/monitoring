@@ -217,7 +217,7 @@ input:focus, textarea:focus, select:focus {
     background: linear-gradient(to bottom, #0d0d0d 20%,#4f4f4f 40%,#4f4f4f 45%,#4f4f4f 50%,#4f4f4f 55%,#4f4f4f 60%,#1b1b1b 80%);
     border-top: 1px solid white;
     border-bottom: 1px solid white;
-    transition: background .2s ease;
+    transition: all .45s;
 }
 
 #header div#horizontal_menu ul :first-child {
