@@ -278,7 +278,6 @@ input:focus, textarea:focus, select:focus {
 }
 
 #header div#top_servers div.unit div.map_section {
-    border: 1px solid #898989;
     float: left;
     height: 75px;
     overflow: hidden;
@@ -287,9 +286,8 @@ input:focus, textarea:focus, select:focus {
 }
 
 #header div#top_servers div.unit div.info_section {
-    padding-left: 6%;
     width: 50%;
-    height: 80px;
+    height: 75px;
     float: left;
     overflow: hidden;
 }
