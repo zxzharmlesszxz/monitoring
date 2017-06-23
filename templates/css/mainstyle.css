@@ -213,7 +213,7 @@ input:focus, textarea:focus, select:focus {
     border-right: 1px solid #555;
 }
 
-#header div#horizontal_menu ul li:hover {
+#header div#horizontal_menu ul li a:hover {
     background-color: #0c0c0c;
 }
 
