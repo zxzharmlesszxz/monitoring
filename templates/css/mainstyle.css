@@ -298,10 +298,11 @@ input:focus, textarea:focus, select:focus {
 }
 
 #header div#top_servers div.unit div.info_section {
-    width: 50%;
+    width: calc(50% - 1em);
     height: 75px;
     float: left;
     overflow: hidden;
+    padding-left: 1em;
 }
 
 #header div#top_servers div.unit div.info_section span.title {
