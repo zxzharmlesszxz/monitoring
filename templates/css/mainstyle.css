@@ -230,6 +230,7 @@ input:focus, textarea:focus, select:focus {
     text-decoration: none;
     transition: color .2s ease;
     padding: 0 1em;
+    cursor: url("/images/cursor.png");
 }
 
 #header div#horizontal_menu ul li.important a {
