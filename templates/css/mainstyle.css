@@ -214,11 +214,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 #header div#horizontal_menu ul li a:hover {
-    background: linear-gradient(to bottom, #2b2b2b, #6c6c6c);
-}
-
-#header div#horizontal_menu ul li a:hover #header div#horizontal_menu ul li {
-    background: linear-gradient(to top, #2b2b2b, #6c6c6c);
+    background: linear-gradient(to bottom, #0d0d0d 20%,#4f4f4f 40%,#4f4f4f 45%,#4f4f4f 50%,#4f4f4f 55%,#4f4f4f 60%,#1b1b1b 80%);
 }
 
 #header div#horizontal_menu ul :first-child {
