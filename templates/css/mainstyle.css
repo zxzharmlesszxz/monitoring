@@ -315,7 +315,6 @@ input:focus, textarea:focus, select:focus {
 
 #header div#top_servers div.unit div.adress_section {
     margin-top: 1px;
-    margin-left: -1%;
     width: 100%;
     float: left;
     margin-bottom: 2px;
