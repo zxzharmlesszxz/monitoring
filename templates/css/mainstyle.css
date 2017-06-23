@@ -275,7 +275,7 @@ input:focus, textarea:focus, select:focus {
     color: #C7914C;
     font-size: 11px;
     float: left;
-    padding: 0 0 0 20px;
+    padding: 0 0 0 2%;
     display: block;
 }
 
@@ -285,14 +285,14 @@ input:focus, textarea:focus, select:focus {
     height: 75px;
     overflow: hidden;
     opacity: 0.9;
+    width: 50%;
 }
 
 #header div#top_servers div.unit div.info_section {
-    margin-left: 6%;
-    width: 38%;
+    padding-left: 6%;
+    width: 50%;
     height: 80px;
     float: left;
-    margin-bottom: -1px;
     overflow: hidden;
 }
 
