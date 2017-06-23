@@ -200,13 +200,13 @@ input:focus, textarea:focus, select:focus {
 }
 
 #header div#horizontal_menu ul {
-    height: 40px;
+    height: 37px;
     margin: 0 auto;
 }
 
 #header div#horizontal_menu ul li {
-    height: 40px;
-    line-height: 40px;
+    height: 37px;
+    line-height: 37px;
     float: left;
     list-style: none;
     border-left: 1px solid #292929;
