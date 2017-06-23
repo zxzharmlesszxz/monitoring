@@ -270,11 +270,12 @@ input:focus, textarea:focus, select:focus {
 }
 
 #header div#top_servers div.unit {
-    width: 20%;
+    width: calc(20% - 2em);
     color: #C7914C;
     font-size: 11px;
     float: left;
     display: block;
+    padding: 1em;
 }
 
 #header div#top_servers div.unit div.map_section {
