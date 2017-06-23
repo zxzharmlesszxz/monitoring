@@ -284,7 +284,9 @@ input:focus, textarea:focus, select:focus {
     opacity: 0.9;
     width: 50%;
 }
-
+#header div#top_servers div.unit div.map_section a img {
+    border: 1px solid #898989;
+}
 #header div#top_servers div.unit div.info_section {
     width: 50%;
     height: 75px;
