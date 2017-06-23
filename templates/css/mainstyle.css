@@ -303,7 +303,7 @@ input:focus, textarea:focus, select:focus {
     height: 75px;
     float: left;
     overflow: hidden;
-    padding-left: 1em 1em;
+    padding-left: 1em;
 }
 
 #header div#top_servers div.unit div.info_section span.title {
