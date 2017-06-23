@@ -54,7 +54,6 @@ class Work extends Threaded
                 $mysqlConnection->real_query("UPDATE " . DB_SERVERS . " SET `server_ipport_style` = '', `server_row_style` = '' WHERE `server_id` = '{$value['server_id']}';");
             }
 
-            //$serverForRedis = serialize(array('info' => $info, 'players' => $players, 'rules' => $rules, 'dbInfo' => (array) $value));
             $serverForRedis = json_encode(array('info' => $info, 'players' => $players, 'rules' => $rules, 'dbInfo' => (array) $value));
 
             $server = array_merge((array)$value, $info);

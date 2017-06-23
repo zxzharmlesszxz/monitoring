@@ -201,6 +201,7 @@ input:focus, textarea:focus, select:focus {
 
 #header div#horizontal_menu ul {
     height: 40px;
+    margin: 0 auto;
 }
 
 #header div#horizontal_menu ul li {
