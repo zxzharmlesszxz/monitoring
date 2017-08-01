@@ -61,7 +61,7 @@ class Work extends Threaded
 
             $site = !empty($server['server_site']) ? parse_site($server['server_site']) : false;
 
-            if ($server['status'] == 'off' and time() - $server['status_change'] > 86400) {
+            if ($server['status'] == 'off' and time() - $server['status_change'] > 259200) {
                 $mysqlConnection->real_query(
                     "DELETE FROM " . DB_SERVERS . " WHERE server_id = '{$server['server_id']}';"
                 );
