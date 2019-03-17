@@ -26,8 +26,9 @@ if (!defined("MONENGINE")) {
    <div>Пример кнопки:</div>
    <div style="padding-top:5px;">
     <a href="https://contra.net.ua">
-     <img border="0" src="https://contra.net.ua/Foto/1.gif" width="130" height="30" alt="Игровой сайт для всех">
-    </a>
+     <img border="0" src="https://contra.net.ua/Foto/1.gif" width="130" height="30" alt="Игровой сайт для всех"></a></br>
+	 <a target="_blank" href="https://www.bestchange.ru/?p=558123"><img src="http://www.bestchange.ru/images/banners/100x100-16.jpg" alt="WebMoney-обменники" title="BestChange.ru - Мониторинг обменников в интернете" width="100" height="100" border="0" /></a>
+    
    </div>
   </div>
  </div>

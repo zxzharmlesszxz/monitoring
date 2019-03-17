@@ -12,7 +12,7 @@ function rating( server_id, direction, hash ) {
 			$.ajax({
 				type: "POST",
 				data: "action=vote"+direction+"&id="+server_id+"&hash="+hash,
-				url:  "vote.php",
+				url:  "vote",
 				success: function(msg)
 				{
 					if(msg == "cant_down") {

@@ -1,21 +1,21 @@
 <?php
 
 if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
- define("MONENGINE", true);
- 
- require_once(__DIR__."/include/core.php");
+// define("MONENGINE", true);
+
+ require_once(__DIR__."/../include/core.php");
  
  $hash = $_POST['hash'];
  $id = db()->escape_value($_POST['id']);
  $action = $_POST['action'];
  
- if ($hash != md5("m0n3ng1ne.s4lt:P{]we$id@._)%;")) {
-  exit("Ошибка.");
- }
+ if ($hash != md5("m0n3ng1ne.s4lt:P{]we$id@._)%;")) exit("Ошибка.");
+
 
  @$day = date("Y-m-d H:i:s");
 
  db()->query("DELETE FROM ".DB_VOTES." WHERE date_resp < '$day'");
+
 
  function getAllVotes($id) {
   /**
@@ -33,6 +33,7 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
   return $votes;
  }
 
+
  function getEffectiveVotes($id) {
   /**
   Returns an integer
@@ -41,6 +42,7 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
   $effectiveVote = $votes[0];
   return $effectiveVote;
  }
+
 
  //get the current votes
  $cur_votes = getAllVotes($id);
@@ -54,9 +56,7 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
  
  $votes_new = (($action == 'voteup') ? $cur_votes[0] + 1 : $cur_votes[0] - 1);
  
- if ($votes_new < 0) {
-  exit("cant_down");
- }
+ if ($votes_new < 0) exit("cant_down");
  
  $votes_upd_query = "UPDATE ".DB_SERVERS." SET votes='$votes_new' WHERE server_id='$id'";
 
