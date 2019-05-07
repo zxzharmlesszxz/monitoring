@@ -120,7 +120,7 @@ switch ($load) {
         break;
 }
 
-if ($load == 'vote') {
+if ($load == 'vote' or $load == 'servers4ms') {
   include $load_file;
   exit();
 }
