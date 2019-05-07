@@ -13,5 +13,5 @@ if (!defined("MONENGINE")) {
 uasort($servers, "sortByVotes");
 
 foreach ($servers as $id => $server) {
-    print $server['info']['server_ip'].PHP_EOL;
+    print $server['dbInfo']['server_ip'].PHP_EOL;
 }
