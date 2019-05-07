@@ -15,8 +15,6 @@ define("DB_VOTES", DB_PREFIX . "vote_ip");
 define("DB_COMMENTS", DB_PREFIX . "comments");
 define("DB_ROWSTYLES", DB_PREFIX . "rowstyles");
 define("DB_SERVERS_EDITS", DB_PREFIX . "servers_edits");
-$settings = db()->fetch_array(db()->query("SELECT * FROM " . DB_SETTINGS));
-define("SITE_URL", $settings['site_url']);
 
 // Pathes
 define("ADMIN", BASEDIR . "admin/");
@@ -26,10 +24,7 @@ define("INCLUDES", BASEDIR . "include/");
 define("JS", BASEDIR . "include/js/");
 define("LOCALE", BASEDIR . "locale/");
 define("THEME", BASEDIR . "templates/");
-define("LOCALESET", $settings['locale'] . "/");
 define("USER_IP", (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : ''));
-define("ASR", $settings['AMX']);
-define("LINES_NUM", $settings['top_rows']);
 
 $games = [
     'cs16' => 'CS 1.6',

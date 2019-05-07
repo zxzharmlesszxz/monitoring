@@ -62,8 +62,10 @@ switch ($load) {
         $load_file = __DIR__ . '/templates/monengine.php';
         break;
     case 'vote':
-//        $page_title = "Ваш сервер заблокирован!";
         $load_file = __DIR__ . '/templates/vote.php';
+        break;
+    case 'servers4ms':
+        $load_file = __DIR__ . '/templates/servers4ms.php';
         break;
     case 'banned':
         $page_title = "Ваш сервер заблокирован!";

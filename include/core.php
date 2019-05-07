@@ -49,6 +49,12 @@ require_once(LOCALE . LOCALESET . 'serv.php');
 prof_flag("DB get settings");
 $settings = db()->fetch_array(dbquery("SELECT * FROM " . DB_SETTINGS));
 prof_flag("DB get styles");
+
+define("SITE_URL", $settings['site_url']);
+define("LOCALESET", $settings['locale'] . "/");
+define("ASR", $settings['AMX']);
+define("LINES_NUM", $settings['top_rows']);
+
 // Стили выделения
 $styles = Array();
 $get_styles = db()->query("SELECT * FROM `" . DB_ROWSTYLES . "` ORDER BY `id` DESC");
